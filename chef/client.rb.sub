@@ -1,0 +1,7 @@
+log_level :info
+log_location "/home/APP_USER_NAME/logs/chef/chef-client.log"
+chef_server_url "CHEF_SERVER"
+node_name "HOST"
+file_cache_path   "/home/APP_USER_NAME/chef/cache"
+file_backup_path  "/home/APP_USER_NAME/chef/backup"
+cache_options     ({:path => "/home/APP_USER_NAME/chef/cache/checksums", :skip_expires => true})

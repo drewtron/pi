@@ -1,0 +1,84 @@
+{
+  "passwords_databag": "passwords",
+  "passwords_databag_item": "dev",
+  "db_conn_glgsearch": "jdbc:jtds:sqlserver://glgplab1sql04.glgdev.com:1433;databaseName=GLG_SEARCH;",
+  "secret_url": "http://10.45.206.208/encrypted_data_bag_secret",
+  "newrelic" : {
+     "deployed" : false
+  },
+  "solr":  {
+    "logpath"                             : "/home/glgsearch/logs/solr",
+    "multipleMainCore"                    : "councilmembers",
+    "multipleAdditionalCores"             : [ 
+                                              { "corename" : "upq" },
+                                              { "corename" : "kpq" }
+                                            ],
+    "multipleCommonField" : "PersonID",
+    "mosaicImportMongoURL"                : "10.45.206.224",
+    "mosaicImportMongoPort"               : "27017",    
+	"gitpull"             : true,
+	"branch_name"         : "richsolr",
+	"repo_name"           : "/SearchDeliveryTeam/pi.git",
+	"db_pwd_key"          : "dbPW_RMSSearch",
+	"db_user_key"         : "dbUser_RMSSearch",
+    "gitstdout"           : "",
+    "solr_user"           : "glgsearch",
+    "solr_root"           : "/home/glgsearch/solr",
+    "jetty_port"          : 8080,
+    "logger_prefix": "CHEF-SOLR",
+	"master": true,
+    "masterIP": "10.115.100.47",
+    "fullimport" : {
+        "weekly"    : "0",
+        "daily"     : "1-6",
+        "cron_min"  : "0",
+        "cron_hour" : "2",
+        "day"       : "*",
+        "month"     : "*"
+    },    
+    "cores": {
+	 "kpq": {
+          "cron_min": "0",
+          "cron_hour": "8-18/2",
+          "database": "glgsearch",
+          "import_type": "delta"
+        },
+        "upq": {
+          "cron_min": "30",
+          "cron_hour": "8-18/2",
+          "database": "glgsearch",
+          "import_type": "delta"
+        },
+	       "mosaic-ngrams": {
+	          "import_type": "fulldaily"
+	        }
+    }
+  },
+  "chef_client": {
+    "cron": {
+      "minute"            : "*/15",
+      "hour"              : "*"
+    },
+    "init_style"          : "cron"
+  },
+  "email": {
+     "sendemail":"true",
+     "emailreason":"Normal deployment",
+     "email_smtp":"smtp.glgroup.com",
+     "email_from":"chef-deploy@glgroup.com",
+     "email_to":"nobody@glgroup.com"
+},
+  "run_list": [
+    "recipe[chef_handler]",
+    "recipe[solr::instantiate_handlers]",
+    "recipe[solr::gitpullbranch]",
+    "recipe[solr::install_python]",
+    "recipe[solr::install_pip]",
+    "recipe[solr::install_preReqs]",
+    "recipe[solr::solr_build]",
+    "recipe[chef-client::cron]",
+    "recipe[solr::deploy_solr]",
+    "recipe[solr::logrotate]",
+    "recipe[solr::solr_doctor]"
+  ]
+}

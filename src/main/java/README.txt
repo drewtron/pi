@@ -1,0 +1,13 @@
+To debug custom request handlers in eclipse:
+
+Start solr with the following jvm parameters:
+
+java -Xmx3000m -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address="8001" -Dsolr.solr.home=./pi-solr/solr-home/ -jar ./pi-solr/jetty-home/start.jar
+
+3 G max heap.  the remote debugger port to attach to is 8001
+
+to debug trendsetter in eclipse:
+
+1. create java project with trendsetter ./src/main/java 
+2. Eclipse -> Run -> Debug Configurations -> (double click) Remote Java Applications
+3. set host: <your_host> and port:8001
