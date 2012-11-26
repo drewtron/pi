@@ -5,22 +5,20 @@ APP_USER_PWD := SR58lzSfWeD8c
 APP_ROOT_DIR := /home/$(APP_USER_NAME)/solr
 HOST := $(shell hostname)
 
-DEV_CHEF_SERVER = http://10.45.206.208
+QA_CHEF_SERVER = http://10.45.206.208
 PROD_CHEF_SERVER = http://glgnychef01.glgroup.com
 REPO_URL = http://github.glgroup.com/SearchDeliveryTeam/pi
 
-DEV_ENV = devtrendsetter
-PROD_ENV = prodtrendsetter
-NYDR_ENV = nydrtrendsetter
-QA_ENV = qatrendsetter
+PROD_ENV = prodmosaicsearch
+QA_ENV = qamosaicsearch
 
 # Default to 'master' branch; override by executing 'sudo -u <root-user> make BRANCH=<some-branch>'
 BRANCH = master
 
 # Default to configuring everything for the Dev environment
-ENVIRONMENT = $(DEV_ENV)
-CHEF_SERVER = $(DEV_CHEF_SERVER):4000
-PEM_URL = $(DEV_CHEF_SERVER)/validation.pem
+ENVIRONMENT = $(QA_ENV)
+CHEF_SERVER = $(QA_CHEF_SERVER):4000
+PEM_URL = $(QA_CHEF_SERVER)/validation.pem
 GIT_CHEF_URL = $(REPO_URL)/raw/$(BRANCH)/chef
 CHEF_CONF_FILE = /etc/chef/client.rb.sub
 CHEF_CONF_URL = $(GIT_CHEF_URL)/client.rb.sub
@@ -49,16 +47,6 @@ ifeq ($(IPSEG1),10)
 		PEM_URL = $(PROD_CHEF_SERVER)/validation.pem
 		CHEF_SERVER = $(PROD_CHEF_SERVER):4000
 		ENVIRONMENT = $(PROD_ENV)
-	endif
-	ifeq ($(IPSEG2),21)
-		PEM_URL = $(PROD_CHEF_SERVER)/validation.pem
-		CHEF_SERVER = $(PROD_CHEF_SERVER):4000
-		ENVIRONMENT = $(NYDR_ENV)
-	endif
-	ifeq ($(IPSEG2),45)
-		ifeq ($(IPSEG3),150)
-			ENVIRONMENT = $(QA_ENV)
-		endif
 	endif
 endif
 
