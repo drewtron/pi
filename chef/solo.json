@@ -9,15 +9,10 @@
   "solr":  {
     "logpath"                             : "/home/glgsearch/logs/solr",
     "multipleMainCore"                    : "councilmembers",
-    "multipleAdditionalCores"             : [ 
-                                              { "corename" : "upq" },
-                                              { "corename" : "kpq" }
-                                            ],
     "multipleCommonField" : "PersonID",
     "mosaicImportMongoURL"                : "10.45.206.224",
-    "mosaicImportMongoPort"               : "27017",    
-	"gitpull"             : true,
-	"branch_name"         : "richsolr",
+    "mosaicImportMongoPort"               : "27017",
+	"branch_name"         : "qa-deploy",
 	"repo_name"           : "/SearchDeliveryTeam/pi.git",
 	"db_pwd_key"          : "dbPW_RMSSearch",
 	"db_user_key"         : "dbUser_RMSSearch",
@@ -25,9 +20,9 @@
     "solr_user"           : "glgsearch",
     "solr_root"           : "/home/glgsearch/solr",
     "jetty_port"          : 8080,
-    "logger_prefix": "CHEF-SOLR",
+    "logger_prefix": "CHEF-PI-SOLR",
 	"master": true,
-    "masterIP": "10.115.100.47",
+    "masterIP": "10.115.100.194",
     "fullimport" : {
         "weekly"    : "0",
         "daily"     : "1-6",
@@ -37,21 +32,9 @@
         "month"     : "*"
     },    
     "cores": {
-	 "kpq": {
-          "cron_min": "0",
-          "cron_hour": "8-18/2",
-          "database": "glgsearch",
-          "import_type": "delta"
-        },
-        "upq": {
-          "cron_min": "30",
-          "cron_hour": "8-18/2",
-          "database": "glgsearch",
-          "import_type": "delta"
-        },
-	       "mosaic-ngrams": {
-	          "import_type": "fulldaily"
-	        }
+       "mosaic-ngrams": {
+          "import_type": "fulldaily"
+        }
     }
   },
   "chef_client": {
@@ -70,15 +53,15 @@
 },
   "run_list": [
     "recipe[chef_handler]",
-    "recipe[solr::instantiate_handlers]",
-    "recipe[solr::gitpullbranch]",
-    "recipe[solr::install_python]",
-    "recipe[solr::install_pip]",
-    "recipe[solr::install_preReqs]",
-    "recipe[solr::solr_build]",
+    "recipe[pi::instantiate_handlers]",
+    "recipe[pi::gitpullbranch]",
+    "recipe[pi::install_python]",
+    "recipe[pi::install_pip]",
+    "recipe[pi::install_preReqs]",
+    "recipe[pi::solr_build]",
     "recipe[chef-client::cron]",
-    "recipe[solr::deploy_solr]",
-    "recipe[solr::logrotate]",
-    "recipe[solr::solr_doctor]"
+    "recipe[pi::deploy_solr]",
+    "recipe[pi::logrotate]",
+    "recipe[pi::solr_doctor]"
   ]
 }

@@ -8,7 +8,8 @@ echo "tar Solr dir"
 tar -cj -f "../Solr.tar" --exclude .git .
 echo "Deploy Solr to Remote Host"
 scp -C ../Solr.tar $host:~/
-ssh -t -o 'StrictHostKeyChecking no' $host 'sudo rm -rf /home/glgsearch/solr; \
+ssh -t -o 'StrictHostKeyChecking no' $host '\
+    sudo rm -rf /home/glgsearch/solr; \
     sudo mkdir -p /home/glgsearch/solr; \
     cd /home/glgsearch/solr; \
     sudo tar -xj -f ~/Solr.tar; \

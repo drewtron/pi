@@ -35,7 +35,7 @@ SOLR = struct(
   :velocity     => solr_dependency('org.apache.solr:solr-velocity:jar:')
 )
 
-desc "Build Solr code for TrendSetter"
+desc "Build Solr code for PI"
 
 define "Pi-Solr" do
 
