@@ -58,10 +58,9 @@
     "recipe[pi::install_python]",
     "recipe[pi::install_pip]",
     "recipe[pi::install_preReqs]",
-    "recipe[pi::solr_build]",
-    "recipe[chef-client::cron]",
-    "recipe[pi::deploy_solr]",
     "recipe[pi::logrotate]",
+    "recipe[pi::solr_build]",
+    "recipe[pi::deploy_solr]",
     "recipe[pi::solr_doctor]"
   ]
 }

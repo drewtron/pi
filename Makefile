@@ -74,6 +74,17 @@ default: base_install
 	# ***************************************
 	# END OF SOLR MAKEFILE
 
+dev_install: base_install
+    git clone git@github.glgroup.com:CHEF/Cookbooks.git /home/$(APP_USER_NAME)/cookbooks
+
+	# Create log folder for Chef here, since it will try to use it before any recipes run and won't
+	# create it if it's not there
+	mkdir -p /home/$(APP_USER_NAME)/logs/chef
+	touch /home/$(APP_USER_NAME)/logs/chef/chef-client.log
+
+	chef-solo -c ./chef/solo.rb -j ./chef/solo.json
+
+
 base_install:
 	# ***************************************
 	# DEFINED MACROS
