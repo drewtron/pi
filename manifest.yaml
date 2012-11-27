@@ -5,11 +5,11 @@ env:
     server_disk_size_gb: 40
     number_of_servers: 2
     number_of_cpu: 2
-    server_memory_gb: 32
+    server_memory_gb: 16
     load_balancer_server_port: 8080
     load_balancer_port: 8080
     load_balancer_monitor: /healthy
     stew: false
-    mailcc: glgsearchdev@glgroup.com
+    mailcc: mosaicsearch@glgroup.com
     clone_directory: pi
     bootstrap_shell_command: sudo -u svcauto make
