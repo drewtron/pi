@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!--
+Template for schema.xml. Two areas are filled in:
+   = the schema name
+   = the field definitions
+-->
+
+<schema name="mosaic-ngrams" version="1.4">
+  <!-- attribute "name" is the name of this schema and is only used for display purposes.
+       Applications should change this to reflect the nature of the search collection.
+       version="1.1" is Solr's version number for the schema syntax and semantics.  It should
+       not normally be changed by applications.
+       1.0: multiValued attribute did not exist, all fields are multiValued by nature
+       1.1: multiValued attribute introduced, false by default -->
+
+  <types>
+    <!-- field type definitions. The "name" attribute is
+       just a label to be used by field definitions.  The "class"
+       attribute and any other attributes determine the real
+       behavior of the fieldType.
+         Class names starting with "solr" refer to java classes in the
+       org.apache.solr.analysis package.
+    -->
+
+    <!-- The StrField type is not analyzed, but indexed/stored verbatim.
+       - StrField and TextField support an optional compressThreshold which
+       limits compression (if enabled in the derived fields) to values which
+       exceed a certain size (in characters).
+    -->
+    <fieldType name="string" class="solr.StrField" sortMissingLast="true" omitNorms="true"/>
+
+    <fieldType name="integer" class="solr.IntField" omitNorms="true"/>
+
+    <fieldType name="sint" class="solr.SortableIntField" sortMissingLast="true" omitNorms="true"/>
+
+    <fieldType name="date" class="solr.DateField" sortMissingLast="true" omitNorms="true"/>
+
+    <fieldType name="int" class="solr.TrieIntField" precisionStep="0" omitNorms="true" positionIncrementGap="0"/>
+
+    <fieldType name="bool" class="solr.BoolField" sortMissingLast="true" omitNorms="true"/>
+
+    <!-- solr.TextField allows the specification of custom text analyzers
+        specified as a tokenizer and a list of token filters. Different
+        analyzers may be specified for indexing and querying.
+
+        The optional positionIncrementGap puts space between multiple fields of
+        this type on the same document, with the purpose of preventing false phrase
+        matching across fields.
+
+        For more info on customizing your analyzer chain, please see
+        http://wiki.apache.org/solr/AnalyzersTokenizersTokenFilters
+    -->
+
+    <!-- One can also specify an existing Analyzer class that has a
+         default constructor via the class attribute on the analyzer element
+    <fieldType name="text_greek" class="solr.TextField">
+      <analyzer class="org.apache.lucene.analysis.el.GreekAnalyzer"/>
+    </fieldType>
+    -->
+
+    <!-- A text field that uses WordDelimiterFilter to enable splitting and matching of
+    words on case-change, alpha numeric boundaries, and non-alphanumeric chars,
+    so that a query of "wifi" or "wi fi" could match a document containing "Wi-Fi".
+    Synonyms and stopwords are customized by external files, and stemming is enabled.
+    Duplicate tokens at the same position (which may result from Stemmed Synonyms or
+    WordDelim parts) are removed.
+    -->
+    <fieldType name="text" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+        <!-- in this example, we will only use synonyms at query time
+        <filter class="solr.SynonymFilterFactory" synonyms="index_synonyms.txt" ignoreCase="true" expand="false"/>
+        -->
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt"/>
+        <filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1" catenateWords="1"
+                catenateNumbers="1" catenateAll="0" splitOnCaseChange="1"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/>
+        <filter class="solr.PorterStemFilterFactory"/>
+        <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
+      </analyzer>
+
+      <analyzer type="query">
+        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+        <filter class="solr.SynonymFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt"/>
+        <filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1" catenateWords="0"
+                catenateNumbers="0" catenateAll="0" splitOnCaseChange="1"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/>
+        <filter class="solr.PorterStemFilterFactory"/>
+        <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="text_general" class="solr.TextField" positionIncrementGap="100">
+      <analyzer>
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt" enablePositionIncrements="true"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <!-- we don't want to stem names or remove stop words on names -->
+    <fieldType name="name" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+        <!-- in this example, we will only use synonyms at query time
+        <filter class="solr.SynonymFilterFactory" synonyms="index_synonyms.txt" ignoreCase="true" expand="false"/>
+        -->
+        <filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1" catenateWords="1"
+                catenateNumbers="1" catenateAll="0" splitOnCaseChange="1"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+      </analyzer>
+
+      <analyzer type="query">
+        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+        <filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1" catenateWords="0"
+                catenateNumbers="0" catenateAll="0" splitOnCaseChange="1"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <!-- we don't want to tokenize codes -->
+    <fieldType name="code" class="solr.TextField" positionIncrementGap="100">
+      <analyzer>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+      </analyzer>
+
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+      </analyzer>
+
+    </fieldType>
+
+    <!--
+   <fieldType name="date" class="solr.DateField"
+   sortMissingLast="true" omitNorms="true"/>
+    -->
+    <!-- This is an example of using the KeywordTokenizer along
+         With various TokenFilterFactories to produce a sortable field
+         that does not include some properties of the source text
+      -->
+    <fieldType name="alphaOnlySort" class="solr.TextField" sortMissingLast="true" omitNorms="true">
+      <analyzer>
+        <!-- KeywordTokenizer does no actual tokenizing, so the entire
+             input string is preserved as a single token
+          -->
+        <tokenizer class="solr.KeywordTokenizerFactory"/>
+        <!-- The LowerCase TokenFilter does what you expect, which can be
+             when you want your sorting to be case insensitive
+          -->
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <!-- The TrimFilter removes any leading or trailing whitespace -->
+        <filter class="solr.TrimFilterFactory"/>
+        <!-- The PatternReplaceFilter gives you the flexibility to use
+             Java Regular expression to replace any sequence of characters
+             matching a pattern with an arbitrary replacement string,
+             which may include back references to portions of the original
+             string matched by the pattern.
+
+             See the Java Regular Expression documentation for more
+             information on pattern and replacement string syntax.
+
+             http://java.sun.com/j2se/1.5.0/docs/api/java/util/regex/package-summary.html
+          -->
+        <filter class="solr.PatternReplaceFilterFactory"
+                pattern="([^a-z])" replacement="" replace="all"
+                />
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="text_auto" class="solr.TextField" positionIncrementGap="100">
+      <analyzer>
+        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+        <filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1" catenateWords="1"
+                catenateNumbers="1" catenateAll="0" splitOnCaseChange="1"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="text_lowercase"
+               class="solr.TextField"
+               positionIncrementGap="100">
+      <analyzer>
+        <tokenizer class="solr.KeywordTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="simpletext"
+               class="solr.TextField"
+               positionIncrementGap="100">
+      <analyzer>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <!-- since fields of this type are by default not stored or indexed, any data added to
+        them will be ignored outright
+    -->
+    <fieldtype name="ignored" stored="false" indexed="false" class="solr.StrField"/>
+
+    <!-- Type used for fields having subfields in the Mosaic index.  -->
+    <fieldType name="token_string" class="solr.TextField">
+      <analyzer>
+        <tokenizer class="solr.PatternTokenizerFactory" pattern="|\s*"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="text_field" class="solr.TextField"></fieldType>
+
+    <fieldType name="edge_ngram_text" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <tokenizer class="solr.KeywordTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.EdgeNGramFilterFactory" minGramSize="1" maxGramSize="30"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.KeywordTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+      </analyzer>
+    </fieldType>
+  </types>
+
+
+  <fields>
+    <!-- Valid attributes for fields:
+      name: mandatory - the name for the field
+      type: mandatory - the name of a previously defined type from the <types> section
+      indexed: true if this field should be indexed (searchable or sortable)
+      stored: true if this field should be retrievable
+      compressed: [false] if this field should be stored using gzip compression
+        (this will only apply if the field type is compressible; among
+        the standard field types, only TextField and StrField are)
+      multiValued: true if this field may contain multiple values per document
+      omitNorms: (expert) set to true to omit the norms associated with
+        this field (this disables length normalization and index-time
+        boosting for the field, and saves some memory).  Only full-text_auto<
+        fields or fields that need an index-time boost need norms.
+      termVectors: [false] set to true to store the term vector for a given field.
+        When using MoreLikeThis, fields used for similarity should be stored for
+        best performance.
+    -->
+
+    <!-- uncomment the following to ignore any fields that don't already match an existing
+field name or dynamic field, rather than reporting them as an error.
+alternately, change the type="ignored" to some other type e.g. "text" if you want
+unknown fields indexed and/or stored by default -->
+    <!--dynamicField name="*" type="ignored" multiValued="true" /-->
+
+    <field name="id" type="string" indexed="true" stored="true" required="true"/>
+    <field name="name" type="name" indexed="true" stored="true" required="false"/>
+    <field name="name_indexed" type="name" indexed="true" stored="true" required="false"/>
+    <field name="name_ngram" type="edge_ngram_text" indexed="true" stored="false" required="false"/>
+    <field name="full_name_ngram" type="edge_ngram_text" indexed="true" stored="false" required="false"/>
+    <field name="type" type="string" indexed="true" stored="true" required="false"/>
+    <field name="sourceid" type="string" indexed="true" stored="true" required="false"/>
+    <field name="partyType" type="string" indexed="true" stored="true" required="false"/>
+    <field name="streetaddress" type="text" indexed="true" stored="true" required="false"/>
+    <field name="streetaddress_edgegram" type="edge_ngram_text" indexed="true" stored="false" required="false"/>
+    <field name="city" type="text" indexed="true" stored="true" required="false"/>
+    <field name="city_facet" type="string" indexed="true" stored="true" required="false"/>
+    <field name="city_edgegram" type="edge_ngram_text" indexed="true" stored="false" required="false"/>
+    <field name="state" type="text" indexed="true" stored="true" required="false"/>
+    <field name="state_facet" type="string" indexed="true" stored="true" required="false"/>
+    <field name="state_edgegram" type="edge_ngram_text" indexed="true" stored="false" required="false"/>
+    <field name="country" type="text" indexed="true" stored="true" required="false"/>
+    <field name="country_facet" type="string" indexed="true" stored="true" required="false"/>
+    <field name="country_edgegram" type="edge_ngram_text" indexed="true" stored="false" required="false"/>
+    <field name="continent" type="text" indexed="true" stored="true" required="false"/>
+    <field name="continent_facet" type="string" indexed="true" stored="true" required="false"/>
+    <field name="continent_edgegram" type="edge_ngram_text" indexed="true" stored="false" required="false"/>
+    <field name="isDNC" type="bool" indexed="true" stored="true" required="false"/>
+    <field name="stockExchange" type="text" indexed="true" stored="true" required="false"/>
+    <field name="tickerSymbol" type="text" indexed="true" stored="true" required="false"/>
+    <field name="stockExchange_ngram" type="edge_ngram_text" indexed="true" stored="false" required="false"/>
+    <field name="tickerSymbol_ngram" type="edge_ngram_text" indexed="true" stored="false" required="false"/>
+    <field name="jobFunction" type="text" indexed="true" stored="true" required="false"/>
+    <field name="current_Job_Function_facet" type="string" indexed="true" stored="true" required="false"/>
+    <field name="jobFunction_edgegram" type="edge_ngram_text" indexed="true" stored="false" required="false"/>
+    <field name="department" type="text" indexed="true" stored="true" required="false"/>
+    <field name="department_facet" type="string" indexed="true" stored="true" required="false"/>
+    <field name="department_edgegram" type="edge_ngram_text" indexed="true" stored="false" required="false"/>
+    <field name="sector" type="text" indexed="true" stored="true" required="false"/>
+    <field name="sector_facet" type="string" indexed="true" stored="true" required="false"/>
+    <field name="sector_edgegram" type="edge_ngram_text" indexed="true" stored="false" required="false"/>
+    <field name="industry" type="text" indexed="true" stored="true" required="false"/>
+    <field name="industry_facet" type="string" indexed="true" stored="true" required="false"/>
+    <field name="industry_edgegram" type="edge_ngram_text" indexed="true" stored="false" required="false"/>
+    <field name="isPublic" type="bool" indexed="true" stored="true" required="false"/>
+    <field name="hasActiveCouncilMembers" type="bool" indexed="true" stored="true" required="false"/>
+    <field name="hasRevenueDistributions" type="bool" indexed="true" stored="true" required="false"/>
+    <field name="relationships" type="string" indexed="true" stored="false" required="false" multiValued="true"/>
+    <field name="relationships_tokenized" type="token_string" indexed="true" stored="true" required="false"
+           multiValued="true"/>
+    <field name="relationship_count" type="int" indexed="true" stored="true" required="false"/>
+    <field name="isMemberPrograms" type="bool" indexed="true" stored="true" required="false"/>
+    <field name="isTermsAndConditionsSigned" type="bool" indexed="true" stored="true" required="false"/>
+    <field name="biography" type="text" indexed="true" stored="true" required="false"/>
+    <field name="practicearea" type="text" indexed="true" stored="true" required="false"/>
+    <field name="practice_area_facet" type="string" indexed="true" stored="true" required="false"/>
+    <field name="company" type="text" indexed="true" stored="true" required="false"/>
+    <field name="currentJobPartyId" type="text" indexed="true" stored="true" required="false"/>
+    <field name="jobHistory" type="text" indexed="true" stored="true" required="false"/>
+    <field name="jobHistory_tokenized" type="token_string" indexed="true" stored="true" required="false"
+           multiValued="true"/>
+    <field name="jobHistory_tokenized_ngram" type="edge_ngram_text" indexed="true" stored="false" required="false"
+           multiValued="true"/>
+    <field name="match_text" type="text" indexed="true" stored="true" required="true" multiValued="true"
+           omitNorms="true"/>
+    <field name="AllEmployersPartyIds" type="text" indexed="true" stored="true" required="false"/>
+    <field name="CurrentEmployersPartyIds" type="text" indexed="true" stored="true" required="false"/>
+    <field name="Jobs0To6MonthsAgo" type="text" indexed="true" stored="true" required="false"/>
+    <field name="Jobs6To24MonthsAgo" type="text" indexed="true" stored="true" required="false"/>
+    <field name="JobsOver24MonthsAgo" type="text" indexed="true" stored="true" required="false"/>
+    <field name="JobFunctionHistory" type="string" indexed="true" stored="true" required="false" multiValued="true"/>
+    <field name="NumGivenToClient" type="int" indexed="true" stored="true" required="false"/>
+    <field name="NumGivenToClient_highlighted" type="text" indexed="true" stored="true" required="false"/>
+    <field name="hourlyRate" type="text" indexed="true" stored="true" required="false"/>
+  </fields>
+
+  <copyField source="id" dest="match_text"/>
+  <copyField source="name" dest="match_text"/>
+  <copyField source="name" dest="name_indexed"/>
+  <copyField source="name_indexed" dest="name_ngram"/>
+  <copyField source="name" dest="full_name_ngram"/>
+  <copyField source="streetaddress" dest="streetaddress_edgegram"/>
+  <copyField source="city" dest="city_edgegram"/>
+  <copyField source="state" dest="state_edgegram"/>
+  <copyField source="country" dest="country_edgegram"/>
+  <copyField source="continent" dest="continent_edgegram"/>
+  <copyField source="jobFunction" dest="jobFunction_edgegram"/>
+  <copyField source="sector" dest="sector_edgegram"/>
+  <copyField source="industry" dest="industry_edgegram"/>
+  <copyField source="stockExchange" dest="stockExchange_ngram"/>
+  <copyField source="tickerSymbol" dest="tickerSymbol_ngram"/>
+  <copyField source="jobHistory_tokenized" dest="jobHistory_tokenized_ngram"/>
+  <copyField source="city" dest="city_facet"/>
+  <copyField source="state" dest="state_facet"/>
+  <copyField source="country" dest="country_facet"/>
+  <copyField source="continent" dest="continent_facet"/>
+  <copyField source="sector" dest="sector_facet"/>
+  <copyField source="industry" dest="industry_facet"/>
+  <copyField source="practicearea" dest="practice_area_facet"/>
+  <copyField source="jobFunction" dest="current_Job_Function_facet"/>
+  <copyField source="department" dest="department_facet"/>
+  <copyField source="NumGivenToClient" dest="NumGivenToClient_highlighted"/>
+
+  <!--Field to use to determine and enforce document uniqueness.
+     Unless this field is marked with required="false", it will be a required field
+  -->
+  <uniqueKey>id</uniqueKey>
+
+  <!-- field for the QueryParser to use when an explicit fieldname is absent -->
+  <defaultSearchField>match_text</defaultSearchField>
+
+  <!-- SolrQueryParser configuration: defaultOperator="AND|OR" -->
+  <solrQueryParser defaultOperator="OR"/>
+
+</schema>

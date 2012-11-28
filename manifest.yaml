@@ -5,7 +5,7 @@ env:
     server_disk_size_gb: 40
     number_of_servers: 2
     number_of_cpu: 2
-    server_memory_gb: 16
+    server_memory_gb: 24
     load_balancer_server_port: 8080
     load_balancer_port: 8080
     load_balancer_monitor: /healthy
