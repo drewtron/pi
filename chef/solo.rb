@@ -3,7 +3,7 @@ puts 'Welcome to chef solo!'
 solr_root = "/home/glgsearch/solr"
 cookbooks = '/home/glgsearch/cookbooks'
 
-data_bag_path(cookbooks + '/pi-solr/data_bags')
+data_bag_path(cookbooks + '/pi/data_bags')
 file_cache_path(solr_root)
 cookbook_path(cookbooks)
 
