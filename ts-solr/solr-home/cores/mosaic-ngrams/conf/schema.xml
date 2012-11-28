@@ -255,6 +255,7 @@ alternately, change the type="ignored" to some other type e.g. "text" if you wan
 unknown fields indexed and/or stored by default -->
     <!--dynamicField name="*" type="ignored" multiValued="true" /-->
 
+    <field name="_version_" type="long" indexed="true" stored="true" multiValued="false"/>
     <field name="id" type="string" indexed="true" stored="true" required="true"/>
     <field name="name" type="name" indexed="true" stored="true" required="false"/>
     <field name="name_indexed" type="name" indexed="true" stored="true" required="false"/>
