@@ -55,31 +55,31 @@ define "Pi-Solr" do
   # patches for heirarchical multi-faceting and multi-prefixed facets
   package(:jar, :file=>_('target/glgrecommend.jar')).include('com/**').exclude('org/**').enhance do |task|
     task.enhance do
-      filter.from('target').into('pi-solr/solr-home/lib').include('glgrecommend.jar').run
-      compile.dependencies.map { |dep| FileUtils.cp dep.to_s , 'pi-solr/solr-home/lib' }
+      filter.from('target').into('ts-solr/solr-home/lib').include('glgrecommend.jar').run
+      compile.dependencies.map { |dep| FileUtils.cp dep.to_s , 'ts-solr/solr-home/lib' }
 
-      solr_war_temp_location = 'pi-solr/solr-home/lib/temp/'
+      solr_war_temp_location = 'ts-solr/solr-home/lib/temp/'
       FileUtils.rm_rf solr_war_temp_location
       FileUtils.mkdir solr_war_temp_location
       solr_war_temp_name = 'solr-' + SOLR_VERSION + '.war'
-      FileUtils.mv 'pi-solr/solr-home/lib/' + solr_war_temp_name , solr_war_temp_location + solr_war_temp_name
+      FileUtils.mv 'ts-solr/solr-home/lib/' + solr_war_temp_name , solr_war_temp_location + solr_war_temp_name
       sh "unzip " + solr_war_temp_location + solr_war_temp_name + " -d " + solr_war_temp_location
-      sh "cd target/classes; zip -r ../../pi-solr/solr-home/lib/temp/WEB-INF/lib/apache-solr-core-4.0.0-BETA.jar org; cd ../.. "
-      sh "cd pi-solr/solr-home/lib/temp; zip -r ../../solr.war *; cd ../../../.."
+      sh "cd target/classes; zip -r ../../ts-solr/solr-home/lib/temp/WEB-INF/lib/apache-solr-core-4.0.0-BETA.jar org; cd ../.. "
+      sh "cd ts-solr/solr-home/lib/temp; zip -r ../../solr.war *; cd ../../../.."
       FileUtils.rm_rf solr_war_temp_location
      end
   end
 
   # Package Solr multicore engine
-  package(:tgz, :file=>_('target/pi-solr.tgz')).tap do |path|
-     path.include(_('pi-solr/solr-home')).exclude('.git','.DS_Store','README.txt','cores/*/data')
-     path.include(_('pi-solr/jetty-home')).exclude('.git','.DS_Store','README.txt')
+  package(:tgz, :file=>_('target/ts-solr.tgz')).tap do |path|
+     path.include(_('ts-solr/solr-home')).exclude('.git','.DS_Store','README.txt','cores/*/data')
+     path.include(_('ts-solr/jetty-home')).exclude('.git','.DS_Store','README.txt')
   end
 
   # Collect all Java library dependencies and solr.war for the TrendSetter Solr multicore engine Package
-  package(:tgz, :file=>_('target/pi-solr.tgz')).path('solr-home/lib').include packages.select  { |pkg| pkg.type == :jar }
-  compile.dependencies.select {|ref| package(:tgz, :file=>_('target/pi-solr.tgz')).path('solr-home').include(ref).exclude('*.jar')}
-  compile.dependencies.select {|ref| package(:tgz, :file=>_('target/pi-solr.tgz')).path('solr-home/lib').include(ref).exclude('*.war')}
+  package(:tgz, :file=>_('target/ts-solr.tgz')).path('solr-home/lib').include packages.select  { |pkg| pkg.type == :jar }
+  compile.dependencies.select {|ref| package(:tgz, :file=>_('target/ts-solr.tgz')).path('solr-home').include(ref).exclude('*.jar')}
+  compile.dependencies.select {|ref| package(:tgz, :file=>_('target/ts-solr.tgz')).path('solr-home/lib').include(ref).exclude('*.war')}
 
 
 end
