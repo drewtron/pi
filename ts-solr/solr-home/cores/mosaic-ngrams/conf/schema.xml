@@ -260,101 +260,20 @@ unknown fields indexed and/or stored by default -->
     <field name="_version_" type="long" indexed="true" stored="true" multiValued="false"/>
     <field name="id" type="string" indexed="true" stored="true" required="true"/>
     <field name="name" type="name" indexed="true" stored="true" required="false"/>
-    <field name="name_indexed" type="name" indexed="true" stored="true" required="false"/>
     <field name="name_ngram" type="edge_ngram_text" indexed="true" stored="false" required="false"/>
-    <field name="full_name_ngram" type="edge_ngram_text" indexed="true" stored="false" required="false"/>
-    <field name="type" type="string" indexed="true" stored="true" required="false"/>
-    <field name="sourceid" type="string" indexed="true" stored="true" required="false"/>
     <field name="partyType" type="string" indexed="true" stored="true" required="false"/>
-    <field name="streetaddress" type="text" indexed="true" stored="true" required="false"/>
-    <field name="streetaddress_edgegram" type="edge_ngram_text" indexed="true" stored="false" required="false"/>
-    <field name="city" type="text" indexed="true" stored="true" required="false"/>
-    <field name="city_facet" type="string" indexed="true" stored="true" required="false"/>
-    <field name="city_edgegram" type="edge_ngram_text" indexed="true" stored="false" required="false"/>
-    <field name="state" type="text" indexed="true" stored="true" required="false"/>
-    <field name="state_facet" type="string" indexed="true" stored="true" required="false"/>
-    <field name="state_edgegram" type="edge_ngram_text" indexed="true" stored="false" required="false"/>
-    <field name="country" type="text" indexed="true" stored="true" required="false"/>
-    <field name="country_facet" type="string" indexed="true" stored="true" required="false"/>
-    <field name="country_edgegram" type="edge_ngram_text" indexed="true" stored="false" required="false"/>
-    <field name="continent" type="text" indexed="true" stored="true" required="false"/>
-    <field name="continent_facet" type="string" indexed="true" stored="true" required="false"/>
-    <field name="continent_edgegram" type="edge_ngram_text" indexed="true" stored="false" required="false"/>
-    <field name="isDNC" type="bool" indexed="true" stored="true" required="false"/>
-    <field name="stockExchange" type="text" indexed="true" stored="true" required="false"/>
-    <field name="tickerSymbol" type="text" indexed="true" stored="true" required="false"/>
+    <field name="stockExchange" type="name" indexed="true" stored="true" required="false"/>
     <field name="stockExchange_ngram" type="edge_ngram_text" indexed="true" stored="false" required="false"/>
+    <field name="tickerSymbol" type="name" indexed="true" stored="true" required="false"/>
     <field name="tickerSymbol_ngram" type="edge_ngram_text" indexed="true" stored="false" required="false"/>
-    <field name="jobFunction" type="text" indexed="true" stored="true" required="false"/>
-    <field name="current_Job_Function_facet" type="string" indexed="true" stored="true" required="false"/>
-    <field name="jobFunction_edgegram" type="edge_ngram_text" indexed="true" stored="false" required="false"/>
-    <field name="department" type="text" indexed="true" stored="true" required="false"/>
-    <field name="department_facet" type="string" indexed="true" stored="true" required="false"/>
-    <field name="department_edgegram" type="edge_ngram_text" indexed="true" stored="false" required="false"/>
-    <field name="sector" type="text" indexed="true" stored="true" required="false"/>
-    <field name="sector_facet" type="string" indexed="true" stored="true" required="false"/>
-    <field name="sector_edgegram" type="edge_ngram_text" indexed="true" stored="false" required="false"/>
-    <field name="industry" type="text" indexed="true" stored="true" required="false"/>
-    <field name="industry_facet" type="string" indexed="true" stored="true" required="false"/>
-    <field name="industry_edgegram" type="edge_ngram_text" indexed="true" stored="false" required="false"/>
     <field name="isPublic" type="bool" indexed="true" stored="true" required="false"/>
-    <field name="hasActiveCouncilMembers" type="bool" indexed="true" stored="true" required="false"/>
-    <field name="hasRevenueDistributions" type="bool" indexed="true" stored="true" required="false"/>
-    <field name="relationships" type="string" indexed="true" stored="false" required="false" multiValued="true"/>
-    <field name="relationships_tokenized" type="token_string" indexed="true" stored="true" required="false"
-           multiValued="true"/>
     <field name="relationship_count" type="int" indexed="true" stored="true" required="false"/>
-    <field name="isMemberPrograms" type="bool" indexed="true" stored="true" required="false"/>
-    <field name="isTermsAndConditionsSigned" type="bool" indexed="true" stored="true" required="false"/>
-    <field name="biography" type="text" indexed="true" stored="true" required="false"/>
-    <field name="practicearea" type="text" indexed="true" stored="true" required="false"/>
-    <field name="practice_area_facet" type="string" indexed="true" stored="true" required="false"/>
-    <field name="company" type="text" indexed="true" stored="true" required="false"/>
-    <field name="currentJobPartyId" type="text" indexed="true" stored="true" required="false"/>
-    <field name="jobHistory" type="text" indexed="true" stored="true" required="false"/>
-    <field name="jobHistory_tokenized" type="token_string" indexed="true" stored="true" required="false"
-           multiValued="true"/>
-    <field name="jobHistory_tokenized_ngram" type="edge_ngram_text" indexed="true" stored="false" required="false"
-           multiValued="true"/>
-    <field name="match_text" type="text" indexed="true" stored="true" required="true" multiValued="true"
-           omitNorms="true"/>
-    <field name="AllEmployersPartyIds" type="text" indexed="true" stored="true" required="false"/>
-    <field name="CurrentEmployersPartyIds" type="text" indexed="true" stored="true" required="false"/>
-    <field name="Jobs0To6MonthsAgo" type="text" indexed="true" stored="true" required="false"/>
-    <field name="Jobs6To24MonthsAgo" type="text" indexed="true" stored="true" required="false"/>
-    <field name="JobsOver24MonthsAgo" type="text" indexed="true" stored="true" required="false"/>
-    <field name="JobFunctionHistory" type="string" indexed="true" stored="true" required="false" multiValued="true"/>
-    <field name="NumGivenToClient" type="int" indexed="true" stored="true" required="false"/>
-    <field name="NumGivenToClient_highlighted" type="text" indexed="true" stored="true" required="false"/>
-    <field name="hourlyRate" type="text" indexed="true" stored="true" required="false"/>
+
   </fields>
 
-  <copyField source="id" dest="match_text"/>
-  <copyField source="name" dest="match_text"/>
-  <copyField source="name" dest="name_indexed"/>
-  <copyField source="name_indexed" dest="name_ngram"/>
-  <copyField source="name" dest="full_name_ngram"/>
-  <copyField source="streetaddress" dest="streetaddress_edgegram"/>
-  <copyField source="city" dest="city_edgegram"/>
-  <copyField source="state" dest="state_edgegram"/>
-  <copyField source="country" dest="country_edgegram"/>
-  <copyField source="continent" dest="continent_edgegram"/>
-  <copyField source="jobFunction" dest="jobFunction_edgegram"/>
-  <copyField source="sector" dest="sector_edgegram"/>
-  <copyField source="industry" dest="industry_edgegram"/>
+  <copyField source="name" dest="name_ngram"/>
   <copyField source="stockExchange" dest="stockExchange_ngram"/>
   <copyField source="tickerSymbol" dest="tickerSymbol_ngram"/>
-  <copyField source="jobHistory_tokenized" dest="jobHistory_tokenized_ngram"/>
-  <copyField source="city" dest="city_facet"/>
-  <copyField source="state" dest="state_facet"/>
-  <copyField source="country" dest="country_facet"/>
-  <copyField source="continent" dest="continent_facet"/>
-  <copyField source="sector" dest="sector_facet"/>
-  <copyField source="industry" dest="industry_facet"/>
-  <copyField source="practicearea" dest="practice_area_facet"/>
-  <copyField source="jobFunction" dest="current_Job_Function_facet"/>
-  <copyField source="department" dest="department_facet"/>
-  <copyField source="NumGivenToClient" dest="NumGivenToClient_highlighted"/>
 
   <!--Field to use to determine and enforce document uniqueness.
      Unless this field is marked with required="false", it will be a required field
@@ -362,7 +281,7 @@ unknown fields indexed and/or stored by default -->
   <uniqueKey>id</uniqueKey>
 
   <!-- field for the QueryParser to use when an explicit fieldname is absent -->
-  <defaultSearchField>match_text</defaultSearchField>
+  <defaultSearchField>name</defaultSearchField>
 
   <!-- SolrQueryParser configuration: defaultOperator="AND|OR" -->
   <solrQueryParser defaultOperator="OR"/>
