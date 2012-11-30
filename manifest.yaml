@@ -4,8 +4,8 @@ env:
     server_version: 11.10
     server_disk_size_gb: 40
     number_of_servers: 2
-    number_of_cpu: 2
-    server_memory_gb: 24
+    number_of_cpu: 4
+    server_memory_gb: 32
     load_balancer_server_port: 8080
     load_balancer_port: 8080
     load_balancer_monitor: /healthy

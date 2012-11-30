@@ -1,1 +1,1 @@
-{ "run_list": [ "role[solrdeploy40]" ] }
+{ "run_list": [ "role[pi-deploy]" ] }
