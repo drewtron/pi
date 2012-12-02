@@ -1,10 +1,3 @@
-# Buildr 1.4.6 build file for the Search Platform builds
-# GLG 2012 - squince
-
-# Version number for this release
-# TODO: Need to investigate a way for Buildr to incorporate version with Git
-#       either by using git tags or by modifying a file that is then commited
-#       by Buildr so that it is properly incremented for each build.
 VERSION_NUMBER = "1.0.0"
 GROUP = "Search & Recommendations"
 # TODO: Need to automate resolution of (c) date to be 2012 - currentyear()
@@ -56,6 +49,7 @@ define "Pi-Solr" do
   package(:jar, :file=>_('target/glgrecommend.jar')).include('com/**').exclude('org/**').enhance do |task|
     task.enhance do
       filter.from('target').into('ts-solr/solr-home/lib').include('glgrecommend.jar').run
+      filter.from('lib').into('ts-solr/solr-home/lib').include('solr-mongo-importer-1.0.0.jar').run
       compile.dependencies.map { |dep| FileUtils.cp dep.to_s , 'ts-solr/solr-home/lib' }
 
       solr_war_temp_location = 'ts-solr/solr-home/lib/temp/'

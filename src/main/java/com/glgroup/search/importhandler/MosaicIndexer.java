@@ -19,6 +19,8 @@ import com.mongodb.Mongo;
 
 import flexjson.JSONSerializer;
 import org.apache.solr.common.params.SolrParams;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class MosaicIndexer implements Runnable {
 	
@@ -34,6 +36,7 @@ public class MosaicIndexer implements Runnable {
 	private String mongoCollection;
 	private long maxdoc;
     private SolrParams defaults;
+    private Logger log;
 	
 	public MosaicIndexer(String url, String mongoHost, int mongoPort, String mongoDB, String mongoCollection, long maxdoc, SolrParams defaults){
 		 try {
@@ -48,6 +51,8 @@ public class MosaicIndexer implements Runnable {
 		this.mongoCollection = mongoCollection;
 		this.maxdoc = maxdoc;
 		this.defaults = defaults;
+
+		log = LoggerFactory.getLogger(MosaicIndexer.class);
 	}
 	
 	public void run() {
