@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dataConfig>
+     <dataSource name="Mosaic" type="MongoDataSource" database="mosaic" host="localhost" />
+     <document name="Companies">
+         <entity name="company"
+                processor="MongoEntityProcessor"
+                 query="{'partyType':'Company'}"
+                 collection="parties"
+                 datasource="Mosaic"
+                 transformer="MongoMapperTransformer" >
+
+            <field column="id" name="id" mongoField="id" />
+            <field column="name" name="name" mongoField="name" />
+            <field column="partyType" name="partyType" mongoField="partyType" />
+            <field column="stockExchange" name="stockExchange" mongoField="stockExchange" />
+            <field column="tickerSymbol" name="tickerSymbol" mongoField="tickerSymbol"/>
+            <field column="isPublic" name="isPublic" mongoField="isPublic" />
+            <field column="relationship_count" name="relationship_count" mongoField="relationship_count" />
+         </entity>
+     </document>
+ </dataConfig>
