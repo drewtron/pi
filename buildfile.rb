@@ -28,7 +28,7 @@ SOLR = struct(
   :velocity     => solr_dependency('org.apache.solr:solr-velocity:jar:')
 )
 
-SOLR_HOME = 'ts-solr/solr-home/'
+SOLR_LIB = 'ts-solr/solr-home/lib/'
 
 desc "Build Solr code for People Inquiry"
 
@@ -50,18 +50,16 @@ define "Pi-Solr" do
   # patches for heirarchical multi-faceting and multi-prefixed facets
   package(:jar, :file=>_('target/glgrecommend.jar')).include('com/**').exclude('org/**').enhance do
 
-    filter.from('lib').into("#{SOLR_HOME}lib").include('solr-mongo-importer-1.0.0.jar').run
-    compile.dependencies.map { |dep| FileUtils.cp dep.to_s , "#{SOLR_HOME}lib" }
+    sh "cp lib/solr-mongo-importer-1.0.0.jar #{SOLR_LIB}solr-mongo-importer-1.0.0.jar"
 
-    solr_war_temp_location = 'target/solr/'
-    war_name = "solr-#{SOLR_VERSION}.war"
-    solr_war = "#{SOLR_HOME}lib/solr-#{SOLR_VERSION}.war"
+    compile.dependencies.map { |dep| FileUtils.cp dep.to_s , SOLR_LIB }
 
-    FileUtils.mv 'ts-solr/solr-home/lib/' + war_name , solr_war_temp_location + war_name
-    sh "unzip " + solr_war_temp_location + war_name + " -d " + solr_war_temp_location
-    sh "cd target/classes; zip -r ../../ts-solr/solr-home/lib/temp/WEB-INF/lib/apache-solr-core-#{SOLR_VERSION}.jar org; cd ../.. "
-    sh "cd ts-solr/solr-home/lib/temp; zip -r ../../solr.war *; cd ../../../.."
-    FileUtils.rm_rf solr_war_temp_location
+    war_temp_location = 'target/solr/'
+    solr_war = "#{SOLR_LIB}solr-#{SOLR_VERSION}.war"
+
+    sh "unzip #{solr_war} -d #{war_temp_location}"
+    sh "zip -r #{war_temp_location}/WEB-INF/lib/apache-solr-core-#{SOLR_VERSION}.jar target/classes/org;"
+    sh "zip -r ts-solr/solr-home/solr.war #{war_temp_location}/*;"
   end
 
   task :config_env do
