@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dataConfig>
+     <dataSource name="Mosaic" type="MongoDataSource" database="mosaic" host="localhost" />
+     <document name="People">
+         <entity name="people"
+                processor="MongoEntityProcessor"
+                 query="{'partyType':'Person'}"
+                 collection="parties"
+                 datasource="Mosaic"
+                 transformer="MongoMapperTransformer" >
+
+            <field name="id" column="id" mongoField="id" />
+            <field name="name" column="name" mongoField="name" />
+            <field name="type" column="type" mongoField="type" />
+            <field name="sourceid" column="sourceid" mongoField="sourceid" />
+            <field name="city" column="city" mongoField="city"/>
+            <field name="state" column="state" mongoField="state"/>
+            <field name="country" column="country" mongoField="country" />
+            <field name="continent" column="continent" mongoField="continent" />
+            <field name="isDNC" column="isDNC" mongoField="isDNC" />
+            <field name="jobFunction" column="jobFunction" mongoField="jobFunction" />
+            <field name="department" column="department" mongoField="department" />
+            <field name="isMemberPrograms" column="isMemberPrograms" mongoField="isMemberPrograms" />
+            <field name="isTermsAndConditionsSigned" column="isTermsAndConditionsSigned" mongoField="isTermsAndConditionsSigned" />
+            <field name="biography" column="biography" mongoField="biography" />
+            <field name="practicearea" column="practicearea" mongoField="practicearea" />
+            <field name="jobHistory" column="jobHistory" mongoField="jobHistory" />
+            <field name="currentJobPartyId" column="currentJobPartyId" mongoField="currentJobPartyId" />
+            <field name="hourlyRate" column="hourlyRate" mongoField="hourlyRate" />
+            <field name="relationship_count" column="relationship_count" mongoField="relationship_count" />
+         </entity>
+     </document>
+ </dataConfig>

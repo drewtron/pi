@@ -1,3 +1,5 @@
+require "nokogiri"
+
 VERSION_NUMBER = "1.0.0"
 GROUP = "Search & Recommendations"
 # TODO: Need to automate resolution of (c) date to be 2012 - currentyear()
@@ -28,11 +30,14 @@ SOLR = struct(
   :velocity     => solr_dependency('org.apache.solr:solr-velocity:jar:')
 )
 
-SOLR_LIB = 'ts-solr/solr-home/lib/'
+SOLR_HOME = "ts-solr/solr-home/"
+SOLR_LIB = "#{SOLR_HOME}lib/"
+SOLR_WAR = "#{SOLR_LIB}solr-#{SOLR_VERSION}.war"
+WAR_TEMP_DIR = 'target/solr/'
 
 desc "Build Solr code for People Inquiry"
 
-define "Pi-Solr" do
+define "pi" do
 
   project.version = VERSION_NUMBER
   project.group = GROUP
@@ -54,16 +59,36 @@ define "Pi-Solr" do
 
     compile.dependencies.map { |dep| FileUtils.cp dep.to_s , SOLR_LIB }
 
-    war_temp_location = 'target/solr/'
-    solr_war = "#{SOLR_LIB}solr-#{SOLR_VERSION}.war"
-
-    sh "unzip #{solr_war} -d #{war_temp_location}"
-    sh "zip -r #{war_temp_location}/WEB-INF/lib/apache-solr-core-#{SOLR_VERSION}.jar target/classes/org;"
-    sh "zip -r ts-solr/solr-home/solr.war #{war_temp_location}/*;"
+    sh "unzip #{SOLR_WAR} -d #{WAR_TEMP_DIR}"
+    sh "zip -r #{WAR_TEMP_DIR}/WEB-INF/lib/apache-solr-core-#{SOLR_VERSION}.jar target/classes/org;"
+    sh "zip -r #{SOLR_HOME}solr.war #{WAR_TEMP_DIR}/*;"
   end
 
   task :config_env do
-    File.open('/home/nswarr/data-config.xml', 'w'){|f| f.write(xml.to_xml)}
+    Dir.glob "#{SOLR_HOME}/cores/*/conf/data-config.xml" do |file_path|
+
+      puts "Updating configuration for #{file_path}"
+      doc = nil
+      read_file = File.open(file_path)
+
+      begin
+        doc = Nokogiri::XML read_file
+        data_source = doc.xpath('//dataSource')[0]
+        if data_source
+          data_source["host"] = "goober"
+        else
+          puts "Could not find the config section for #{file_path}"
+        end
+
+      ensure
+        read_file.close()
+      end
+
+      File.open(file_path, 'w+') do |f|
+        f.write(doc.to_xml)
+      end
+    end
+
   end
 
 end
