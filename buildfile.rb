@@ -65,21 +65,45 @@ define "pi" do
   end
 
   task :config_env, :mongo_url, :is_master, :master_ip do |task, args|
-    Dir.glob "#{SOLR_HOME}/cores/*/conf/data-config.xml" do |file_path|
 
-      puts "Updating configuration for #{file_path}"
+    update_config_files "#{SOLR_HOME}/cores/*/conf/data-config.xml" do |doc, file_path|
+      data_source = doc.xpath('//dataSource')[0]
+      if data_source
+        data_source["host"] = args[:mongo_url]
+      else
+        puts "Could not find the dataSource section in #{file_path}"
+      end
+    end
+
+    update_config_files "#{SOLR_HOME}/cores/*/conf/solrconfig.xml" do |doc, file_path|
+      core = /\/cores\/(?<core>(?:\w|-)+)\//.match(file_path)[:core]
+
+      replication_frag = get_replication_fragment(args, core)
+
+      config = doc.xpath('/config')[0]
+      replication_hander = doc.xpath("/config/requestHandler[@class='solr.ReplicationHandler'")[0]
+
+      replication_hander.remove if replication_hander
+
+      if config
+        config.add_child replication_frag
+      else
+        puts "Could not find the config section in #{file_path}"
+      end
+    end
+
+  end
+
+  def update_config_files(file_pattern, &block)
+    Dir.glob file_pattern do |file_path|
+
+      puts "Updating configuration in #{file_path}"
       doc = nil
       read_file = File.open(file_path)
 
       begin
         doc = Nokogiri::XML read_file
-        data_source = doc.xpath('//dataSource')[0]
-        if data_source
-          data_source["host"] = args[:mongo_url]
-        else
-          puts "Could not find the config section for #{file_path}"
-        end
-
+        block.call(doc, file_path)
       ensure
         read_file.close()
       end
@@ -88,11 +112,28 @@ define "pi" do
         f.write(doc.to_xml)
       end
     end
-
   end
 
-  task :opts, :r do |task, args|
-    puts args
+  def get_replication_fragment(args, core)
+    is_master = args[:is_master]
+    master_ip = args[:master_ip]
+
+    if is_master
+      Nokogiri::HTML::DocumentFragment.parse <<-EOHTML
+      <lst name="master">
+          <str name="replicateAfter">optimize</str>
+          <str name="confFiles">schema.xml,data-config.xml</str>
+      </lst>
+      EOHTML
+    else
+      Nokogiri::HTML::DocumentFragment.parse <<-EOHTML
+      <lst name="slave">
+          <str name="masterUrl">http://#{master_ip}:8080/solr/#{core}/replication</str>
+          <!--Interval in which the slave should poll master .Format is HH:mm:ss -->
+          <str name="pollInterval">00:02:04</str>
+      </lst>
+      EOHTML
+    end
   end
 
 end
