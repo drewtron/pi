@@ -64,7 +64,7 @@ define "pi" do
     sh "zip -r #{SOLR_HOME}solr.war #{WAR_TEMP_DIR}/*;"
   end
 
-  task :config_env do
+  task :config_env, :mongo_url, :is_master, :master_ip do |task, args|
     Dir.glob "#{SOLR_HOME}/cores/*/conf/data-config.xml" do |file_path|
 
       puts "Updating configuration for #{file_path}"
@@ -75,7 +75,7 @@ define "pi" do
         doc = Nokogiri::XML read_file
         data_source = doc.xpath('//dataSource')[0]
         if data_source
-          data_source["host"] = "goober"
+          data_source["host"] = args[:mongo_url]
         else
           puts "Could not find the config section for #{file_path}"
         end
@@ -89,6 +89,10 @@ define "pi" do
       end
     end
 
+  end
+
+  task :opts, :r do |task, args|
+    puts args
   end
 
 end
