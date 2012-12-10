@@ -1,3 +1,5 @@
+require "nokogiri"
+
 VERSION_NUMBER = "1.0.0"
 GROUP = "Search & Recommendations"
 # TODO: Need to automate resolution of (c) date to be 2012 - currentyear()
@@ -28,9 +30,14 @@ SOLR = struct(
   :velocity     => solr_dependency('org.apache.solr:solr-velocity:jar:')
 )
 
+SOLR_HOME = "ts-solr/solr-home/"
+SOLR_LIB = "#{SOLR_HOME}lib/"
+SOLR_WAR = "#{SOLR_LIB}solr-#{SOLR_VERSION}.war"
+WAR_TEMP_DIR = 'target/solr/'
+
 desc "Build Solr code for People Inquiry"
 
-define "Pi-Solr" do
+define "pi" do
 
   project.version = VERSION_NUMBER
   project.group = GROUP
@@ -44,36 +51,101 @@ define "Pi-Solr" do
   # Add classpath dependencies
   compile.with JTDS, MYSQL, FLEXJSON, BSON4JACKSON, MONGO, SOLR.solr, SOLR.dataimport, SOLR.cell, SOLR.dataextra, XALAN, SOLR.velocity
 
+  clean.enhance do
+    FileUtils.rm_rf "#{SOLR_HOME}solr.war"
+  end
+
   # Package custom GLG jars
   # patches for heirarchical multi-faceting and multi-prefixed facets
-  package(:jar, :file=>_('target/glgrecommend.jar')).include('com/**').exclude('org/**').enhance do |task|
-    task.enhance do
-      filter.from('target').into('ts-solr/solr-home/lib').include('glgrecommend.jar').run
-      filter.from('lib').into('ts-solr/solr-home/lib').include('solr-mongo-importer-1.0.0.jar').run
-      compile.dependencies.map { |dep| FileUtils.cp dep.to_s , 'ts-solr/solr-home/lib' }
+  package(:jar, :file=>_('target/glgrecommend.jar')).include('com/**').exclude('org/**').enhance do
 
-      solr_war_temp_location = 'ts-solr/solr-home/lib/temp/'
-      FileUtils.rm_rf solr_war_temp_location
-      FileUtils.mkdir solr_war_temp_location
-      solr_war_temp_name = 'solr-' + SOLR_VERSION + '.war'
-      FileUtils.mv 'ts-solr/solr-home/lib/' + solr_war_temp_name , solr_war_temp_location + solr_war_temp_name
-      sh "unzip " + solr_war_temp_location + solr_war_temp_name + " -d " + solr_war_temp_location
-      sh "cd target/classes; zip -r ../../ts-solr/solr-home/lib/temp/WEB-INF/lib/apache-solr-core-4.0.0-BETA.jar org; cd ../.. "
-      sh "cd ts-solr/solr-home/lib/temp; zip -r ../../solr.war *; cd ../../../.."
-      FileUtils.rm_rf solr_war_temp_location
-     end
+    Dir::mkdir(SOLR_LIB) unless File.exists?(SOLR_LIB)
+    compile.dependencies.map { |dep| FileUtils.cp dep.to_s , SOLR_LIB }
+
+    sh "cp lib/solr-mongo-importer-1.0.0.jar #{SOLR_LIB}solr-mongo-importer-1.0.0.jar"
+
+    sh "unzip #{SOLR_WAR} -d #{WAR_TEMP_DIR}"
+    sh "cd target/classes; zip -r ../../#{WAR_TEMP_DIR}WEB-INF/lib/apache-solr-core-#{SOLR_VERSION}.jar org;"
+    sh "cd #{WAR_TEMP_DIR}; zip -r ../../#{SOLR_HOME}solr.war *;"
   end
 
-  # Package Solr multicore engine
-  package(:tgz, :file=>_('target/ts-solr.tgz')).tap do |path|
-     path.include(_('ts-solr/solr-home')).exclude('.git','.DS_Store','README.txt','cores/*/data')
-     path.include(_('ts-solr/jetty-home')).exclude('.git','.DS_Store','README.txt')
+  task :config_env, :mongo_url, :is_master, :master_ip do |task, args|
+
+    puts "Config args: #{args.inspect}"
+
+    update_config_files "#{SOLR_HOME}cores/*/conf/data-config.xml" do |doc, file_path|
+      data_source = doc.xpath('//dataSource').first
+      if data_source
+        data_source["host"] = args[:mongo_url]
+      else
+        raise "Could not find the dataSource section in #{file_path}"
+      end
+    end
+
+    update_config_files "#{SOLR_HOME}cores/*/conf/solrconfig.xml" do |doc, file_path|
+      core = /\/cores\/((\w|-)+)\//.match(file_path)[1]
+
+      replication_frag = get_replication_fragment(args, core)
+
+      config = doc.xpath('/config').first
+      replication_handlers = doc.xpath("/config/*[@class='solr.ReplicationHandler' and @name='/replication']")
+
+      replication_handlers.each {|h| h.remove}
+
+      if config && replication_frag
+        config.add_child(replication_frag)
+      else
+        raise "Could not find the config section in #{file_path}. Frag #{replication_frag}"
+      end
+    end
+
   end
 
-  # Collect all Java library dependencies and solr.war for the TrendSetter Solr multicore engine Package
-  package(:tgz, :file=>_('target/ts-solr.tgz')).path('solr-home/lib').include packages.select  { |pkg| pkg.type == :jar }
-  compile.dependencies.select {|ref| package(:tgz, :file=>_('target/ts-solr.tgz')).path('solr-home').include(ref).exclude('*.jar')}
-  compile.dependencies.select {|ref| package(:tgz, :file=>_('target/ts-solr.tgz')).path('solr-home/lib').include(ref).exclude('*.war')}
+  def update_config_files(file_pattern, &block)
+    Dir.glob file_pattern do |file_path|
 
+      puts "Updating configuration in #{file_path}"
+      doc = nil
+      read_file = File.open(file_path)
 
+      begin
+        doc = Nokogiri::XML read_file
+        block.call(doc, file_path)
+      ensure
+        read_file.close()
+      end
+
+      File.open(file_path, 'w+') do |f|
+        f.write doc.to_xml
+      end
+    end
+  end
+
+  def get_replication_fragment(args, core)
+    is_master = args[:is_master] == "true"
+    master_ip = args[:master_ip]
+
+    if is_master
+      puts "Configuring node as master"
+      Nokogiri::XML::DocumentFragment.parse <<-EOHTML
+      <requestHandler name="/replication" class="solr.ReplicationHandler" >
+        <lst name="master">
+            <str name="replicateAfter">optimize</str>
+            <str name="confFiles">schema.xml,data-config.xml</str>
+        </lst>
+      </requestHandler>
+      EOHTML
+    else
+      puts "Configuring node as slave"
+      Nokogiri::XML::DocumentFragment.parse <<-EOHTML
+      <requestHandler name="/replication" class="solr.ReplicationHandler" >
+        <lst name="slave">
+            <str name="masterUrl">http://#{master_ip}:8080/solr/#{core}/replication</str>
+            <!--Interval in which the slave should poll master .Format is HH:mm:ss -->
+            <str name="pollInterval">00:02:04</str>
+        </lst>
+      </requestHandler>
+      EOHTML
+    end
+  end
 end
