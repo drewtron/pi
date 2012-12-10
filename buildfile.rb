@@ -51,6 +51,10 @@ define "pi" do
   # Add classpath dependencies
   compile.with JTDS, MYSQL, FLEXJSON, BSON4JACKSON, MONGO, SOLR.solr, SOLR.dataimport, SOLR.cell, SOLR.dataextra, XALAN, SOLR.velocity
 
+  clean.enhance do
+    FileUtils.rm_rf "#{SOLR_HOME}solr.war"
+  end
+
   # Package custom GLG jars
   # patches for heirarchical multi-faceting and multi-prefixed facets
   package(:jar, :file=>_('target/glgrecommend.jar')).include('com/**').exclude('org/**').enhance do
@@ -60,8 +64,8 @@ define "pi" do
     compile.dependencies.map { |dep| FileUtils.cp dep.to_s , SOLR_LIB }
 
     sh "unzip #{SOLR_WAR} -d #{WAR_TEMP_DIR}"
-    sh "zip -r #{WAR_TEMP_DIR}/WEB-INF/lib/apache-solr-core-#{SOLR_VERSION}.jar target/classes/org;"
-    sh "zip -r #{SOLR_HOME}solr.war #{WAR_TEMP_DIR}/*;"
+    sh "cd target/classes; zip -r ../../#{WAR_TEMP_DIR}WEB-INF/lib/apache-solr-core-#{SOLR_VERSION}.jar org;"
+    sh "cd #{WAR_TEMP_DIR}; zip -r ../../#{SOLR_HOME}solr.war *;"
   end
 
   task :config_env, :mongo_url, :is_master, :master_ip do |task, args|
