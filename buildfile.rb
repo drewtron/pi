@@ -93,7 +93,6 @@ define "pi" do
 
       if config && replication_frag
         config.add_child(replication_frag)
-        puts "Config section: #{config}"
       else
         raise "Could not find the config section in #{file_path}. Frag #{replication_frag}"
       end
@@ -116,7 +115,11 @@ define "pi" do
       end
 
       File.open(file_path, 'w+') do |f|
-        doc.write_xml_to f
+        xml = doc.to_xml.gsub("requesthandler", "requestHandler")
+        #https://github.com/sparklemotion/nokogiri/issues/770
+        #There's a bug that turns all added elements into lowercase.
+        #We have to correct it here.
+        f.write xml
       end
     end
   end
