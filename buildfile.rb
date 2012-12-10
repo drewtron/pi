@@ -73,11 +73,11 @@ define "pi" do
     puts "Config args: #{args.inspect}"
 
     update_config_files "#{SOLR_HOME}cores/*/conf/data-config.xml" do |doc, file_path|
-      data_source = doc.xpath('//dataSource')[0]
+      data_source = doc.xpath('//dataSource').first
       if data_source
         data_source["host"] = args[:mongo_url]
       else
-        puts "Could not find the dataSource section in #{file_path}"
+        raise "Could not find the dataSource section in #{file_path}"
       end
     end
 
@@ -86,12 +86,13 @@ define "pi" do
 
       replication_frag = get_replication_fragment(args, core)
 
-      config = doc.xpath('/config')[0]
+      config = doc.xpath('/config').first
       replication_handers = doc.xpath("/config/*[@class='solr.ReplicationHandler' and @name='/replication']")
 
       replication_handers.each {|h| h.remove}
 
       if config && replication_frag
+        puts "Config section: #{config}"
         config.add_child(replication_frag)
       else
         raise "Could not find the config section in #{file_path}. Frag #{replication_frag}"
