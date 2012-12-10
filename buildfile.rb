@@ -59,9 +59,10 @@ define "pi" do
   # patches for heirarchical multi-faceting and multi-prefixed facets
   package(:jar, :file=>_('target/glgrecommend.jar')).include('com/**').exclude('org/**').enhance do
 
-    sh "cp lib/solr-mongo-importer-1.0.0.jar #{SOLR_LIB}solr-mongo-importer-1.0.0.jar"
-
+    Dir::mkdir(SOLR_LIB) unless File.exists?(SOLR_LIB)
     compile.dependencies.map { |dep| FileUtils.cp dep.to_s , SOLR_LIB }
+
+    sh "cp lib/solr-mongo-importer-1.0.0.jar #{SOLR_LIB}solr-mongo-importer-1.0.0.jar"
 
     sh "unzip #{SOLR_WAR} -d #{WAR_TEMP_DIR}"
     sh "cd target/classes; zip -r ../../#{WAR_TEMP_DIR}WEB-INF/lib/apache-solr-core-#{SOLR_VERSION}.jar org;"
@@ -87,9 +88,9 @@ define "pi" do
       replication_frag = get_replication_fragment(args, core)
 
       config = doc.xpath('/config').first
-      replication_handers = doc.xpath("/config/*[@class='solr.ReplicationHandler' and @name='/replication']")
+      replication_handlers = doc.xpath("/config/*[@class='solr.ReplicationHandler' and @name='/replication']")
 
-      replication_handers.each {|h| h.remove}
+      replication_handlers.each {|h| h.remove}
 
       if config && replication_frag
         config.add_child(replication_frag)
@@ -115,11 +116,7 @@ define "pi" do
       end
 
       File.open(file_path, 'w+') do |f|
-        xml = doc.to_xml.gsub("requesthandler", "requestHandler")
-        #https://github.com/sparklemotion/nokogiri/issues/770
-        #There's a bug that turns all added elements into lowercase.
-        #We have to correct it here.
-        f.write xml
+        f.write doc.to_xml
       end
     end
   end
@@ -130,7 +127,7 @@ define "pi" do
 
     if is_master
       puts "Configuring node as master"
-      return Nokogiri::HTML::DocumentFragment.parse <<-EOHTML
+      Nokogiri::XML::DocumentFragment.parse <<-EOHTML
       <requestHandler name="/replication" class="solr.ReplicationHandler" >
         <lst name="master">
             <str name="replicateAfter">optimize</str>
@@ -140,7 +137,7 @@ define "pi" do
       EOHTML
     else
       puts "Configuring node as slave"
-      return Nokogiri::HTML::DocumentFragment.parse <<-EOHTML
+      Nokogiri::XML::DocumentFragment.parse <<-EOHTML
       <requestHandler name="/replication" class="solr.ReplicationHandler" >
         <lst name="slave">
             <str name="masterUrl">http://#{master_ip}:8080/solr/#{core}/replication</str>
@@ -151,5 +148,4 @@ define "pi" do
       EOHTML
     end
   end
-
 end
