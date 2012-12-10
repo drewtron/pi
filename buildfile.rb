@@ -92,8 +92,7 @@ define "pi" do
       replication_handers.each {|h| h.remove}
 
       if config && replication_frag
-        puts "Adding replication config: #{replication_frag}"
-        config.add_child replication_frag
+        config.add_child(replication_frag)
       else
         raise "Could not find the config section in #{file_path}. Frag #{replication_frag}"
       end
@@ -116,7 +115,7 @@ define "pi" do
       end
 
       File.open(file_path, 'w+') do |f|
-        f.write(doc.to_xml)
+        doc.write_xml_to f
       end
     end
   end
