@@ -81,9 +81,9 @@ define "pi" do
       replication_frag = get_replication_fragment(args, core)
 
       config = doc.xpath('/config')[0]
-      replication_hander = doc.xpath("/config/requestHandler[@class='solr.ReplicationHandler'")[0]
+      replication_handers = doc.xpath("/config/*[@class='solr.ReplicationHandler' and @name='/replication']")
 
-      replication_hander.remove if replication_hander
+      replication_handers.each {|h| h.remove}
 
       if config
         config.add_child replication_frag
@@ -115,23 +115,27 @@ define "pi" do
   end
 
   def get_replication_fragment(args, core)
-    is_master = args[:is_master]
+    is_master = args[:is_master] == "true"
     master_ip = args[:master_ip]
 
     if is_master
       Nokogiri::HTML::DocumentFragment.parse <<-EOHTML
-      <lst name="master">
-          <str name="replicateAfter">optimize</str>
-          <str name="confFiles">schema.xml,data-config.xml</str>
-      </lst>
+      <requestHandler name="/replication" class="solr.ReplicationHandler" >
+        <lst name="master">
+            <str name="replicateAfter">optimize</str>
+            <str name="confFiles">schema.xml,data-config.xml</str>
+        </lst>
+      </requestHandler>
       EOHTML
     else
       Nokogiri::HTML::DocumentFragment.parse <<-EOHTML
-      <lst name="slave">
-          <str name="masterUrl">http://#{master_ip}:8080/solr/#{core}/replication</str>
-          <!--Interval in which the slave should poll master .Format is HH:mm:ss -->
-          <str name="pollInterval">00:02:04</str>
-      </lst>
+      <requestHandler name="/replication" class="solr.ReplicationHandler" >
+        <lst name="slave">
+            <str name="masterUrl">http://#{master_ip}:8080/solr/#{core}/replication</str>
+            <!--Interval in which the slave should poll master .Format is HH:mm:ss -->
+            <str name="pollInterval">00:02:04</str>
+        </lst>
+      </requestHandler>
       EOHTML
     end
   end
