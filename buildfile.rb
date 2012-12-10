@@ -80,7 +80,7 @@ define "pi" do
     end
 
     update_config_files "#{SOLR_HOME}/cores/*/conf/solrconfig.xml" do |doc, file_path|
-      core = /\/cores\/(?<core>(?:\w|-)+)\//.match(file_path)[:core]
+      core = /\/cores\/((\w|-)+)\//.match(file_path)[1]
 
       replication_frag = get_replication_fragment(args, core)
 
