@@ -92,8 +92,8 @@ define "pi" do
       replication_handers.each {|h| h.remove}
 
       if config && replication_frag
-        puts "Config section: #{config}"
         config.add_child(replication_frag)
+        puts "Config section: #{config}"
       else
         raise "Could not find the config section in #{file_path}. Frag #{replication_frag}"
       end
