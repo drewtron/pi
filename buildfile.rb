@@ -70,7 +70,9 @@ define "pi" do
 
   task :config_env, :mongo_url, :is_master, :master_ip do |task, args|
 
-    update_config_files "#{SOLR_HOME}/cores/*/conf/data-config.xml" do |doc, file_path|
+    puts "Config args: #{args.inspect}"
+
+    update_config_files "#{SOLR_HOME}cores/*/conf/data-config.xml" do |doc, file_path|
       data_source = doc.xpath('//dataSource')[0]
       if data_source
         data_source["host"] = args[:mongo_url]
@@ -79,7 +81,7 @@ define "pi" do
       end
     end
 
-    update_config_files "#{SOLR_HOME}/cores/*/conf/solrconfig.xml" do |doc, file_path|
+    update_config_files "#{SOLR_HOME}cores/*/conf/solrconfig.xml" do |doc, file_path|
       core = /\/cores\/((\w|-)+)\//.match(file_path)[1]
 
       replication_frag = get_replication_fragment(args, core)
@@ -90,6 +92,7 @@ define "pi" do
       replication_handers.each {|h| h.remove}
 
       if config && replication_frag
+        puts "Adding replication config: #{replication_frag}"
         config.add_child replication_frag
       else
         raise "Could not find the config section in #{file_path}. Frag #{replication_frag}"
@@ -123,6 +126,7 @@ define "pi" do
     master_ip = args[:master_ip]
 
     if is_master
+      puts "Configuring node as master"
       return Nokogiri::HTML::DocumentFragment.parse <<-EOHTML
       <requestHandler name="/replication" class="solr.ReplicationHandler" >
         <lst name="master">
@@ -132,6 +136,7 @@ define "pi" do
       </requestHandler>
       EOHTML
     else
+      puts "Configuring node as slave"
       return Nokogiri::HTML::DocumentFragment.parse <<-EOHTML
       <requestHandler name="/replication" class="solr.ReplicationHandler" >
         <lst name="slave">
