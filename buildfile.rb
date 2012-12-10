@@ -89,10 +89,10 @@ define "pi" do
 
       replication_handers.each {|h| h.remove}
 
-      if config
+      if config && replication_frag
         config.add_child replication_frag
       else
-        puts "Could not find the config section in #{file_path}"
+        raise "Could not find the config section in #{file_path}. Frag #{replication_frag}"
       end
     end
 
@@ -123,7 +123,7 @@ define "pi" do
     master_ip = args[:master_ip]
 
     if is_master
-      Nokogiri::HTML::DocumentFragment.parse <<-EOHTML
+      return Nokogiri::HTML::DocumentFragment.parse <<-EOHTML
       <requestHandler name="/replication" class="solr.ReplicationHandler" >
         <lst name="master">
             <str name="replicateAfter">optimize</str>
@@ -132,7 +132,7 @@ define "pi" do
       </requestHandler>
       EOHTML
     else
-      Nokogiri::HTML::DocumentFragment.parse <<-EOHTML
+      return Nokogiri::HTML::DocumentFragment.parse <<-EOHTML
       <requestHandler name="/replication" class="solr.ReplicationHandler" >
         <lst name="slave">
             <str name="masterUrl">http://#{master_ip}:8080/solr/#{core}/replication</str>
