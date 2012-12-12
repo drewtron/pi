@@ -81,6 +81,7 @@
       </str>
       <str name="rows">25</str>
       <str name="uf">*</str>
+      <str name="pf">biography_exactMatch^20</str>
       <str name="fl">id</str>
       <str name="q.alt">*:*</str>
       <str name="wt">json</str>
