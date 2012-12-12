@@ -12,4 +12,4 @@ env:
     stew: false
     mailcc: mosaicsearch@glgroup.com
     clone_directory: pi
-    bootstrap_shell_command: sudo -u svcauto make BRANCH=prod
+    bootstrap_shell_command: sudo -u svcauto make BRANCH=qa-deploy
