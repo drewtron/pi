@@ -82,7 +82,7 @@
       <str name="rows">25</str>
       <str name="uf">*</str>
       <str name="pf">biography_exactMatch^20</str>
-      <str name="fl">id name</str>
+      <str name="fl">id</str>
       <str name="q.alt">*:*</str>
       <str name="wt">json</str>
 
@@ -90,9 +90,12 @@
       <str name="facet.mincount">1</str>
 
       <str name="hl">true</str>
-      <str name="hl.fl">biography</str>
+      <str name="hl.fl">name biography</str>
       <str name="hl.fragsize">0</str>
+      <str name="hl.requireFieldMatch">true</str>
+      <str name="hl.usePhraseHighlighter">true</str>
       <str name="f.biography.hl.alternateField">biography</str>
+      <str name="f.name.hl.alternateField">name</str>
       <str name="hl.fragListBuilder">single</str>
   </lst>
 </requestHandler>
