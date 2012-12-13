@@ -96,11 +96,10 @@ Template for schema.xml. Two areas are filled in:
       </analyzer>
     </fieldType>
 
-    <fieldType name="text_general" class="solr.TextField" positionIncrementGap="100">
+    <fieldType name="text_unstemmed" class="solr.TextField" positionIncrementGap="100">
       <analyzer>
-        <charFilter class="solr.HTMLStripCharFilterFactory"/>
         <tokenizer class="solr.StandardTokenizerFactory"/>
-        <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt" enablePositionIncrements="true"/>
+        <filter class="solr.TrimFilterFactory"/>
         <filter class="solr.LowerCaseFilterFactory"/>
       </analyzer>
     </fieldType>
@@ -267,9 +266,6 @@ Template for schema.xml. Two areas are filled in:
         best performance.
     -->
 
-    <!-- Required for Solr 4.0 cloud features -->
-    <field name="_version_" type="long" indexed="true" stored="true" multiValued="false"/>
-
     <!-- uncomment the following to ignore any fields that don't already match an existing
 field name or dynamic field, rather than reporting them as an error.
 alternately, change the type="ignored" to some other type e.g. "text" if you want
@@ -292,14 +288,14 @@ unknown fields indexed and/or stored by default -->
     <field name="isMemberPrograms" type="bool" indexed="true" stored="true" required="false"/>
     <field name="isTermsAndConditionsSigned" type="bool" indexed="true" stored="true" required="false"/>
     <field name="biography" type="text" indexed="true" stored="true" required="false"/>
-    <field name="biography_exactMatch" type="text_shingle" indexed="true" stored="false" required="false"/>
+    <field name="biography_unstemmed" type="text_unstemmed" indexed="true" stored="true" required="false"/>
     <field name="practicearea" type="string" indexed="true" stored="true" required="false"/>
     <field name="jobHistory" type="text" indexed="true" stored="true" required="false" multiValued="true"/>
     <field name="currentJobPartyId" type="text" indexed="true" stored="true" required="false"/>
     <field name="hourlyRate" type="text" indexed="true" stored="true" required="false"/>
   </fields>
 
-  <copyField source="biography" dest="biography_exactMatch"/>
+  <copyField source="biography" dest="biography_unstemmed"/>
 
 
   <!-- Field to use to determine and enforce document uniqueness.
