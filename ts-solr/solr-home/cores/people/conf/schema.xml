@@ -293,9 +293,12 @@ unknown fields indexed and/or stored by default -->
     <field name="jobHistory" type="text" indexed="true" stored="true" required="false" multiValued="true"/>
     <field name="currentJobPartyId" type="text" indexed="true" stored="true" required="false"/>
     <field name="hourlyRate" type="text" indexed="true" stored="true" required="false"/>
+    <field name="profileQuestions" type="text" multiValued="true" indexed="true" stored="true" required="false"/>
+    <field name="profileQuestions_unstemmed" type="text_unstemmed" multiValued="true" indexed="true" stored="true" required="false"/>
   </fields>
 
   <copyField source="biography" dest="biography_unstemmed"/>
+  <copyField source="profileQuestions" dest="profileQuestions_unstemmed"/>
 
 
   <!-- Field to use to determine and enforce document uniqueness.
