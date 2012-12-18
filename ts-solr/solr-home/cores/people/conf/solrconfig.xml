@@ -95,10 +95,8 @@
       <str name="hl.requireFieldMatch">true</str>
       <str name="hl.usePhraseHighlighter">true</str>
       <str name="f.biography.hl.alternateField">biography</str>
-      <str name="f.biography_unstemmed.hl.alternateField">biography_unstemmed</str>
       <str name="f.profileQuestions.hl.alternateField">profileQuestions</str>
       <str name="f.profileQuestions.hl.snippets">5</str>
-      <str name="f.profileQuestions_unstemmed.hl.alternateField">profileQuestions_unstemmed</str>
       <str name="f.profileQuestions_unstemmed.hl.snippets">5</str>
       <str name="f.name.hl.alternateField">name</str>
       <str name="hl.fragListBuilder">single</str>
