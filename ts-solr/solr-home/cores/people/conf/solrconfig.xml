@@ -96,7 +96,6 @@
       <str name="hl.usePhraseHighlighter">true</str>
       <str name="f.biography.hl.alternateField">biography</str>
       <str name="f.jobHistory.hl.alternateField">jobHistory</str>
-      <str name="f.jobHistory_unstemmed.hl.alternateField">jobHistory_unstemmed</str>
       <str name="f.profileQuestions.hl.snippets">5</str>
       <str name="f.profileQuestions_unstemmed.hl.snippets">5</str>
       <str name="f.name.hl.alternateField">name</str>
