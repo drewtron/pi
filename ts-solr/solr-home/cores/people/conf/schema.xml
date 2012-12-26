@@ -290,6 +290,7 @@ unknown fields indexed and/or stored by default -->
     <field name="biography" type="text" indexed="true" stored="true" required="false"/>
     <field name="biography_unstemmed" type="text_unstemmed" indexed="true" stored="true" required="false"/>
     <field name="practicearea" type="string" indexed="true" stored="true" required="false"/>
+    <field name="currentJobs" type="text" indexed="true" stored="true" required="false" multiValued="false" />
     <field name="jobHistory" type="text" indexed="true" stored="true" required="false" multiValued="true" />
     <field name="jobHistory_unstemmed" type="text_unstemmed" indexed="true" stored="true" required="false" multiValued="true" />
     <field name="currentJobPartyId" type="text" indexed="true" stored="true" required="false"/>
