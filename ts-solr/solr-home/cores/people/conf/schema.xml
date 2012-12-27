@@ -297,6 +297,7 @@ unknown fields indexed and/or stored by default -->
     <field name="hourlyRate" type="text" indexed="true" stored="true" required="false"/>
     <field name="profileQuestions" type="text" multiValued="true" indexed="true" stored="true" required="false"/>
     <field name="profileQuestions_unstemmed" type="text_unstemmed" multiValued="true" indexed="true" stored="true" required="false"/>
+    <field name="NumGivenToClient" type="string" indexed="true" stored="true" required="false"/>
   </fields>
 
   <copyField source="biography" dest="biography_unstemmed"/>

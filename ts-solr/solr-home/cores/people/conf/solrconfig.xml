@@ -90,7 +90,8 @@
       <str name="facet.mincount">1</str>
 
       <str name="hl">true</str>
-      <str name="hl.fl">name biography biography_unstemmed profileQuestions profileQuestions_unstemmed jobHistory jobHistory_unstemmed type currentJobs</str>
+      <str name="hl.fl">name biography biography_unstemmed profileQuestions profileQuestions_unstemmed jobHistory
+                        jobHistory_unstemmed type currentJobs city country NumGivenToClient practicearea</str>
       <str name="hl.fragsize">0</str>
       <str name="hl.requireFieldMatch">true</str>
       <str name="hl.usePhraseHighlighter">true</str>
@@ -101,6 +102,11 @@
       <str name="f.profileQuestions.hl.snippets">5</str>
       <str name="f.profileQuestions_unstemmed.hl.snippets">5</str>
       <str name="f.name.hl.alternateField">name</str>
+      <str name="f.city.hl.alternateField">city</str>
+      <str name="f.state.hl.alternateField">state</str>
+      <str name="f.country.hl.alternateField">country</str>
+      <str name="f.NumGivenToClient.hl.alternateField">NumGivenToClient</str>
+      <str name="f.practicearea.hl.alternateField">practicearea</str>
       <str name="hl.fragListBuilder">single</str>
   </lst>
 </requestHandler>
