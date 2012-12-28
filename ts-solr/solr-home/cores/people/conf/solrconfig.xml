@@ -91,7 +91,7 @@
 
       <str name="hl">true</str>
       <str name="hl.fl">name biography biography_unstemmed profileQuestions profileQuestions_unstemmed jobHistory
-                        jobHistory_unstemmed type currentJobs city country NumGivenToClient practicearea</str>
+                        jobHistory_unstemmed type currentJobs city state country NumGivenToClient practicearea</str>
       <str name="hl.fragsize">0</str>
       <str name="hl.requireFieldMatch">true</str>
       <str name="hl.usePhraseHighlighter">true</str>
