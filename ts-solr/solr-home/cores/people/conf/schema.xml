@@ -298,10 +298,13 @@ unknown fields indexed and/or stored by default -->
     <field name="profileQuestions" type="text" multiValued="true" indexed="true" stored="true" required="false"/>
     <field name="profileQuestions_unstemmed" type="text_unstemmed" multiValued="true" indexed="true" stored="true" required="false"/>
     <field name="NumGivenToClient" type="string" indexed="true" stored="true" required="false"/>
+    <field name="projectHistory" type="text" multiValued="true" indexed="true" stored="true" required="false"/>
+    <field name="projectHistory_unstemmed" type="text_unstemmed" multiValued="true" indexed="true" stored="true" required="false"/>
   </fields>
 
   <copyField source="biography" dest="biography_unstemmed"/>
   <copyField source="profileQuestions" dest="profileQuestions_unstemmed"/>
+  <copyField source="projectHistory" dest="projectHistory_unstemmed"/>
   <copyField source="jobHistory" dest="jobHistory_unstemmed"/>
 
 

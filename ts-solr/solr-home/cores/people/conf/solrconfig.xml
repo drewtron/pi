@@ -90,8 +90,11 @@
       <str name="facet.mincount">1</str>
 
       <str name="hl">true</str>
-      <str name="hl.fl">name biography biography_unstemmed profileQuestions profileQuestions_unstemmed jobHistory
-                        jobHistory_unstemmed type currentJobs city state country NumGivenToClient practicearea</str>
+      <str name="hl.fl">
+        name biography biography_unstemmed profileQuestions profileQuestions_unstemmed jobHistory
+        jobHistory_unstemmed type currentJobs city state country NumGivenToClient practicearea projectHistory
+        projectHistory_unstemmed
+      </str>
       <str name="hl.fragsize">0</str>
       <str name="hl.requireFieldMatch">true</str>
       <str name="hl.usePhraseHighlighter">true</str>
@@ -101,6 +104,8 @@
       <str name="f.currentJobs.hl.alternateField">currentJobs</str>
       <str name="f.profileQuestions.hl.snippets">5</str>
       <str name="f.profileQuestions_unstemmed.hl.snippets">5</str>
+      <str name="f.projectHistory.hl.snippets">5</str>
+      <str name="f.projectHistory_unstemmed.hl.snippets">5</str>
       <str name="f.name.hl.alternateField">name</str>
       <str name="f.city.hl.alternateField">city</str>
       <str name="f.state.hl.alternateField">state</str>
