@@ -93,7 +93,7 @@
       <str name="hl.fl">
         name biography biography_unstemmed profileQuestions profileQuestions_unstemmed jobHistory
         jobHistory_unstemmed type currentJobs city state country NumGivenToClient practicearea projectHistory
-        projectHistory_unstemmed
+        projectHistory_unstemmed lastSignedTermsAndConditions
       </str>
       <str name="hl.fragsize">0</str>
       <str name="hl.requireFieldMatch">true</str>
@@ -112,6 +112,7 @@
       <str name="f.country.hl.alternateField">country</str>
       <str name="f.NumGivenToClient.hl.alternateField">NumGivenToClient</str>
       <str name="f.practicearea.hl.alternateField">practicearea</str>
+      <str name="f.lastSignedTermsAndConditions.hl.alternateField">lastSignedTermsAndConditions</str>
       <str name="hl.fragListBuilder">single</str>
   </lst>
 </requestHandler>

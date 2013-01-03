@@ -287,6 +287,7 @@ unknown fields indexed and/or stored by default -->
     <field name="relationship_count" type="int" indexed="true" stored="true" required="false"/>
     <field name="isMemberPrograms" type="bool" indexed="true" stored="true" required="false"/>
     <field name="isTermsAndConditionsSigned" type="bool" indexed="true" stored="true" required="false"/>
+    <field name="lastSignedTermsAndConditions" type="text" indexed="true" stored="true" required="false"/>
     <field name="biography" type="text" indexed="true" stored="true" required="false"/>
     <field name="biography_unstemmed" type="text_unstemmed" indexed="true" stored="true" required="false"/>
     <field name="practicearea" type="string" indexed="true" stored="true" required="false"/>
