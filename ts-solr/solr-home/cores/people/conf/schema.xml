@@ -295,10 +295,13 @@ unknown fields indexed and/or stored by default -->
     <field name="jobHistory" type="text" indexed="true" stored="true" required="false" multiValued="true" />
     <field name="jobHistory_unstemmed" type="text_unstemmed" indexed="true" stored="true" required="false" multiValued="true" />
     <field name="currentJobPartyId" type="text" indexed="true" stored="true" required="false"/>
-    <field name="hourlyRate" type="text" indexed="true" stored="true" required="false"/>
+    <field name="hourlyRate" type="integer" indexed="false" stored="true" required="false"/>
+    <field name="phone" type="text" indexed="false" stored="true" required="false"/>
+    <field name="email" type="text" indexed="false" stored="true" required="false"/>
     <field name="profileQuestions" type="text" multiValued="true" indexed="true" stored="true" required="false"/>
     <field name="profileQuestions_unstemmed" type="text_unstemmed" multiValued="true" indexed="true" stored="true" required="false"/>
-    <field name="NumGivenToClient" type="string" indexed="true" stored="true" required="false"/>
+    <field name="numGivenToClient" type="integer" indexed="false" stored="true" required="false"/>
+    <field name="numProjectsPaid" type="integer" indexed="false" stored="true" required="false"/>
     <field name="projectHistory" type="text" multiValued="true" indexed="true" stored="true" required="false"/>
     <field name="projectHistory_unstemmed" type="text_unstemmed" multiValued="true" indexed="true" stored="true" required="false"/>
   </fields>
