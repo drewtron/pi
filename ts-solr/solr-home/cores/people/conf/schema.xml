@@ -301,7 +301,7 @@ unknown fields indexed and/or stored by default -->
     <field name="profileQuestions" type="text" multiValued="true" indexed="true" stored="true" required="false"/>
     <field name="profileQuestions_unstemmed" type="text_unstemmed" multiValued="true" indexed="true" stored="true" required="false"/>
     <field name="numGivenToClient" type="integer" indexed="false" stored="true" required="false"/>
-    <field name="numProjectsPaid" type="integer" indexed="false" stored="true" required="false"/>
+    <field name="numProjectsPaid" type="integer" indexed="true" stored="true" required="false"/>
     <field name="projectHistory" type="text" multiValued="true" indexed="true" stored="true" required="false"/>
     <field name="projectHistory_unstemmed" type="text_unstemmed" multiValued="true" indexed="true" stored="true" required="false"/>
   </fields>
