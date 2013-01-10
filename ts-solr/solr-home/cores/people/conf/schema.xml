@@ -304,12 +304,16 @@ unknown fields indexed and/or stored by default -->
     <field name="numProjectsPaid" type="integer" indexed="true" stored="true" required="false"/>
     <field name="projectHistory" type="text" multiValued="true" indexed="true" stored="true" required="false"/>
     <field name="projectHistory_unstemmed" type="text_unstemmed" multiValued="true" indexed="true" stored="true" required="false"/>
+    <field name="clinicalTrialSearch" type="text" multiValued="true" indexed="true" stored="true" required="false"/>
+    <field name="clinicalTrialSearch_unstemmed" type="text_unstemmed" multiValued="true" indexed="true" stored="true" required="false"/>
+    <field name="clinicalTrialDisplay" type="text" multiValued="true" indexed="false" stored="true" required="false"/>
   </fields>
 
   <copyField source="biography" dest="biography_unstemmed"/>
   <copyField source="profileQuestions" dest="profileQuestions_unstemmed"/>
   <copyField source="projectHistory" dest="projectHistory_unstemmed"/>
   <copyField source="jobHistory" dest="jobHistory_unstemmed"/>
+  <copyField source="clinicalTrialSearch" dest="clinicalTrialSearch_unstemmed"/>
 
 
   <!-- Field to use to determine and enforce document uniqueness.

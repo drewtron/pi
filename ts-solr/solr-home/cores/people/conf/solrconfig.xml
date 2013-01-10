@@ -93,7 +93,7 @@
       <str name="hl.fl">
         sourceid name biography biography_unstemmed profileQuestions profileQuestions_unstemmed jobHistory
         jobHistory_unstemmed type currentJobs city state country numGivenToClient numProjectsPaid practicearea projectHistory
-        projectHistory_unstemmed lastSignedTermsAndConditions hourlyRate phone email isDNC
+        projectHistory_unstemmed lastSignedTermsAndConditions hourlyRate phone email isDNC clinicalTrialSearch clinicalTrialDisplay
       </str>
       <str name="hl.fragsize">0</str>
       <str name="hl.requireFieldMatch">true</str>
@@ -119,6 +119,9 @@
       <str name="f.email.hl.alternateField">email</str>
       <str name="f.sourceid.hl.alternateField">sourceid</str>
       <str name="f.isDNC.hl.alternateField">isDNC</str>
+      <str name="f.clinicalTrialSearch.hl.alternateField">clinicalTrialSearch</str>
+      <str name="f.clinicalTrialSearch.hl.snippets">5</str>
+      <str name="f.clinicalTrialDisplay.hl.alternateField">clinicalTrialDisplay</str>
       <str name="hl.fragListBuilder">single</str>
   </lst>
 </requestHandler>
