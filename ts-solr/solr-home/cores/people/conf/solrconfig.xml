@@ -81,7 +81,18 @@
       </str>
       <str name="rows">25</str>
       <str name="uf">*</str>
-      <str name="pf">biography_unstemmed^20</str>
+      <str name="pf">
+        biography^5
+        biography_unstemmed^10
+        profileQuestions^5
+        profileQuestions_unstemmed^10
+        jobHistory^10
+        jobHistory_unstemmed^15
+        projectHistory^5
+        projectHistory_unstemmed^10
+        clinicalTrialSearch^5
+        clinicalTrialSearch_unstemmed^10
+      </str>
       <str name="fl">id</str>
       <str name="q.alt">*:*</str>
       <str name="wt">json</str>
@@ -91,13 +102,15 @@
 
       <str name="hl">true</str>
       <str name="hl.fl">
-        sourceid name biography biography_unstemmed profileQuestions profileQuestions_unstemmed jobHistory
-        jobHistory_unstemmed type currentJobs city state country numGivenToClient numProjectsPaid practicearea projectHistory
-        projectHistory_unstemmed lastSignedTermsAndConditions hourlyRate phone email isDNC clinicalTrialSearch clinicalTrialDisplay
+        id sourceid name biography biography_unstemmed profileQuestions profileQuestions_unstemmed jobHistory
+        jobHistory_unstemmed type currentJobs city state country numGivenToClient numProjectsPaid practicearea
+        projectHistory projectHistory_unstemmed lastSignedTermsAndConditions hourlyRate phone email isDNC
+        clinicalTrialSearch clinicalTrialSearch_unstemmed clinicalTrialDisplay
       </str>
       <str name="hl.fragsize">0</str>
       <str name="hl.requireFieldMatch">true</str>
       <str name="hl.usePhraseHighlighter">true</str>
+      <str name="f.id.hl.alternateField">id</str>
       <str name="f.biography.hl.alternateField">biography</str>
       <str name="f.jobHistory.hl.alternateField">jobHistory</str>
       <str name="f.type.hl.alternateField">type</str>
