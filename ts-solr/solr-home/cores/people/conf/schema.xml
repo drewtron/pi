@@ -273,7 +273,7 @@ unknown fields indexed and/or stored by default -->
     <!--dynamicField name="*" type="ignored" multiValued="true" /-->
 
     <field name="id" type="string" indexed="true" stored="true" required="true"/>
-    <field name="name" type="name" indexed="true" stored="true" required="false"/>
+    <field name="name" type="name" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true" />
     <field name="type" type="string" indexed="true" stored="true" required="false"/>
     <field name="sourceid" type="string" indexed="true" stored="true" required="false"/>
     <field name="partyType" type="string" indexed="true" stored="true" required="false"/>
@@ -288,25 +288,25 @@ unknown fields indexed and/or stored by default -->
     <field name="isMemberPrograms" type="bool" indexed="true" stored="true" required="false"/>
     <field name="isTermsAndConditionsSigned" type="bool" indexed="true" stored="true" required="false"/>
     <field name="lastSignedTermsAndConditions" type="text" indexed="true" stored="true" required="false"/>
-    <field name="biography" type="text" indexed="true" stored="true" required="false"/>
-    <field name="biography_unstemmed" type="text_unstemmed" indexed="true" stored="true" required="false"/>
+    <field name="biography" type="text" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true" />
+    <field name="biography_unstemmed" type="text_unstemmed" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
     <field name="practicearea" type="string" indexed="true" stored="true" required="false"/>
     <field name="currentJobs" type="text" indexed="true" stored="true" required="false" multiValued="false" />
-    <field name="jobHistory" type="text" indexed="true" stored="true" required="false" multiValued="true" />
-    <field name="jobHistory_unstemmed" type="text_unstemmed" indexed="true" stored="true" required="false" multiValued="true" />
+    <field name="jobHistory" type="text" indexed="true" stored="true" required="false" multiValued="true" termPositions="true" termVectors="true" termOffsets="true" />
+    <field name="jobHistory_unstemmed" type="text_unstemmed" indexed="true" stored="true" required="false" multiValued="true" termPositions="true" termVectors="true" termOffsets="true" />
     <field name="currentJobPartyId" type="text" indexed="true" stored="true" required="false"/>
     <field name="hourlyRate" type="integer" indexed="false" stored="true" required="false"/>
     <field name="phone" type="text" indexed="false" stored="true" required="false"/>
     <field name="email" type="text" indexed="false" stored="true" required="false"/>
-    <field name="profileQuestions" type="text" multiValued="true" indexed="true" stored="true" required="false"/>
-    <field name="profileQuestions_unstemmed" type="text_unstemmed" multiValued="true" indexed="true" stored="true" required="false"/>
+    <field name="profileQuestions" type="text" multiValued="true" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
+    <field name="profileQuestions_unstemmed" type="text_unstemmed" multiValued="true" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
     <field name="numGivenToClient" type="integer" indexed="false" stored="true" required="false"/>
     <field name="numProjectsPaid" type="integer" indexed="true" stored="true" required="false"/>
-    <field name="projectHistory" type="text" multiValued="true" indexed="true" stored="true" required="false"/>
-    <field name="projectHistory_unstemmed" type="text_unstemmed" multiValued="true" indexed="true" stored="true" required="false"/>
-    <field name="clinicalTrialSearch" type="text" multiValued="true" indexed="true" stored="true" required="false"/>
-    <field name="clinicalTrialSearch_unstemmed" type="text_unstemmed" multiValued="true" indexed="true" stored="true" required="false"/>
-    <field name="clinicalTrialDisplay" type="text" multiValued="true" indexed="false" stored="true" required="false"/>
+    <field name="projectHistory" type="text" multiValued="true" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
+    <field name="projectHistory_unstemmed" type="text_unstemmed" multiValued="true" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
+    <field name="clinicalTrialSearch" type="text" multiValued="true" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
+    <field name="clinicalTrialSearch_unstemmed" type="text_unstemmed" multiValued="true" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
+    <field name="clinicalTrialDisplay" type="text" multiValued="true" indexed="false" stored="true" required="false" />
   </fields>
 
   <copyField source="biography" dest="biography_unstemmed"/>

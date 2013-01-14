@@ -93,7 +93,12 @@
         clinicalTrialSearch^5
         clinicalTrialSearch_unstemmed^10
       </str>
-      <str name="fl">id</str>
+      <str name="fl">
+        id sourceid type currentJobs
+        city state country numGivenToClient
+        numProjectsPaid practicearea lastSignedTermsAndConditions
+        hourlyRate phone email isDNC clinicalTrialDisplay
+      </str>
       <str name="q.alt">*:*</str>
       <str name="wt">json</str>
 
@@ -102,39 +107,30 @@
 
       <str name="hl">true</str>
       <str name="hl.fl">
-        id sourceid name biography biography_unstemmed profileQuestions profileQuestions_unstemmed jobHistory
-        jobHistory_unstemmed type currentJobs city state country numGivenToClient numProjectsPaid practicearea
-        projectHistory projectHistory_unstemmed lastSignedTermsAndConditions hourlyRate phone email isDNC
-        clinicalTrialSearch clinicalTrialSearch_unstemmed clinicalTrialDisplay
+        name
+        biography
+        biography_unstemmed
+        profileQuestions
+        profileQuestions_unstemmed
+        jobHistory
+        jobHistory_unstemmed
+        projectHistory
+        projectHistory_unstemmed
+        clinicalTrialSearch
+        clinicalTrialSearch_unstemmed
       </str>
       <str name="hl.fragsize">0</str>
       <str name="hl.requireFieldMatch">true</str>
       <str name="hl.usePhraseHighlighter">true</str>
-      <str name="f.id.hl.alternateField">id</str>
       <str name="f.biography.hl.alternateField">biography</str>
       <str name="f.jobHistory.hl.alternateField">jobHistory</str>
-      <str name="f.type.hl.alternateField">type</str>
-      <str name="f.currentJobs.hl.alternateField">currentJobs</str>
       <str name="f.profileQuestions.hl.snippets">5</str>
       <str name="f.profileQuestions_unstemmed.hl.snippets">5</str>
       <str name="f.projectHistory.hl.snippets">5</str>
       <str name="f.projectHistory_unstemmed.hl.snippets">5</str>
       <str name="f.name.hl.alternateField">name</str>
-      <str name="f.city.hl.alternateField">city</str>
-      <str name="f.state.hl.alternateField">state</str>
-      <str name="f.country.hl.alternateField">country</str>
-      <str name="f.numGivenToClient.hl.alternateField">numGivenToClient</str>
-      <str name="f.numProjectsPaid.hl.alternateField">numProjectsPaid</str>
-      <str name="f.practicearea.hl.alternateField">practicearea</str>
-      <str name="f.lastSignedTermsAndConditions.hl.alternateField">lastSignedTermsAndConditions</str>
-      <str name="f.hourlyRate.hl.alternateField">hourlyRate</str>
-      <str name="f.phone.hl.alternateField">phone</str>
-      <str name="f.email.hl.alternateField">email</str>
-      <str name="f.sourceid.hl.alternateField">sourceid</str>
-      <str name="f.isDNC.hl.alternateField">isDNC</str>
       <str name="f.clinicalTrialSearch.hl.alternateField">clinicalTrialSearch</str>
       <str name="f.clinicalTrialSearch.hl.snippets">5</str>
-      <str name="f.clinicalTrialDisplay.hl.alternateField">clinicalTrialDisplay</str>
       <str name="hl.fragListBuilder">single</str>
   </lst>
 </requestHandler>
