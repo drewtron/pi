@@ -260,12 +260,6 @@
  <requestHandler name="/dataimport" class="org.apache.solr.handler.dataimport.DataImportHandler">
     <lst name="defaults">
       <str name="config">data-config.xml</str>
-      <lst name="datasource">
-        <str name="driver">com.mysql.jdbc.Driver</str>
-        <str name="url">jdbc:mysql://10.45.205.242/ark</str>
-        <str name="user">glguser</str>
-        <str name="password">password_1</str>
-      </lst>
     </lst>
   </requestHandler>
 

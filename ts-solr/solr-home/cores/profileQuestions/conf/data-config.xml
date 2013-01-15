@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <dataConfig>
+  <dataSource type="JdbcDataSource" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://10.45.205.242/ark"
+              user="glguser" password="password_1"/>
   <document name="ProfileQuestion">
     <entity name="ProfileQuestion"
             query="
