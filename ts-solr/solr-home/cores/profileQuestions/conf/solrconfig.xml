@@ -62,7 +62,7 @@
 
 <!-- ************************************************************************** -->
 
-<requestHandler name="/people"
+<requestHandler name="/questions"
                 class="solr.SearchHandler">
   <lst name="defaults">
       <!--
@@ -82,22 +82,13 @@
       <str name="rows">25</str>
       <str name="uf">*</str>
       <str name="pf">
-        biography^5
-        biography_unstemmed^10
-        profileQuestions^5
-        profileQuestions_unstemmed^10
-        jobHistory^10
-        jobHistory_unstemmed^15
-        projectHistory^5
-        projectHistory_unstemmed^10
-        clinicalTrialSearch^5
-        clinicalTrialSearch_unstemmed^10
+        questionText^5
+        questionText_unstemmed^10
+        responseText^5
+        responseText_unstemmed^10
       </str>
       <str name="fl">
-        id sourceid type currentJobs
-        city state country numGivenToClient
-        numProjectsPaid practicearea lastSignedTermsAndConditions
-        hourlyRate phone email isDNC clinicalTrialDisplay
+        questionId partyId responseDate
       </str>
       <str name="q.alt">*:*</str>
       <str name="wt">json</str>
@@ -107,32 +98,18 @@
 
       <str name="hl">true</str>
       <str name="hl.fl">
-        name
-        biography
-        biography_unstemmed
-        profileQuestions
-        profileQuestions_unstemmed
-        jobHistory
-        jobHistory_unstemmed
-        projectHistory
-        projectHistory_unstemmed
-        clinicalTrialSearch
-        clinicalTrialSearch_unstemmed
+        questionText
+        questionText_unstemmed
+        responseText
+        responseText_unstemmed
+        subjectTaxonomyPath
       </str>
-      <str name="hl.fragsize">18</str>
+      <str name="hl.fragsize">0</str>
       <str name="hl.requireFieldMatch">true</str>
       <str name="hl.usePhraseHighlighter">true</str>
-      <str name="f.biography.hl.alternateField">biography</str>
-      <str name="f.jobHistory.hl.alternateField">jobHistory</str>
-      <str name="f.profileQuestions.hl.snippets">5</str>
-      <str name="f.profileQuestions_unstemmed.hl.snippets">5</str>
-      <str name="f.projectHistory.hl.snippets">5</str>
-      <str name="f.projectHistory_unstemmed.hl.snippets">5</str>
-      <str name="f.name.hl.alternateField">name</str>
-      <str name="f.clinicalTrialSearch.hl.alternateField">clinicalTrialSearch</str>
-      <str name="f.clinicalTrialSearch.hl.snippets">5</str>
+      <str name="f.questionText.hl.alternateField">questionText</str>
+      <str name="f.responseText.hl.alternateField">responseText</str>
       <str name="hl.fragListBuilder">single</str>
-      <str name="hl.useFastVectorHighlighter">true</str>
   </lst>
 </requestHandler>
 
@@ -283,6 +260,12 @@
  <requestHandler name="/dataimport" class="org.apache.solr.handler.dataimport.DataImportHandler">
     <lst name="defaults">
       <str name="config">data-config.xml</str>
+      <lst name="datasource">
+        <str name="driver">com.mysql.jdbc.Driver</str>
+        <str name="url">jdbc:mysql://10.45.205.242/ark</str>
+        <str name="user">glguser</str>
+        <str name="password">password_1</str>
+      </lst>
     </lst>
   </requestHandler>
 
