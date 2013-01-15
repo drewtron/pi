@@ -119,20 +119,21 @@
         clinicalTrialSearch
         clinicalTrialSearch_unstemmed
       </str>
-      <str name="hl.fragsize">18</str>
+      <str name="hl.fragsize">0</str>
       <str name="hl.requireFieldMatch">true</str>
       <str name="hl.usePhraseHighlighter">true</str>
       <str name="f.biography.hl.alternateField">biography</str>
       <str name="f.jobHistory.hl.alternateField">jobHistory</str>
-      <str name="f.profileQuestions.hl.snippets">5</str>
-      <str name="f.profileQuestions_unstemmed.hl.snippets">5</str>
       <str name="f.projectHistory.hl.snippets">5</str>
       <str name="f.projectHistory_unstemmed.hl.snippets">5</str>
       <str name="f.name.hl.alternateField">name</str>
       <str name="f.clinicalTrialSearch.hl.alternateField">clinicalTrialSearch</str>
       <str name="f.clinicalTrialSearch.hl.snippets">5</str>
-      <str name="hl.fragListBuilder">single</str>
-      <str name="hl.useFastVectorHighlighter">true</str>
+
+      <str name="f.profileQuestions.hl.fragListBuilder">single</str>
+      <str name="f.profileQuestions.hl.fragsize">18</str>
+      <str name="f.profileQuestions.hl.profileQuestions.useFastVectorHighlighter">true</str>
+
   </lst>
 </requestHandler>
 

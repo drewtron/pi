@@ -71,6 +71,7 @@
       <str name="defType">edismax</str>
       <str name="echoParams">explicit</str>
       <float name="tie">0.01</float>
+      <str name="rows">5</str>
       <str name="mm">
         <!--
         if less than 2 optional clauses they all must match, for 2-3 clauses,
@@ -109,6 +110,7 @@
       <str name="hl.usePhraseHighlighter">true</str>
       <str name="f.questionText.hl.alternateField">questionText</str>
       <str name="f.responseText.hl.alternateField">responseText</str>
+      <str name="f.subjectTaxonomyPath.hl.alternateField">subjectTaxonomyPath</str>
       <str name="hl.fragListBuilder">single</str>
   </lst>
 </requestHandler>
