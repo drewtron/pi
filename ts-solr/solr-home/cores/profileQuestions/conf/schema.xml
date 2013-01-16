@@ -273,7 +273,7 @@ unknown fields indexed and/or stored by default -->
     <!--dynamicField name="*" type="ignored" multiValued="true" /-->
 
     <field name="id" type="string" indexed="true" stored="true" required="true"/>
-    <field name="questionId" type="string" indexed="true" stored="true" required="true"/>
+    <field name="questionId" type="string" indexed="true" stored="true" required="false"/>
     <field name="partyId" type="string" indexed="true" stored="true" required="true"/>
     <field name="type" type="string" indexed="true" stored="true" required="false"/>
     <field name="responseDate" type="date" indexed="true" stored="true" required="false"/>

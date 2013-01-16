@@ -89,7 +89,7 @@
         responseText_unstemmed^10
       </str>
       <str name="fl">
-        questionId partyId responseDate
+        id questionId partyId responseDate
       </str>
       <str name="q.alt">*:*</str>
       <str name="wt">json</str>
