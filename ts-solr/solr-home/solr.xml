@@ -4,6 +4,6 @@
     <!-- List of cores to be included in solr. -->
     <core instanceDir="cores/company-ngrams" name="company-ngrams"/>
     <core instanceDir="cores/people" name="people"/>
-    <core instanceDir="cores/profileQuestions" name="questions"/>
+    <core instanceDir="cores/questions" name="questions"/>
   </cores>
 </solr>
