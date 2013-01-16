@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dataConfig>
+  <dataSource type="JdbcDataSource" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://10.45.205.242/ark"
+              user="glguser" password="password_1"/>
+  <document name="ProfileQuestion">
+    <entity name="ProfileQuestion"
+            query="
+              SELECT
+                @rownum:=@rownum+1 as 'id',
+                questionId,
+                partyId,
+                type,
+                questionText,
+                subjectTaxonomyPath,
+                responseText,
+                responseDate
+              from profilequestionresponse
+              JOIN (SELECT @rownum:=0) r
+              where Response = 'Yes'
+              and IsActive = 1">
+      <field name="id" column="id" />
+      <field name="QuestionId" column="QuestionId" />
+      <field name="PartyId" column="PartyId" />
+      <field name="type" column="type" />
+      <field name="questionText" column="questionText" />
+      <field name="subjectTaxonomyPath" column="subjectTaxonomyPath" />
+      <field name="responseText" column="responseText" />
+      <field name="responseDate" column="responseDate" />
+
+    </entity>
+  </document>
+</dataConfig>

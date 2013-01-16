@@ -76,7 +76,11 @@ define "pi" do
     update_config_files "#{SOLR_HOME}cores/*/conf/data-config.xml" do |doc, file_path|
       data_source = doc.xpath('//dataSource').first
       if data_source
-        data_source["host"] = args[:mongo_url]
+        if data_source["type"] == "MongoDataSource"
+          data_source["host"] = args[:mongo_url]
+        else
+          puts "CONFIG MYSQL HERE"
+        end
       else
         raise "Could not find the dataSource section in #{file_path}"
       end

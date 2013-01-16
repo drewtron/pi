@@ -273,47 +273,20 @@ unknown fields indexed and/or stored by default -->
     <!--dynamicField name="*" type="ignored" multiValued="true" /-->
 
     <field name="id" type="string" indexed="true" stored="true" required="true"/>
-    <field name="name" type="name" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true" />
+    <field name="questionId" type="string" indexed="true" stored="true" required="false"/>
+    <field name="partyId" type="string" indexed="true" stored="true" required="true"/>
     <field name="type" type="string" indexed="true" stored="true" required="false"/>
-    <field name="sourceid" type="string" indexed="true" stored="true" required="false"/>
-    <field name="partyType" type="string" indexed="true" stored="true" required="false"/>
-    <field name="city" type="string" indexed="true" stored="true" required="false"/>
-    <field name="state" type="string" indexed="true" stored="true" required="false"/>
-    <field name="country" type="string" indexed="true" stored="true" required="false"/>
-    <field name="continent" type="string" indexed="true" stored="true" required="false"/>
-    <field name="isDNC" type="bool" indexed="true" stored="true" required="false"/>
-    <field name="jobFunction" type="string" indexed="true" stored="true" required="false"/>
-    <field name="department" type="string" indexed="true" stored="true" required="false"/>
-    <field name="relationship_count" type="int" indexed="true" stored="true" required="false"/>
-    <field name="isMemberPrograms" type="bool" indexed="true" stored="true" required="false"/>
-    <field name="isTermsAndConditionsSigned" type="bool" indexed="true" stored="true" required="false"/>
-    <field name="lastSignedTermsAndConditions" type="text" indexed="true" stored="true" required="false"/>
-    <field name="biography" type="text" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true" />
-    <field name="biography_unstemmed" type="text_unstemmed" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
-    <field name="practicearea" type="string" indexed="true" stored="true" required="false"/>
-    <field name="currentJobs" type="text" indexed="true" stored="true" required="false" multiValued="false" />
-    <field name="jobHistory" type="text" indexed="true" stored="true" required="false" multiValued="true" termPositions="true" termVectors="true" termOffsets="true" />
-    <field name="jobHistory_unstemmed" type="text_unstemmed" indexed="true" stored="true" required="false" multiValued="true" termPositions="true" termVectors="true" termOffsets="true" />
-    <field name="currentJobPartyId" type="text" indexed="true" stored="true" required="false"/>
-    <field name="hourlyRate" type="integer" indexed="false" stored="true" required="false"/>
-    <field name="phone" type="text" indexed="false" stored="true" required="false"/>
-    <field name="email" type="text" indexed="false" stored="true" required="false"/>
-    <field name="profileQuestions" type="text" multiValued="true" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
-    <field name="profileQuestions_unstemmed" type="text_unstemmed" multiValued="true" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
-    <field name="numGivenToClient" type="integer" indexed="false" stored="true" required="false"/>
-    <field name="numProjectsPaid" type="integer" indexed="true" stored="true" required="false"/>
-    <field name="projectHistory" type="text" multiValued="true" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
-    <field name="projectHistory_unstemmed" type="text_unstemmed" multiValued="true" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
-    <field name="clinicalTrialSearch" type="text" multiValued="true" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
-    <field name="clinicalTrialSearch_unstemmed" type="text_unstemmed" multiValued="true" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
-    <field name="clinicalTrialDisplay" type="text" multiValued="true" indexed="false" stored="true" required="false" />
+    <field name="responseDate" type="date" indexed="true" stored="true" required="false"/>
+    <field name="questionText" type="text" indexed="true" stored="true" required="false"/>
+    <field name="questionText_unstemmed" type="text_unstemmed"  indexed="true" stored="true" required="false" />
+    <field name="responseText" type="text" indexed="true" stored="true" required="false" />
+    <field name="responseText_unstemmed" type="text_unstemmed" indexed="true" stored="true" required="false" />
+    <field name="subjectTaxonomyPath" type="text"  indexed="true" stored="true" required="false" />
+
   </fields>
 
-  <copyField source="biography" dest="biography_unstemmed"/>
-  <copyField source="profileQuestions" dest="profileQuestions_unstemmed"/>
-  <copyField source="projectHistory" dest="projectHistory_unstemmed"/>
-  <copyField source="jobHistory" dest="jobHistory_unstemmed"/>
-  <copyField source="clinicalTrialSearch" dest="clinicalTrialSearch_unstemmed"/>
+  <copyField source="questionText" dest="questionText_unstemmed"/>
+  <copyField source="responseText" dest="responseText_unstemmed"/>
 
 
   <!-- Field to use to determine and enforce document uniqueness.
@@ -322,7 +295,7 @@ unknown fields indexed and/or stored by default -->
   <uniqueKey>id</uniqueKey>
 
   <!-- field for the QueryParser to use when an explicit fieldname is absent -->
-  <defaultSearchField>biography</defaultSearchField>
+  <defaultSearchField>responseText</defaultSearchField>
 
   <!-- SolrQueryParser configuration: defaultOperator="AND|OR" -->
   <solrQueryParser defaultOperator="OR"/>
