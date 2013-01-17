@@ -110,8 +110,6 @@
         name
         biography
         biography_unstemmed
-        profileQuestions
-        profileQuestions_unstemmed
         jobHistory
         jobHistory_unstemmed
         projectHistory
@@ -129,11 +127,6 @@
       <str name="f.name.hl.alternateField">name</str>
       <str name="f.clinicalTrialSearch.hl.alternateField">clinicalTrialSearch</str>
       <str name="f.clinicalTrialSearch.hl.snippets">5</str>
-
-      <str name="f.profileQuestions.hl.fragListBuilder">single</str>
-      <str name="f.profileQuestions.hl.fragsize">18</str>
-      <str name="f.profileQuestions.hl.profileQuestions.useFastVectorHighlighter">true</str>
-
   </lst>
 </requestHandler>
 
