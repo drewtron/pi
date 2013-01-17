@@ -62,7 +62,7 @@
 
 <!-- ************************************************************************** -->
 
-<requestHandler name="/questions"
+<requestHandler name="/projects"
                 class="solr.SearchHandler">
   <lst name="defaults">
       <!--
@@ -83,31 +83,29 @@
       <str name="rows">25</str>
       <str name="uf">*</str>
       <str name="pf">
-        questionText^5
-        questionText_unstemmed^10
-        responseText^5
-        responseText_unstemmed^10
+        title^5
+        title_unstemmed^10
+        description^5
+        description_unstemmed^10
       </str>
       <str name="fl">
-        id questionId partyId responseDate
+        consultationId partyId createDate
       </str>
       <str name="q.alt">*:*</str>
       <str name="wt">json</str>
 
       <str name="hl">true</str>
       <str name="hl.fl">
-        questionText
-        questionText_unstemmed
-        responseText
-        responseText_unstemmed
-        subjectTaxonomyPath
+        title
+        title_unstemmed
+        description
+        description_unstemmed
       </str>
       <str name="hl.fragsize">0</str>
       <str name="hl.requireFieldMatch">true</str>
       <str name="hl.usePhraseHighlighter">true</str>
-      <str name="f.questionText.hl.alternateField">questionText</str>
-      <str name="f.responseText.hl.alternateField">responseText</str>
-      <str name="f.subjectTaxonomyPath.hl.alternateField">subjectTaxonomyPath</str>
+      <str name="f.title.hl.alternateField">title</str>
+      <str name="f.description.hl.alternateField">description</str>
       <str name="hl.fragListBuilder">single</str>
   </lst>
 </requestHandler>

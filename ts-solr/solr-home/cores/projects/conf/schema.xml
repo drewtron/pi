@@ -6,7 +6,7 @@ Template for schema.xml. Two areas are filled in:
    = the field definitions
 -->
 
-<schema name="questions" version="1.4">
+<schema name="projects" version="1.4">
   <!-- attribute "name" is the name of this schema and is only used for display purposes.
        Applications should change this to reflect the nature of the search collection.
        version="1.1" is Solr's version number for the schema syntax and semantics.  It should
@@ -272,30 +272,27 @@ alternately, change the type="ignored" to some other type e.g. "text" if you wan
 unknown fields indexed and/or stored by default -->
     <!--dynamicField name="*" type="ignored" multiValued="true" /-->
 
-    <field name="id" type="string" indexed="true" stored="true" required="true"/>
-    <field name="questionId" type="string" indexed="true" stored="true" required="false"/>
+    <field name="consultationId" type="string" indexed="true" stored="true" required="true"/>
     <field name="partyId" type="string" indexed="true" stored="true" required="true"/>
-    <field name="type" type="string" indexed="true" stored="true" required="false"/>
-    <field name="responseDate" type="date" indexed="true" stored="true" required="false"/>
-    <field name="questionText" type="text" indexed="true" stored="true" required="false"/>
-    <field name="questionText_unstemmed" type="text_unstemmed"  indexed="true" stored="true" required="false" />
-    <field name="responseText" type="text" indexed="true" stored="true" required="false" />
-    <field name="responseText_unstemmed" type="text_unstemmed" indexed="true" stored="true" required="false" />
-    <field name="subjectTaxonomyPath" type="text"  indexed="true" stored="true" required="false" />
+    <field name="title" type="text" indexed="true" stored="true" required="false"/>
+    <field name="title_unstemmed" type="text_unstemmed" indexed="true" stored="true" required="false"/>
+    <field name="description" type="text" indexed="true" stored="true" required="false"/>
+    <field name="description_unstemmed" type="text_unstemmed" indexed="true" stored="true" required="false"/>
+    <field name="createDate" type="date" indexed="true" stored="true" required="false"/>
 
   </fields>
 
-  <copyField source="questionText" dest="questionText_unstemmed"/>
-  <copyField source="responseText" dest="responseText_unstemmed"/>
+  <copyField source="title" dest="title_unstemmed"/>
+  <copyField source="description" dest="description_unstemmed"/>
 
 
   <!-- Field to use to determine and enforce document uniqueness.
      Unless this field is marked with required="false", it will be a required field
   -->
-  <uniqueKey>id</uniqueKey>
+  <uniqueKey>consultationId</uniqueKey>
 
   <!-- field for the QueryParser to use when an explicit fieldname is absent -->
-  <defaultSearchField>responseText</defaultSearchField>
+  <defaultSearchField>description</defaultSearchField>
 
   <!-- SolrQueryParser configuration: defaultOperator="AND|OR" -->
   <solrQueryParser defaultOperator="OR"/>
