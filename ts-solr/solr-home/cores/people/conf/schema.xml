@@ -7,6 +7,61 @@ Template for schema.xml. Two areas are filled in:
 -->
 
 <schema name="people" version="1.4">
+
+  <fields>
+
+    <field name="id" type="string" indexed="true" stored="true" required="true"/>
+    <field name="name" type="name" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true" />
+    <field name="type" type="string" indexed="true" stored="true" required="false"/>
+    <field name="sourceid" type="string" indexed="true" stored="true" required="false"/>
+    <field name="partyType" type="string" indexed="true" stored="true" required="false"/>
+    <field name="city" type="string" indexed="true" stored="true" required="false"/>
+    <field name="state" type="string" indexed="true" stored="true" required="false"/>
+    <field name="country" type="string" indexed="true" stored="true" required="false"/>
+    <field name="continent" type="string" indexed="true" stored="true" required="false"/>
+    <field name="isDNC" type="bool" indexed="true" stored="true" required="false"/>
+    <field name="jobFunction" type="string" indexed="true" stored="true" required="false"/>
+    <field name="department" type="string" indexed="true" stored="true" required="false"/>
+    <field name="relationship_count" type="int" indexed="true" stored="true" required="false"/>
+    <field name="isMemberPrograms" type="bool" indexed="true" stored="true" required="false"/>
+    <field name="isTermsAndConditionsSigned" type="bool" indexed="true" stored="true" required="false"/>
+    <field name="lastSignedTermsAndConditions" type="text" indexed="true" stored="true" required="false"/>
+    <field name="biography" type="text" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true" />
+    <field name="biography_unstemmed" type="text_unstemmed" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
+    <field name="practicearea" type="string" indexed="true" stored="true" required="false"/>
+    <field name="currentJobs" type="text" indexed="true" stored="true" required="false" multiValued="false" />
+    <field name="jobHistory" type="text" indexed="true" stored="true" required="false" multiValued="true" termPositions="true" termVectors="true" termOffsets="true" />
+    <field name="jobHistory_unstemmed" type="text_unstemmed" indexed="true" stored="true" required="false" multiValued="true" termPositions="true" termVectors="true" termOffsets="true" />
+    <field name="currentJobPartyId" type="text" indexed="true" stored="true" required="false"/>
+    <field name="hourlyRate" type="integer" indexed="false" stored="true" required="false"/>
+    <field name="phone" type="text" indexed="false" stored="true" required="false"/>
+    <field name="email" type="text" indexed="false" stored="true" required="false"/>
+    <field name="profileQuestions" type="text" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
+    <field name="profileQuestions_unstemmed" type="text_unstemmed" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
+    <field name="numGivenToClient" type="integer" indexed="false" stored="true" required="false"/>
+    <field name="numProjectsPaid" type="integer" indexed="true" stored="true" required="false"/>
+    <field name="projectHistory" type="text" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
+    <field name="projectHistory_unstemmed" type="text_unstemmed" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
+    <field name="clinicalTrialSearch" type="text" multiValued="true" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
+    <field name="clinicalTrialSearch_unstemmed" type="text_unstemmed" multiValued="true" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
+    <field name="clinicalTrialDisplay" type="text" multiValued="true" indexed="false" stored="true" required="false" />
+  </fields>
+
+  <copyField source="biography" dest="biography_unstemmed"/>
+  <copyField source="profileQuestions" dest="profileQuestions_unstemmed"/>
+  <copyField source="projectHistory" dest="projectHistory_unstemmed"/>
+  <copyField source="jobHistory" dest="jobHistory_unstemmed"/>
+  <copyField source="clinicalTrialSearch" dest="clinicalTrialSearch_unstemmed"/>
+
+
+  <!-- Field to use to determine and enforce document uniqueness.
+     Unless this field is marked with required="false", it will be a required field
+  -->
+  <uniqueKey>id</uniqueKey>
+
+  <!-- field for the QueryParser to use when an explicit fieldname is absent -->
+  <defaultSearchField>biography</defaultSearchField>
+
   <!-- attribute "name" is the name of this schema and is only used for display purposes.
        Applications should change this to reflect the nature of the search collection.
        version="1.1" is Solr's version number for the schema syntax and semantics.  It should
@@ -245,84 +300,6 @@ Template for schema.xml. Two areas are filled in:
     </fieldType>
 
   </types>
-
-
-  <fields>
-    <!-- Valid attributes for fields:
-      name: mandatory - the name for the field
-      type: mandatory - the name of a previously defined type from the <types> section
-      indexed: true if this field should be indexed (searchable or sortable)
-      stored: true if this field should be retrievable
-      compressed: [false] if this field should be stored using gzip compression
-        (this will only apply if the field type is compressible; among
-        the standard field types, only TextField and StrField are)
-      multiValued: true if this field may contain multiple values per document
-      omitNorms: (expert) set to true to omit the norms associated with
-        this field (this disables length normalization and index-time
-        boosting for the field, and saves some memory).  Only full-text_auto<
-        fields or fields that need an index-time boost need norms.
-      termVectors: [false] set to true to store the term vector for a given field.
-        When using MoreLikeThis, fields used for similarity should be stored for
-        best performance.
-    -->
-
-    <!-- uncomment the following to ignore any fields that don't already match an existing
-field name or dynamic field, rather than reporting them as an error.
-alternately, change the type="ignored" to some other type e.g. "text" if you want
-unknown fields indexed and/or stored by default -->
-    <!--dynamicField name="*" type="ignored" multiValued="true" /-->
-
-    <field name="id" type="string" indexed="true" stored="true" required="true"/>
-    <field name="name" type="name" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true" />
-    <field name="type" type="string" indexed="true" stored="true" required="false"/>
-    <field name="sourceid" type="string" indexed="true" stored="true" required="false"/>
-    <field name="partyType" type="string" indexed="true" stored="true" required="false"/>
-    <field name="city" type="string" indexed="true" stored="true" required="false"/>
-    <field name="state" type="string" indexed="true" stored="true" required="false"/>
-    <field name="country" type="string" indexed="true" stored="true" required="false"/>
-    <field name="continent" type="string" indexed="true" stored="true" required="false"/>
-    <field name="isDNC" type="bool" indexed="true" stored="true" required="false"/>
-    <field name="jobFunction" type="string" indexed="true" stored="true" required="false"/>
-    <field name="department" type="string" indexed="true" stored="true" required="false"/>
-    <field name="relationship_count" type="int" indexed="true" stored="true" required="false"/>
-    <field name="isMemberPrograms" type="bool" indexed="true" stored="true" required="false"/>
-    <field name="isTermsAndConditionsSigned" type="bool" indexed="true" stored="true" required="false"/>
-    <field name="lastSignedTermsAndConditions" type="text" indexed="true" stored="true" required="false"/>
-    <field name="biography" type="text" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true" />
-    <field name="biography_unstemmed" type="text_unstemmed" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
-    <field name="practicearea" type="string" indexed="true" stored="true" required="false"/>
-    <field name="currentJobs" type="text" indexed="true" stored="true" required="false" multiValued="false" />
-    <field name="jobHistory" type="text" indexed="true" stored="true" required="false" multiValued="true" termPositions="true" termVectors="true" termOffsets="true" />
-    <field name="jobHistory_unstemmed" type="text_unstemmed" indexed="true" stored="true" required="false" multiValued="true" termPositions="true" termVectors="true" termOffsets="true" />
-    <field name="currentJobPartyId" type="text" indexed="true" stored="true" required="false"/>
-    <field name="hourlyRate" type="integer" indexed="false" stored="true" required="false"/>
-    <field name="phone" type="text" indexed="false" stored="true" required="false"/>
-    <field name="email" type="text" indexed="false" stored="true" required="false"/>
-    <field name="profileQuestions" type="text" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
-    <field name="profileQuestions_unstemmed" type="text_unstemmed" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
-    <field name="numGivenToClient" type="integer" indexed="false" stored="true" required="false"/>
-    <field name="numProjectsPaid" type="integer" indexed="true" stored="true" required="false"/>
-    <field name="projectHistory" type="text" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
-    <field name="projectHistory_unstemmed" type="text_unstemmed" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
-    <field name="clinicalTrialSearch" type="text" multiValued="true" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
-    <field name="clinicalTrialSearch_unstemmed" type="text_unstemmed" multiValued="true" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
-    <field name="clinicalTrialDisplay" type="text" multiValued="true" indexed="false" stored="true" required="false" />
-  </fields>
-
-  <copyField source="biography" dest="biography_unstemmed"/>
-  <copyField source="profileQuestions" dest="profileQuestions_unstemmed"/>
-  <copyField source="projectHistory" dest="projectHistory_unstemmed"/>
-  <copyField source="jobHistory" dest="jobHistory_unstemmed"/>
-  <copyField source="clinicalTrialSearch" dest="clinicalTrialSearch_unstemmed"/>
-
-
-  <!-- Field to use to determine and enforce document uniqueness.
-     Unless this field is marked with required="false", it will be a required field
-  -->
-  <uniqueKey>id</uniqueKey>
-
-  <!-- field for the QueryParser to use when an explicit fieldname is absent -->
-  <defaultSearchField>biography</defaultSearchField>
 
   <!-- SolrQueryParser configuration: defaultOperator="AND|OR" -->
   <solrQueryParser defaultOperator="OR"/>
