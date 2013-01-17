@@ -6,53 +6,24 @@ Template for schema.xml. Two areas are filled in:
    = the field definitions
 -->
 
-<schema name="people" version="1.4">
+<schema name="projects" version="1.4">
+
 
   <fields>
 
     <field name="id" type="string" indexed="true" stored="true" required="true"/>
-    <field name="name" type="name" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true" />
-    <field name="type" type="string" indexed="true" stored="true" required="false"/>
-    <field name="sourceid" type="string" indexed="true" stored="true" required="false"/>
-    <field name="partyType" type="string" indexed="true" stored="true" required="false"/>
-    <field name="city" type="string" indexed="true" stored="true" required="false"/>
-    <field name="state" type="string" indexed="true" stored="true" required="false"/>
-    <field name="country" type="string" indexed="true" stored="true" required="false"/>
-    <field name="continent" type="string" indexed="true" stored="true" required="false"/>
-    <field name="isDNC" type="bool" indexed="true" stored="true" required="false"/>
-    <field name="jobFunction" type="string" indexed="true" stored="true" required="false"/>
-    <field name="department" type="string" indexed="true" stored="true" required="false"/>
-    <field name="relationship_count" type="int" indexed="true" stored="true" required="false"/>
-    <field name="isMemberPrograms" type="bool" indexed="true" stored="true" required="false"/>
-    <field name="isTermsAndConditionsSigned" type="bool" indexed="true" stored="true" required="false"/>
-    <field name="lastSignedTermsAndConditions" type="text" indexed="true" stored="true" required="false"/>
-    <field name="biography" type="text" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true" />
-    <field name="biography_unstemmed" type="text_unstemmed" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
-    <field name="practicearea" type="string" indexed="true" stored="true" required="false"/>
-    <field name="currentJobs" type="text" indexed="true" stored="true" required="false" multiValued="false" />
-    <field name="jobHistory" type="text" indexed="true" stored="true" required="false" multiValued="true" termPositions="true" termVectors="true" termOffsets="true" />
-    <field name="jobHistory_unstemmed" type="text_unstemmed" indexed="true" stored="true" required="false" multiValued="true" termPositions="true" termVectors="true" termOffsets="true" />
-    <field name="currentJobPartyId" type="text" indexed="true" stored="true" required="false"/>
-    <field name="hourlyRate" type="integer" indexed="false" stored="true" required="false"/>
-    <field name="phone" type="text" indexed="false" stored="true" required="false"/>
-    <field name="email" type="text" indexed="false" stored="true" required="false"/>
-    <field name="profileQuestions" type="text" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
-    <field name="profileQuestions_unstemmed" type="text_unstemmed" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
-    <field name="numGivenToClient" type="integer" indexed="false" stored="true" required="false"/>
-    <field name="numProjectsPaid" type="integer" indexed="true" stored="true" required="false"/>
-    <field name="projectHistory" type="text" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
-    <field name="projectHistory_unstemmed" type="text_unstemmed" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
-    <field name="clinicalTrialSearch" type="text" multiValued="true" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
-    <field name="clinicalTrialSearch_unstemmed" type="text_unstemmed" multiValued="true" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
-    <field name="clinicalTrialDisplay" type="text" multiValued="true" indexed="false" stored="true" required="false" />
+    <field name="consultationId" type="string" indexed="true" stored="true" required="true"/>
+    <field name="partyId" type="string" indexed="true" stored="true" required="true"/>
+    <field name="title" type="text" indexed="true" stored="true" required="false"/>
+    <field name="title_unstemmed" type="text_unstemmed" indexed="true" stored="true" required="false"/>
+    <field name="description" type="text" indexed="true" stored="true" required="false"/>
+    <field name="description_unstemmed" type="text_unstemmed" indexed="true" stored="true" required="false"/>
+    <field name="createDate" type="date" indexed="true" stored="true" required="false"/>
+
   </fields>
 
-  <copyField source="biography" dest="biography_unstemmed"/>
-  <copyField source="profileQuestions" dest="profileQuestions_unstemmed"/>
-  <copyField source="projectHistory" dest="projectHistory_unstemmed"/>
-  <copyField source="jobHistory" dest="jobHistory_unstemmed"/>
-  <copyField source="clinicalTrialSearch" dest="clinicalTrialSearch_unstemmed"/>
-
+  <copyField source="title" dest="title_unstemmed"/>
+  <copyField source="description" dest="description_unstemmed"/>
 
   <!-- Field to use to determine and enforce document uniqueness.
      Unless this field is marked with required="false", it will be a required field
@@ -60,7 +31,7 @@ Template for schema.xml. Two areas are filled in:
   <uniqueKey>id</uniqueKey>
 
   <!-- field for the QueryParser to use when an explicit fieldname is absent -->
-  <defaultSearchField>biography</defaultSearchField>
+  <defaultSearchField>description</defaultSearchField>
 
   <!-- attribute "name" is the name of this schema and is only used for display purposes.
        Applications should change this to reflect the nature of the search collection.

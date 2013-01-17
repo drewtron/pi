@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dataConfig>
+  <dataSource type="JdbcDataSource" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://10.45.205.242/ark"
+              user="glguser" password="password_1"/>
+  <document name="Projects">
+    <entity name="Projects"
+            query="
+              select
+              @rownum:=@rownum+1 as 'id',
+              mp.partyid,
+              m.title,
+              m.description,
+              m.ConsultationId,
+              m.CreateDate
+              from meetingparticipant mp
+              join meeting m on m.productid = mp.productid
+              JOIN (SELECT @rownum:=0) r
+              where meetingtype = 'consultation'
+              and (mp.GivenToClientDate is not null or mp.PaidDate is not null)">
+
+      <field name="id" column="id" />
+      <field name="partyId" column="partyId" />
+      <field name="title" column="title" />
+      <field name="description" column="description" />
+      <field name="consultationId" column="consultationId" />
+      <field name="createDate" column="createDate" />
+    </entity>
+  </document>
+</dataConfig>

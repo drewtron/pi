@@ -94,9 +94,6 @@
       <str name="q.alt">*:*</str>
       <str name="wt">json</str>
 
-      <str name="facet">true</str>
-      <str name="facet.mincount">1</str>
-
       <str name="hl">true</str>
       <str name="hl.fl">
         questionText

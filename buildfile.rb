@@ -69,17 +69,21 @@ define "pi" do
     sh "cd #{WAR_TEMP_DIR}; zip -r ../../#{SOLR_HOME}solr.war *;"
   end
 
-  task :config_env, :mongo_url, :is_master, :master_ip do |task, args|
+  task :config_env, :mongo_url, :is_master, :master_ip, :dw_host, :dw_pwd do |task, args|
 
     puts "Config args: #{args.inspect}"
 
     update_config_files "#{SOLR_HOME}cores/*/conf/data-config.xml" do |doc, file_path|
       data_source = doc.xpath('//dataSource').first
       if data_source
-        if data_source["type"] == "MongoDataSource"
-          data_source["host"] = args[:mongo_url]
-        else
-          puts "CONFIG MYSQL HERE"
+        case data_source['type']
+          when "MongoDataSource"
+            data_source["host"] = args[:mongo_url]
+          when "JdbcDataSource"
+            data_source["url"] = "jdbc:mysql://#{args[:dw_host]}/ark"
+            data_source["password"] = args[:dw_pwd]
+          else
+            raise "Unknown data source type #{data_source['type']}"
         end
       else
         raise "Could not find the dataSource section in #{file_path}"
