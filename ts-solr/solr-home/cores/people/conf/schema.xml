@@ -298,12 +298,12 @@ unknown fields indexed and/or stored by default -->
     <field name="hourlyRate" type="integer" indexed="false" stored="true" required="false"/>
     <field name="phone" type="text" indexed="false" stored="true" required="false"/>
     <field name="email" type="text" indexed="false" stored="true" required="false"/>
-    <field name="profileQuestions" type="text" multiValued="true" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
-    <field name="profileQuestions_unstemmed" type="text_unstemmed" multiValued="true" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
+    <field name="profileQuestions" type="text" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
+    <field name="profileQuestions_unstemmed" type="text_unstemmed" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
     <field name="numGivenToClient" type="integer" indexed="false" stored="true" required="false"/>
     <field name="numProjectsPaid" type="integer" indexed="true" stored="true" required="false"/>
-    <field name="projectHistory" type="text" multiValued="true" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
-    <field name="projectHistory_unstemmed" type="text_unstemmed" multiValued="true" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
+    <field name="projectHistory" type="text" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
+    <field name="projectHistory_unstemmed" type="text_unstemmed" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
     <field name="clinicalTrialSearch" type="text" multiValued="true" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
     <field name="clinicalTrialSearch_unstemmed" type="text_unstemmed" multiValued="true" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
     <field name="clinicalTrialDisplay" type="text" multiValued="true" indexed="false" stored="true" required="false" />
