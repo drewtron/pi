@@ -5,12 +5,20 @@
   <document name="Projects">
     <entity name="Projects"
             query="
-              select mp.partyid, m.title, m.description, m.ConsultationId, m.CreateDate
+              select
+              @rownum:=@rownum+1 as 'id',
+              mp.partyid,
+              m.title,
+              m.description,
+              m.ConsultationId,
+              m.CreateDate
               from meetingparticipant mp
               join meeting m on m.productid = mp.productid
+              JOIN (SELECT @rownum:=0) r
               where meetingtype = 'consultation'
               and (mp.GivenToClientDate is not null or mp.PaidDate is not null)">
 
+      <field name="id" column="id" />
       <field name="partyId" column="partyId" />
       <field name="title" column="title" />
       <field name="description" column="description" />
