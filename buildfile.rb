@@ -69,7 +69,7 @@ define "pi" do
     sh "cd #{WAR_TEMP_DIR}; zip -r ../../#{SOLR_HOME}solr.war *;"
   end
 
-  task :config_env, :mongo_url, :is_master, :master_ip, :dw_host, :dw_password do |task, args|
+  task :config_env, :mongo_url, :is_master, :master_ip, :dw_host, :dw_pwd do |task, args|
 
     puts "Config args: #{args.inspect}"
 
@@ -81,7 +81,7 @@ define "pi" do
             data_source["host"] = args[:mongo_url]
           when "JdbcDataSource"
             data_source["url"] = "jdbc:mysql://#{args[:dw_host]}/ark"
-            data_source["password"] = args[:dw_password]
+            data_source["password"] = args[:dw_pwd]
           else
             raise "Unknown data source type #{data_source['type']}"
         end
