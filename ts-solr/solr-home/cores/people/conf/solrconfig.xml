@@ -110,8 +110,10 @@
         name
         biography
         biography_unstemmed
-        jobHistory
-        jobHistory_unstemmed
+        formerJobs
+        formerJobs_unstemmed
+        currentJobs
+        currentJobs_unstemmed
         clinicalTrialSearch
         clinicalTrialSearch_unstemmed
       </str>
@@ -119,7 +121,8 @@
       <str name="hl.requireFieldMatch">true</str>
       <str name="hl.usePhraseHighlighter">true</str>
       <str name="f.biography.hl.alternateField">biography</str>
-      <str name="f.jobHistory.hl.alternateField">jobHistory</str>
+      <str name="f.currentJobs.hl.alternateField">currentJobs</str>
+      <str name="f.formerJobs.hl.alternateField">formerJobs</str>
       <str name="f.name.hl.alternateField">name</str>
       <str name="f.clinicalTrialSearch.hl.alternateField">clinicalTrialSearch</str>
       <str name="f.clinicalTrialSearch.hl.snippets">5</str>
