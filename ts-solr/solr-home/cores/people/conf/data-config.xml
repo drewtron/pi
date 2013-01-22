@@ -30,7 +30,6 @@
             <field name="practicearea" column="practicearea" mongoField="practicearea" />
             <field name="currentJobs" column="currentJobs" mongoField="currentJobs" />
             <field name="formerJobs" column="formerJobs" mongoField="formerJobs" />
-            <field name="hourlyRate" column="hourlyRate" mongoField="hourlyRate" />
             <field name="relationship_count" column="relationship_count" mongoField="relationship_count" />
          </entity>
      </document>

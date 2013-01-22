@@ -33,13 +33,13 @@ Template for schema.xml. Two areas are filled in:
     <field name="currentJobs_unstemmed" type="text_unstemmed" indexed="true" stored="true" required="false" multiValued="true" termPositions="true" termVectors="true" termOffsets="true" />
     <field name="formerJobs" type="text" indexed="true" stored="true" required="false" multiValued="false" />
     <field name="formerJobs_unstemmed" type="text_unstemmed" indexed="true" stored="true" required="false" multiValued="true" termPositions="true" termVectors="true" termOffsets="true" />
-    <field name="hourlyRate" type="integer" indexed="false" stored="true" required="false"/>
+    <field name="hourlyRate" type="int" indexed="true" stored="true" required="false"/>
     <field name="phone" type="text" indexed="false" stored="true" required="false"/>
     <field name="email" type="text" indexed="false" stored="true" required="false"/>
     <field name="profileQuestions" type="text" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
     <field name="profileQuestions_unstemmed" type="text_unstemmed" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
     <field name="numGivenToClient" type="integer" indexed="false" stored="true" required="false"/>
-    <field name="numProjectsPaid" type="integer" indexed="true" stored="true" required="false"/>
+    <field name="numProjectsPaid" type="int" indexed="true" stored="true" required="false"/>
     <field name="projectHistory" type="text" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
     <field name="projectHistory_unstemmed" type="text_unstemmed" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
     <field name="clinicalTrialSearch" type="text" multiValued="true" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
