@@ -28,9 +28,8 @@
             <field name="isTermsAndConditionsSigned" column="isTermsAndConditionsSigned" mongoField="isTermsAndConditionsSigned" />
             <field name="biography" column="biography" mongoField="biography" />
             <field name="practicearea" column="practicearea" mongoField="practicearea" />
-            <field name="jobHistory" column="jobHistory" mongoField="jobHistory" />
-            <field name="currentJobPartyId" column="currentJobPartyId" mongoField="currentJobPartyId" />
-            <field name="hourlyRate" column="hourlyRate" mongoField="hourlyRate" />
+            <field name="currentJobs" column="currentJobs" mongoField="currentJobs" />
+            <field name="formerJobs" column="formerJobs" mongoField="formerJobs" />
             <field name="relationship_count" column="relationship_count" mongoField="relationship_count" />
          </entity>
      </document>
