@@ -74,19 +74,20 @@
       <str name="mm">0</str>
       <str name="rows">25</str>
       <str name="uf">*</str>
+      <str name="ps2">5</str>
       <str name="pf2">
-        biography^5
-        biography_unstemmed^10
-        profileQuestions^5
-        profileQuestions_unstemmed^10
-        currentJobs^10
-        currentJobs_unstemmed^15
-        formerJobs^10
-        formerJobs_unstemmed^15
-        projectHistory^5
-        projectHistory_unstemmed^10
-        clinicalTrialSearch^5
-        clinicalTrialSearch_unstemmed^10
+        biography^3
+        biography_unstemmed^4
+        profileQuestions^2
+        profileQuestions_unstemmed^2
+        currentJobs^2
+        currentJobs_unstemmed^2
+        formerJobs^2
+        formerJobs_unstemmed^2
+        projectHistory^2
+        projectHistory_unstemmed^2
+        clinicalTrialSearch^2
+        clinicalTrialSearch_unstemmed^2
       </str>
       <str name="fl">
         id sourceid type currentJobs
