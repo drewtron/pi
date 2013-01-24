@@ -74,6 +74,21 @@
       <str name="mm">0</str>
       <str name="rows">25</str>
       <str name="uf">*</str>
+      <str name="ps">0</str>
+      <str name="pf">
+        biography^5
+        biography_unstemmed^7
+        profileQuestions^3
+        profileQuestions_unstemmed^3
+        currentJobs^3
+        currentJobs_unstemmed^3
+        formerJobs^3
+        formerJobs_unstemmed^3
+        projectHistory^3
+        projectHistory_unstemmed^3
+        clinicalTrialSearch^3
+        clinicalTrialSearch_unstemmed^3
+      </str>
       <str name="ps2">5</str>
       <str name="pf2">
         biography^3
