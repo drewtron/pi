@@ -71,23 +71,18 @@
       <str name="defType">edismax</str>
       <str name="echoParams">explicit</str>
       <float name="tie">0.01</float>
-      <str name="mm">
-        <!--
-        if less than 2 optional clauses they all must match, for 2-3 clauses,
-        one less than the number of clauses must match, for 4 or more
-        75% must match, rounded down
-        -->
-        1&lt;-1 3&lt;75%
-      </str>
+      <str name="mm">0</str>
       <str name="rows">25</str>
       <str name="uf">*</str>
-      <str name="pf">
+      <str name="pf2">
         biography^5
         biography_unstemmed^10
         profileQuestions^5
         profileQuestions_unstemmed^10
-        jobHistory^10
-        jobHistory_unstemmed^15
+        currentJobs^10
+        currentJobs_unstemmed^15
+        formerJobs^10
+        formerJobs_unstemmed^15
         projectHistory^5
         projectHistory_unstemmed^10
         clinicalTrialSearch^5
