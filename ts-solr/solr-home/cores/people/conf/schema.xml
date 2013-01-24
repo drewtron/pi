@@ -25,7 +25,7 @@ Template for schema.xml. Two areas are filled in:
     <field name="relationship_count" type="int" indexed="true" stored="true" required="false"/>
     <field name="isMemberPrograms" type="bool" indexed="true" stored="true" required="false"/>
     <field name="isTermsAndConditionsSigned" type="bool" indexed="true" stored="true" required="false"/>
-    <field name="lastSignedTermsAndConditions" type="text" indexed="true" stored="true" required="false"/>
+    <field name="lastSignedTermsAndConditions" type="int" indexed="true" stored="true" required="false"/>
     <field name="biography" type="text" indexed="true" omitNorms="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true" />
     <field name="biography_unstemmed" type="text_unstemmed" omitNorms="true" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
     <field name="practicearea" type="string" indexed="true" stored="true" required="false"/>
