@@ -13,13 +13,6 @@
             datasource="Mosaic"
             transformer="MongoMapperTransformer" >
 
-      <field column="id" name="id" mongoField="id" />
-      <field column="name" name="name" mongoField="name" />
-      <field column="partyType" name="partyType" mongoField="partyType" />
-      <field column="stockExchange" name="stockExchange" mongoField="stockExchange" />
-      <field column="tickerSymbol" name="tickerSymbol" mongoField="tickerSymbol"/>
-      <field column="isPublic" name="isPublic" mongoField="isPublic" />
-      <field column="relationship_count" name="relationship_count" mongoField="relationship_count" />
     </entity>
   </document>
 </dataConfig>
