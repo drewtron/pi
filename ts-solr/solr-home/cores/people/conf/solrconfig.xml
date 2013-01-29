@@ -108,7 +108,8 @@
         id sourceid type currentJobs
         city state country numGivenToClient
         numProjectsPaid practicearea lastSignedTermsAndConditions
-        hourlyRate phone email isDNC clinicalTrialDisplay
+        hourlyRate phone email isDNC clinicalTrialDisplay isNew
+        isScholar isLeader isEducator consultationFeedback isKeyExecutive
       </str>
       <str name="q.alt">*:*</str>
       <str name="wt">json</str>

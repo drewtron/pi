@@ -24,6 +24,12 @@ Template for schema.xml. Two areas are filled in:
     <field name="department" type="string" indexed="true" stored="true" required="false"/>
     <field name="relationship_count" type="int" indexed="true" stored="true" required="false"/>
     <field name="isMemberPrograms" type="bool" indexed="true" stored="true" required="false"/>
+    <field name="isNew" type="bool" indexed="true" stored="true" required="false"/>
+    <field name="isKeyExecutive" type="bool" indexed="true" stored="true" required="false"/>
+    <field name="isLeader" type="bool" indexed="true" stored="true" required="false"/>
+    <field name="isScholar" type="bool" indexed="true" stored="true" required="false"/>
+    <field name="isEducator" type="bool" indexed="true" stored="true" required="false"/>
+    <field name="consultationFeedback" type="string" indexed="true" stored="true" required="false"/>
     <field name="isTermsAndConditionsSigned" type="bool" indexed="true" stored="true" required="false"/>
     <field name="lastSignedTermsAndConditions" type="int" indexed="true" stored="true" required="false"/>
     <field name="biography" type="text" indexed="true" omitNorms="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true" />
