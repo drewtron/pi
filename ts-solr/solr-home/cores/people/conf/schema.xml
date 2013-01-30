@@ -168,20 +168,12 @@ Template for schema.xml. Two areas are filled in:
 
     <!-- we don't want to stem names or remove stop words on names -->
     <fieldType name="name" class="solr.TextField" positionIncrementGap="100">
-      <analyzer type="index">
+      <analyzer>
         <tokenizer class="solr.WhitespaceTokenizerFactory"/>
-        <!-- in this example, we will only use synonyms at query time
-        <filter class="solr.SynonymFilterFactory" synonyms="index_synonyms.txt" ignoreCase="true" expand="false"/>
-        -->
-        <filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1" catenateWords="1"
-                catenateNumbers="1" catenateAll="0" splitOnCaseChange="1"/>
-        <filter class="solr.LowerCaseFilterFactory"/>
-      </analyzer>
-
-      <analyzer type="query">
-        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
-        <filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1" catenateWords="0"
-                catenateNumbers="0" catenateAll="0" splitOnCaseChange="1"/>
+        <filter class="solr.WordDelimiterFilterFactory"
+                generateWordParts="1"
+                catenateWords="1"
+                splitOnCaseChange="0" />
         <filter class="solr.LowerCaseFilterFactory"/>
       </analyzer>
     </fieldType>
