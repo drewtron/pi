@@ -91,16 +91,16 @@
       </str>
       <str name="ps2">5</str>
       <str name="pf2">
-        biography^3
-        biography_unstemmed^4
-        profileQuestions^2
-        profileQuestions_unstemmed^2
+        biography^2
+        biography_unstemmed^3
+        profileQuestions
+        profileQuestions_unstemmed
         currentJobs^2
         currentJobs_unstemmed^2
-        formerJobs^2
-        formerJobs_unstemmed^2
+        formerJobs^3
+        formerJobs_unstemmed^4
         projectHistory^2
-        projectHistory_unstemmed^2
+        projectHistory_unstemmed^3
         clinicalTrialSearch^2
         clinicalTrialSearch_unstemmed^2
       </str>
@@ -108,7 +108,9 @@
         id sourceid type currentJobs
         city state country numGivenToClient
         numProjectsPaid practicearea lastSignedTermsAndConditions
-        hourlyRate phone email isDNC clinicalTrialDisplay
+        hourlyRate phone email isDNC clinicalTrialDisplay isNew
+        isScholar isLeader isEducator consultationFeedback isKeyExecutive
+        hasMarketingPermission isCouncilPartner hasClinicalTrials isBoardMember
       </str>
       <str name="q.alt">*:*</str>
       <str name="wt">json</str>

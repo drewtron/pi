@@ -24,6 +24,16 @@ Template for schema.xml. Two areas are filled in:
     <field name="department" type="string" indexed="true" stored="true" required="false"/>
     <field name="relationship_count" type="int" indexed="true" stored="true" required="false"/>
     <field name="isMemberPrograms" type="bool" indexed="true" stored="true" required="false"/>
+    <field name="isNew" type="bool" indexed="true" stored="true" required="false"/>
+    <field name="isKeyExecutive" type="bool" indexed="true" stored="true" required="false"/>
+    <field name="isCouncilPartner" type="bool" indexed="true" stored="true" required="false"/>
+    <field name="hasMarketingPermission" type="bool" indexed="true" stored="true" required="false"/>
+    <field name="hasClinicalTrials" type="bool" indexed="true" stored="true" required="false"/>
+    <field name="isLeader" type="bool" indexed="true" stored="true" required="false"/>
+    <field name="isScholar" type="bool" indexed="true" stored="true" required="false"/>
+    <field name="isEducator" type="bool" indexed="true" stored="true" required="false"/>
+    <field name="isBoardMember" type="bool" indexed="true" stored="true" required="false"/>
+    <field name="consultationFeedback" type="string" indexed="true" stored="true" required="false"/>
     <field name="isTermsAndConditionsSigned" type="bool" indexed="true" stored="true" required="false"/>
     <field name="lastSignedTermsAndConditions" type="int" indexed="true" stored="true" required="false"/>
     <field name="biography" type="text" indexed="true" omitNorms="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true" />
@@ -162,20 +172,12 @@ Template for schema.xml. Two areas are filled in:
 
     <!-- we don't want to stem names or remove stop words on names -->
     <fieldType name="name" class="solr.TextField" positionIncrementGap="100">
-      <analyzer type="index">
+      <analyzer>
         <tokenizer class="solr.WhitespaceTokenizerFactory"/>
-        <!-- in this example, we will only use synonyms at query time
-        <filter class="solr.SynonymFilterFactory" synonyms="index_synonyms.txt" ignoreCase="true" expand="false"/>
-        -->
-        <filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1" catenateWords="1"
-                catenateNumbers="1" catenateAll="0" splitOnCaseChange="1"/>
-        <filter class="solr.LowerCaseFilterFactory"/>
-      </analyzer>
-
-      <analyzer type="query">
-        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
-        <filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1" catenateWords="0"
-                catenateNumbers="0" catenateAll="0" splitOnCaseChange="1"/>
+        <filter class="solr.WordDelimiterFilterFactory"
+                generateWordParts="1"
+                catenateWords="1"
+                splitOnCaseChange="0" />
         <filter class="solr.LowerCaseFilterFactory"/>
       </analyzer>
     </fieldType>
