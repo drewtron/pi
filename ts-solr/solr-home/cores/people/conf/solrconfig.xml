@@ -139,7 +139,16 @@
       <str name="f.name.hl.alternateField">name</str>
       <str name="f.clinicalTrialSearch.hl.alternateField">clinicalTrialSearch</str>
       <str name="f.clinicalTrialSearch.hl.snippets">5</str>
+
+
+      <str name="spellcheck">true</str>
+      <str name="spellcheck.dictionary">default</str>
+      <str name="spellcheck.count">5</str>
   </lst>
+
+  <arr name="last-components">
+    <str>spellcheck</str>
+  </arr>
 </requestHandler>
 
   <requestHandler name="/update/extract" 
@@ -228,8 +237,9 @@
 
     <lst name="spellchecker">
       <str name="name">default</str>
-      <str name="field">name</str>
+      <str name="field">autoSuggest</str>
       <str name="spellcheckIndexDir">spellchecker</str>
+      <str name="buildOnOptimize">true</str>
     </lst>
 
   </searchComponent>
