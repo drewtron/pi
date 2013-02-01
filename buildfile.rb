@@ -21,7 +21,7 @@ FLEXJSON = transitive('net.sf.flexjson:flexjson:jar:2.1')
 MONGO = transitive('org.mongodb:mongo-java-driver:jar:2.8.0')
 MYSQL = transitive('mysql:mysql-connector-java:jar:5.1.20')
 XALAN = transitive('xalan:serializer:jar:2.7.1')
-SOLR_VERSION = "4.0.0"
+SOLR_VERSION = "4.1.0"
 SOLR = struct(
   :solr		=> solr_dependency('org.apache.solr:solr:war:'),
   :dataimport	=> solr_dependency('org.apache.solr:solr-dataimporthandler:jar:'),
@@ -64,9 +64,7 @@ define "pi" do
 
     sh "cp lib/solr-mongo-importer-1.0.0.jar #{SOLR_LIB}solr-mongo-importer-1.0.0.jar"
 
-    sh "unzip #{SOLR_WAR} -d #{WAR_TEMP_DIR}"
-    sh "cd target/classes; zip -r ../../#{WAR_TEMP_DIR}WEB-INF/lib/apache-solr-core-#{SOLR_VERSION}.jar org;"
-    sh "cd #{WAR_TEMP_DIR}; zip -r ../../#{SOLR_HOME}solr.war *;"
+    sh "cp #{SOLR_WAR} #{SOLR_HOME}solr.war"
   end
 
   task :config_env, :mongo_url, :is_master, :master_ip, :dw_host, :dw_pwd do |task, args|
