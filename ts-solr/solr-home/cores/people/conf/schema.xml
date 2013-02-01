@@ -55,6 +55,7 @@ Template for schema.xml. Two areas are filled in:
     <field name="clinicalTrialSearch" type="text" multiValued="true" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
     <field name="clinicalTrialSearch_unstemmed" type="text_unstemmed" multiValued="true" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
     <field name="clinicalTrialDisplay" type="text" multiValued="true" indexed="false" stored="true" required="false" />
+    <field name="autoSuggest" type="text_unstemmed" multiValued="true" indexed="true" stored="false" required="false" />
   </fields>
 
   <copyField source="biography" dest="biography_unstemmed"/>
@@ -63,6 +64,14 @@ Template for schema.xml. Two areas are filled in:
   <copyField source="currentJobs" dest="currentJobs_unstemmed"/>
   <copyField source="formerJobs" dest="formerJobs_unstemmed"/>
   <copyField source="clinicalTrialSearch" dest="clinicalTrialSearch_unstemmed"/>
+
+
+  <copyField source="biography" dest="autoSuggest"/>
+  <copyField source="profileQuestions" dest="autoSuggest"/>
+  <copyField source="projectHistory" dest="autoSuggest"/>
+  <copyField source="currentJobs" dest="autoSuggest"/>
+  <copyField source="formerJobs" dest="autoSuggest"/>
+  <copyField source="clinicalTrialSearch" dest="autoSuggest"/>
 
 
   <!-- Field to use to determine and enforce document uniqueness.
