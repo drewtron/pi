@@ -11,6 +11,7 @@ Template for schema.xml. Two areas are filled in:
   <fields>
 
     <field name="id" type="string" indexed="true" stored="true" required="true"/>
+    <field name="dunsId" type="string" indexed="true" stored="true" required="false"/>
     <field name="name" type="name" indexed="true" stored="true" required="false"/>
     <field name="name_ngram" type="edge_ngram_text" indexed="true" stored="false" required="false"/>
     <field name="partyType" type="string" indexed="true" stored="true" required="false"/>
