@@ -142,25 +142,35 @@
 
   </lst>
 
-</requestHandler>
 
-  <requestHandler name="/spell"
+</requestHandler>
+  <requestHandler name="/suggest"
                   class="solr.SearchHandler">
     <lst name="defaults">
-
-      <str name="rows">0</str>
-
       <str name="wt">json</str>
-
       <str name="spellcheck">true</str>
-      <str name="spellcheck.dictionary">default</str>
+      <str name="spellcheck.dictionary">suggest</str>
       <str name="spellcheck.count">5</str>
+      <str name="spellcheck.collate">true</str>
     </lst>
 
-    <arr name="last-components">
-      <str>spellcheck</str>
+    <arr name="components">
+      <str>suggest</str>
     </arr>
   </requestHandler>
+
+  <searchComponent name="suggest" class="solr.SpellCheckComponent">
+
+    <lst name="spellchecker">
+      <str name="name">suggest</str>
+      <str name="classname">org.apache.solr.spelling.suggest.Suggester</str>
+      <str name="lookupImpl">org.apache.solr.spelling.suggest.fst.WFSTLookupFactory</str>
+      <str name="field">autoSuggest</str>
+      <str name="buildOnCommit">true</str>
+      <float name="threshold">0.005</float>
+    </lst>
+
+  </searchComponent>
 
   <requestHandler name="/update/extract" 
                   startup="lazy"
@@ -176,20 +186,7 @@
     </lst>
   </requestHandler>
 
-  <searchComponent name="spellcheck" class="solr.SpellCheckComponent">
 
-    <str name="queryAnalyzerFieldType">text_unstemmed</str>
-
-    <lst name="spellchecker">
-      <str name="name">default</str>
-      <str name="field">autoSuggest</str>
-      <str name="buildOnOptimize">true</str>
-      <str name="spellcheckIndexDir">./spellchecker</str>
-      <float name="thresholdTokenFrequency">0.01</float>
-      <str name="classname">solr.IndexBasedSpellChecker</str>
-    </lst>
-
-  </searchComponent>
 
 <!-- ************************************************************************** -->
 
