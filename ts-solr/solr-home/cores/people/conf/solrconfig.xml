@@ -151,7 +151,6 @@
       <str name="spellcheck">true</str>
       <str name="spellcheck.dictionary">suggest</str>
       <str name="spellcheck.count">5</str>
-      <str name="spellcheck.collate">true</str>
     </lst>
 
     <arr name="components">
