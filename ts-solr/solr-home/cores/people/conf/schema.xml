@@ -31,6 +31,7 @@ Template for schema.xml. Two areas are filled in:
     <field name="hasClinicalTrials" type="bool" indexed="true" stored="true" required="false"/>
     <field name="isEmployedToPublic" type="bool" indexed="true" stored="true" required="false"/>
     <field name="isEmployedToPrivate" type="bool" indexed="true" stored="true" required="false"/>
+    <field name="isEmployedToPrivateSubsidiary" type="bool" indexed="true" stored="true" required="false"/>
     <field name="fortuneRank100" type="bool" indexed="true" stored="true" required="false"/>
     <field name="fortuneRank500" type="bool" indexed="true" stored="true" required="false"/>
     <field name="fortuneRank1000" type="bool" indexed="true" stored="true" required="false"/>
