@@ -129,6 +129,8 @@
         currentJobs_unstemmed
         clinicalTrialSearch
         clinicalTrialSearch_unstemmed
+        resume
+        resume_unstemmed
       </str>
       <str name="hl.fragsize">0</str>
       <str name="hl.requireFieldMatch">true</str>

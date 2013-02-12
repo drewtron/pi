@@ -53,6 +53,7 @@ define "pi" do
 
   clean.enhance do
     FileUtils.rm_rf "#{SOLR_HOME}solr.war"
+    FileUtils.rm_rf "#{SOLR_LIB}"
   end
 
   # Package custom GLG jars
@@ -62,6 +63,7 @@ define "pi" do
     Dir::mkdir(SOLR_LIB) unless File.exists?(SOLR_LIB)
     compile.dependencies.map { |dep| FileUtils.cp dep.to_s , SOLR_LIB }
 
+    #https://github.com/james75/SolrMongoImporter
     sh "cp lib/solr-mongo-importer-1.0.0.jar #{SOLR_LIB}solr-mongo-importer-1.0.0.jar"
 
     sh "cp #{SOLR_WAR} #{SOLR_HOME}solr.war"
