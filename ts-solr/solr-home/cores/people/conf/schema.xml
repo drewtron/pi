@@ -44,6 +44,8 @@ Template for schema.xml. Two areas are filled in:
     <field name="lastSignedTermsAndConditions" type="int" indexed="true" stored="true" required="false"/>
     <field name="biography" type="text" indexed="true" omitNorms="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true" />
     <field name="biography_unstemmed" type="text_unstemmed" omitNorms="true" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
+    <field name="resume" type="text" indexed="true" omitNorms="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true" />
+    <field name="resume_unstemmed" type="text_unstemmed" omitNorms="true" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
     <field name="practicearea" type="string" indexed="true" stored="true" required="false"/>
     <field name="currentJobs" type="text" indexed="true" stored="true" required="false" multiValued="false" />
     <field name="currentJobs_unstemmed" type="text_unstemmed" indexed="true" stored="true" required="false" multiValued="true" termPositions="true" termVectors="true" termOffsets="true" />
@@ -65,6 +67,7 @@ Template for schema.xml. Two areas are filled in:
   </fields>
 
   <copyField source="biography" dest="biography_unstemmed"/>
+  <copyField source="resume" dest="resume_unstemmed"/>
   <copyField source="profileQuestions" dest="profileQuestions_unstemmed"/>
   <copyField source="projectHistory" dest="projectHistory_unstemmed"/>
   <copyField source="currentJobs" dest="currentJobs_unstemmed"/>
