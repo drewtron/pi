@@ -110,7 +110,7 @@
         numProjectsPaid practicearea lastSignedTermsAndConditions
         hourlyRate phone email isDNC clinicalTrialDisplay isNew
         isScholar isLeader isEducator consultationFeedback isKeyExecutive
-        hasMarketingPermission isCouncilPartner hasClinicalTrials isBoardMember
+        hasMarketingPermission isCouncilPartner hasClinicalTrials isBoardMember resumeUrl
       </str>
       <str name="q.alt">*:*</str>
       <str name="wt">json</str>
