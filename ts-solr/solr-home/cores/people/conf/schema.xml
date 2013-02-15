@@ -50,6 +50,9 @@ Template for schema.xml. Two areas are filled in:
     <field name="practicearea" type="string" indexed="true" stored="true" required="false"/>
     <field name="currentJobs" type="text" indexed="true" stored="true" required="false" multiValued="false" />
     <field name="currentJobs_unstemmed" type="text_unstemmed" indexed="true" stored="true" required="false" multiValued="true" termPositions="true" termVectors="true" termOffsets="true" />
+    <field name="Jobs0To6MonthsAgo" type="text" indexed="true" stored="true" required="false" multiValued="true" />
+    <field name="Jobs6To24MonthsAgo" type="text" indexed="true" stored="true" required="false" multiValued="true" />
+    <field name="JobsOver24MonthsAgo" type="text" indexed="true" stored="true" required="false" multiValued="true" />
     <field name="formerJobs" type="text" indexed="true" stored="true" required="false" multiValued="false" />
     <field name="formerJobs_unstemmed" type="text_unstemmed" indexed="true" stored="true" required="false" multiValued="true" termPositions="true" termVectors="true" termOffsets="true" />
     <field name="hourlyRate" type="int" indexed="true" stored="true" required="false"/>
