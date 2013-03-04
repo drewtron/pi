@@ -77,32 +77,20 @@
       <str name="ps">0</str>
       <str name="pf">
         biography^5
-        biography_unstemmed^7
         profileQuestions^3
-        profileQuestions_unstemmed^3
         currentJobs^3
-        currentJobs_unstemmed^3
         formerJobs^3
-        formerJobs_unstemmed^3
         projectHistory^3
-        projectHistory_unstemmed^3
         clinicalTrialSearch^3
-        clinicalTrialSearch_unstemmed^3
       </str>
       <str name="ps2">5</str>
       <str name="pf2">
         biography^2
-        biography_unstemmed^3
         profileQuestions
-        profileQuestions_unstemmed
         currentJobs^2
-        currentJobs_unstemmed^2
         formerJobs^3
-        formerJobs_unstemmed^4
         projectHistory^2
-        projectHistory_unstemmed^3
         clinicalTrialSearch^2
-        clinicalTrialSearch_unstemmed^2
       </str>
       <str name="fl">
         id sourceid type currentJobs
@@ -122,15 +110,10 @@
       <str name="hl.fl">
         name
         biography
-        biography_unstemmed
         formerJobs
-        formerJobs_unstemmed
         currentJobs
-        currentJobs_unstemmed
         clinicalTrialSearch
-        clinicalTrialSearch_unstemmed
         resume
-        resume_unstemmed
       </str>
       <str name="hl.fragsize">0</str>
       <str name="hl.requireFieldMatch">true</str>

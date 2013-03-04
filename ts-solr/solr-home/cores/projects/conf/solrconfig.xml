@@ -77,9 +77,7 @@
       <str name="uf">*</str>
       <str name="pf">
         title^5
-        title_unstemmed^10
         description^5
-        description_unstemmed^10
       </str>
       <str name="fl">
         id consultationId partyId createDate
@@ -90,9 +88,7 @@
       <str name="hl">true</str>
       <str name="hl.fl">
         title
-        title_unstemmed
         description
-        description_unstemmed
       </str>
       <str name="hl.fragsize">0</str>
       <str name="hl.requireFieldMatch">true</str>
