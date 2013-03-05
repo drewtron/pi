@@ -77,9 +77,7 @@
       <str name="uf">*</str>
       <str name="pf">
         questionText^5
-        questionText_unstemmed^10
         responseText^5
-        responseText_unstemmed^10
       </str>
       <str name="fl">
         id questionId partyId responseDate
@@ -90,9 +88,7 @@
       <str name="hl">true</str>
       <str name="hl.fl">
         questionText
-        questionText_unstemmed
         responseText
-        responseText_unstemmed
         subjectTaxonomyPath
       </str>
       <str name="hl.fragsize">0</str>

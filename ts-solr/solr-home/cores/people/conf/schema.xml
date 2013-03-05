@@ -43,49 +43,24 @@ Template for schema.xml. Two areas are filled in:
     <field name="isTermsAndConditionsSigned" type="bool" indexed="true" stored="true" required="false"/>
     <field name="lastSignedTermsAndConditions" type="int" indexed="true" stored="true" required="false"/>
     <field name="biography" type="text" indexed="true" omitNorms="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true" />
-    <field name="biography_unstemmed" type="text_unstemmed" omitNorms="true" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
     <field name="resume" type="text" indexed="true" omitNorms="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true" />
     <field name="resumeUrl" type="string" indexed="false" stored="true" required="false" />
-    <field name="resume_unstemmed" type="text_unstemmed" omitNorms="true" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
     <field name="practicearea" type="string" indexed="true" stored="true" required="false"/>
     <field name="currentJobs" type="text" indexed="true" stored="true" required="false" multiValued="false" />
-    <field name="currentJobs_unstemmed" type="text_unstemmed" indexed="true" stored="true" required="false" multiValued="true" termPositions="true" termVectors="true" termOffsets="true" />
     <field name="Jobs0To6MonthsAgo" type="text" indexed="true" stored="true" required="false" multiValued="true" />
     <field name="Jobs6To24MonthsAgo" type="text" indexed="true" stored="true" required="false" multiValued="true" />
     <field name="JobsOver24MonthsAgo" type="text" indexed="true" stored="true" required="false" multiValued="true" />
     <field name="formerJobs" type="text" indexed="true" stored="true" required="false" multiValued="false" />
-    <field name="formerJobs_unstemmed" type="text_unstemmed" indexed="true" stored="true" required="false" multiValued="true" termPositions="true" termVectors="true" termOffsets="true" />
     <field name="hourlyRate" type="int" indexed="true" stored="true" required="false"/>
     <field name="phone" type="text" indexed="false" stored="true" required="false"/>
     <field name="email" type="text" indexed="false" stored="true" required="false"/>
     <field name="profileQuestions" type="text" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
-    <field name="profileQuestions_unstemmed" type="text_unstemmed" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
     <field name="numGivenToClient" type="integer" indexed="false" stored="true" required="false"/>
     <field name="numProjectsPaid" type="int" indexed="true" stored="true" required="false"/>
     <field name="projectHistory" type="text" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
-    <field name="projectHistory_unstemmed" type="text_unstemmed" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
     <field name="clinicalTrialSearch" type="text" multiValued="true" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
-    <field name="clinicalTrialSearch_unstemmed" type="text_unstemmed" multiValued="true" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
     <field name="clinicalTrialDisplay" type="text" multiValued="true" indexed="false" stored="true" required="false" />
-    <field name="autoSuggest" type="text_unstemmed" multiValued="true" indexed="true" stored="false" required="false" />
   </fields>
-
-  <copyField source="biography" dest="biography_unstemmed"/>
-  <copyField source="resume" dest="resume_unstemmed"/>
-  <copyField source="profileQuestions" dest="profileQuestions_unstemmed"/>
-  <copyField source="projectHistory" dest="projectHistory_unstemmed"/>
-  <copyField source="currentJobs" dest="currentJobs_unstemmed"/>
-  <copyField source="formerJobs" dest="formerJobs_unstemmed"/>
-  <copyField source="clinicalTrialSearch" dest="clinicalTrialSearch_unstemmed"/>
-
-
-  <copyField source="biography" dest="autoSuggest"/>
-  <copyField source="profileQuestions" dest="autoSuggest"/>
-  <copyField source="projectHistory" dest="autoSuggest"/>
-  <copyField source="currentJobs" dest="autoSuggest"/>
-  <copyField source="formerJobs" dest="autoSuggest"/>
-  <copyField source="clinicalTrialSearch" dest="autoSuggest"/>
-
 
   <!-- Field to use to determine and enforce document uniqueness.
      Unless this field is marked with required="false", it will be a required field
