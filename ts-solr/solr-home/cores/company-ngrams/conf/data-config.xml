@@ -8,8 +8,8 @@
   <document name="Companies">
     <entity name="company"
             processor="MongoEntityProcessor"
-            query="{'partyType':'Company'}"
-            collection="parties"
+            query="{}"
+            collection="normalized_companies"
             datasource="Mosaic"
             transformer="MongoMapperTransformer" >
 
