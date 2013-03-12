@@ -14,13 +14,12 @@ Template for schema.xml. Two areas are filled in:
     <field name="dunsId" type="string" indexed="true" stored="true" required="false"/>
     <field name="name" type="name" indexed="true" stored="true" required="false"/>
     <field name="name_ngram" type="edge_ngram_text" indexed="true" stored="false" required="false"/>
-    <field name="partyType" type="string" indexed="true" stored="true" required="false"/>
     <field name="stockExchange" type="name" indexed="true" stored="true" required="false"/>
     <field name="stockExchange_ngram" type="edge_ngram_text" indexed="true" stored="false" required="false"/>
     <field name="tickerSymbol" type="name" indexed="true" stored="true" required="false"/>
     <field name="tickerSymbol_ngram" type="edge_ngram_text" indexed="true" stored="false" required="false"/>
     <field name="isPublic" type="bool" indexed="true" stored="true" required="false"/>
-    <field name="relationship_count" type="int" indexed="true" stored="true" required="false"/>
+    <field name="relationshipCount" type="int" indexed="true" stored="true" required="false"/>
 
   </fields>
 

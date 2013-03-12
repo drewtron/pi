@@ -3,6 +3,7 @@
   <cores adminPath="/admin/cores">
     <!-- List of cores to be included in solr. -->
     <core instanceDir="cores/company-ngrams" name="company-ngrams"/>
+    <core instanceDir="cores/normalized-companies" name="normalized-companies"/>
     <core instanceDir="cores/people" name="people"/>
     <core instanceDir="cores/questions" name="questions"/>
     <core instanceDir="cores/projects" name="projects"/>
