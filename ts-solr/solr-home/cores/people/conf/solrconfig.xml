@@ -62,7 +62,7 @@
 
 <!-- ************************************************************************** -->
 
-<requestHandler name="/people"
+<requestHandler name="/select"
                 class="solr.SearchHandler">
   <lst name="defaults">
       <!--

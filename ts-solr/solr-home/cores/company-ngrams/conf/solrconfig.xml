@@ -62,8 +62,7 @@
 
   <!-- ************************************************************************** -->
 
-  <requestHandler name="/companysearch"
-                  class="solr.SearchHandler">
+  <requestHandler name="/select" class="solr.SearchHandler">
     <lst name="defaults">
       <!--
       http://wiki.apache.org/solr/ExtendedDisMax
