@@ -29,12 +29,12 @@ Template for schema.xml. Two areas are filled in:
     <field name="isCouncilPartner" type="bool" indexed="true" stored="true" required="false"/>
     <field name="hasMarketingPermission" type="bool" indexed="true" stored="true" required="false"/>
     <field name="hasClinicalTrials" type="bool" indexed="true" stored="true" required="false"/>
-    <field name="isEmployedToPublic" type="bool" indexed="true" stored="true" required="false"/>
-    <field name="isEmployedToPrivate" type="bool" indexed="true" stored="true" required="false"/>
-    <field name="isEmployedToPrivateSubsidiary" type="bool" indexed="true" stored="true" required="false"/>
-    <field name="fortuneRank100" type="bool" indexed="true" stored="true" required="false"/>
-    <field name="fortuneRank500" type="bool" indexed="true" stored="true" required="false"/>
-    <field name="fortuneRank1000" type="bool" indexed="true" stored="true" required="false"/>
+    <field name="isEmployedToPublic" type="bool" indexed="true" stored="false" required="false"/>
+    <field name="isEmployedToPrivate" type="bool" indexed="true" stored="false" required="false"/>
+    <field name="isEmployedToPrivateSubsidiary" type="bool" indexed="true" stored="false" required="false"/>
+    <field name="fortuneRank100" type="bool" indexed="true" stored="false" required="false"/>
+    <field name="fortuneRank500" type="bool" indexed="true" stored="false" required="false"/>
+    <field name="fortuneRank1000" type="bool" indexed="true" stored="false" required="false"/>
     <field name="isLeader" type="bool" indexed="true" stored="true" required="false"/>
     <field name="isScholar" type="bool" indexed="true" stored="true" required="false"/>
     <field name="isEducator" type="bool" indexed="true" stored="true" required="false"/>
@@ -47,9 +47,9 @@ Template for schema.xml. Two areas are filled in:
     <field name="resumeUrl" type="string" indexed="false" stored="true" required="false" />
     <field name="practicearea" type="string" indexed="true" stored="true" required="false"/>
     <field name="currentJobs" type="text" indexed="true" stored="true" required="false" multiValued="false" />
-    <field name="Jobs0To6MonthsAgo" type="text" indexed="true" stored="true" required="false" multiValued="true" />
-    <field name="Jobs6To24MonthsAgo" type="text" indexed="true" stored="true" required="false" multiValued="true" />
-    <field name="JobsOver24MonthsAgo" type="text" indexed="true" stored="true" required="false" multiValued="true" />
+    <field name="Jobs0To6MonthsAgo" type="text" indexed="true" stored="false" required="false" multiValued="true" />
+    <field name="Jobs6To24MonthsAgo" type="text" indexed="true" stored="false" required="false" multiValued="true" />
+    <field name="JobsOver24MonthsAgo" type="text" indexed="true" stored="false" required="false" multiValued="true" />
     <field name="formerJobs" type="text" indexed="true" stored="true" required="false" multiValued="false" />
     <field name="hourlyRate" type="int" indexed="true" stored="true" required="false"/>
     <field name="phone" type="text" indexed="false" stored="true" required="false"/>
