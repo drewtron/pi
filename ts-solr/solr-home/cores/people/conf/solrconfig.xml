@@ -78,8 +78,7 @@
       <str name="pf">
         biography^5
         profileQuestions^3
-        currentJobs^3
-        formerJobs^3
+        jobs^3
         projectHistory^3
         clinicalTrialSearch^3
       </str>
@@ -87,13 +86,12 @@
       <str name="pf2">
         biography^2
         profileQuestions
-        currentJobs^2
-        formerJobs^3
+        jobs^2
         projectHistory^2
         clinicalTrialSearch^2
       </str>
       <str name="fl">
-        id sourceid type currentJobs
+        id sourceid type jobs
         city state country numGivenToClient
         numProjectsPaid practicearea lastSignedTermsAndConditions
         hourlyRate phone email isDNC clinicalTrialDisplay isNew
@@ -110,8 +108,7 @@
       <str name="hl.fl">
         name
         biography
-        formerJobs
-        currentJobs
+        jobs
         clinicalTrialSearch
         resume
       </str>
@@ -119,8 +116,7 @@
       <str name="hl.requireFieldMatch">true</str>
       <str name="hl.usePhraseHighlighter">true</str>
       <str name="f.biography.hl.alternateField">biography</str>
-      <str name="f.currentJobs.hl.alternateField">currentJobs</str>
-      <str name="f.formerJobs.hl.alternateField">formerJobs</str>
+      <str name="f.jobs.hl.alternateField">jobs</str>
       <str name="f.name.hl.alternateField">name</str>
       <str name="f.clinicalTrialSearch.hl.alternateField">clinicalTrialSearch</str>
       <str name="f.clinicalTrialSearch.hl.snippets">5</str>
