@@ -105,6 +105,7 @@
 
       <str name="facet">true</str>
       <str name="facet.mincount">1</str>
+      <str name="facet.pivot">continent,country,state</str>
 
       <str name="hl">true</str>
       <str name="hl.fl">
