@@ -73,8 +73,9 @@
       <float name="tie">0.01</float>
       <str name="rows">5</str>
       <str name="mm">0</str>
-      <str name="rows">25</str>
+      <str name="rows">5</str>
       <str name="uf">*</str>
+      <str name="qf">questionText responseText subjectTaxonomyPath</str>
       <str name="pf">
         questionText^5
         responseText^5
