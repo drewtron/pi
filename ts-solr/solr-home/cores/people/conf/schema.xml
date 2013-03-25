@@ -63,6 +63,7 @@ Template for schema.xml. Two areas are filled in:
     <field name="clinicalTrialSearch" type="text" multiValued="true" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
     <field name="clinicalTrialDisplay" type="text" multiValued="true" indexed="false" stored="true" required="false" />
     <field name="corpTaxonomy" type="taxonomy" multiValued="true" indexed="true" stored="true" required="false" />
+    <field name="jobTaxonomy" type="taxonomy" multiValued="true" indexed="true" stored="true" required="false" />
   </fields>
 
   <!-- Field to use to determine and enforce document uniqueness.

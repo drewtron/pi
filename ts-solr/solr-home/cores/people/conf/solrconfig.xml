@@ -105,6 +105,7 @@
 
       <str name="facet">true</str>
       <str name="facet.field">{!ex=ctax}corpTaxonomy</str>
+      <str name="facet.field">{!ex=jtax}jobTaxonomy</str>
       <str name="facet.mincount">1</str>
       <str name="facet.pivot">{!ex=ct}continent,country,state</str>
 
