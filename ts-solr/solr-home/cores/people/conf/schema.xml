@@ -80,6 +80,17 @@ Template for schema.xml. Two areas are filled in:
     <field name="jobTaxOver24MonthsAgo" type="taxonomy" indexed="true" stored="false" required="false" multiValued="true" />
 
 
+
+
+    <field name="AllCurrentJobs" type="text" indexed="true" stored="false" required="false" multiValued="true" />
+    <field name="AllFormerJobs" type="text" indexed="true" stored="false" required="false" multiValued="true" />
+    <field name="Jobs0To6MonthsAgo" type="text" indexed="true" stored="false" required="false" multiValued="true" />
+    <field name="Jobs6To24MonthsAgo" type="text" indexed="true" stored="false" required="false" multiValued="true" />
+    <field name="JobsOver24MonthsAgo" type="text" indexed="true" stored="false" required="false" multiValued="true" />
+    <field name="corpTaxonomy" type="taxonomy" multiValued="true" indexed="true" stored="true" required="false" />
+    <field name="jobTaxonomy" type="taxonomy" multiValued="true" indexed="true" stored="true" required="false" />
+
+
   </fields>
 
   <!-- Field to use to determine and enforce document uniqueness.
