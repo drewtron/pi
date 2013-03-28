@@ -58,6 +58,7 @@ Template for schema.xml. Two areas are filled in:
     <field name="clinicalTrialDisplay" type="text" multiValued="true" indexed="false" stored="true" required="false" />
 
     <field name="jobs" type="text" indexed="true" stored="true" required="false" multiValued="false" />
+    <field name="jobAll" type="text" indexed="true" stored="false" required="false" multiValued="true" />
     <field name="jobAllCurrent" type="text" indexed="true" stored="false" required="false" multiValued="true" />
     <field name="jobAllFormer" type="text" indexed="true" stored="false" required="false" multiValued="true" />
     <field name="job0To6MonthsAgo" type="text" indexed="true" stored="false" required="false" multiValued="true" />
