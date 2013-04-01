@@ -58,7 +58,9 @@ Template for schema.xml. Two areas are filled in:
     <field name="clinicalTrialDisplay" type="text" multiValued="true" indexed="false" stored="true" required="false" />
 
     <field name="jobs" type="text" indexed="true" stored="true" required="false" multiValued="false" />
+    <dynamicField name="*_Bucket"  type="text" multiValued="true"  indexed="true" stored="true"/>
     <dynamicField name="*_Facet"  type="string" multiValued="true"  indexed="true" stored="true"/>
+
 
   </fields>
 
