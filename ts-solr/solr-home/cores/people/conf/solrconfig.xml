@@ -129,6 +129,7 @@
   <requestHandler name="/facets"
                   class="solr.SearchHandler">
     <lst name="defaults">
+
       <!--
       http://wiki.apache.org/solr/ExtendedDisMax
       -->
