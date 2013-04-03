@@ -58,37 +58,8 @@ Template for schema.xml. Two areas are filled in:
     <field name="clinicalTrialDisplay" type="text" multiValued="true" indexed="false" stored="true" required="false" />
 
     <field name="jobs" type="text" indexed="true" stored="true" required="false" multiValued="false" />
-    <field name="jobAll" type="text" indexed="true" stored="false" required="false" multiValued="true" />
-    <field name="jobAllCurrent" type="text" indexed="true" stored="false" required="false" multiValued="true" />
-    <field name="jobAllFormer" type="text" indexed="true" stored="false" required="false" multiValued="true" />
-    <field name="job0To6MonthsAgo" type="text" indexed="true" stored="false" required="false" multiValued="true" />
-    <field name="job6To24MonthsAgo" type="text" indexed="true" stored="false" required="false" multiValued="true" />
-    <field name="jobOver24MonthsAgo" type="text" indexed="true" stored="false" required="false" multiValued="true" />
-
-    <field name="corpTaxAll" type="taxonomy" indexed="true" stored="false" required="false" multiValued="true" />
-    <field name="corpTaxAllCurrent" type="taxonomy" indexed="true" stored="false" required="false" multiValued="true" />
-    <field name="corpTaxAllFormer" type="taxonomy" indexed="true" stored="false" required="false" multiValued="true" />
-    <field name="corpTax0To6MonthsAgo" type="taxonomy" indexed="true" stored="false" required="false" multiValued="true" />
-    <field name="corpTax6To24MonthsAgo" type="taxonomy" indexed="true" stored="false" required="false" multiValued="true" />
-    <field name="corpTaxOver24MonthsAgo" type="taxonomy" indexed="true" stored="false" required="false" multiValued="true" />
-
-    <field name="jobTaxAll" type="taxonomy" indexed="true" stored="false" required="false" multiValued="true" />
-    <field name="jobTaxAllCurrent" type="taxonomy" indexed="true" stored="false" required="false" multiValued="true" />
-    <field name="jobTaxAllFormer" type="taxonomy" indexed="true" stored="false" required="false" multiValued="true" />
-    <field name="jobTax0To6MonthsAgo" type="taxonomy" indexed="true" stored="false" required="false" multiValued="true" />
-    <field name="jobTax6To24MonthsAgo" type="taxonomy" indexed="true" stored="false" required="false" multiValued="true" />
-    <field name="jobTaxOver24MonthsAgo" type="taxonomy" indexed="true" stored="false" required="false" multiValued="true" />
-
-
-
-
-    <field name="AllCurrentJobs" type="text" indexed="true" stored="false" required="false" multiValued="true" />
-    <field name="AllFormerJobs" type="text" indexed="true" stored="false" required="false" multiValued="true" />
-    <field name="Jobs0To6MonthsAgo" type="text" indexed="true" stored="false" required="false" multiValued="true" />
-    <field name="Jobs6To24MonthsAgo" type="text" indexed="true" stored="false" required="false" multiValued="true" />
-    <field name="JobsOver24MonthsAgo" type="text" indexed="true" stored="false" required="false" multiValued="true" />
-    <field name="corpTaxonomy" type="taxonomy" multiValued="true" indexed="true" stored="true" required="false" />
-    <field name="jobTaxonomy" type="taxonomy" multiValued="true" indexed="true" stored="true" required="false" />
+    <dynamicField name="*_Bucket"  type="text" multiValued="true"  indexed="true" stored="true"/>
+    <dynamicField name="*_Facet"  type="string" multiValued="true"  indexed="true" stored="true"/>
 
 
   </fields>
