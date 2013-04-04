@@ -91,7 +91,7 @@
         clinicalTrialSearch^2
       </str>
       <str name="fl">
-        id sourceid type jobs
+        id sourceid type jobs email
         city state country numGivenToClient
         numProjectsPaid practicearea lastSignedTermsAndConditions
         hourlyRate phone email isDNC clinicalTrialDisplay isNew
@@ -107,12 +107,15 @@
       <str name="facet.limit">-1</str>
 
       <str name="hl">true</str>
+      <str name="hl.simple.pre">&lt;div class='keyword-hit'&gt;</str>
+      <str name="hl.simple.post">&lt;/div&gt;</str>
       <str name="hl.fl">
         name
         biography
         jobs
         clinicalTrialSearch
         resume
+        email
       </str>
       <str name="hl.fragsize">0</str>
       <str name="hl.requireFieldMatch">true</str>
@@ -121,6 +124,7 @@
       <str name="f.jobs.hl.alternateField">jobs</str>
       <str name="f.name.hl.alternateField">name</str>
       <str name="f.clinicalTrialSearch.hl.alternateField">clinicalTrialSearch</str>
+      <str name="f.email.hl.alternateField">email</str>
       <str name="f.clinicalTrialSearch.hl.snippets">5</str>
 
   </lst>

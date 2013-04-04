@@ -49,7 +49,7 @@ Template for schema.xml. Two areas are filled in:
     <field name="boardMembership" type="text" indexed="true" stored="true" required="false" multiValued="false" />
     <field name="hourlyRate" type="int" indexed="true" stored="true" required="false"/>
     <field name="phone" type="text" indexed="false" stored="true" required="false"/>
-    <field name="email" type="text" indexed="false" stored="true" required="false"/>
+    <field name="email" type="email" indexed="true" stored="true" required="false"/>
     <field name="profileQuestions" type="text" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
     <field name="numGivenToClient" type="integer" indexed="false" stored="true" required="false"/>
     <field name="numProjectsPaid" type="int" indexed="true" stored="true" required="false"/>
@@ -60,7 +60,6 @@ Template for schema.xml. Two areas are filled in:
     <field name="jobs" type="text" indexed="true" stored="true" required="false" multiValued="false" />
     <dynamicField name="*_Bucket"  type="text" multiValued="true"  indexed="true" stored="true"/>
     <dynamicField name="*_Facet"  type="string" multiValued="true"  indexed="true" stored="true"/>
-
 
   </fields>
 
@@ -161,14 +160,21 @@ Template for schema.xml. Two areas are filled in:
       </analyzer>
     </fieldType>
 
-    <fieldType name="taxonomy" positionIncrementGap="100" class="solr.TextField">
-      <analyzer type="index">
-        <tokenizer class="solr.PathHierarchyTokenizerFactory" delimiter="|" />
-      </analyzer>
-      <analyzer type="query">
-        <tokenizer class="solr.KeywordTokenizerFactory" />
+    <fieldType name="email" class="solr.TextField" positionIncrementGap="100">
+      <analyzer>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.WordDelimiterFilterFactory"
+                generateWordParts="1"
+                generateNumberParts="1"
+                catenateWords="0"
+                catenateNumbers="0"
+                catenateAll="0"
+                splitOnCaseChange="0"
+                preserveOriginal="1" />
       </analyzer>
     </fieldType>
+
 
     <fieldType name="text_unstemmed" class="solr.TextField" positionIncrementGap="100">
       <analyzer>
