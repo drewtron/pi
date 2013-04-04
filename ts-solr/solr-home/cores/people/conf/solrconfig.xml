@@ -91,7 +91,7 @@
         clinicalTrialSearch^2
       </str>
       <str name="fl">
-        id sourceid type jobs email
+        id sourceid type jobs
         city state country numGivenToClient
         numProjectsPaid practicearea lastSignedTermsAndConditions
         hourlyRate email isDNC clinicalTrialDisplay isNew
