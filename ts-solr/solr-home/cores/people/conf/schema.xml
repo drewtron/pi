@@ -48,7 +48,7 @@ Template for schema.xml. Two areas are filled in:
     <field name="practicearea" type="string" indexed="true" stored="true" required="false"/>
     <field name="boardMembership" type="text" indexed="true" stored="true" required="false" multiValued="false" />
     <field name="hourlyRate" type="int" indexed="true" stored="true" required="false"/>
-    <field name="phone" type="phone" indexed="true" stored="true" required="false"/>
+    <field name="phone" type="text_phone" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
     <field name="email" type="email" indexed="true" stored="true" required="false"/>
     <field name="profileQuestions" type="text" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
     <field name="numGivenToClient" type="integer" indexed="false" stored="true" required="false"/>
@@ -167,21 +167,24 @@ Template for schema.xml. Two areas are filled in:
       </analyzer>
     </fieldType>
 
-    <fieldType name="phone" class="solr.TextField" positionIncrementGap="100">
-      <analyzer>
+    <fieldType name="text_phone" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
         <tokenizer class="solr.KeywordTokenizerFactory"/>
         <filter class="solr.LowerCaseFilterFactory"/>
         <filter class="solr.WordDelimiterFilterFactory"
-                generateWordParts="1"
                 generateNumberParts="1"
-                catenateWords="0"
                 catenateNumbers="1"
-                catenateAll="1"
-                splitOnCaseChange="0"
-                preserveOriginal="1" />
+                catenateAll="1" />
         <filter class="solr.SynonymFilterFactory" synonyms="phone-synonyms.txt" ignoreCase="true" expand="true"/>
       </analyzer>
-
+      <analyzer type="query">
+        <tokenizer class="solr.KeywordTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.WordDelimiterFilterFactory"
+                catenateNumbers="1"
+                catenateAll="1" />
+        <filter class="solr.SynonymFilterFactory" synonyms="phone-synonyms.txt" ignoreCase="true" expand="true"/>
+      </analyzer>
     </fieldType>
 
 
