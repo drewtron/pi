@@ -139,7 +139,7 @@ define "pi" do
       <requestHandler name="/replication" class="solr.ReplicationHandler" >
         <lst name="master">
             <str name="replicateAfter">optimize</str>
-            <str name="confFiles">schema.xml,data-config.xml</str>
+            <str name="confFiles">schema.xml</str>
         </lst>
       </requestHandler>
       EOHTML
