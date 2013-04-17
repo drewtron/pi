@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dataConfig>
+  <dataSource type="JdbcDataSource" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://10.45.205.242/ark"
+              user="glguser" password="password_1"/>
+  <document name="ProjectParticipants">
+    <entity name="ProjectParticipants"
+            query="
+              select
+                @rownum:=@rownum+1 as 'id',
+                concat(p.firstname, ' ', p.lastname) as name,
+                mp.productId,
+                mp.duration,
+                cast(GROUP_CONCAT(o.name SEPARATOR '+++') as char) as currentCompanies
+              from meetingparticipant mp
+              join meeting m on m.productid = mp.productid
+              join person p on p.partyid = mp.partyid
+              left join partyrelationship r on p.partyid = r.frompartyid
+              left join employment e on r.partyrelationshipid = e.partyrelationshipid
+              left join organization o on r.topartyid = o.partyid
+              JOIN (SELECT @rownum:=0) q
+              where m.meetingtype = 'consultation'
+                and e.iscurrent <=> 1 and not e.isboardmember <=> 1
+                and mp.PaidDate is not null
+                and e.isFromCapIq = 0 and (o.isFromGlg or o.isFromDnb or (e.isFromBoardex and e.isBoardMember))
+              group by mp.productid">
+
+      <field name="id" column="id" />
+      <field name="name" column="name" />
+      <field name="productId" column="productId" />
+      <field name="duration" column="duration" />
+      <field name="currentCompanies" column="currentCompanies" />
+    </entity>
+  </document>
+</dataConfig>
