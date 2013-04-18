@@ -19,7 +19,7 @@
               left join organization o on r.topartyid = o.partyid
               JOIN (SELECT @rownum:=0) q
               where m.meetingtype = 'consultation'
-                and e.iscurrent <=> 1 and not e.isboardmember <=> 1
+                and e.iscurrent &lt;=&gt; 1 and not e.isboardmember &lt;=&gt; 1
                 and mp.PaidDate is not null
                 and e.isFromCapIq = 0 and (o.isFromGlg or o.isFromDnb or (e.isFromBoardex and e.isBoardMember))
               group by mp.productid">
