@@ -7,19 +7,21 @@
             query="
               select
               @rownum:=@rownum+1 as 'id',
-              mp.partyid,
+              cast(GROUP_CONCAT(mp.partyid SEPARATOR ' ') as char) as partyids,
               m.title,
               m.description,
+              m.ProductId,
               m.ConsultationId,
               m.CreateDate
               from meetingparticipant mp
               join meeting m on m.productid = mp.productid
               JOIN (SELECT @rownum:=0) r
               where meetingtype = 'consultation'
-              and (mp.GivenToClientDate is not null or mp.PaidDate is not null)">
+              and mp.PaidDate is not null
+			  group by consultationid">
 
       <field name="id" column="id" />
-      <field name="partyId" column="partyId" />
+      <field name="partyIds" column="partyIds" />
       <field name="title" column="title" />
       <field name="description" column="description" />
       <field name="consultationId" column="consultationId" />
