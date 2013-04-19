@@ -72,9 +72,9 @@
       <str name="echoParams">explicit</str>
       <float name="tie">0.01</float>
       <str name="rows">5</str>
-      <str name="sort">createDate desc, score desc</str>
       <str name="mm">0</str>
       <str name="uf">*</str>
+      <str name="boost">recip(ms(NOW/HOUR,createDate),3.16e-11,1,1)</str>
       <str name="qf">title description</str>
       <str name="pf">
         title^5
