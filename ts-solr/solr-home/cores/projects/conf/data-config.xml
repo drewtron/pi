@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <dataConfig>
-  <dataSource type="JdbcDataSource" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://10.45.205.242/ark"
+  <dataSource type="JdbcDataSource" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://10.45.205.196/ark"
               user="glguser" password="password_1"/>
   <document name="Projects">
     <entity name="Projects"
@@ -20,7 +20,6 @@
               where meetingtype = 'consultation'
               and mp.PaidDate is not null
 			  group by consultationid">
-
       <field name="id" column="id" />
       <field name="partyIds" column="partyIds" />
       <field name="title" column="title" />
