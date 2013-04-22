@@ -12,6 +12,7 @@
               m.description,
               m.ProductId,
               m.ConsultationId,
+			  m.PracticeArea,
               m.CreateDate
               from meetingparticipant mp
               join meeting m on m.productid = mp.productid
@@ -25,6 +26,7 @@
       <field name="title" column="title" />
       <field name="description" column="description" />
       <field name="consultationId" column="consultationId" />
+      <field name="practiceArea" column="practiceArea" />
       <field name="createDate" column="createDate" />
     </entity>
   </document>
