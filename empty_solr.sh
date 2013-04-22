@@ -1,1 +1,1 @@
-curl "http://localhost:8080/solr/people/update?commit=true" -H "Content-Type: text/xml" --data-binary '<delete><query>*:*</query></delete>'
+rm -f ./ts-solr/solr-home/cores/*/data/index/*
