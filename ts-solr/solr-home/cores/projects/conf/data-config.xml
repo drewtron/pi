@@ -13,12 +13,15 @@
               m.ProductId,
               m.ConsultationId,
 			  m.PracticeArea,
-              m.CreateDate
+              m.CreateDate,
+              m.Status,
+              o.Name as ClientName,
+              o.OrgType as ClientType
               from meetingparticipant mp
               join meeting m on m.productid = mp.productid
+              join organization o on o.partyid = m.accountpartyid
               JOIN (SELECT @rownum:=0) r
               where meetingtype = 'consultation'
-              and mp.PaidDate is not null
 			  group by consultationid">
       <field name="id" column="id" />
       <field name="partyIds" column="partyIds" />
@@ -27,6 +30,9 @@
       <field name="consultationId" column="consultationId" />
       <field name="practiceArea" column="practiceArea" />
       <field name="createDate" column="createDate" />
+      <field name="status" column="status" />
+      <field name="clientName" column="clientName" />
+      <field name="clientType" column="clientType" />
     </entity>
   </document>
 </dataConfig>

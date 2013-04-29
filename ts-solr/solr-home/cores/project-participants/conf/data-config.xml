@@ -10,6 +10,35 @@
                 concat(p.firstname, ' ', p.lastname) as name,
                 mp.productId,
                 mp.duration,
+                mp.status,
+				case mp.status
+					when 'Added to List' then mp.AddedToListDate
+					when 'Invited' then mp.InvitedDate
+					when 'Accepted' then mp.AcceptedDate
+					when 'Declined' then mp.DeclinedDate
+					when 'Scheduled' then mp.ScheduledDate
+					when 'Confirmation Sent' then mp.ConfirmationSentDate
+					when 'Confirmed' then mp.ConfirmedDate
+					when 'Not Given' then mp.NotGivenDate
+					when 'Given to Client' then mp.GivenToClientDate
+					when 'Canceled' then mp.CanceledDate
+					when 'Not Called' then mp.NotCalledDate
+					when 'Remind to Invoice' then mp.RemindToInvoiceDate
+					when 'Requested Payment' then mp.RequestedPaymentDate
+					when 'Paid' then mp.PaidDate
+					when 'Initial Paid' then mp.InitialPaidDate
+					when 'Payment Voided' then mp.PaymentVoidedDate
+					when 'Applied' then mp.AppliedDate
+					when 'Proposed' then mp.ProposedDate
+					when 'Rejected' then mp.RejectedDate
+					when 'Preview' then mp.PreviewDate
+					when 'Failed OQs' then mp.FailedOQsDate
+					when 'RSVP' then mp.RSVPDate
+					when 'Wait List' then mp.WaitListDate
+					when 'No Show' then mp.NoShowDate
+					when 'Crash List' then mp.CrashListDate
+					when 'Declined Payment' then mp.RequestedPaymentDate
+				end as 'StatusDate',
                 cast(GROUP_CONCAT(o.name SEPARATOR '+++') as char) as currentCompanies
               from meetingparticipant mp
               join meeting m on m.productid = mp.productid
@@ -21,14 +50,20 @@
               where m.meetingtype = 'consultation'
                 and e.iscurrent &lt;=&gt; 1 and not e.isboardmember &lt;=&gt; 1
                 and mp.PaidDate is not null
-                and e.isFromCapIq = 0 and (o.isFromGlg or o.isFromDnb or (e.isFromBoardex and e.isBoardMember))
-              group by mp.productid">
+                and e.isFromCapIq = 0 and (o.isFromGlg or o.isFromDnb)
+              group by mp.productid, id, name, mp.duration, mp.status, StatusDate">
 
       <field name="id" column="id" />
       <field name="name" column="name" />
       <field name="productId" column="productId" />
       <field name="duration" column="duration" />
+      <field name="status" column="status" />
+      <field name="statusDate" column="statusDate" />
       <field name="currentCompanies" column="currentCompanies" />
     </entity>
   </document>
 </dataConfig>
+
+
+
+
