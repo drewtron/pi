@@ -16,9 +16,12 @@ Template for schema.xml. Two areas are filled in:
     <field name="partyIds" type="text" indexed="true" stored="true" required="true"/>
     <field name="title" type="text" indexed="true" stored="true" required="false"/>
     <field name="description" type="text" indexed="true" stored="true" required="false"/>
+    <field name="productId" type="string" indexed="true" stored="true" required="true"/>
     <field name="practiceArea" type="string" indexed="true" stored="true" required="false"/>
     <field name="createDate" type="date" indexed="true" stored="true" required="false"/>
-
+    <field name="status" type="string" indexed="false" stored="true" required="false"/>
+    <field name="clientName" type="string" indexed="false" stored="true" required="false"/>
+    <field name="clientType" type="string" indexed="false" stored="true" required="false"/>
   </fields>
 
   <!-- Field to use to determine and enforce document uniqueness.
@@ -92,6 +95,7 @@ Template for schema.xml. Two areas are filled in:
     -->
     <fieldType name="text" class="solr.TextField" positionIncrementGap="100">
       <analyzer type="index">
+        <charFilter class="solr.HTMLStripCharFilterFactory"/>
         <tokenizer class="solr.StandardTokenizerFactory"/>
         <!-- in this example, we will only use synonyms at query time
         <filter class="solr.SynonymFilterFactory" synonyms="index_synonyms.txt" ignoreCase="true" expand="false"/>
