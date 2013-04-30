@@ -81,7 +81,7 @@
         description^5
       </str>
       <str name="fl">
-        id consultationId partyId createDate
+        id consultationId partyId createDate clientName clientType practiceArea status productId
       </str>
       <str name="q.alt">*:*</str>
       <str name="wt">json</str>

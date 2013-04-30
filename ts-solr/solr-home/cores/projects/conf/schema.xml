@@ -16,6 +16,7 @@ Template for schema.xml. Two areas are filled in:
     <field name="partyIds" type="text" indexed="true" stored="true" required="true"/>
     <field name="title" type="text" indexed="true" stored="true" required="false"/>
     <field name="description" type="text" indexed="true" stored="true" required="false"/>
+    <field name="productId" type="string" indexed="true" stored="true" required="true"/>
     <field name="practiceArea" type="string" indexed="true" stored="true" required="false"/>
     <field name="createDate" type="date" indexed="true" stored="true" required="false"/>
     <field name="status" type="string" indexed="false" stored="true" required="false"/>

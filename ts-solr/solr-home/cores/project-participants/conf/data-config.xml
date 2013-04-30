@@ -11,6 +11,7 @@
                 mp.productId,
                 mp.duration,
                 mp.status,
+				p.councilmemberid as sourceid,
 				case mp.status
 					when 'Added to List' then mp.AddedToListDate
 					when 'Invited' then mp.InvitedDate
@@ -38,25 +39,20 @@
 					when 'No Show' then mp.NoShowDate
 					when 'Crash List' then mp.CrashListDate
 					when 'Declined Payment' then mp.RequestedPaymentDate
-				end as 'StatusDate',
-                cast(GROUP_CONCAT(o.name SEPARATOR '+++') as char) as currentCompanies
+				end as 'StatusDate'
               from meetingparticipant mp
               join meeting m on m.productid = mp.productid
               join person p on p.partyid = mp.partyid
-              left join partyrelationship r on p.partyid = r.frompartyid
-              left join employment e on r.partyrelationshipid = e.partyrelationshipid
-              left join organization o on r.topartyid = o.partyid
-              JOIN (SELECT @rownum:=0) q
+              JOIN (SELECT @rownum:=0) r
               where m.meetingtype = 'consultation'
-                and e.iscurrent &lt;=&gt; 1 and not e.isboardmember &lt;=&gt; 1
-                and mp.PaidDate is not null
-                and e.isFromCapIq = 0 and (o.isFromGlg or o.isFromDnb)
-              group by mp.productid, id, name, mp.duration, mp.status, StatusDate">
+              and p.isactive = 1
+              ">
 
       <field name="id" column="id" />
       <field name="name" column="name" />
       <field name="productId" column="productId" />
       <field name="duration" column="duration" />
+      <field name="sourceid" column="sourceid" />
       <field name="status" column="status" />
       <field name="statusDate" column="statusDate" />
       <field name="currentCompanies" column="currentCompanies" />

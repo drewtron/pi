@@ -26,7 +26,8 @@
       <field name="id" column="id" />
       <field name="partyIds" column="partyIds" />
       <field name="title" column="title" />
-      <field name="description" column="description" />
+      <field name="description" column="description"  />
+      <field name="productId" column="productId"  />
       <field name="consultationId" column="consultationId" />
       <field name="practiceArea" column="practiceArea" />
       <field name="createDate" column="createDate" />
