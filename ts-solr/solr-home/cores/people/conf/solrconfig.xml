@@ -97,7 +97,7 @@
         hourlyRate email isDNC clinicalTrialDisplay isNew
         isScholar isLeader isEducator consultationFeedback isKeyExecutive
         hasMarketingPermission isCouncilPartner hasClinicalTrials isBoardMember
-        resumeUrl flags
+        resumeUrl flags biography
       </str>
       <str name="q.alt">*:*</str>
       <str name="wt">json</str>
