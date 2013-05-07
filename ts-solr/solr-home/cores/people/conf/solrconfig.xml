@@ -94,7 +94,7 @@
         id sourceid type jobs
         city state country numGivenToClient
         numProjectsPaid practicearea lastSignedTermsAndConditions
-        hourlyRate email isDNC clinicalTrialDisplay isNew
+        hourlyRate email isDNC clinicalTrialDisplay isNew isFirstAccess
         isScholar isLeader isEducator consultationFeedback isKeyExecutive
         hasMarketingPermission isCouncilPartner hasClinicalTrials isBoardMember
         resumeUrl flags biography
