@@ -69,7 +69,7 @@ define "pi" do
     sh "cp #{SOLR_WAR} #{SOLR_HOME}solr.war"
   end
 
-  task :config_env, :mongo_url, :is_master, :master_ip, :dw_host, :dw_pwd do |task, args|
+  task :config_env, :mongo_url, :mongo_password, :is_master, :master_ip, :dw_host, :dw_pwd do |task, args|
 
     puts "Config args: #{args.inspect}"
 
@@ -79,6 +79,8 @@ define "pi" do
         case data_source['type']
           when "MongoDataSource"
             data_source["host"] = args[:mongo_url]
+            data_source["username"] = 'mosaicAdmin'
+            data_source["password"] = args[:mongo_password]
           when "JdbcDataSource"
             data_source["url"] = "jdbc:mysql://#{args[:dw_host]}/ark"
             data_source["password"] = args[:dw_pwd]
