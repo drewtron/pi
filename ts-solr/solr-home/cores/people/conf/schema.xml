@@ -12,6 +12,7 @@ Template for schema.xml. Two areas are filled in:
 
     <field name="id" type="string" indexed="true" stored="true" required="true"/>
     <field name="name" type="name" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true" />
+    <field name="nickname" type="nickName" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true" />
     <field name="type" type="string" indexed="true" stored="true" required="false"/>
     <field name="sourceid" type="string" indexed="true" stored="true" required="false"/>
     <field name="partyType" type="string" indexed="true" stored="true" required="false"/>
@@ -67,6 +68,8 @@ Template for schema.xml. Two areas are filled in:
     <dynamicField name="*_Facet"  type="facet" multiValued="true"  indexed="true" stored="true"/>
 
   </fields>
+
+  <copyField source="name" dest="nickname"/>
 
   <!-- Field to use to determine and enforce document uniqueness.
      Unless this field is marked with required="false", it will be a required field
@@ -172,6 +175,24 @@ Template for schema.xml. Two areas are filled in:
       </analyzer>
       <analyzer type="query">
         <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+        <filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1" catenateWords="0" catenateNumbers="0" catenateAll="0" splitOnCaseChange="1"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <!-- we don't want to stem names or remove stop words on names -->
+    <fieldType name="nickName" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+        <filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1" catenateWords="1" catenateNumbers="1" catenateAll="0" splitOnCaseChange="1"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
         <filter class="solr.SynonymFilterFactory" synonyms="english_names.txt" ignoreCase="true" expand="true"/>
         <filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1" catenateWords="0" catenateNumbers="0" catenateAll="0" splitOnCaseChange="1"/>
         <filter class="solr.ASCIIFoldingFilterFactory"/>
@@ -179,6 +200,8 @@ Template for schema.xml. Two areas are filled in:
         <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
       </analyzer>
     </fieldType>
+
+
 
   </types>
 
