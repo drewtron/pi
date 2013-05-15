@@ -106,6 +106,7 @@
       <str name="hl.simple.post">&lt;/div&gt;</str>
       <str name="hl.fl">
         name
+        nickname
         biography
         jobs
         clinicalTrialSearch
@@ -119,6 +120,7 @@
       <str name="f.biography.hl.alternateField">biography</str>
       <str name="f.jobs.hl.alternateField">jobs</str>
       <str name="f.name.hl.alternateField">name</str>
+      <str name="f.nickname.hl.alternateField">nickname</str>
       <str name="f.clinicalTrialSearch.hl.alternateField">clinicalTrialSearch</str>
       <str name="f.email.hl.alternateField">email</str>
       <str name="f.phone.hl.alternateField">phone</str>
