@@ -75,21 +75,6 @@
       <str name="rows">5</str>
       <str name="uf">*</str>
       <str name="ps">0</str>
-      <str name="pf">
-        biography^5
-        profileQuestions^3
-        jobs^3
-        projectHistory^3
-        clinicalTrialSearch^3
-      </str>
-      <str name="ps2">5</str>
-      <str name="pf2">
-        biography^2
-        profileQuestions
-        jobs^2
-        projectHistory^2
-        clinicalTrialSearch^2
-      </str>
       <str name="fl">
         id sourceid type jobs
         city state country numGivenToClient
