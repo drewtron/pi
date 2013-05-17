@@ -27,6 +27,7 @@ Template for schema.xml. Two areas are filled in:
     <field name="isMemberPrograms" type="bool" indexed="true" stored="true" required="false"/>
     <field name="isNew" type="bool" indexed="true" stored="true" required="false"/>
     <field name="isFirstAccess" type="bool" indexed="true" stored="true" required="false"/>
+    <field name="isDormant" type="bool" indexed="true" stored="true" required="false"/>
     <field name="isKeyExecutive" type="bool" indexed="true" stored="true" required="false"/>
     <field name="isCouncilPartner" type="bool" indexed="true" stored="true" required="false"/>
     <field name="hasMarketingPermission" type="bool" indexed="true" stored="true" required="false"/>
