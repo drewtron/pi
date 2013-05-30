@@ -64,7 +64,7 @@ define "pi" do
     compile.dependencies.map { |dep| FileUtils.cp dep.to_s , SOLR_LIB }
 
     #https://github.com/james75/SolrMongoImporter
-    sh "cp lib/solr-mongo-importer-1.0.0.jar #{SOLR_LIB}solr-mongo-importer-1.0.0.jar"
+    sh "cp lib/solr-mongo-importer.jar #{SOLR_LIB}solr-mongo-importer.jar"
 
     sh "cp #{SOLR_WAR} #{SOLR_HOME}solr.war"
   end
