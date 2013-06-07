@@ -5,7 +5,7 @@
 
   <lib dir="../../../lib" />
 
-  <dataDir>${solr.data.dir:}</dataDir>
+  <dataDir>${people.solr.data.dir:}</dataDir>
 <!--  <directoryFactory name="DirectoryFactory" 
                     class="${solr.directoryFactory:solr.StandardDirectoryFactory}"/>
 -->
