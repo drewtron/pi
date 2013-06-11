@@ -11,6 +11,7 @@ Template for schema.xml. Two areas are filled in:
   <fields>
 
     <field name="id" type="string" indexed="true" stored="true" required="true"/>
+    <field name="personId" type="string" indexed="true" stored="true" required="false"/>
     <field name="name" type="name" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true" />
     <field name="nickname" type="nickName" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true" />
     <field name="type" type="string" indexed="true" stored="true" required="false"/>
