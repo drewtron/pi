@@ -9,6 +9,7 @@ $ service solr status
 $ service solr start
 $ service solr stop
 ```
+  
 
 Adding cores
 ------------
