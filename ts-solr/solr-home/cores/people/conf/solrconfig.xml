@@ -108,7 +108,7 @@
       <str name="f.nickname.hl.alternateField">nickname</str>
       <str name="f.clinicalTrialSearch.hl.alternateField">clinicalTrialSearch</str>
       <str name="f.email.hl.alternateField">email</str>
-      <str name="f.email.hl.alternateField">secondaryEmail</str>
+      <str name="f.secondaryEmail.hl.alternateField">secondaryEmail</str>
       <str name="f.phone.hl.alternateField">phone</str>
       <str name="f.clinicalTrialSearch.hl.snippets">5</str>
 
