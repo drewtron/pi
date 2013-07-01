@@ -54,6 +54,7 @@ Template for schema.xml. Two areas are filled in:
     <field name="hourlyRate" type="int" indexed="true" stored="true" required="false"/>
     <field name="phone" type="text_phone" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
     <field name="email" type="email" indexed="true" stored="true" required="false"/>
+    <field name="secondaryEmail" type="email" indexed="true" stored="true" required="false"/>
     <field name="profileQuestions" type="text" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
     <field name="numGivenToClient" type="integer" indexed="false" stored="true" required="false"/>
     <field name="numProjectsPaid" type="int" indexed="true" stored="true" required="false"/>

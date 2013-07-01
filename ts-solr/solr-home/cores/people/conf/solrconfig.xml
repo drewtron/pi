@@ -79,7 +79,7 @@
         id personId sourceid type jobs
         city state country numGivenToClient
         numProjectsPaid practicearea lastSignedTermsAndConditions
-        hourlyRate email isDNC clinicalTrialDisplay isNew isFirstAccess
+        hourlyRate email secondaryEmail isDNC clinicalTrialDisplay isNew isFirstAccess
         isScholar isLeader isEducator consultationFeedback isKeyExecutive
         hasMarketingPermission isCouncilPartner hasClinicalTrials isBoardMember
         resumeUrl flags biography
@@ -96,6 +96,7 @@
         jobs
         clinicalTrialSearch
         email
+        secondaryEmail
         phone
       </str>
       <str name="hl.fragsize">0</str>
@@ -107,6 +108,7 @@
       <str name="f.nickname.hl.alternateField">nickname</str>
       <str name="f.clinicalTrialSearch.hl.alternateField">clinicalTrialSearch</str>
       <str name="f.email.hl.alternateField">email</str>
+      <str name="f.email.hl.alternateField">secondaryEmail</str>
       <str name="f.phone.hl.alternateField">phone</str>
       <str name="f.clinicalTrialSearch.hl.snippets">5</str>
 
