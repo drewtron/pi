@@ -118,8 +118,6 @@
 
 <!-- ************************************************************************** -->
 
-
-
   <requestHandler name="/mlt" class="solr.MoreLikeThisHandler"></requestHandler>
 
   <requestHandler name="search" 
