@@ -14,6 +14,8 @@ Template for schema.xml. Two areas are filled in:
     <field name="id" type="string" indexed="true" stored="true" required="true"/>
     <field name="name" type="string" indexed="false" stored="true" required="true"/>
     <field name="productId" type="string" indexed="true" stored="true" required="true"/>
+    <field name="personId" type="string" indexed="true" stored="true" required="false"/>
+    <field name="councilMemberId" type="string" indexed="true" stored="true" required="false"/>
     <field name="duration" type="string" indexed="false" stored="true" required="false"/>
     <field name="sourceid" type="string" indexed="false" stored="true" required="false"/>
     <field name="status" type="string" indexed="false" stored="true" required="false"/>

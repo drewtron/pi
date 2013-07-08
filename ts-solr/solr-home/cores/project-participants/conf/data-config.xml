@@ -11,6 +11,8 @@
                 mp.productId,
                 mp.duration,
                 mp.status,
+                p.personId,
+                p.councilMemberId,
 				p.councilmemberid as sourceid,
 				case mp.status
 					when 'Added to List' then mp.AddedToListDate
@@ -51,6 +53,8 @@
       <field name="id" column="id" />
       <field name="name" column="name" />
       <field name="productId" column="productId" />
+      <field name="personId" column="personId" />
+      <field name="councilMemberId" column="councilMemberId" />
       <field name="duration" column="duration" />
       <field name="sourceid" column="sourceid" />
       <field name="status" column="status" />
