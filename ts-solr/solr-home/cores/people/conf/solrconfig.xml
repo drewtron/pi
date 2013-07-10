@@ -78,7 +78,7 @@
       <str name="fl">
         id personId sourceid type jobs
         city state country numGivenToClient
-        numProjectsPaid practicearea lastSignedTermsAndConditions
+        numProjectsPaid practicearea zoneregion lastSignedTermsAndConditions
         hourlyRate email secondaryEmail recruitedBy isDNC clinicalTrialDisplay isNew isFirstAccess
         isScholar isLeader isEducator consultationFeedback isKeyExecutive
         hasMarketingPermission isCouncilPartner hasClinicalTrials isBoardMember

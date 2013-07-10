@@ -50,6 +50,7 @@ Template for schema.xml. Two areas are filled in:
     <field name="resume" type="text" indexed="true" omitNorms="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true" />
     <field name="resumeUrl" type="string" indexed="false" stored="true" required="false" />
     <field name="practicearea" type="string" indexed="true" stored="true" required="false"/>
+    <field name="zoneregion" type="string" indexed="true" stored="true" required="false"/>
     <field name="boardMembership" type="text" indexed="true" stored="true" required="false" multiValued="false" />
     <field name="hourlyRate" type="int" indexed="true" stored="true" required="false"/>
     <field name="phone" type="text_phone" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
