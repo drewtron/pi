@@ -82,7 +82,7 @@
         hourlyRate email secondaryEmail recruitedBy isDNC clinicalTrialDisplay isNew isFirstAccess
         isScholar isLeader isEducator consultationFeedback isKeyExecutive
         hasMarketingPermission isCouncilPartner hasClinicalTrials isBoardMember
-        resumeUrl flags biography
+        resumeUrl flags biography languages
       </str>
       <str name="q.alt">*:*</str>
       <str name="wt">json</str>

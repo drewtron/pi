@@ -65,6 +65,7 @@ Template for schema.xml. Two areas are filled in:
     <field name="clinicalTrialDisplay" type="text" multiValued="true" indexed="false" stored="true" required="false" />
     <field name="flags" type="string" indexed="false" stored="true" required="false" multiValued="false" />
     <field name="specialties" type="facet" multiValued="true"  indexed="true" stored="true"/>
+    <field name="languages" type="facet" multiValued="true"  indexed="true" stored="true"/>
 
 
     <field name="jobs" type="text" indexed="true" stored="true" required="false" multiValued="false" />
