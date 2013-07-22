@@ -252,7 +252,7 @@ Template for schema.xml. Two areas are filled in:
       <analyzer type="index">
         <tokenizer class="solr.KeywordTokenizerFactory"/>
         <filter class="solr.LowerCaseFilterFactory"/>
-        <filter class="solr.EdgeNGramFilterFactory" minGramSize="1" maxGramSize="60"/>
+        <filter class="solr.EdgeNGramFilterFactory" minGramSize="1" maxGramSize="200"/>
       </analyzer>
       <analyzer type="query">
         <tokenizer class="solr.KeywordTokenizerFactory"/>
