@@ -82,7 +82,7 @@
         hourlyRate email secondaryEmail isDNC clinicalTrialDisplay isNew isFirstAccess
         isScholar isLeader isEducator consultationFeedback isKeyExecutive
         hasMarketingPermission isCouncilPartner hasClinicalTrials isBoardMember
-        resumeUrl flags biography jobsCompanyNames jobsJobTitles boardCompanyNames boardJobTitles
+        resumeUrl flags biography
       </str>
       <str name="q.alt">*:*</str>
       <str name="wt">json</str>
@@ -93,10 +93,7 @@
         name
         nickname
         biography
-        jobsCompanyNames
-        jobsJobTitles
-        boardCompanyNames
-        boardJobTitles
+        jobs
         clinicalTrialSearch
         email
         secondaryEmail
