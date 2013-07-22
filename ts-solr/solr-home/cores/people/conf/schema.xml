@@ -67,7 +67,9 @@ Template for schema.xml. Two areas are filled in:
     <field name="specialties" type="facet" multiValued="true"  indexed="true" stored="true"/>
     <field name="languages" type="string" multiValued="true"  indexed="true" stored="true"/>
 
-    <field name="jobs" type="text" indexed="true" stored="true" required="false" multiValued="false" />
+    <field name="jobs" type="text" indexed="false" stored="true" required="false" multiValued="false" />
+    <field name="jobsCompanyNames" type="text" indexed="true" stored="true" required="false" multiValued="true" />
+    <field name="jobsJobTitles" type="text" indexed="true" stored="true" required="false" multiValued="true" />
     <dynamicField name="*_Long_Values"  type="tlong" multiValued="true"  indexed="true" stored="false"/>
     <dynamicField name="*_Bucket"  type="text" multiValued="true"  indexed="true" stored="true"/>
     <dynamicField name="*_Bucket_Facet"  type="string" multiValued="true"  indexed="true" stored="true"/>

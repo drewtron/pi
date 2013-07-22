@@ -6,3 +6,4 @@ solr.war
 reports/
 .idea
 target/
+ts-solr/solr-home/lib
