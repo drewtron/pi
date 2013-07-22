@@ -79,7 +79,7 @@
         id personId sourceid type jobs
         city state country numGivenToClient
         numProjectsPaid practicearea zoneregion lastSignedTermsAndConditions
-        hourlyRate email secondaryEmail recruitedBy isDNC clinicalTrialDisplay isNew isFirstAccess
+        hourlyRate email secondaryEmail isDNC clinicalTrialDisplay isNew isFirstAccess
         isScholar isLeader isEducator consultationFeedback isKeyExecutive
         hasMarketingPermission isCouncilPartner hasClinicalTrials isBoardMember
         resumeUrl flags biography
