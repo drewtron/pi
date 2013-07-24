@@ -67,7 +67,7 @@ Template for schema.xml. Two areas are filled in:
     <field name="specialties" type="facet" multiValued="true"  indexed="true" stored="true"/>
     <field name="languages" type="string" multiValued="true"  indexed="true" stored="true"/>
 
-    <field name="jobs" type="text" indexed="false" stored="true" required="false" multiValued="false" />
+    <field name="jobs" type="text" indexed="true" stored="true" required="false" multiValued="false" />
     <field name="jobsCompanyNames" type="text" indexed="true" stored="true" required="false" multiValued="true" />
     <field name="jobsJobTitles" type="text" indexed="true" stored="true" required="false" multiValued="true" />
     <field name="boardCompanyNames" type="text" indexed="true" stored="true" required="false" multiValued="true" />

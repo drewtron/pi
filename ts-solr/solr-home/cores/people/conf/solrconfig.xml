@@ -93,6 +93,7 @@
         name
         nickname
         biography
+        jobs
         jobsCompanyNames
         jobsJobTitles
         boardCompanyNames
@@ -106,6 +107,7 @@
       <str name="hl.requireFieldMatch">true</str>
       <str name="hl.usePhraseHighlighter">true</str>
       <str name="f.biography.hl.alternateField">biography</str>
+      <str name="f.jobs.hl.alternateField">jobs</str>
       <str name="f.jobsCompanyNames.hl.preserveMulti">true</str>
       <str name="f.jobsJobTitles.hl.preserveMulti">true</str>
       <str name="f.boardCompanyNames.hl.preserveMulti">true</str>
