@@ -1,0 +1,97 @@
+Jul 29, 2013 9:35:23 AM org.mortbay.log.Slf4jLog info
+INFO: Logging to org.slf4j.impl.JDK14LoggerAdapter(org.mortbay.log) via org.mortbay.log.Slf4jLog
+Jul 29, 2013 9:35:23 AM org.mortbay.log.Slf4jLog info
+INFO: jetty-6.1-SNAPSHOT
+Jul 29, 2013 9:35:24 AM org.mortbay.log.Slf4jLog info
+INFO: Extract file:/Users/admin/src/pi/ts-solr/solr-home/solr.war to /var/folders/kz/xwnm57dx6nn2y714rkgd7y5c0000gn/T/Jetty_0_0_0_0_8080_solr.war__solr__7k9npr/webapp
+Jul 29, 2013 9:35:24 AM org.mortbay.log.Slf4jLog warn
+WARNING: failed SolrRequestFilter: org.apache.solr.common.SolrException: Could not find necessary SLF4j logging jars. If using Jetty, the SLF4j logging jars need to go in the jetty lib/ext directory. For other containers, the corresponding directory should be used. For more information, see: http://wiki.apache.org/solr/SolrLogging
+Jul 29, 2013 9:35:24 AM org.mortbay.log.Slf4jLog warn
+SEVERE: Failed startup of context org.mortbay.jetty.webapp.WebAppContext@560c3014{/solr,file:/Users/admin/src/pi/ts-solr/solr-home/solr.war}
+org.apache.solr.common.SolrException: Could not find necessary SLF4j logging jars. If using Jetty, the SLF4j logging jars need to go in the jetty lib/ext directory. For other containers, the corresponding directory should be used. For more information, see: http://wiki.apache.org/solr/SolrLogging
+	at org.apache.solr.servlet.SolrDispatchFilter.<init>(SolrDispatchFilter.java:104)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+	at java.lang.Class.newInstance0(Class.java:357)
+	at java.lang.Class.newInstance(Class.java:310)
+	at org.mortbay.jetty.servlet.Holder.newInstance(Holder.java:153)
+	at org.mortbay.jetty.servlet.FilterHolder.doStart(FilterHolder.java:92)
+	at org.mortbay.component.AbstractLifeCycle.start(AbstractLifeCycle.java:50)
+	at org.mortbay.jetty.servlet.ServletHandler.initialize(ServletHandler.java:713)
+	at org.mortbay.jetty.servlet.Context.startContext(Context.java:140)
+	at org.mortbay.jetty.webapp.WebAppContext.startContext(WebAppContext.java:1282)
+	at org.mortbay.jetty.handler.ContextHandler.doStart(ContextHandler.java:518)
+	at org.mortbay.jetty.webapp.WebAppContext.doStart(WebAppContext.java:499)
+	at org.mortbay.component.AbstractLifeCycle.start(AbstractLifeCycle.java:50)
+	at org.mortbay.jetty.handler.HandlerCollection.doStart(HandlerCollection.java:152)
+	at org.mortbay.jetty.handler.ContextHandlerCollection.doStart(ContextHandlerCollection.java:156)
+	at org.mortbay.component.AbstractLifeCycle.start(AbstractLifeCycle.java:50)
+	at org.mortbay.jetty.handler.HandlerCollection.doStart(HandlerCollection.java:152)
+	at org.mortbay.component.AbstractLifeCycle.start(AbstractLifeCycle.java:50)
+	at org.mortbay.jetty.handler.HandlerWrapper.doStart(HandlerWrapper.java:130)
+	at org.mortbay.jetty.Server.doStart(Server.java:224)
+	at org.mortbay.component.AbstractLifeCycle.start(AbstractLifeCycle.java:50)
+	at org.mortbay.xml.XmlConfiguration.main(XmlConfiguration.java:985)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.mortbay.start.Main.invokeMain(Main.java:194)
+	at org.mortbay.start.Main.start(Main.java:534)
+	at org.mortbay.start.Main.start(Main.java:441)
+	at org.mortbay.start.Main.main(Main.java:119)
+Caused by: java.lang.NoClassDefFoundError: org/slf4j/LoggerFactory
+	at org.apache.solr.servlet.SolrDispatchFilter.<init>(SolrDispatchFilter.java:102)
+	... 32 more
+Caused by: java.lang.ClassNotFoundException: org.slf4j.LoggerFactory
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:202)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:190)
+	at org.mortbay.jetty.webapp.WebAppClassLoader.loadClass(WebAppClassLoader.java:392)
+	at org.mortbay.jetty.webapp.WebAppClassLoader.loadClass(WebAppClassLoader.java:363)
+	... 33 more
+Jul 29, 2013 9:35:24 AM org.mortbay.log.Slf4jLog warn
+WARNING: failed org.mortbay.jetty.webapp.WebAppContext@560c3014{/solr,file:/Users/admin/src/pi/ts-solr/solr-home/solr.war}: java.lang.NoClassDefFoundError: org/slf4j/Logger
+Jul 29, 2013 9:35:24 AM org.mortbay.log.Slf4jLog warn
+WARNING: failed ContextHandlerCollection@2f60877b: java.lang.NoClassDefFoundError: org/slf4j/Logger
+Jul 29, 2013 9:35:24 AM org.mortbay.log.Slf4jLog warn
+WARNING: failed HandlerCollection@6a5eb489: java.lang.NoClassDefFoundError: org/slf4j/Logger
+Jul 29, 2013 9:35:24 AM org.mortbay.log.Slf4jLog warn
+SEVERE: Error starting handlers
+java.lang.NoClassDefFoundError: org/slf4j/Logger
+	at java.lang.Class.getDeclaredMethods0(Native Method)
+	at java.lang.Class.privateGetDeclaredMethods(Class.java:2475)
+	at java.lang.Class.getMethod0(Class.java:2718)
+	at java.lang.Class.getMethod(Class.java:1630)
+	at org.mortbay.log.Log.unwind(Log.java:228)
+	at org.mortbay.log.Log.warn(Log.java:197)
+	at org.mortbay.jetty.webapp.WebAppContext.doStart(WebAppContext.java:507)
+	at org.mortbay.component.AbstractLifeCycle.start(AbstractLifeCycle.java:50)
+	at org.mortbay.jetty.handler.HandlerCollection.doStart(HandlerCollection.java:152)
+	at org.mortbay.jetty.handler.ContextHandlerCollection.doStart(ContextHandlerCollection.java:156)
+	at org.mortbay.component.AbstractLifeCycle.start(AbstractLifeCycle.java:50)
+	at org.mortbay.jetty.handler.HandlerCollection.doStart(HandlerCollection.java:152)
+	at org.mortbay.component.AbstractLifeCycle.start(AbstractLifeCycle.java:50)
+	at org.mortbay.jetty.handler.HandlerWrapper.doStart(HandlerWrapper.java:130)
+	at org.mortbay.jetty.Server.doStart(Server.java:224)
+	at org.mortbay.component.AbstractLifeCycle.start(AbstractLifeCycle.java:50)
+	at org.mortbay.xml.XmlConfiguration.main(XmlConfiguration.java:985)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.mortbay.start.Main.invokeMain(Main.java:194)
+	at org.mortbay.start.Main.start(Main.java:534)
+	at org.mortbay.start.Main.start(Main.java:441)
+	at org.mortbay.start.Main.main(Main.java:119)
+Caused by: java.lang.ClassNotFoundException: org.slf4j.Logger
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:202)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:190)
+	at org.mortbay.jetty.webapp.WebAppClassLoader.loadClass(WebAppClassLoader.java:392)
+	at org.mortbay.jetty.webapp.WebAppClassLoader.loadClass(WebAppClassLoader.java:363)
+	... 25 more
+Jul 29, 2013 9:35:24 AM org.mortbay.log.Slf4jLog info
+INFO: Started SocketConnector@0.0.0.0:8080

@@ -6,7 +6,7 @@ GROUP = "Search & Recommendations"
 COPYRIGHT = "(c) 2012 - Gerson Lehrman Group"
 
 # Specify Maven 2.0 remote repositories here, like this:
-repositories.remote << "http://repo1.maven.org/maven2" << "http://www.ibiblio.org/maven2"
+repositories.remote << "http://repo1.maven.org/maven2" << "http://www.ibiblio.org/maven2" << "http://maven.restlet.org"
 
 def solr_dependency(name)
   transitive(name + SOLR_VERSION).reject do |dep|
@@ -21,7 +21,7 @@ FLEXJSON = transitive('net.sf.flexjson:flexjson:jar:2.1')
 MONGO = transitive('org.mongodb:mongo-java-driver:jar:2.8.0')
 MYSQL = transitive('mysql:mysql-connector-java:jar:5.1.20')
 XALAN = transitive('xalan:serializer:jar:2.7.1')
-SOLR_VERSION = "4.1.0"
+SOLR_VERSION = "4.4.0"
 SOLR = struct(
   :solr		=> solr_dependency('org.apache.solr:solr:war:'),
   :dataimport	=> solr_dependency('org.apache.solr:solr-dataimporthandler:jar:'),
