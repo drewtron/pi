@@ -7,6 +7,8 @@ COPYRIGHT = "(c) 2012 - Gerson Lehrman Group"
 
 desc "Get dependencies for the Mongo importer and update Solr config"
 
+SOLR_HOME = "ts-solr/solr-home/"
+
 define "pi" do
 
   project.version = VERSION_NUMBER
@@ -56,6 +58,7 @@ define "pi" do
   end
 
   def update_config_files(file_pattern, &block)
+    puts "Updating "
     Dir.glob file_pattern do |file_path|
 
       puts "Updating configuration in #{file_path}"
