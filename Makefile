@@ -1,4 +1,3 @@
-# Define macros
 SHELL := /bin/bash
 APP_USER_NAME := mosaic_search
 APP_USER_PWD := SR58lzSfWeD8c
@@ -109,6 +108,7 @@ base_install:
 	# ***************************************
 	id $(APP_USER_NAME) 2>/dev/null ; [ $$? -eq 0 ] && echo "user exists" || useradd -m -s /bin/bash $(APP_USER_NAME)
 	usermod -p $(APP_USER_PWD) $(APP_USER_NAME)
+	usermod -G 112 $(APP_USER_NAME)
 	apt-get -y clean
 	apt-get -y update
 	#
