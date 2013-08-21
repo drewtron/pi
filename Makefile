@@ -1,6 +1,6 @@
 # Define macros
 SHELL := /bin/bash
-APP_USER_NAME := glgsearch
+APP_USER_NAME := mosaic_search
 APP_USER_PWD := SR58lzSfWeD8c
 APP_ROOT_DIR := /home/$(APP_USER_NAME)/solr
 HOST := $(shell hostname)
