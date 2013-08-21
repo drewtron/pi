@@ -9,14 +9,11 @@ QA_CHEF_SERVER = http://10.45.206.208
 PROD_CHEF_SERVER = http://glgnychef01.glgroup.com
 REPO_URL = http://github.glgroup.com/SearchDeliveryTeam/pi
 
-PROD_ENV = prodmosaicsearch
-QA_ENV = qamosaicsearch
-
 # Default to 'master' branch; override by executing 'sudo -u <root-user> make BRANCH=<some-branch>'
 BRANCH = master
 
 # Default to configuring everything for the Dev environment
-ENVIRONMENT = $(QA_ENV)
+ENVIRONMENT = mosaicsearch
 CHEF_SERVER = $(QA_CHEF_SERVER):4000
 PEM_URL = $(QA_CHEF_SERVER)/validation.pem
 GIT_CHEF_URL = $(REPO_URL)/raw/$(BRANCH)/chef
@@ -46,7 +43,6 @@ ifeq ($(IPSEG1),10)
 	ifeq ($(IPSEG2),20)
 		PEM_URL = $(PROD_CHEF_SERVER)/validation.pem
 		CHEF_SERVER = $(PROD_CHEF_SERVER):4000
-		ENVIRONMENT = $(PROD_ENV)
 	endif
 endif
 
