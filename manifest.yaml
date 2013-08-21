@@ -2,7 +2,7 @@ env:
   -
     server_os: Ubuntu
     server_version: 11.10
-    server_disk_size_gb: 100
+    server_disk_size_gb: 60
     number_of_servers: 3
     number_of_cpu: 4
     server_memory_gb: 32
