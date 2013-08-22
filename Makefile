@@ -148,7 +148,14 @@ base_install:
 	# ***************************************
 	# INSTALL CHEF
 	# ***************************************
-	gem install chef -v 0.10.10 --no-ri --no-rdoc
+	gem install net-ssh -v 2.1.4 --no-ri --no-rdoc
+	gem install net-ssh-gateway -v 1.1.0 --no-ri --no-rdoc --ignore-dependencies
+	gem install net-ssh-multi -v 1.1.0 --no-ri --no-rdoc --ignore-dependencies
+	gem install chef -v 0.10.8 --no-ri --no-rdoc
+	gem install moneta -v '~> 0.6.0' && sudo gem uninstall moneta -v '>= 0.7.14'
+
+	sudo service ntp restart
+
 	#
 	#
 
