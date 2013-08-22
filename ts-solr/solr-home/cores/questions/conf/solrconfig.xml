@@ -76,8 +76,16 @@
       <str name="uf">*</str>
       <str name="qf">questionText responseText subjectTaxonomyPath</str>
       <str name="pf">
-        questionText^5
-        responseText^5
+        questionText^2
+        responseText^2
+      </str>
+      <str name="pf2">
+        questionText^2
+        responseText^2
+      </str>
+      <str name="pf3">
+        questionText^3
+        responseText^3
       </str>
       <str name="fl">
         id questionId partyId responseDate

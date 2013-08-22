@@ -77,8 +77,16 @@
       <str name="boost">recip(ms(NOW/HOUR,createDate),3.16e-11,1,1)</str>
       <str name="qf">title description</str>
       <str name="pf">
-        title^5
-        description^5
+        title^2
+        description^2
+      </str>
+      <str name="pf2">
+        title^2
+        description^2
+      </str>
+      <str name="pf3">
+        title^2
+        description^2
       </str>
       <str name="fl">
         id consultationId partyId createDate clientName clientType practiceArea status productId
