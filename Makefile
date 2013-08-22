@@ -131,7 +131,7 @@ base_install:
 	# ***************************************
 	# APT-GET DEPENDENCIES
 	# ***************************************
-	apt-get -y install ruby1.8 ruby1.8-dev ri1.8 libopenssl-ruby1.8 libyaml-ruby1.8 libzlib-ruby1.8 rdoc1.8 irb1.8 build-essential ssl-cert libmysql-java
+	apt-get -y install ruby1.8 ruby1.8-dev ri1.8 libopenssl-ruby1.8 libyaml-ruby1.8 libzlib-ruby1.8 rdoc1.8 irb1.8 build-essential ssl-cert libmysql-java libxslt-dev libxml2-dev
 	#
 	#
 
@@ -151,6 +151,7 @@ base_install:
 	gem install net-ssh -v 2.1.4 --no-ri --no-rdoc
 	gem install net-ssh-gateway -v 1.1.0 --no-ri --no-rdoc --ignore-dependencies
 	gem install net-ssh-multi -v 1.1.0 --no-ri --no-rdoc --ignore-dependencies
+	gem install nokogiri -v 1.5.5 --no-ri --no-rdoc
 	gem install chef -v 0.10.8 --no-ri --no-rdoc
 	gem install moneta -v '~> 0.6.0' && sudo gem uninstall moneta -v '>= 0.7.14'
 
