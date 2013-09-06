@@ -73,7 +73,7 @@
       <str name="qf">name_ngram tickerSymbol_ngram dunsId</str>
       <str name="fl">id name tickerSymbol stockExchange</str>
       <str name="mm">0</str>
-      <str name="rows">10</str>
+      <str name="rows">400</str>
       <str name="pf">name_ngram^5 tickerSymbol_ngram^3</str>
       <str name="uf">*</str>
       <str name="q.op">OR</str>
@@ -258,7 +258,7 @@
         company continent stockExchange tickerSymbol title
       </str>
       <str name="q.alt">*:*</str>
-      <str name="rows">10</str>
+      <str name="rows">400</str>
       <str name="fl">*,score</str>
     </lst>
     <arr name="last-components">
@@ -361,7 +361,7 @@
                        default="true"
                        class="solr.highlight.SimpleBoundaryScanner">
         <lst name="defaults">
-          <str name="hl.bs.maxScan">10</str>
+          <str name="hl.bs.maxScan">400</str>
           <str name="hl.bs.chars">.,!? &#9;&#10;&#13;</str>
         </lst>
       </boundaryScanner>
