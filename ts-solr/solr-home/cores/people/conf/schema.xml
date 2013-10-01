@@ -60,7 +60,7 @@ Template for schema.xml. Two areas are filled in:
     <field name="secondaryEmail" type="email" indexed="true" stored="true" required="false"/>
     <field name="recruitedBy" type="int" indexed="true" stored="true" required="false"/>
     <field name="profileQuestions" type="text" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
-    <field name="numGivenToClient" type="integer" indexed="false" stored="true" required="false"/>
+    <field name="numGivenToClient" type="integer" indexed="true" stored="true" required="false"/>
     <field name="numProjectsPaid" type="int" indexed="true" stored="true" required="false"/>
     <field name="projectHistory" type="text" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
     <field name="clinicalTrialSearch" type="text" multiValued="true" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
@@ -68,6 +68,9 @@ Template for schema.xml. Two areas are filled in:
     <field name="flags" type="string" indexed="false" stored="true" required="false" multiValued="false" />
     <field name="specialties" type="facet" multiValued="true"  indexed="true" stored="true"/>
     <field name="languages" type="string" multiValued="true"  indexed="true" stored="true"/>
+    <field name="paidToInvitedRatio" type="float" indexed="true" stored="true"/>
+
+
 
     <field name="jobs" type="text" indexed="true" stored="true" required="false" multiValued="false" />
     <field name="jobsCompanyNames" type="text" indexed="true" stored="true" required="false" multiValued="true" />
@@ -107,7 +110,9 @@ Template for schema.xml. Two areas are filled in:
 
     <fieldType name="long" class="solr.LongField" omitNorms="true"/>
 
-    <fieldType name="tlong" class="solr.TrieLongField" precisionStep="8" omitNorms="true" positionIncrementGap="0"/>
+    <fieldType name="float" class="solr.TrieFloatField" omitNorms="true"/>
+
+    <fieldType name="tlong" class="solr.TrieLongField" precisionStep="3" omitNorms="true" positionIncrementGap="0"/>
 
     <fieldType name="text" class="solr.TextField" positionIncrementGap="100">
       <analyzer type="index">
