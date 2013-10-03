@@ -76,7 +76,7 @@
       <str name="uf">*</str>
       <str name="ps">0</str>
       <str name="fl">
-        id personId sourceid type jobs
+        id personId sourceid type jobs name clinicalTrialSearch email phone
         city state country numGivenToClient
         numProjectsPaid practicearea zoneregion lastSignedTermsAndConditions
         hourlyRate email secondaryEmail isDNC clinicalTrialDisplay isNew isaFirstAccess
