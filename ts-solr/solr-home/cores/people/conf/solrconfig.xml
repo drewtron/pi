@@ -87,8 +87,8 @@
       <str name="q.alt">*:*</str>
       <str name="wt">json</str>
       <str name="hl">true</str>
-      <str name="hl.simple.pre">&lt;div class='keyword-hit'&gt;</str>
-      <str name="hl.simple.post">&lt;/div&gt;</str>
+      <str name="hl.simple.pre">&lt;em&gt;</str>
+      <str name="hl.simple.post">&lt;/em&gt;</str>
       <str name="hl.fl">
         name
         nickname
@@ -119,6 +119,10 @@
       <str name="f.jobsJobTitles.hl.preserveMulti">true</str>
       <str name="f.boardCompanyNames.hl.preserveMulti">true</str>
       <str name="f.boardJobTitles.hl.preserveMulti">true</str>
+      <str name="f.jobsCompanyNames_no_stemming.hl.preserveMulti">true</str>
+      <str name="f.jobsJobTitles_no_stemming.hl.preserveMulti">true</str>
+      <str name="f.boardCompanyNames_no_stemming.hl.preserveMulti">true</str>
+      <str name="f.boardJobTitles_no_stemming.hl.preserveMulti">true</str>
       <str name="f.jobsCompanyNames.hl.alternateField">jobsCompanyNames</str>
       <str name="f.jobsJobTitles.hl.alternateField">jobsJobTitles</str>
       <str name="f.boardCompanyNames.hl.alternateField">boardCompanyNames</str>

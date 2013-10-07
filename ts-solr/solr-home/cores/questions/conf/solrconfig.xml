@@ -94,8 +94,8 @@
       <str name="wt">json</str>
 
       <str name="hl">true</str>
-      <str name="hl.simple.pre">&lt;div class='keyword-hit'&gt;</str>
-      <str name="hl.simple.post">&lt;/div&gt;</str>
+    <str name="hl.simple.pre">&lt;em&gt;</str>
+    <str name="hl.simple.post">&lt;/em&gt;</str>
       <str name="hl.fl">
         questionText
         responseText
