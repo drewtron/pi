@@ -93,7 +93,6 @@
         name
         nickname
         biography
-        jobs
         jobsCompanyNames
         jobsJobTitles
         boardCompanyNames
@@ -102,12 +101,20 @@
         email
         secondaryEmail
         phone
+
+        biography_no_stemming
+        jobsCompanyNames_no_stemming
+        jobsJobTitles_no_stemming
+        boardCompanyNames_no_stemming
+        boardJobTitles_no_stemming
+        clinicalTrialSearch_no_stemming
+        profileQuestions_no_stemming
+        projectHistory_no_stemming
       </str>
       <str name="hl.fragsize">0</str>
       <str name="hl.requireFieldMatch">true</str>
       <str name="hl.usePhraseHighlighter">true</str>
       <str name="f.biography.hl.alternateField">biography</str>
-      <str name="f.jobs.hl.alternateField">jobs</str>
       <str name="f.jobsCompanyNames.hl.preserveMulti">true</str>
       <str name="f.jobsJobTitles.hl.preserveMulti">true</str>
       <str name="f.boardCompanyNames.hl.preserveMulti">true</str>
