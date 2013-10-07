@@ -86,6 +86,7 @@ Template for schema.xml. Two areas are filled in:
     <field name="boardCompanyNames_no_stemming" type="text_no_stemming" indexed="true" stored="true" required="false" multiValued="true" />
     <field name="boardJobTitles_no_stemming" type="text_no_stemming" indexed="true" stored="true" required="false" multiValued="true" />
     <field name="jobTaxonomies_no_stemming" type="text_no_stemming" indexed="true" stored="true" required="false" multiValued="true" />
+    <field name="profileQuestions_no_stemming" type="text_no_stemming" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
     <field name="projectHistory_no_stemming" type="text_no_stemming" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
     <field name="clinicalTrialSearch_no_stemming" type="text_no_stemming" multiValued="true" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
     <field name="resume_no_stemming" type="text_no_stemming" indexed="true" omitNorms="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true" />
@@ -106,6 +107,7 @@ Template for schema.xml. Two areas are filled in:
   <copyField source="boardCompanyNames" dest="boardCompanyNames_no_stemming"/>
   <copyField source="boardJobTitles" dest="boardJobTitles_no_stemming"/>
   <copyField source="jobTaxonomies" dest="jobTaxonomies_no_stemming"/>
+  <copyField source="profileQuestions" dest="profileQuestions_no_stemming"/>
   <copyField source="projectHistory" dest="projectHistory_no_stemming"/>
   <copyField source="clinicalTrialSearch" dest="clinicalTrialSearch_no_stemming"/>
   <copyField source="resume" dest="resume_no_stemming"/>
