@@ -20,9 +20,9 @@ Template for schema.xml. Two areas are filled in:
     <field name="subjectTaxonomyPath" type="text"  indexed="true" stored="true" required="false" />
 
     <!--fields for exact match -->
-    <field name="questionText_text_no_stemming" type="text" indexed="true" stored="true" required="false"/>
-    <field name="responseText_text_no_stemming" type="text" indexed="true" stored="true" required="false" />
-    <field name="subjectTaxonomyPath_text_no_stemming" type="text"  indexed="true" stored="true" required="false" />
+    <field name="questionText_text_no_stemming" type="text_no_stemming" indexed="true" stored="true" required="false"/>
+    <field name="responseText_text_no_stemming" type="text_no_stemming" indexed="true" stored="true" required="false" />
+    <field name="subjectTaxonomyPath_text_no_stemming" type="text_no_stemming"  indexed="true" stored="true" required="false" />
 
   </fields>
 
