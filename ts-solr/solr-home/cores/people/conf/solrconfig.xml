@@ -19,7 +19,7 @@
   </updateHandler>
 
   <query>
-    <maxBooleanClauses>10100</maxBooleanClauses>
+    <maxBooleanClauses>12000</maxBooleanClauses>
     <filterCache class="solr.LFUCache"
                  size="16384"
                  initialSize="512"
