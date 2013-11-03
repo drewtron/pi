@@ -86,55 +86,6 @@
       </str>
       <str name="q.alt">*:*</str>
       <str name="wt">json</str>
-      <str name="hl">true</str>
-      <str name="hl.simple.pre">&lt;em&gt;</str>
-      <str name="hl.simple.post">&lt;/em&gt;</str>
-      <str name="hl.fl">
-        name
-        nickname
-        biography
-        jobsCompanyNames
-        jobsJobTitles
-        boardCompanyNames
-        boardJobTitles
-        clinicalTrialSearch
-        email
-        secondaryEmail
-        phone
-
-        biography_no_stemming
-        jobsCompanyNames_no_stemming
-        jobsJobTitles_no_stemming
-        boardCompanyNames_no_stemming
-        boardJobTitles_no_stemming
-        clinicalTrialSearch_no_stemming
-        profileQuestions_no_stemming
-        projectHistory_no_stemming
-      </str>
-      <str name="hl.fragsize">0</str>
-      <str name="hl.requireFieldMatch">true</str>
-      <str name="hl.usePhraseHighlighter">true</str>
-      <str name="f.biography.hl.alternateField">biography</str>
-      <str name="f.jobsCompanyNames.hl.preserveMulti">true</str>
-      <str name="f.jobsJobTitles.hl.preserveMulti">true</str>
-      <str name="f.boardCompanyNames.hl.preserveMulti">true</str>
-      <str name="f.boardJobTitles.hl.preserveMulti">true</str>
-      <str name="f.jobsCompanyNames_no_stemming.hl.preserveMulti">true</str>
-      <str name="f.jobsJobTitles_no_stemming.hl.preserveMulti">true</str>
-      <str name="f.boardCompanyNames_no_stemming.hl.preserveMulti">true</str>
-      <str name="f.boardJobTitles_no_stemming.hl.preserveMulti">true</str>
-      <str name="f.jobsCompanyNames.hl.alternateField">jobsCompanyNames</str>
-      <str name="f.jobsJobTitles.hl.alternateField">jobsJobTitles</str>
-      <str name="f.boardCompanyNames.hl.alternateField">boardCompanyNames</str>
-      <str name="f.clinicalTrialSearch.hl.alternateField">clinicalTrialSearch</str>
-      <str name="f.name.hl.alternateField">name</str>
-      <str name="f.nickname.hl.alternateField">nickname</str>
-      <str name="f.clinicalTrialSearch.hl.alternateField">clinicalTrialSearch</str>
-      <str name="f.email.hl.alternateField">email</str>
-      <str name="f.secondaryEmail.hl.alternateField">secondaryEmail</str>
-      <str name="f.phone.hl.alternateField">phone</str>
-      <str name="f.clinicalTrialSearch.hl.snippets">5</str>
-
   </lst>
 </requestHandler>
 
