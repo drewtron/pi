@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <dataConfig>
-     <!--
-      DataImportHandler for Mongo
-      https://github.com/james75/SolrMongoImporter
-      -->
-     <dataSource name="Mosaic" type="MongoDataSource" database="mosaic" host="192.168.186.134" />
-     <document name="People">
-         <entity name="people"
-                processor="MongoEntityProcessor"
-                 query="{}"
-                 collection="people"
-                 datasource="Mosaic"
-                 transformer="MongoMapperTransformer" >
-         </entity>
-     </document>
- </dataConfig>
+  <dataSource name="Mosaic" type="MongoDataSource" database="mosaic" host="10.123.10.156" />
+  <document name="People">
+    <entity name="people"
+      processor="MongoEntityProcessor"
+      query="{}"
+      collection="people"
+      datasource="Mosaic"
+      transformer="MongoMapperTransformer" >
+    </entity>
+  </document>
+</dataConfig>
