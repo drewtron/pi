@@ -88,6 +88,21 @@
 
 </requestHandler>
 
+<requestHandler name="/suggest"
+  class="solr.SearchHandler">
+  <lst name="defaults">
+    <str name="wt">json</str>
+    <str name="spellcheck">true</str>
+    <str name="spellcheck.dictionary">default</str>
+    <str name="spellcheck.count">5</str>
+    <str name="spellcheck.maxCollations">5</str>
+    <str name="spellcheck.collate">true</str>
+  </lst>
+
+  <arr name="components">
+    <str>spellcheck</str>
+  </arr>
+ </requestHandler>
 
 <searchComponent name="spellcheck" class="solr.SpellCheckComponent">
   <lst name="spellchecker">
