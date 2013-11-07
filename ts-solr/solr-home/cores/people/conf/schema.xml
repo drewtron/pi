@@ -242,5 +242,5 @@ Template for schema.xml. Two areas are filled in:
 
   <!-- SolrQueryParser configuration: defaultOperator="AND|OR" -->
   <solrQueryParser defaultOperator="AND"/>
-
+  <similarity class="solr.BM25SimilarityFactory"/>
 </schema>
