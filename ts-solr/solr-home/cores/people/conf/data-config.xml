@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <dataConfig>
-  <dataSource name="Mosaic" type="MongoDataSource" database="mosaic" host="10.123.10.156" />
+  <dataSource name="Mosaic" type="MongoDataSource" database="mosaic" host="localhost" />
   <document name="People">
     <entity name="people"
       processor="MongoEntityProcessor"
