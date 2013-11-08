@@ -63,6 +63,13 @@
   class="solr.SearchHandler">
   <lst name="defaults">
     <str name="wt">json</str>
+    <str name="spellcheck">true</str>
+    <str name="spellcheck.extendedResults">true</str>
+    <str name="spellcheck.collate">true</str>
+    <str name="spellcheck.collateExtendedResults">true</str>
+    <int name="spellcheck.maxCollations">5</int>
+    <int name="spellcheck.count">5</int>
+    <int name="spellcheck.maxResultsForSuggest">0</int>
   </lst>
   <arr name="last-components">
     <str>spellcheck</str>
@@ -94,7 +101,8 @@
     <str name="wt">json</str>
     <str name="spellcheck">true</str>
     <str name="spellcheck.dictionary">default</str>
-    <str name="spellcheck.count">5</str>
+    <int name="spellcheck.count">5</int>
+    <int name="spellcheck.alternativeTermCount">5</int>
   </lst>
 
   <arr name="components">
@@ -107,7 +115,7 @@
     <str name="name">default</str>
     <str name="field">spell</str>
     <str name="classname">solr.DirectSolrSpellChecker</str>
-    <str name="distanceMeasure">org.apache.lucene.search.spell.JaroWinklerDistance</str>
+    <int name="minQueryLength">2</int>
   </lst>
 </searchComponent>
 
