@@ -12,9 +12,9 @@ Template for schema.xml. Two areas are filled in:
 
     <field name="id" type="string" indexed="true" stored="true" required="true"/>
     <field name="personId" type="string" indexed="true" stored="true" required="false"/>
-    <field name="firstname" type="name" indexed="true" stored="true" required="false" />
-    <field name="lastname" type="name" indexed="true" stored="true" required="false" />
-    <field name="name" type="name" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true" />
+    <field name="firstname" type="text" indexed="true" stored="true" required="false" />
+    <field name="lastname" type="text" indexed="true" stored="true" required="false" />
+    <field name="name" type="text" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true" />
     <field name="type" type="string" indexed="true" stored="true" required="false"/>
     <field name="sourceid" type="string" indexed="true" stored="true" required="false"/>
     <field name="partyType" type="string" indexed="true" stored="true" required="false"/>
@@ -47,8 +47,8 @@ Template for schema.xml. Two areas are filled in:
     <field name="consultationFeedback" type="string" indexed="true" stored="true" required="false"/>
     <field name="isTermsAndConditionsSigned" type="bool" indexed="true" stored="true" required="false"/>
     <field name="lastSignedTermsAndConditions" type="int" indexed="true" stored="true" required="false"/>
-    <field name="biography" type="longtext" indexed="true" omitNorms="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true" />
-    <field name="resume" type="longtext" indexed="true" omitNorms="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true" />
+    <field name="biography" type="text" indexed="true" omitNorms="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true" />
+    <field name="resume" type="text" indexed="true" omitNorms="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true" />
     <field name="resumeUrl" type="string" indexed="false" stored="true" required="false" />
     <field name="practicearea" type="string" indexed="true" stored="true" required="false"/>
     <field name="zoneregion" type="string" indexed="true" stored="true" required="false"/>
@@ -58,18 +58,16 @@ Template for schema.xml. Two areas are filled in:
     <field name="email" type="email" indexed="true" stored="true" required="false"/>
     <field name="secondaryEmail" type="email" indexed="true" stored="true" required="false"/>
     <field name="recruitedBy" type="int" indexed="true" stored="true" required="false"/>
-    <field name="profileQuestions" type="longtext" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
+    <field name="profileQuestions" type="text" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
     <field name="numGivenToClient" type="int" indexed="true" stored="true" required="false"/>
     <field name="numProjectsPaid" type="int" indexed="true" stored="true" required="false"/>
-    <field name="projectHistory" type="longtext" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
-    <field name="clinicalTrialSearch" type="longtext" multiValued="true" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
-    <field name="clinicalTrialDisplay" type="longtext" multiValued="true" indexed="false" stored="true" required="false" />
+    <field name="projectHistory" type="text" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
+    <field name="clinicalTrialSearch" type="text" multiValued="true" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
+    <field name="clinicalTrialDisplay" type="text" multiValued="true" indexed="false" stored="true" required="false" />
     <field name="flags" type="string" indexed="false" stored="true" required="false" multiValued="false" />
     <field name="specialties" type="facet" multiValued="true"  indexed="true" stored="true"/>
     <field name="languages" type="string" multiValued="true"  indexed="true" stored="true"/>
     <field name="paidToInvitedRatio" type="float" indexed="true" stored="true"/>
-
-
 
     <field name="jobs" type="text" indexed="true" stored="true" required="false" multiValued="false" />
     <field name="jobsCompanyNames" type="text" indexed="true" stored="true" required="false" multiValued="true" termPositions="true" termVectors="true" termOffsets="true"/>
@@ -132,6 +130,7 @@ Template for schema.xml. Two areas are filled in:
                 splitOnCaseChange="0"
                 splitOnNumerics="0"
                 />
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
         <filter class="solr.LowerCaseFilterFactory"/>
       </analyzer>
 
@@ -146,40 +145,10 @@ Template for schema.xml. Two areas are filled in:
             splitOnCaseChange="0"
             splitOnNumerics="0"
             />
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
         <filter class="solr.LowerCaseFilterFactory"/>
       </analyzer>
     </fieldType>
-
-    <fieldType name="longtext" class="solr.TextField" positionIncrementGap="100">
-      <analyzer type="index">
-        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
-        <filter class="solr.WordDelimiterFilterFactory"
-                generateWordParts="1"
-                generateNumberParts="1"
-                catenateWords="1"
-                catenateNumbers="1"
-                catenateAll="0"
-                splitOnCaseChange="0"
-                splitOnNumerics="0"
-                />
-        <filter class="solr.LowerCaseFilterFactory"/>
-      </analyzer>
-
-      <analyzer type="query">
-        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
-        <filter class="solr.WordDelimiterFilterFactory"
-            generateWordParts="1"
-            generateNumberParts="1"
-            catenateWords="1"
-            catenateNumbers="1"
-            catenateAll="0"
-            splitOnCaseChange="0"
-            splitOnNumerics="0"
-            />
-        <filter class="solr.LowerCaseFilterFactory"/>
-      </analyzer>
-    </fieldType>
-
 
     <fieldType name="facet" class="solr.TextField" positionIncrementGap="100">
       <analyzer>
@@ -187,7 +156,6 @@ Template for schema.xml. Two areas are filled in:
         <filter class="solr.PatternReplaceFilterFactory" pattern="\s+" replacement=" "  />
       </analyzer>
     </fieldType>
-
 
     <fieldType name="email" class="solr.TextField" positionIncrementGap="100">
       <analyzer>
@@ -220,24 +188,6 @@ Template for schema.xml. Two areas are filled in:
         <filter class="solr.SynonymFilterFactory" synonyms="phone-synonyms.txt" ignoreCase="true" expand="true"/>
       </analyzer>
     </fieldType>
-
-    <!-- we don't want to stem names or remove stop words on names -->
-    <fieldType name="name" class="solr.TextField" positionIncrementGap="100">
-      <analyzer type="index">
-        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
-        <filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1" catenateWords="1" catenateNumbers="1" catenateAll="0" splitOnCaseChange="1"/>
-        <filter class="solr.ASCIIFoldingFilterFactory"/>
-        <filter class="solr.LowerCaseFilterFactory"/>
-      </analyzer>
-      <analyzer type="query">
-        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
-        <filter class="solr.SynonymFilterFactory" synonyms="english_names.txt" ignoreCase="true" expand="true"/>
-        <filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1" catenateWords="0" catenateNumbers="0" catenateAll="0" splitOnCaseChange="1"/>
-        <filter class="solr.ASCIIFoldingFilterFactory"/>
-        <filter class="solr.LowerCaseFilterFactory"/>
-      </analyzer>
-    </fieldType>
-
   </types>
 
   <!-- SolrQueryParser configuration: defaultOperator="AND|OR" -->
