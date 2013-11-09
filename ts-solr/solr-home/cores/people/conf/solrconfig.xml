@@ -101,8 +101,8 @@
     <str name="wt">json</str>
     <str name="spellcheck">true</str>
     <str name="spellcheck.dictionary">default</str>
-    <int name="spellcheck.count">5</int>
-    <int name="spellcheck.alternativeTermCount">5</int>
+    <int name="spellcheck.count">40</int>
+    <int name="spellcheck.alternativeTermCount">40</int>
   </lst>
 
   <arr name="components">
