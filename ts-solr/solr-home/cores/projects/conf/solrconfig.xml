@@ -89,12 +89,12 @@
         description^2
       </str>
       <str name="fl">
-        id consultationId partyId createDate clientName clientType practiceArea status productId
+        id consultationId partyId createDate clientName clientType practiceArea status productId title description
       </str>
       <str name="q.alt">*:*</str>
       <str name="wt">json</str>
 
-      <str name="hl">true</str>
+      <str name="hl">false</str>
       <str name="hl.simple.pre">&lt;em&gt;</str>
       <str name="hl.simple.post">&lt;/em&gt;</str>
       <str name="hl.fl">
