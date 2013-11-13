@@ -121,6 +121,9 @@
   </lst>
 </searchComponent>
 
+<requestHandler name="/update"
+                class="solr.XmlUpdateRequestHandler">
+</requestHandler>
 
 <requestHandler name="/update/extract"
   startup="lazy"
