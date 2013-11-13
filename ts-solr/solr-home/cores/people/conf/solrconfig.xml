@@ -121,9 +121,13 @@
   </lst>
 </searchComponent>
 
+  <!-- Update handlers needed to initiate manual document uploads used by the NRT index -->
   <requestHandler name="/update/json"
                   class="solr.JsonUpdateRequestHandler"
                   startup="lazy" />
+  <requestHandler name="/update"
+                  class="solr.XmlUpdateRequestHandler">
+  </requestHandler>
 
 <requestHandler name="/update/extract"
   startup="lazy"
