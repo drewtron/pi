@@ -3,8 +3,6 @@
   <abortOnConfigurationError>${solr.abortOnConfigurationError:true}</abortOnConfigurationError>
   <luceneMatchVersion>LUCENE_40</luceneMatchVersion>
 
-  <lib dir="../../../lib" />
-
   <dataDir>${solr.data.dir:}</dataDir>
   <!--  <directoryFactory name="DirectoryFactory"
                       class="${solr.directoryFactory:solr.StandardDirectoryFactory}"/>
@@ -294,8 +292,8 @@
         </lst>
       </fragmenter>
 
-      <!-- A regular-expression-based fragmenter 
-           (for sentence extraction) 
+      <!-- A regular-expression-based fragmenter
+           (for sentence extraction)
         -->
       <fragmenter name="regex"
                   class="solr.highlight.RegexFragmenter">
@@ -336,7 +334,7 @@
       <fragmentsBuilder name="default"
                         default="true"
                         class="solr.highlight.ScoreOrderFragmentsBuilder">
-        <!-- 
+        <!--
         <lst name="defaults">
           <str name="hl.multiValuedSeparatorChar">/</str>
         </lst>

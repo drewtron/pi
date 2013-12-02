@@ -3,8 +3,6 @@
   <abortOnConfigurationError>${solr.abortOnConfigurationError:true}</abortOnConfigurationError>
   <luceneMatchVersion>LUCENE_40</luceneMatchVersion>
 
-  <lib dir="../../../lib" />
-
   <dataDir>${people.solr.data.dir:}</dataDir>
   <directoryFactory name="DirectoryFactory"
     class="org.apache.solr.core.MMapDirectoryFactory"/>
