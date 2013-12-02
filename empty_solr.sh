@@ -1,1 +1,0 @@
-rm -f ./ts-solr/solr-home/cores/*/data/index/*

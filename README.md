@@ -1,6 +1,5 @@
 People Inquiry (π)
 ----------------
-People Inquiry helps you find people.  Details to follow (soon)
-
-DataImportHandler for Mongo
-https://github.com/james75/SolrMongoImporter
+People Inquiry helps you find people.  This is a set of SOLR
+configurations designed to be deployed by buildpack, indexing our mongo
+extracts.
