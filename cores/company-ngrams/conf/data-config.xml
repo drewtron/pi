@@ -4,7 +4,7 @@
       DataImportHandler for Mongo
       https://github.com/james75/SolrMongoImporter
   -->
-  <dataSource name="Mosaic" type="MongoDataSource" database="mosaic" host="localhost" />
+  <dataSource name="Mosaic" type="MongoDataSource" database="mosaic" host="${MONGO_HOST}" username="${MONGO_UID}" password="${MONGO_PWD}" />
   <document name="Companies">
     <entity name="company"
             processor="MongoEntityProcessor"
