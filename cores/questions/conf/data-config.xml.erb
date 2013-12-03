@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <dataConfig>
-  <dataSource type="JdbcDataSource" driver="com.mysql.jdbc.Driver" url="<%=jdbc:mysql://ENV['DW_HOST']/ark%>" user="<%=ENV['DW_UID']%>" password="<%=ENV['DW_PWD']%>"/>
+  <dataSource type="JdbcDataSource" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://<%=ENV['DW_HOST']%>/ark" user="<%=ENV['DW_UID']%>" password="<%=ENV['DW_PWD']%>"/>
   <document name="ProfileQuestion">
     <entity name="ProfileQuestion"
             query="
