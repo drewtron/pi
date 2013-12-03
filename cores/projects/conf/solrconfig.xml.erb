@@ -72,25 +72,39 @@
       <str name="rows">5</str>
       <str name="mm">0</str>
       <str name="uf">*</str>
-      <str name="qf">questionText responseText subjectTaxonomyPath</str>
+      <str name="boost">recip(ms(NOW/HOUR,createDate),3.16e-11,1,1)</str>
+      <str name="qf">title description</str>
       <str name="pf">
-        questionText^2
-        responseText^2
+        title^2
+        description^2
       </str>
       <str name="pf2">
-        questionText^2
-        responseText^2
+        title^2
+        description^2
       </str>
       <str name="pf3">
-        questionText^3
-        responseText^3
+        title^2
+        description^2
       </str>
       <str name="fl">
-        id questionId partyId responseDate
-        questionText responseText subjectTaxonomyPath
+        id consultationId partyId createDate clientName clientType practiceArea status productId title description
       </str>
       <str name="q.alt">*:*</str>
       <str name="wt">json</str>
+
+      <str name="hl">false</str>
+      <str name="hl.simple.pre">&lt;em&gt;</str>
+      <str name="hl.simple.post">&lt;/em&gt;</str>
+      <str name="hl.fl">
+        title
+        description
+      </str>
+      <str name="hl.fragsize">0</str>
+      <str name="hl.requireFieldMatch">true</str>
+      <str name="hl.usePhraseHighlighter">true</str>
+      <str name="f.title.hl.alternateField">title</str>
+      <str name="f.description.hl.alternateField">description</str>
+      <str name="hl.fragListBuilder">single</str>
   </lst>
 </requestHandler>
 
@@ -109,8 +123,6 @@
   </requestHandler>
 
 <!-- ************************************************************************** -->
-
-
 
   <requestHandler name="/mlt" class="solr.MoreLikeThisHandler"></requestHandler>
 
@@ -412,5 +424,15 @@
     <defaultQuery>*:*</defaultQuery>
     <pingQuery>q=alcoa&amp;rows=0&amp;wt=json</pingQuery>
   </admin>
+
+  <% if ENV['REPLICA_OF'] %>
+    <requestHandler name="/replication" class="solr.ReplicationHandler" >
+      <lst name="slave">
+        <str name="masterUrl">http://<%=ENV['REPLICA_OF']%>/solr/projects/replication</str>
+          <!--Interval in which the slave should poll master .Format is HH:mm:ss -->
+          <str name="pollInterval">00:02:04</str>
+      </lst>
+    </requestHandler>
+  <% end %>
 
 </config>
