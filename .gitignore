@@ -4,6 +4,7 @@
 dataimport.properties
 reports/
 .idea
+.vagrant/
 target/
 *.DS_STORE
 ts-solr/jetty-home/logs/
