@@ -419,6 +419,10 @@
         <str name="masterUrl">http://<%=ENV['REPLICA_OF']%>/solr/questions</str>
           <!--Interval in which the slave should poll master .Format is HH:mm:ss -->
           <str name="pollInterval">00:02:04</str>
+          <% if ENV['REPLICA_UID'] %>
+            <str name="httpBasicAuthUser"><%=ENV['REPLICA_UID']%></str>
+            <str name="httpBasicAuthPassword"><%=ENV['REPLICA_PWD']%></str>
+          <% end %>
       </lst>
     </requestHandler>
   <% end %>
