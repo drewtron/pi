@@ -172,7 +172,7 @@
   <% if ENV['REPLICA_OF'] %>
     <requestHandler name="/replication" class="solr.ReplicationHandler" >
       <lst name="slave">
-        <str name="masterUrl">http://<%=ENV['REPLICA_OF']%>/solr/people</str>
+        <str name="masterUrl">https://<%=ENV['REPLICA_OF']%>/solr/people</str>
           <!--Interval in which the slave should poll master .Format is HH:mm:ss -->
           <str name="pollInterval">00:02:04</str>
           <% if ENV['REPLICA_UID'] %>
