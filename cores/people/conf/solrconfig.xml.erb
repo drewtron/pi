@@ -109,7 +109,7 @@
   <arr name="components">
     <str>spellcheck</str>
   </arr>
- </requestHandler>
+</requestHandler>
 
 <searchComponent name="spellcheck" class="solr.SpellCheckComponent">
   <lst name="spellchecker">
@@ -120,30 +120,30 @@
   </lst>
 </searchComponent>
 
-  <!-- Update handlers needed to initiate manual document uploads used by the NRT index -->
+<!-- Update handlers needed to initiate manual document uploads used by the NRT index -->
   <requestHandler name="/update/json"
-                  class="solr.JsonUpdateRequestHandler"
-                  startup="lazy" />
+    class="solr.JsonUpdateRequestHandler"
+    startup="lazy" />
   <requestHandler name="/update"
-                  class="solr.XmlUpdateRequestHandler">
+    class="solr.XmlUpdateRequestHandler">
   </requestHandler>
 
-<requestHandler name="/update/extract"
-  startup="lazy"
-  class="solr.extraction.ExtractingRequestHandler" >
-  <lst name="defaults">
-    <str name="fmap.content">text</str>
-    <str name="lowernames">true</str>
-    <str name="uprefix">ignored_</str>
+  <requestHandler name="/update/extract"
+    startup="lazy"
+    class="solr.extraction.ExtractingRequestHandler" >
+    <lst name="defaults">
+      <str name="fmap.content">text</str>
+      <str name="lowernames">true</str>
+      <str name="uprefix">ignored_</str>
 
-    <str name="captureAttr">true</str>
-    <str name="fmap.a">links</str>
-    <str name="fmap.div">ignored_</str>
-  </lst>
-</requestHandler>
+      <str name="captureAttr">true</str>
+      <str name="fmap.a">links</str>
+      <str name="fmap.div">ignored_</str>
+    </lst>
+  </requestHandler>
 
-<requestHandler name="/admin/"
-  class="solr.admin.AdminHandlers" />
+  <requestHandler name="/admin/"
+    class="solr.admin.AdminHandlers" />
 
 <!-- ping/healthcheck -->
   <requestHandler name="/admin/ping" class="solr.PingRequestHandler">
@@ -169,18 +169,18 @@
     <pingQuery>q=alcoa&amp;rows=0&amp;wt=json</pingQuery>
   </admin>
 
-  <% if ENV['REPLICA_OF'] %>
-    <requestHandler name="/replication" class="solr.ReplicationHandler" >
+  <requestHandler name="/replication" class="solr.ReplicationHandler" >
+    <% if ENV['REPLICA_OF'] %>
       <lst name="slave">
-        <str name="masterUrl">https://<%=ENV['REPLICA_OF']%>/solr/people</str>
-          <!--Interval in which the slave should poll master .Format is HH:mm:ss -->
-          <str name="pollInterval">00:02:04</str>
-          <% if ENV['REPLICA_UID'] %>
-            <str name="httpBasicAuthUser"><%=ENV['REPLICA_UID']%></str>
-            <str name="httpBasicAuthPassword"><%=ENV['REPLICA_PWD']%></str>
-          <% end %>
+        <str name="masterUrl"><%=ENV['REPLICA_OF']%>/solr/people/replication</str>
+        <!--Interval in which the slave should poll master .Format is HH:mm:ss -->
+        <str name="pollInterval">00:02:04</str>
+        <% if ENV['REPLICA_UID'] %>
+          <str name="httpBasicAuthUser"><%=ENV['REPLICA_UID']%></str>
+          <str name="httpBasicAuthPassword"><%=ENV['REPLICA_PWD']%></str>
+        <% end %>
       </lst>
-    </requestHandler>
-  <% end %>
+    <% end %>
+  </requestHandler>
 
 </config>
