@@ -3,10 +3,7 @@
   <abortOnConfigurationError>${solr.abortOnConfigurationError:true}</abortOnConfigurationError>
   <luceneMatchVersion>LUCENE_40</luceneMatchVersion>
 
-  <dataDir>/var/starphleet/solr/company-ngrams</dataDir>
-  <!--  <directoryFactory name="DirectoryFactory"
-                      class="${solr.directoryFactory:solr.StandardDirectoryFactory}"/>
-  -->
+  <dataDir><%=ENV['DATA_DIR']%></dataDir>
   <directoryFactory name="DirectoryFactory"
     class="org.apache.solr.core.MMapDirectoryFactory"/>
 

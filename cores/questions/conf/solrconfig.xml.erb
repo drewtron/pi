@@ -2,38 +2,34 @@
 <config>
   <abortOnConfigurationError>${solr.abortOnConfigurationError:true}</abortOnConfigurationError>
   <luceneMatchVersion>LUCENE_40</luceneMatchVersion>
+  <dataDir><%=ENV['DATA_DIR']%></dataDir>
+  <directoryFactory name="DirectoryFactory"
+    class="org.apache.solr.core.MMapDirectoryFactory"/>
 
-  <dataDir>/var/starphleet/solr/questions</dataDir>
-<!--  <directoryFactory name="DirectoryFactory"
-                    class="${solr.directoryFactory:solr.StandardDirectoryFactory}"/>
--->
- <directoryFactory name="DirectoryFactory"
-   class="org.apache.solr.core.MMapDirectoryFactory"/>
+  <jmx />
 
- <jmx />
+  <updateHandler class="solr.DirectUpdateHandler2">
 
- <updateHandler class="solr.DirectUpdateHandler2">
+  </updateHandler>
 
- </updateHandler>
-
- <query>
-   <maxBooleanClauses>12000</maxBooleanClauses>
-   <filterCache class="solr.FastLRUCache"
-     size="512"
-     initialSize="512"
-     autowarmCount="0"/>
-   <queryResultCache class="solr.LRUCache"
-     size="512"
-     initialSize="512"
-     autowarmCount="0"/>
-   <documentCache class="solr.LRUCache"
-     size="512"
-     initialSize="512"
-     autowarmCount="0"/>
-   <enableLazyFieldLoading>true</enableLazyFieldLoading>
-   <useFilterForSortedQuery>true</useFilterForSortedQuery>
-   <queryResultWindowSize>20</queryResultWindowSize>
-   <!-- Maximum number of documents to cache for any entry in the
+  <query>
+    <maxBooleanClauses>12000</maxBooleanClauses>
+    <filterCache class="solr.FastLRUCache"
+      size="512"
+      initialSize="512"
+      autowarmCount="0"/>
+    <queryResultCache class="solr.LRUCache"
+      size="512"
+      initialSize="512"
+      autowarmCount="0"/>
+    <documentCache class="solr.LRUCache"
+      size="512"
+      initialSize="512"
+      autowarmCount="0"/>
+    <enableLazyFieldLoading>true</enableLazyFieldLoading>
+    <useFilterForSortedQuery>true</useFilterForSortedQuery>
+    <queryResultWindowSize>20</queryResultWindowSize>
+    <!-- Maximum number of documents to cache for any entry in the
         queryResultCache.
      -->
    <queryResultMaxDocsCached>200</queryResultMaxDocsCached>

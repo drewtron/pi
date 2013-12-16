@@ -2,11 +2,8 @@
 <config>
   <abortOnConfigurationError>${solr.abortOnConfigurationError:true}</abortOnConfigurationError>
   <luceneMatchVersion>LUCENE_40</luceneMatchVersion>
+  <dataDir><%=ENV['DATA_DIR']%></dataDir>
 
-  <dataDir>/var/starphleet/solr/project-participants</dataDir>
-<!--  <directoryFactory name="DirectoryFactory"
-                    class="${solr.directoryFactory:solr.StandardDirectoryFactory}"/>
--->
  <directoryFactory name="DirectoryFactory"
    class="org.apache.solr.core.MMapDirectoryFactory"/>
 
