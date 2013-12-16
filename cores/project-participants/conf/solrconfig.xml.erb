@@ -2,7 +2,7 @@
 <config>
   <abortOnConfigurationError>${solr.abortOnConfigurationError:true}</abortOnConfigurationError>
   <luceneMatchVersion>LUCENE_40</luceneMatchVersion>
-  <dataDir><%=ENV['DATA_DIR']%></dataDir>
+  <dataDir><%=ENV['DATA_DIR']%>/project-participants</dataDir>
 
  <directoryFactory name="DirectoryFactory"
    class="org.apache.solr.core.MMapDirectoryFactory"/>
