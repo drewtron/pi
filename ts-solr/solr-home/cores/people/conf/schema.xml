@@ -45,8 +45,9 @@ Template for schema.xml. Two areas are filled in:
     <field name="isEducator" type="bool" indexed="true" stored="true" required="false"/>
     <field name="isBoardMember" type="bool" indexed="true" stored="true" required="false"/>
     <field name="consultationFeedback" type="string" indexed="true" stored="true" required="false"/>
-    <field name="isTermsAndConditionsSigned" type="bool" indexed="true" stored="true" required="false"/>
+    <field name="isTermsConditionsCurrent" type="bool" indexed="true" stored="true" required="false"/>
     <field name="lastSignedTermsAndConditions" type="int" indexed="true" stored="true" required="false"/>
+    <field name="termsConditionsExpiration" type="date" indexed="true" stored="true" required="false"/>
     <field name="biography" type="text" indexed="true" omitNorms="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true" />
     <field name="resume" type="text" indexed="true" omitNorms="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true" />
     <field name="resumeUrl" type="string" indexed="false" stored="true" required="false" />
