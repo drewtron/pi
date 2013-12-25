@@ -4,7 +4,7 @@
   <luceneMatchVersion>LUCENE_40</luceneMatchVersion>
   <dataDir><%=ENV['DATA_DIR']%>/questions</dataDir>
   <directoryFactory name="DirectoryFactory"
-    class="org.apache.solr.core.StandardDirectoryFactory"/>
+    class="org.apache.solr.core.MMapDirectoryFactory"/>
 
   <jmx />
 
