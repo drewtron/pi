@@ -12,9 +12,9 @@ Template for schema.xml. Two areas are filled in:
 
     <field name="id" type="string" indexed="true" stored="true" required="true"/>
     <field name="personId" type="string" indexed="true" stored="true" required="false"/>
-    <field name="firstname" type="text" indexed="true" stored="true" required="false" />
-    <field name="lastname" type="text" indexed="true" stored="true" required="false" />
-    <field name="name" type="text" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true" />
+    <field name="firstname" type="text" indexed="false" stored="true" required="false" />
+    <field name="lastname" type="text" indexed="false" stored="true" required="false" />
+    <field name="name" type="ngram_text" indexed="true" stored="true" required="false" />
     <field name="type" type="string" indexed="true" stored="true" required="false"/>
     <field name="sourceid" type="string" indexed="true" stored="true" required="false"/>
     <field name="partyType" type="string" indexed="true" stored="true" required="false"/>
@@ -189,6 +189,19 @@ Template for schema.xml. Two areas are filled in:
                 catenateNumbers="1"
                 catenateAll="1" />
         <filter class="solr.SynonymFilterFactory" synonyms="phone-synonyms.txt" ignoreCase="true" expand="true"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="ngram_text" class="solr.TextField">
+      <analyzer type="index">
+        <tokenizer class="solr.KeywordTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.EdgeNGramFilterFactory" minGramSize="2" maxGramSize="20"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.KeywordTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.EdgeNGramFilterFactory" minGramSize="2" maxGramSize="20"/>
       </analyzer>
     </fieldType>
   </types>
