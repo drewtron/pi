@@ -14,7 +14,7 @@ Template for schema.xml. Two areas are filled in:
     <field name="personId" type="string" indexed="true" stored="true" required="false"/>
     <field name="firstname" type="text" indexed="false" stored="true" required="false" />
     <field name="lastname" type="text" indexed="false" stored="true" required="false" />
-    <field name="name" type="ngram_text" indexed="true" stored="true" required="false" />
+    <field name="name" type="text" indexed="true" stored="true" required="false" />
     <field name="type" type="string" indexed="true" stored="true" required="false"/>
     <field name="sourceid" type="string" indexed="true" stored="true" required="false"/>
     <field name="partyType" type="string" indexed="true" stored="true" required="false"/>
@@ -83,15 +83,8 @@ Template for schema.xml. Two areas are filled in:
     <dynamicField name="*_Bucket"  type="text" multiValued="true"  indexed="true" stored="true"/>
     <dynamicField name="*_Facet"  type="facet" multiValued="true"  indexed="true" stored="true"/>
 
-    <field name="spell" type="text" indexed="true" stored="false" multiValued="true"/>
-    <copyField source="name" dest="spell"/>
-    <copyField source="boardCompanyNames" dest="spell"/>
-    <copyField source="jobsCompanyNames" dest="spell"/>
-    <copyField source="resume" dest="spell"/>
-    <copyField source="projectHistory" dest="spell"/>
-    <copyField source="biography" dest="spell"/>
-    <copyField source="profileQuestions" dest="spell"/>
-    <copyField source="clinicalTrialSearch" dest="spell"/>
+    <field name="namegrams" type="ngram_text" indexed="true" stored="false" multiValued="true"/>
+    <copyField source="name" dest="namegrams"/>
   </fields>
 
   <!-- Field to use to determine and enforce document uniqueness.
