@@ -4,9 +4,6 @@
   <luceneMatchVersion>LUCENE_40</luceneMatchVersion>
   <dataDir><%=ENV['DATA_DIR']%>/people</dataDir>
 
-  <directoryFactory name="DirectoryFactory"
-    class="org.apache.solr.core.MMapDirectoryFactory"/>
-
   <jmx />
 
   <updateHandler class="solr.DirectUpdateHandler2">
