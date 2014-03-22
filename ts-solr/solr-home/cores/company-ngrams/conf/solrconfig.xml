@@ -9,8 +9,6 @@
   <!--  <directoryFactory name="DirectoryFactory"
                       class="${solr.directoryFactory:solr.StandardDirectoryFactory}"/>
   -->
-  <directoryFactory name="DirectoryFactory"
-                    class="org.apache.solr.core.MMapDirectoryFactory"/>
 
   <jmx />
 
