@@ -28,37 +28,23 @@ Template for schema.xml. Two areas are filled in:
     <field name="isLearning" type="bool" indexed="true" stored="true" required="false"/>
     <field name="hourlyRate" type="int" indexed="true" stored="true" required="false"/>
     <field name="expertWitnessRate" type="int" indexed="true" stored="true" required="false"/>
-
-
     <field name="isMemberPrograms" type="bool" indexed="true" stored="true" required="false"/>
     <field name="isFirstAccess" type="bool" indexed="true" stored="true" required="false"/>
     <field name="isKeyExecutive" type="bool" indexed="true" stored="true" required="false"/>
-    <field name="isEmployedToPublic" type="bool" indexed="true" stored="false" required="false"/>
-    <field name="isEmployedToPrivate" type="bool" indexed="true" stored="false" required="false"/>
-    <field name="isEmployedToPrivateSubsidiary" type="bool" indexed="true" stored="false" required="false"/>
-    <field name="fortuneRank100" type="bool" indexed="true" stored="false" required="false"/>
-    <field name="fortuneRank500" type="bool" indexed="true" stored="false" required="false"/>
-    <field name="fortuneRank1000" type="bool" indexed="true" stored="false" required="false"/>
-
-    <field name="isTermsConditionsCurrent" type="bool" indexed="true" stored="true" required="false"/>
-    <field name="lastSignedTermsAndConditions" type="int" indexed="true" stored="true" required="false"/>
-    <field name="termsConditionsExpiration" type="date" indexed="true" stored="true" required="false"/>
     <field name="recruitedBy" type="int" indexed="true" stored="true" required="false"/>
+    <field name="jobs" type="text" indexed="true" stored="true" required="false" multiValued="false" />
+    <field name="isTermsConditionsCurrent" type="bool" indexed="true" stored="true" required="false"/>
+    <field name="lastSignedTermsAndConditions" type="date" indexed="true" stored="true" required="false"/>
+    <field name="termsConditionsExpiration" type="date" indexed="true" stored="true" required="false"/>
+
     <field name="profileQuestions" type="text" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
     <field name="numGivenToClient" type="int" indexed="true" stored="true" required="false"/>
     <field name="numProjectsPaid" type="int" indexed="true" stored="true" required="false"/>
     <field name="projectHistory" type="text" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
+  
     <field name="flags" type="string" indexed="false" stored="true" required="false" multiValued="false" />
     <field name="tagsAll" type="facet" multiValued="true"  indexed="true" stored="true"/>
-    <field name="specialties" type="facet" multiValued="true"  indexed="true" stored="true"/>
-    <field name="languages" type="string" multiValued="true"  indexed="true" stored="true"/>
 
-    <field name="jobs" type="text" indexed="true" stored="true" required="false" multiValued="false" />
-    <field name="jobsCompanyNames" type="text" indexed="true" stored="true" required="false" multiValued="true" termPositions="true" termVectors="true" termOffsets="true"/>
-    <field name="jobsJobTitles" type="text" indexed="true" stored="true" required="false" multiValued="true" termPositions="true" termVectors="true" termOffsets="true"/>
-    <field name="boardCompanyNames" type="text" indexed="true" stored="true" required="false" multiValued="true" termPositions="true" termVectors="true" termOffsets="true"/>
-    <field name="boardJobTitles" type="text" indexed="true" stored="true" required="false" multiValued="true" />
-    <field name="jobTaxonomies" type="text" indexed="true" stored="true" required="false" multiValued="true" />
 
     <dynamicField name="*_Long_Values"  type="tlong" multiValued="true"  indexed="true" stored="false"/>
     <dynamicField name="*_Bucket"  type="text" multiValued="true"  indexed="true" stored="true"/>
