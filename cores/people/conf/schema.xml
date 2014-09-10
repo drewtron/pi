@@ -50,36 +50,32 @@ Template for schema.xml. Two areas are filled in:
     <field name="isTermsConditionsCurrent" type="bool" indexed="true" stored="true" required="false"/>
     <field name="lastSignedTermsAndConditions" type="int" indexed="true" stored="true" required="false"/>
     <field name="termsConditionsExpiration" type="date" indexed="true" stored="true" required="false"/>
-    <field name="biography" type="text" indexed="true" omitNorms="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true" />
-    <field name="resume" type="text" indexed="true" omitNorms="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true" />
-    <field name="resumeUrl" type="string" indexed="false" stored="true" required="false" />
+    <field name="biography" type="text" indexed="true" omitNorms="true" stored="true" required="false" />
     <field name="practicearea" type="string" indexed="true" stored="true" required="false"/>
     <field name="zoneregion" type="string" indexed="true" stored="true" required="false"/>
     <field name="boardMembership" type="text" indexed="true" stored="true" required="false" multiValued="false" />
     <field name="hourlyRate" type="int" indexed="true" stored="true" required="false"/>
     <field name="expertWitnessHourly" type="int" indexed="true" stored="true" required="false"/>
-    <field name="phone" type="text_phone" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
+    <field name="phone" type="text_phone" indexed="true" stored="true" required="false"/>
     <field name="email" type="email" indexed="true" stored="true" required="false"/>
     <field name="secondaryEmail" type="email" indexed="true" stored="true" required="false"/>
     <field name="recruitedBy" type="int" indexed="true" stored="true" required="false"/>
-    <field name="profileQuestions" type="text" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
+    <field name="profileQuestions" type="text" multiValued="true" indexed="true" stored="false" required="false"/>
     <field name="daysInNetwork" type="int" indexed="true" stored="true" required="false"/>
     <field name="daysSincePaid" type="int" indexed="true" stored="true" required="false"/>
     <field name="numGivenToClient" type="int" indexed="true" stored="true" required="false"/>
     <field name="numProjectsPaid" type="int" indexed="true" stored="true" required="false"/>
-    <field name="projectHistory" type="text" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
-    <field name="clinicalTrialSearch" type="text" multiValued="true" indexed="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
-    <field name="clinicalTrialDisplay" type="text" multiValued="true" indexed="false" stored="true" required="false" />
+    <field name="projectHistory" type="text" multiValued="true" indexed="true" stored="false" required="false"/>
     <field name="flags" type="string" indexed="false" stored="true" required="false" multiValued="false" />
     <field name="tagsAll" type="facet" multiValued="true"  indexed="true" stored="true"/>
     <field name="specialties" type="facet" multiValued="true"  indexed="true" stored="true"/>
     <field name="languages" type="string" multiValued="true"  indexed="true" stored="true"/>
     <field name="paidToInvitedRatio" type="float" indexed="true" stored="true"/>
 
-    <field name="jobs" type="text" indexed="true" stored="true" required="false" multiValued="false" />
-    <field name="jobsCompanyNames" type="text" indexed="true" stored="true" required="false" multiValued="true" termPositions="true" termVectors="true" termOffsets="true"/>
-    <field name="jobsJobTitles" type="text" indexed="true" stored="true" required="false" multiValued="true" termPositions="true" termVectors="true" termOffsets="true"/>
-    <field name="boardCompanyNames" type="text" indexed="true" stored="true" required="false" multiValued="true" termPositions="true" termVectors="true" termOffsets="true"/>
+    <field name="jobs" type="text" indexed="false" stored="true" required="false" multiValued="false" />
+    <field name="jobsCompanyNames" type="text" indexed="true" stored="true" required="false" multiValued="true"/>
+    <field name="jobsJobTitles" type="text" indexed="true" stored="true" required="false" multiValued="true"/>
+    <field name="boardCompanyNames" type="text" indexed="true" stored="true" required="false" multiValued="true"/>
     <field name="boardJobTitles" type="text" indexed="true" stored="true" required="false" multiValued="true" />
     <field name="jobTaxonomies" type="text" indexed="true" stored="true" required="false" multiValued="true" />
 
