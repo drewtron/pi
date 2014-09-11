@@ -38,10 +38,10 @@ Template for schema.xml. Two areas are filled in:
     <field name="termsConditionsExpiration" type="date" indexed="true" stored="true" required="false"/>
     <field name="flags" type="string" indexed="false" stored="true" required="false" multiValued="false" />
     <field name="tags" type="facet" multiValued="true"  indexed="true" stored="true"/>
+    <field name="numProjectsPaid" type="int" indexed="true" stored="true" required="false"/>
 
     <field name="profileQuestions" type="text" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
     <field name="numGivenToClient" type="int" indexed="true" stored="true" required="false"/>
-    <field name="numProjectsPaid" type="int" indexed="true" stored="true" required="false"/>
     <field name="projectHistory" type="text" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
 
 
