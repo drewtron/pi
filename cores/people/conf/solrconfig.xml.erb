@@ -7,7 +7,9 @@
   <jmx />
 
   <updateHandler class="solr.DirectUpdateHandler2">
-
+    <updateLog class="solr.FSUpdateLog">
+        <str name="dir">${solr.data.dir:}</str>
+    </updateLog>
   </updateHandler>
 
   <query>
@@ -51,8 +53,6 @@
  </requestHandler>
 
 
-
-<!-- ************************************************************************** -->
 
 <requestHandler name="/select"
   class="solr.SearchHandler">

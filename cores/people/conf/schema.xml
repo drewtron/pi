@@ -9,7 +9,7 @@ Template for schema.xml. Two areas are filled in:
 <schema name="people" version="1.4">
 
   <fields>
-
+    <field name="_version_" type="long" indexed="true" stored="true" multiValued="false"/>
     <field name="personid" type="text" indexed="true" stored="true" required="false" />
     <field name="firstname" type="text" indexed="true" stored="true" required="false" />
     <field name="lastname" type="text" indexed="true" stored="true" required="false" />
@@ -21,8 +21,8 @@ Template for schema.xml. Two areas are filled in:
     <field name="country" type="string" indexed="true" stored="true" required="false"/>
     <field name="continent" type="string" indexed="true" stored="true" required="false"/>
     <field name="isDNC" type="bool" indexed="true" stored="true" required="false"/>
-    <field name="phone" type="text_phone" indexed="true" stored="true" required="false" termPositions="true" termOffsets="true"/>
-    <field name="mobile" type="text_phone" indexed="true" stored="true" required="false" termPositions="true" termOffsets="true"/>
+    <field name="phone" type="text_phone" indexed="true" stored="true" required="false" termVectors="true" termPositions="true" termOffsets="true"/>
+    <field name="mobile" type="text_phone" indexed="true" stored="true" required="false" termVectors="true" termPositions="true" termOffsets="true"/>
     <field name="email" type="email" indexed="true" stored="true" required="false"/>
     <field name="biography" type="text" indexed="true" omitNorms="true" stored="true" required="false" termPositions="true" termVectors="true" termOffsets="true" />
     <field name="isHighValue" type="bool" indexed="true" stored="true" required="false"/>
@@ -34,17 +34,12 @@ Template for schema.xml. Two areas are filled in:
     <field name="isKeyExecutive" type="bool" indexed="true" stored="true" required="false"/>
     <field name="recruitedBy" type="int" indexed="true" stored="true" required="false"/>
     <field name="jobs" type="text" indexed="true" stored="true" required="false" multiValued="false" />
-    <field name="isTermsConditionsCurrent" type="bool" indexed="true" stored="true" required="false"/>
-    <field name="lastSignedTermsAndConditions" type="date" indexed="true" stored="true" required="false"/>
-    <field name="termsConditionsExpiration" type="date" indexed="true" stored="true" required="false"/>
     <field name="flags" type="string" indexed="false" stored="true" required="false" multiValued="false" />
     <field name="tags" type="facet" multiValued="true"  indexed="true" stored="true"/>
     <field name="numProjectsPaid" type="int" indexed="true" stored="true" required="false"/>
     <field name="numGivenToClient" type="int" indexed="true" stored="true" required="false"/>
     <field name="projectHistory" type="text" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
-
     <field name="profileQuestions" type="text" multiValued="true" indexed="true" stored="false" required="false" termPositions="true" termVectors="true" termOffsets="true"/>
-
 
 
     <dynamicField name="*_Long_Values"  type="tlong" multiValued="true"  indexed="true" stored="false"/>
