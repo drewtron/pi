@@ -7,9 +7,9 @@
   <jmx />
 
   <updateHandler class="solr.DirectUpdateHandler2">
-    <updateLog class="solr.FSUpdateLog">
-        <str name="dir">${solr.data.dir:}</str>
-    </updateLog>
+    <autoSoftCommit>
+       <maxTime>1000</maxTime>
+   </autoSoftCommit>
   </updateHandler>
 
   <query>
@@ -149,9 +149,6 @@
   <requestHandler name="/update/json"
     class="solr.JsonUpdateRequestHandler"
     startup="lazy" />
-  <requestHandler name="/update"
-    class="solr.XmlUpdateRequestHandler">
-  </requestHandler>
 
   <requestHandler name="/update/extract"
     startup="lazy"
