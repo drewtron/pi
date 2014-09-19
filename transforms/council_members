@@ -1,0 +1,11 @@
+#!/usr/bin/env gawk -f
+@include "transforms/records";
+
+{
+escape();
+print "db.people.update("
+printf "{ personid: '%s'},\n", $1
+printf "{ $set: {type: 'councilmember', sourceid: '%s', isHighValue: %i, isLearning: %i, biography: '%s', phone: '%s', mobile: '%s', isDNC: 0} },\n", $2, $3, $4, $5, $6, $7
+printf "{ upsert: true }\n"
+print "\n);\n"
+}

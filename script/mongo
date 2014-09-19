@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+#parallellized mongo batch import
+cat /dev/stdin | parallel --no-notice --pipe --ungroup --block 1K -L 0 --recend '//BATCH' mongo --quiet localhost/import > /dev/null

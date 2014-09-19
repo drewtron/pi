@@ -1,0 +1,20 @@
+#!/usr/bin/env gawk -f
+@include "transforms/records";
+
+$2 == "hourly" {
+escape();
+print "db.people.update("
+printf "{ personid: '%s'},\n", $1
+printf "{ $set: {hourlyRate: %s} },\n", $3
+printf "{ upsert: true }\n"
+print ");\n"
+}
+
+$2 == "expert" {
+escape();
+print "db.people.update("
+printf "{ personid: '%s'},\n", $1
+printf "{ $set: {expertWitnessRate: %s} },\n", $3
+printf "{ upsert: true }\n"
+print ");\n"
+}

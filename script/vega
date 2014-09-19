@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+#query vega with these environment variables
+GLGLIVE="${GLGLIVE:-glgdb150.glgresearch.com}"
+GLGLIVE_USER="${GLGLIVE_USER:-GLGR_reader}"
+GLGLIVE_PWD="${GLGLIVE_PWD:-G1Gr!@#reader}"
+
+#and run the first parameter as the query
+QUERY="${1}"
+
+export TDSVER="7.1"
+freebcp "$(cat ${QUERY})" queryout /dev/stdout -S "${GLGLIVE}" -U "${GLGLIVE_USER}" -P "${GLGLIVE_PWD}" -c -r "\r\t" -t "\t" -O "SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED"

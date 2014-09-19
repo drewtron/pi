@@ -1,0 +1,28 @@
+#!/usr/bin/env gawk -f
+@include "transforms/records";
+
+BEGIN {
+  #zero out the counters
+  print "db.people.update("
+  print "{},"
+  print "{ $set: {numGivenToClient: 0} },"
+  print "{ upsert: true, multi: true }"
+  print ");\n"
+}
+
+{
+  escape();
+  print "db.people.update("
+  printf "{ personid: '%s'},\n", $1
+  printf "{ $inc: {numGivenToClient: 1} },\n"
+  printf "{ upsert: true }\n"
+  print ");\n"
+}
+
+{
+  print "db.people.update("
+  printf "{ personid: '%s'},\n", $1
+  printf "{ $set: {'projectHistory.%s': {title: '%s', description: '%s'} } },\n", $2, $3, $4
+  printf "{ upsert: true }\n"
+  print "\n);\n"
+}

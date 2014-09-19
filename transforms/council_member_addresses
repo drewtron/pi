@@ -1,0 +1,16 @@
+#!/usr/bin/env gawk -f
+@include "transforms/records";
+
+{
+escape();
+print "db.people.update("
+printf "{ personid: '%s'},\n", $1
+printf "{ $set: {city: '%s', state: '%s', country: '%s', continent: '%s'} },\n", $2, $3, $4, $5
+printf "{ upsert: true }\n"
+print "\n);\n"
+print "db.people.update("
+printf "{ personid: '%s'},\n", $1
+printf "{ $set: {geo_taxonomy_Facet: ['0_%s_', '1_%s__%s_', '2_%s__%s__%s_', '3_%s__%s__%s__%s_']} },\n", $5, $5, $4, $5, $4, $3, $5, $4, $3, $2
+printf "{ upsert: true }\n"
+print "\n);\n"
+}

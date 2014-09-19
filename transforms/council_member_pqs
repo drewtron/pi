@@ -1,0 +1,13 @@
+#!/usr/bin/env gawk -f
+@include "transforms/records";
+
+#all pqs
+{
+  escape();
+  #just the job itself
+  print "db.people.update("
+  printf "{ personid: '%s'},\n", $1
+  printf "{ $set: {'profileQuestions.%s': { QuestionText: '%s', ResponseDate: '%s', ResponseText: '%s'} } },\n", $2, $3, $4, $5
+  printf "{ upsert: true }\n"
+  print "\n);\n"
+}
