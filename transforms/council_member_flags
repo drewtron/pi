@@ -16,8 +16,7 @@ function DNC(flag) {
   print "//DNC for " flag
   print "db.people.update("
   printf "{ personid: '%s'},\n", $1
-  #increment so this can be set by organization too, any positive is DNC
-  printf "{ $inc: {isDNC: 1} },\n"
+  printf "{ $inc: {isDNC: true} },\n"
   printf "{ upsert: true }\n"
   print "\n);\n"
 }
@@ -43,7 +42,7 @@ $2 == "13734" {
 $2 == "24" {
 print "db.people.update("
 printf "{ personid: '%s'},\n", $1
-printf "{ $set: {isFirstAccess: 1} },\n"
+printf "{ $set: {isFirstAccess: true} },\n"
 printf "{ upsert: true }\n"
 print "\n);\n"
 }
@@ -51,7 +50,7 @@ print "\n);\n"
 $2 == "43" {
 print "db.people.update("
 printf "{ personid: '%s'},\n", $1
-printf "{ $set: {isKeyExecutive: 1} },\n"
+printf "{ $set: {isKeyExecutive: true} },\n"
 printf "{ upsert: true }\n"
 print "\n);\n"
 }
@@ -59,7 +58,7 @@ print "\n);\n"
 $2 == "19" || $2 == "20" || $2 == "21" {
 print "db.people.update("
 printf "{ personid: '%s'},\n", $1
-printf "{ $set: {isMemberPrograms: 1} },\n"
+printf "{ $set: {isMemberPrograms: true} },\n"
 printf "{ upsert: true }\n"
 print "\n);\n"
 }
