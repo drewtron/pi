@@ -32,6 +32,22 @@ function pop(arr) {
   delete arr[length(arr)]
 }
 
+function defaultValue(original, value) {
+  if (length(original)) {
+    return original;
+  } else {
+    return value;
+  }
+}
+
+function arraycopy(arr1,arr2) {
+  for(i in arr1) {
+    arr2[i] = arr1[i]
+    n++
+  }
+  return n
+}
+
 function taxonomyPath(segments) {
   results = ""
   for (segment in segments) {
@@ -52,7 +68,13 @@ function employmentDate(yy, mm) {
 }
 
 function facetize(person, facetPath, storeInField) {
-  split(facetPath, taxonomyFacets, ">");
+  #if you send an array, use it
+  if (isarray(facetPath)) {
+    arraycopy(facetPath, taxonomyFacets);
+  } else {
+    split(facetPath, taxonomyFacets, ">")
+  }
+
   while (length(taxonomyFacets) > 0) {
     print "db.people.update("
     printf "{ personid: '%s'},\n", person
