@@ -21,10 +21,24 @@
   print ");\n"
   facetize($1, $11, "taxonomySector_All_Facet")
   facetize($1, $12, "taxonomyJobFunction_All_Facet")
+
+  print "db.people.update("
+  printf "{ personid: '%s'},\n", $1
+  printf "{ $addToSet: {company_All_Bucket: '%s'} },\n", $3
+  printf "{ upsert: true }\n"
+  print ");\n"
 }
 
 #current jobs
 $10 == "1" {
   facetize($1, $11, "taxonomySector_AllCurrent_Facet")
   facetize($1, $12, "taxonomyJobFunction_AllCurrent_Facet")
+
+
+  print "db.people.update("
+  printf "{ personid: '%s'},\n", $1
+  printf "{ $addToSet: {company_AllCurrent_Bucket: '%s'} },\n", $3
+  printf "{ upsert: true }\n"
+  print ");\n"
+
 }
