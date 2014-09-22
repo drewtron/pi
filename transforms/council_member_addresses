@@ -8,9 +8,45 @@ printf "{ personid: '%s'},\n", $1
 printf "{ $set: {city: '%s', state: '%s', country: '%s', continent: '%s'} },\n", $2, $3, $4, $5
 printf "{ upsert: true }\n"
 print "\n);\n"
+
+geographyFacets = ""
+
+fields[0] = $5 #Continent
+fields[1] = $4 #Country
+if ($3) #If there's no state but there is a city, put in a placeholder state
+  fields[2] = $3 #State
+else
+  if (fields[3])
+    fields[2] = "N/A"
+fields[3] = $2 #City
+
+i = 0
+while (i < 4) {
+    if (fields[i]) {
+      facetValue = i
+      for (j = 0; j < i + 1; j++) {
+          facetValue = facetValue "_" fields[j] "_"
+      }
+
+      if (geographyFacets) {
+          geographyFacets = geographyFacets ",'" facetValue "'"
+      }
+      else {
+          geographyFacets = "'" facetValue "'"
+      }
+      i++
+    }
+     else
+       i = 4
+}
+
+geographyFacets = "[" geographyFacets "]"
+
+
 print "db.people.update("
 printf "{ personid: '%s'},\n", $1
-printf "{ $set: {geo_taxonomy_Facet: ['0_%s_', '1_%s__%s_', '2_%s__%s__%s_', '3_%s__%s__%s__%s_']} },\n", $5, $5, $4, $5, $4, $3, $5, $4, $3, $2
+printf "{ $set: {geo_taxonomy_Facet: %s} },\n", geographyFacets
 printf "{ upsert: true }\n"
 print "\n);\n"
+
 }
