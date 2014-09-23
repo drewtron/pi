@@ -13,12 +13,14 @@
   printf "{upsert: true }\n"
   print ");"
 
-  #separate taxonomy sets
-  print "db.people.update("
-  printf "{ personid: '%s'},\n", $1
-  printf "{ $addToSet: {taxonomySector: '%s'} },\n", $11
-  printf "{ upsert: true }\n"
-  print ");\n"
+  if ($11) {
+    #separate taxonomy sets
+    print "db.people.update("
+    printf "{ personid: '%s'},\n", $1
+    printf "{ $addToSet: {taxonomySector: '%s'} },\n", $11
+    printf "{ upsert: true }\n"
+    print ");\n"
+  }
   facetize($1, $11, "taxonomySector_All_Facet")
   facetize($1, $12, "taxonomyJobFunction_All_Facet")
 
