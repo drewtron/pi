@@ -8,3 +8,11 @@ reports/
 target/
 *.DS_STORE
 ts-solr/jetty-home/logs/
+cores/people/conf/data-config.xml
+cores/people/conf/solrconfig.xml
+cores/project-participants/conf/data-config.xml
+cores/project-participantsts/conf/solrconfig.xml
+cores/projects/conf/data-config.xml
+cores/projectects/conf/solrconfig.xml
+cores/questions/conf/data-config.xml
+cores/questions/conf/solrconfig.xml
