@@ -72,8 +72,7 @@ function facetize(person, facetPath, storeInField) {
   if (isarray(facetPath)) {
     arraycopy(facetPath, taxonomyFacets);
   } else {
-    if (length(facetPath))
-      split(facetPath, taxonomyFacets, ">")
+    split(facetPath, taxonomyFacets, ">")
   }
 
   while (length(taxonomyFacets) > 0) {
