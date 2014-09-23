@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dataConfig>
+  <dataSource type="JdbcDataSource" driver="com.mysql.jdbc.Driver" url="jdbc:mysql:///ark" user="" password=""/>
+  <document name="Projects">
+    <entity name="Projects"
+            query="
+              select
+              @rownum:=@rownum+1 as 'id',
+              cast(GROUP_CONCAT(mp.partyid SEPARATOR ' ') as char) as partyids,
+              m.title,
+              m.description,
+              m.ProductId,
+              m.ConsultationId,
+			  m.PracticeArea,
+              m.CreateDate,
+              m.Status,
+              o.Name as ClientName,
+              o.OrgType as ClientType
+              from meetingparticipant mp
+              join meeting m on m.productid = mp.productid
+              join organization o on o.partyid = m.accountpartyid
+              JOIN (SELECT @rownum:=0) r
+              where meetingtype = 'consultation'
+			  group by consultationid">
+      <field name="id" column="id" />
+      <field name="partyIds" column="partyIds" />
+      <field name="title" column="title" />
+      <field name="description" column="description"  />
+      <field name="productId" column="productId"  />
+      <field name="consultationId" column="consultationId" />
+      <field name="practiceArea" column="practiceArea" />
+      <field name="createDate" column="createDate" />
+      <field name="status" column="status" />
+      <field name="clientName" column="clientName" />
+      <field name="clientType" column="clientType" />
+    </entity>
+  </document>
+</dataConfig>
