@@ -16,7 +16,7 @@ function DNC(flag) {
   print "//DNC for " flag
   print "db.people.update("
   printf "{ personid: '%s'},\n", $1
-  printf "{ $inc: {isDNC: true} },\n"
+  printf "{ $set: {isDNC: true} },\n"
   printf "{ upsert: true }\n"
   print "\n);\n"
 }
@@ -40,11 +40,11 @@ $2 == "13734" {
 }
 
 $2 == "24" {
-print "db.people.update("
-printf "{ personid: '%s'},\n", $1
-printf "{ $set: {isFirstAccess: true} },\n"
-printf "{ upsert: true }\n"
-print "\n);\n"
+  print "db.people.update("
+  printf "{ personid: '%s'},\n", $1
+  printf "{ $set: {isFirstAccess: true} },\n"
+  printf "{ upsert: true }\n"
+  print "\n);\n"
 }
 
 $2 == "43" {
