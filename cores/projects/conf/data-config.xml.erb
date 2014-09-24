@@ -1,38 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <dataConfig>
-  <dataSource type="JdbcDataSource" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://<%=ENV['DW_HOST']%>/ark" user="<%=ENV['DW_UID']%>" password="<%=ENV['DW_PWD']%>"/>
+  <dataSource type="JdbcDataSource" driver="com.microsoft.sqlserver.jdbc.SQLServerDriver" url="jdbc:sqlserver://<%=ENV['GLGLIVE']%>:1433;databaseName=GLGLIVE" user="<%=ENV['GLGLIVE_USER']%>" password="<%=ENV['GLGLIVE_PWD']%>"/>
+
   <document name="Projects">
     <entity name="Projects"
             query="
-              select
-              @rownum:=@rownum+1 as 'id',
-              cast(GROUP_CONCAT(mp.partyid SEPARATOR ' ') as char) as partyids,
-              m.title,
-              m.description,
-              m.ProductId,
-              m.ConsultationId,
-			  m.PracticeArea,
-              m.CreateDate,
-              m.Status,
-              o.Name as ClientName,
-              o.OrgType as ClientType
-              from meetingparticipant mp
-              join meeting m on m.productid = mp.productid
-              join organization o on o.partyid = m.accountpartyid
-              JOIN (SELECT @rownum:=0) r
-              where meetingtype = 'consultation'
-			  group by consultationid">
-      <field name="id" column="id" />
-      <field name="partyIds" column="partyIds" />
-      <field name="title" column="title" />
-      <field name="description" column="description"  />
-      <field name="productId" column="productId"  />
-      <field name="consultationId" column="consultationId" />
-      <field name="practiceArea" column="practiceArea" />
-      <field name="createDate" column="createDate" />
-      <field name="status" column="status" />
-      <field name="clientName" column="clientName" />
-      <field name="clientType" column="clientType" />
+SELECT
+  CONSULTATION_ID,
+  TITLE,
+  CONSULTATION_DESCRIPTION_TEXT,
+  CREATED_DATE
+FROM
+  GLGLIVE.consult.CONSULTATION c
+WHERE
+  c.ACTIVE_IND = 1
+			  ">
+      <field name="consultationid" column="CONSULTATION_ID" />
+      <field name="title" column="TITLE" />
+      <field name="description" column="CONSULTATION_DESCRIPTION_TEXT"  />
+      <field name="createDate" column="CREATED_DATE" />
     </entity>
   </document>
 </dataConfig>
