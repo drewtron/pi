@@ -5,6 +5,9 @@
   <document name="Projects">
     <entity name="Projects"
             query="
+
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+
 SELECT
   CONSULTATION_ID,
   TITLE,

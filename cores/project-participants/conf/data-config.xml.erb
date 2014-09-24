@@ -5,6 +5,9 @@
   <document name="ProjectParticipants">
     <entity name="ProjectParticipants"
             query="
+
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+
 SELECT
   p.PERSON_ID,
   FIRST_NAME + ' ' + LAST_NAME AS NAME,
