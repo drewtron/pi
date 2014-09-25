@@ -50,8 +50,8 @@ function arraycopy(arr1,arr2) {
 
 function taxonomyPath(segments) {
   results = ""
-  for (segment in segments) {
-    results = results "_" strip(segments[segment]) "_"
+  for (i = 1; i <= length(segments); i++) {
+    results = results "_" strip(segments[i]) "_"
   }
   return sprintf("%s%s", length(segments) - 1, results)
 }
