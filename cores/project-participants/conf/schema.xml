@@ -13,10 +13,11 @@ Template for schema.xml. Two areas are filled in:
 
     <field name="consultationparticipantid" type="int" indexed="true" stored="true" required="true"/>
     <field name="consultationid" type="int" indexed="true" stored="true" required="true"/>
+    <field name="councilmemberid" type="int" indexed="true" stored="true" required="true"/>
     <field name="title" type="text" indexed="true" stored="true" required="false"/>
     <field name="description" type="text" indexed="true" stored="true" required="false"/>
     <field name="giveToClientDate" type="date" indexed="true" stored="true" required="false"/>
-    <field name="personid" type="string" indexed="true" stored="true" required="false"/>
+    <field name="personid" type="int" indexed="true" stored="true" required="false"/>
     <field name="name" type="string" indexed="false" stored="true" required="true"/>
 
   </fields>
