@@ -10,6 +10,7 @@ SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
 
 SELECT
   p.PERSON_ID,
+  cm.COUNCIL_MEMBER_ID,
   FIRST_NAME + ' ' + LAST_NAME AS NAME,
   cp.CONSULTATION_PARTICIPANT_ID,
   c.CONSULTATION_ID,
@@ -20,6 +21,7 @@ FROM
   GLGLIVE.consult.CONSULTATION c
   INNER JOIN GLGLIVE.consult.CONSULTATION_PARTICIPANT cp on c.CONSULTATION_ID = cp.CONSULTATION_ID
   INNER JOIN GLGLIVE.dbo.PERSON p on p.PERSON_ID = cp.PERSON_ID
+  INNER JOIN GLGLIVE.dbo.COUNCIL_MEMBER cm on cp.PERSON_ID = cm.PERSON_ID
 WHERE
   c.ACTIVE_IND = 1
   AND cp.ACTIVE_IND = 1
@@ -27,6 +29,7 @@ WHERE
 
               ">
       <field name="personid" column="PERSON_ID" />
+      <field name="councilmemberid" column="COUNCIL_MEMBER_ID" />
       <field name="name" column="NAME" />
       <field name="consultationparticipantid" column="CONSULTATION_PARTICIPANT_ID" />
       <field name="consultationid" column="CONSULTATION_ID" />
