@@ -4,8 +4,8 @@
 {
   escape();
   print "db.people.update("
-  print "{},"
-  print "{ $set: {numProjectsPaid: $2} },"
+  printf "{ personid: '%s'},\n", $1
+  printf "{ $set: {numProjectsPaid: %s} },", $2
   print "{ upsert: true, multi: true }"
   print ");\n"
 }
