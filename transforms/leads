@@ -9,7 +9,7 @@ BEGIN {
   escape();
   print "db.people.update("
   printf "{ leadid: '%s'}, ", $1
-  printf "{ $set: {hashkey: 'lead-%n', type: 'lead', leadid: %n, name: '%s', firstname: '%s', lastname: '%s', email: '%s', biography: '%s'} },\n", $1, $1, $2, $3, $4, $5, $6
+  printf "{ $set: {hashkey: 'lead-%s', type: 'lead', leadid: %s, name: '%s', firstname: '%s', lastname: '%s', email: '%s', biography: '%s'} },\n", $1, $1, $2, $3, $4, $5, $6
   printf "{ upsert: true }\n"
   print ");\n"
 }
