@@ -1,0 +1,15 @@
+#!/usr/bin/env gawk -f
+@include "transforms/records";
+
+BEGIN {
+  print "db.people.ensureIndex({leadid: 1});";
+}
+
+{
+  escape();
+  print "db.people.update("
+  printf "{ leadid: '%s'}, ", $1
+  printf "{ $set: {hashkey: 'lead-%n', type: 'lead', leadid: %n, name: '%s', firstname: '%s', lastname: '%s', email: '%s'} },\n", $1, $1, $2, $3, $4, $5
+  printf "{ upsert: true }\n"
+  print ");\n"
+}

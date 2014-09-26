@@ -10,12 +10,12 @@ Template for schema.xml. Two areas are filled in:
 
   <fields>
     <field name="_version_" type="long" indexed="true" stored="true" multiValued="false"/>
-    <field name="personid" type="string" indexed="true" stored="true" required="false" />
+    <field name="personid" type="int" indexed="true" stored="true" required="false" />
+    <field name="leadid" type="int" indexed="true" stored="true" required="false" />
     <field name="firstname" type="text" indexed="true" stored="true" required="false" />
     <field name="lastname" type="text" indexed="true" stored="true" required="false" />
     <field name="name" type="text" indexed="true" stored="true" required="false" />
     <field name="type" type="string" indexed="true" stored="true" required="false"/>
-    <field name="sourceid" type="string" indexed="true" stored="true" required="false"/>
     <field name="city" type="string" indexed="true" stored="true" required="false"/>
     <field name="state" type="string" indexed="true" stored="true" required="false"/>
     <field name="country" type="string" indexed="true" stored="true" required="false"/>
