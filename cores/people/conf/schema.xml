@@ -13,6 +13,7 @@ Template for schema.xml. Two areas are filled in:
     <field name="hashkey" type="text" indexed="true" stored="true" multiValued="false"/>
     <field name="personid" type="int" indexed="true" stored="true" required="false" />
     <field name="leadid" type="int" indexed="true" stored="true" required="false" />
+    <field name="councilmemberid" type="int" indexed="true" stored="true" required="false" />
     <field name="firstname" type="text" indexed="true" stored="true" required="false" />
     <field name="lastname" type="text" indexed="true" stored="true" required="false" />
     <field name="name" type="text" indexed="true" stored="true" required="false" />

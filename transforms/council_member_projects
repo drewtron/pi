@@ -13,7 +13,7 @@ BEGIN {
 {
   escape();
   print "db.people.update("
-  printf "{ personid: '%s'},\n", $1
+  printf "{ personid: %s},\n", $1
   printf "{ $inc: {numGivenToClient: 1} },\n"
   printf "{ upsert: true }\n"
   print ");\n"
@@ -21,7 +21,7 @@ BEGIN {
 
 {
   print "db.people.update("
-  printf "{ personid: '%s'},\n", $1
+  printf "{ personid: %s},\n", $1
   printf "{ $set: {'projectHistory.%s': {title: '%s', description: '%s'} } },\n", $2, $3, $4
   printf "{ upsert: true }\n"
   print "\n);\n"

@@ -4,7 +4,7 @@
 {
 escape();
 print "db.people.update("
-printf "{ personid: '%s'},\n", $1
+printf "{ personid: %s},\n", $1
 printf "{ $set: {type: 'councilmember', councilmemberid: '%s', isHighValue: %i, isLearning: %i, biography: '%s', phone: '%s', mobile: '%s', isDNC: false} },\n", $2, $3, $4, $5, $6, $7
 printf "{ upsert: true }\n"
 print "\n);\n"

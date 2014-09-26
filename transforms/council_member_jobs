@@ -8,7 +8,7 @@
   endDate = employmentDate($8, $9)
   #just the job itself
   print "db.people.update("
-  printf "{personid: '%s'},\n", $1
+  printf "{personid: %s},\n", $1
   printf "{$set: {'jobs.%s': {nameOfCompany: '%s', companyId: '%s', jobTitle: '%s', startDate: '%s', endDate: '%s', isCurrent: %i, TaxonomySector: '%s'} } },\n", $2, $3, $4, $5, startDate, endDate, $10, $11
   printf "{upsert: true }\n"
   print ");"
@@ -16,7 +16,7 @@
   if ($11) {
     #separate taxonomy sets
     print "db.people.update("
-    printf "{ personid: '%s'},\n", $1
+    printf "{ personid: %s},\n", $1
     printf "{ $addToSet: {taxonomySector: '%s'} },\n", $11
     printf "{ upsert: true }\n"
     print ");\n"
@@ -27,7 +27,7 @@
     facetize($1, $12, "taxonomyJobFunction_All_Facet")
 
   print "db.people.update("
-  printf "{ personid: '%s'},\n", $1
+  printf "{ personid: %s},\n", $1
   printf "{ $addToSet: {company_All_Bucket: '%s'} },\n", $3
   printf "{ upsert: true }\n"
   print ");\n"
@@ -42,7 +42,7 @@ $10 == "1" {
 
 
   print "db.people.update("
-  printf "{ personid: '%s'},\n", $1
+  printf "{ personid: %s},\n", $1
   printf "{ $addToSet: {company_AllCurrent_Bucket: '%s'} },\n", $3
   printf "{ upsert: true }\n"
   print ");\n"
