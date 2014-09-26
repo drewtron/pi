@@ -11,5 +11,5 @@
   printf "{leadid: '%s'},\n", $1
   printf "{$set: {'jobs.%s': {nameOfCompany: '%s', companyId: '%s', jobTitle: '%s', startDate: '%s', endDate: '%s', isCurrent: %i} } },\n", $2, $3, $4, $5, startDate, endDate, $10
   printf "{upsert: true }\n"
-
+  print ");"
 }
