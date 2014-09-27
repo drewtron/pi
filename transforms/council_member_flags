@@ -5,7 +5,7 @@
 escape();
 #just the flag itself
 print "db.people.update("
-printf "{ personid: %s},\n", $1
+printf "{ personid: %i},\n", $1
 printf "{ $set: {'flags.%s': {councilMemberFlagId: %d, flagName: '%s', comments: '%s'} } },\n", $2, $2, $3, $4
 printf "{ upsert: true }\n"
 print "\n);\n"
@@ -15,7 +15,7 @@ print "\n);\n"
 function DNC(flag) {
   print "//DNC for " flag
   print "db.people.update("
-  printf "{ personid: %s},\n", $1
+  printf "{ personid: %i},\n", $1
   printf "{ $set: {isDNC: true} },\n"
   printf "{ upsert: true }\n"
   print "\n);\n"
@@ -41,7 +41,7 @@ $2 == "13734" {
 
 $2 == "24" {
   print "db.people.update("
-  printf "{ personid: %s},\n", $1
+  printf "{ personid: %i},\n", $1
   printf "{ $set: {isFirstAccess: true} },\n"
   printf "{ upsert: true }\n"
   print "\n);\n"
@@ -49,7 +49,7 @@ $2 == "24" {
 
 $2 == "43" {
 print "db.people.update("
-printf "{ personid: %s},\n", $1
+printf "{ personid: %i},\n", $1
 printf "{ $set: {isKeyExecutive: true} },\n"
 printf "{ upsert: true }\n"
 print "\n);\n"
@@ -57,7 +57,7 @@ print "\n);\n"
 
 $2 == "19" || $2 == "20" || $2 == "21" {
 print "db.people.update("
-printf "{ personid: %s},\n", $1
+printf "{ personid: %i},\n", $1
 printf "{ $set: {isMemberPrograms: true} },\n"
 printf "{ upsert: true }\n"
 print "\n);\n"

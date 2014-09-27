@@ -8,8 +8,8 @@ BEGIN {
 {
   escape();
   print "db.people.update("
-  printf "{ personid: %s}, ", $1
-  printf "{ $set: {hashkey: 'person-%s', personid: %s, name: '%s', firstname: '%s', lastname: '%s', email: '%s'} },\n", $1, $1, $2, $3, $4, $5
+  printf "{ personid: %i}, ", $1
+  printf "{ $set: {hashkey: 'person-%s', personid: %i, name: '%s', firstname: '%s', lastname: '%s', email: '%s'} },\n", $1, $1, $2, $3, $4, $5
   printf "{ upsert: true }\n"
   print ");\n"
 }

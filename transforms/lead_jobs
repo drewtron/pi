@@ -8,7 +8,7 @@
   endDate = employmentDate($8, $9)
   #just the job itself
   print "db.people.update("
-  printf "{leadid: '%s'},\n", $1
+  printf "{leadid: %i},\n", $1
   printf "{$set: {'jobs.%s': {nameOfCompany: '%s', companyId: '%s', jobTitle: '%s', startDate: '%s', endDate: '%s', isCurrent: %i} } },\n", $2, $3, $4, $5, startDate, endDate, $10
   printf "{upsert: true }\n"
   print ");"
