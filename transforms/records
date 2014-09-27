@@ -77,7 +77,7 @@ function facetize(person, facetPath, storeInField) {
 
   while (length(taxonomyFacets) > 0) {
     print "db.people.update("
-    printf "{ personid: %i},\n", person
+    printf "{ hashkey: 'person-%s'}, ", $1
     printf "{ $addToSet: {%s: '%s'} },\n", storeInField, taxonomyPath(taxonomyFacets)
     printf "{ upsert: true }\n"
     print "\n);\n"

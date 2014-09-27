@@ -4,7 +4,7 @@
 $2 == "hourly" {
 escape();
 print "db.people.update("
-printf "{ personid: %i},\n", $1
+printf "{ hashkey: 'person-%s'}, ", $1
 printf "{ $set: {hourlyRate: %s} },\n", $3
 printf "{ upsert: true }\n"
 print ");\n"
@@ -13,7 +13,7 @@ print ");\n"
 $2 == "expert" {
 escape();
 print "db.people.update("
-printf "{ personid: %i},\n", $1
+printf "{ hashkey: 'person-%s'}, ", $1
 printf "{ $set: {expertWitnessRate: %s} },\n", $3
 printf "{ upsert: true }\n"
 print ");\n"

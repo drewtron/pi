@@ -3,12 +3,13 @@
 
 BEGIN {
   print "db.people.ensureIndex({personid: 1});";
+  print "db.people.ensureIndex({hashkey: 1});";
 }
 
 {
   escape();
   print "db.people.update("
-  printf "{ personid: %i}, ", $1
+  printf "{ hashkey: 'person-%s'}, ", $1
   printf "{ $set: {hashkey: 'person-%s', personid: %i, name: '%s', firstname: '%s', lastname: '%s', email: '%s'} },\n", $1, $1, $2, $3, $4, $5
   printf "{ upsert: true }\n"
   print ");\n"
