@@ -2,14 +2,17 @@
 default:
 
 vega:
+	mongo /etc/mongo-shard.js
+	echo Mongo build starting
 	$(MAKE) -j people leads
 	$(MAKE) council_members
 	$(MAKE) -j council_member_details lead_details
+	echo Mongo build complete
 
 
 council_members:
 	./script/vega ./queries/$@.sql | gawk -f ./transforms/$@ | ./script/mongo
-	
+
 council_member_details: council_members council_member_addresses council_member_flags council_member_rates council_member_recruiters council_member_jobs council_member_tags council_member_payments council_member_projects council_member_projects council_member_pqs council_member_knowledge
 
 council_member_addresses:
