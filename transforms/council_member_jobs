@@ -46,5 +46,19 @@ $10 == "1" {
   printf "{ $addToSet: {company_AllCurrent_Bucket: '%s'} },\n", $3
   printf "{ upsert: true }\n"
   print ");\n"
+}
 
+#former jobs
+$10 == "0" {
+  if (length($11))
+    facetize($1, $11, "taxonomySector_AllFormer")
+  if (length($12))
+    facetize($1, $12, "taxonomyJobFunction_AllFormer_Facet")
+
+
+  print "db.people.update("
+  printf "{ hashkey: 'person-%s'}, ", $1
+  printf "{ $addToSet: {company_AllFormer_Bucket: '%s'} },\n", $3
+  printf "{ upsert: true }\n"
+  print ");\n"
 }
