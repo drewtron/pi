@@ -51,7 +51,7 @@ $10 == "1" {
 #former jobs
 $10 == "0" {
   if (length($11))
-    facetize($1, $11, "taxonomySector_AllFormer")
+    facetize($1, $11, "taxonomySector_AllFormer_Facet")
   if (length($12))
     facetize($1, $12, "taxonomyJobFunction_AllFormer_Facet")
 
