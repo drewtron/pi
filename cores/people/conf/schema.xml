@@ -30,6 +30,7 @@ Template for schema.xml. Two areas are filled in:
     <field name="isHighValue" type="bool" indexed="true" stored="true" required="false"/>
     <field name="isLearning" type="bool" indexed="true" stored="true" required="false"/>
     <field name="hourlyRate" type="int" indexed="true" stored="true" required="false"/>
+    <field name="benchmarkRate" type="int" indexed="true" stored="true" required="false"/>
     <field name="expertWitnessRate" type="int" indexed="true" stored="true" required="false"/>
     <field name="isMemberPrograms" type="bool" indexed="true" stored="true" required="false"/>
     <field name="isFirstAccess" type="bool" indexed="true" stored="true" required="false"/>
