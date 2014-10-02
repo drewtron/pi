@@ -1,0 +1,11 @@
+#!/usr/bin/env gawk -f
+@include "transforms/records";
+
+{
+  escape();
+  print "db.people.update("
+  printf "{ hashkey: 'person-%s'}, ", $1
+  printf "{ $set: {practicearea: '%s'} },", $2
+  print "{ upsert: true, multi: true }"
+  print ");\n"
+}

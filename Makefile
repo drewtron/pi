@@ -4,9 +4,9 @@ default:
 vega:
 	mongo /etc/mongo-shard.js
 	echo Mongo build starting
-	$(MAKE) -j people leads
+	$(MAKE) people leads
 	$(MAKE) council_members
-	$(MAKE) -j council_member_details lead_details
+	$(MAKE) council_member_details lead_details
 	echo Mongo build complete
 
 
@@ -43,6 +43,9 @@ council_member_pqs:
 	./script/vega ./queries/$@.sql | gawk -f ./transforms/$@ | ./script/mongo
 
 council_member_knowledge:
+	./script/vega ./queries/$@.sql | gawk -f ./transforms/$@ | ./script/mongo
+
+council_member_practice_areas:
 	./script/vega ./queries/$@.sql | gawk -f ./transforms/$@ | ./script/mongo
 
 people:
