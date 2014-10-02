@@ -13,7 +13,7 @@ vega:
 council_members:
 	./script/vega ./queries/$@.sql | gawk -f ./transforms/$@ | ./script/mongo
 
-council_member_details: council_members council_member_addresses council_member_flags council_member_rates council_member_recruiters council_member_jobs council_member_tags council_member_payments council_member_projects council_member_projects council_member_pqs council_member_knowledge
+council_member_details: council_members council_member_addresses council_member_flags council_member_rates council_member_recruiters council_member_jobs council_member_tags council_member_payments council_member_projects council_member_projects council_member_pqs council_member_knowledge council_member_practice_areas
 
 council_member_addresses:
 	./script/vega ./queries/$@.sql | gawk -f ./transforms/$@ | ./script/mongo
@@ -22,6 +22,9 @@ council_member_flags:
 	./script/vega ./queries/$@.sql | gawk -f ./transforms/$@ | ./script/mongo
 
 council_member_rates:
+	./script/vega ./queries/$@.sql | gawk -f ./transforms/$@ | ./script/mongo
+
+council_member_average_rates:
 	./script/vega ./queries/$@.sql | gawk -f ./transforms/$@ | ./script/mongo
 
 council_member_recruiters:

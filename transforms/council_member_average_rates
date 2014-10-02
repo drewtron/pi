@@ -5,7 +5,7 @@
   escape();
   print "db.people.update("
   printf "{ hashkey: 'person-%s'}, ", $1
-  printf "{ $set: {benchmarkRate: %s} },\n", $3
+  printf "{ $set: {benchmarkRate: %s} },\n", $2
   printf "{ upsert: true }\n"
   print ");\n"
 }

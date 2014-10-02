@@ -1,3 +1,6 @@
+
+--no kidding, delete the semicolon and it will not run with bcp
+;
 WITH AVERAGE_RATES
 AS
 (
