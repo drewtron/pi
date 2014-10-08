@@ -73,20 +73,19 @@ function facetize(person, facetPath, storeInField) {
     split(facetPath, taxonomyFacets, ">")
   }
 
-  first=true;
+  first = true;
 
   print "db.people.update(";
   printf "{ hashkey: 'person-%s'}, ", person;
   printf "{ $set: {%s: [", storeInField;
   while (length(taxonomyFacets) > 0) {
-    if (first) {
-      first=false;
+    if (first == true) {
+      first = false;
     } else {
       printf ",";
     }
 
-    printf "{ $addToSet: {%s: '%s'} },\n", storeInField, taxonomyPath(taxonomyFacets);
-    printf "'%s'\n", storeInField, taxonomyPath(taxonomyFacets);
+    printf "'%s', ", taxonomyPath(taxonomyFacets);
     pop(taxonomyFacets);
   }
   print "]}},";
