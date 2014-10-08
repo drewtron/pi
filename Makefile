@@ -6,7 +6,7 @@ vega:
 	echo Mongo build starting
 	$(MAKE) people leads
 	$(MAKE) council_members
-	$(MAKE) council_member_details lead_details
+	$(MAKE) -j council_member_details lead_details
 	echo Mongo build complete
 
 

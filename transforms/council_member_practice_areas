@@ -13,6 +13,6 @@ NR%100==0 {
   print "db.people.update("
   printf "{ hashkey: 'person-%s'}, ", $1
   printf "{ $set: {practicearea: '%s'} },", $2
-  print "{ upsert: true, multi: true }"
+  print "{ upsert: true }"
   print ");\n"
 }
