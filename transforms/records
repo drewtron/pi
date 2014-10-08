@@ -7,6 +7,10 @@ match($0, /\nStarting copy/) {
   next
 }
 
+BEGIN {
+  print "db.people.ensureIndex({hashkey: 1});";
+}
+
 function escape() {
   gsub(/\\/, "\\\\");
   gsub(/'/, "\\u02BC");

@@ -16,3 +16,4 @@ cores/projects/conf/data-config.xml
 cores/projectects/conf/solrconfig.xml
 cores/questions/conf/data-config.xml
 cores/questions/conf/solrconfig.xml
+mongo

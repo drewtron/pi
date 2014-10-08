@@ -1,6 +1,13 @@
 #!/usr/bin/env gawk -f
 @include "transforms/records";
 
+#batch separators every N records, just a comment marker
+#this is used as a split point piping along to parallel
+NR%100==0 {
+  print "//BATCH";
+}
+
+
 {
   escape();
   print "db.people.update("

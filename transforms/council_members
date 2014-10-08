@@ -1,11 +1,18 @@
 #!/usr/bin/env gawk -f
 @include "transforms/records";
 
+#batch separators every N records, just a comment marker
+#this is used as a split point piping along to parallel
+NR%100==0 {
+  print "//BATCH";
+}
+
+
 {
-escape();
-print "db.people.update("
-printf "{ hashkey: 'person-%s'}, ", $1
-printf "{ $set: {type: 'councilmember', councilmemberid: %i, isHighValue: %i, isLearning: %i, biography: '%s', phone: '%s', mobile: '%s', isDNC: false} },\n", $2, $3, $4, $5, $6, $7
-printf "{ upsert: true }\n"
-print "\n);\n"
+  escape();
+  print "db.people.update("
+  printf "{ hashkey: 'person-%s'}, ", $1
+  printf "{ $set: {type: 'councilmember', councilmemberid: %i, isHighValue: %i, isLearning: %i, biography: '%s', phone: '%s', mobile: '%s', isDNC: false} },\n", $2, $3, $4, $5, $6, $7
+  printf "{ upsert: true }\n"
+  print "\n);\n"
 }
