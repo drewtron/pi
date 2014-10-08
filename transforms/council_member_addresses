@@ -22,7 +22,6 @@ NR%100==0 {
   geographyFacets[2] = defaultValue($4, "N/A");
   geographyFacets[3] = defaultValue($3, "N/A");
   geographyFacets[4] = defaultValue($2, "N/A");
-  print geographyFacets[1]
   facetize($1, geographyFacets, "geo_taxonomy_Facet");
 
 }
