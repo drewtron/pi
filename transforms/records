@@ -7,12 +7,6 @@ match($0, /\nStarting copy/) {
   next
 }
 
-#batch separators every N records, just a comment marker
-#this is used as a split point piping along to parallel
-NR%100==0 {
-  print "//BATCH";
-}
-
 function escape() {
   gsub(/\\/, "\\\\");
   gsub(/'/, "\\u02BC");

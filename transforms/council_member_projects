@@ -1,28 +1,39 @@
 #!/usr/bin/env gawk -f
 @include "transforms/records";
 
+function closeperson() {
+  //closing out the last record
+  if (NR > 1) {
+    print "]}},";
+    print "{ upsert: true }";
+    print ");\n";
+    print "//BATCH";
+  }
+}
+
 BEGIN {
-  #zero out the counters
+  person="";
+}
+
+person != $1 {
+  closeperson();
+  person=$1;
   print "db.people.update("
-  print "{},"
-  print "{ $set: {numGivenToClient: 0} },"
-  print "{ upsert: true, multi: true }"
-  print ");\n"
+  printf "{ hashkey: 'person-%s'},\n", $1;
+  print "{ $set: {projectHistory: [";
+  first=true;
 }
 
 {
   escape();
-  print "db.people.update("
-  printf "{ hashkey: 'person-%s'}, ", $1
-  printf "{ $inc: {numGivenToClient: 1} },\n"
-  printf "{ upsert: true }\n"
-  print ");\n"
+  if (first) {
+    first=false;
+  } else {
+    printf ",";
+  }
+  printf "{title: '%s', description: '%s', rm: '%s'}\n", $2, $3, $4, $6
 }
 
-{
-  print "db.people.update("
-  printf "{ hashkey: 'person-%s'}, ", $1
-  printf "{ $set: {'projectHistory.%s': {title: '%s', description: '%s'} } },\n", $2, $3, $4
-  printf "{ upsert: true }\n"
-  print "\n);\n"
+END {
+  closeperson();
 }
