@@ -1,8 +1,14 @@
+.PHONY: mongo shard vega
 
 default:
 
-vega:
+shard:
 	mongo /etc/mongo-shard.js
+
+vega: shard
+	$(MAKE) mongo
+
+mongo:
 	echo Mongo build starting
 	$(MAKE) people leads
 	$(MAKE) council_members
