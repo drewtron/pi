@@ -4,9 +4,13 @@
   <luceneMatchVersion>LUCENE_40</luceneMatchVersion>
   <dataDir><%=ENV['DATA_DIR']%>/people</dataDir>
 
+
   <jmx />
 
   <updateHandler class="solr.DirectUpdateHandler2">
+    <updateLog class="solr.FSUpdateLog">
+        <str name="dir">${solr.data.dir:}</str>
+    </updateLog>
     <autoSoftCommit>
        <maxTime>1000</maxTime>
    </autoSoftCommit>
