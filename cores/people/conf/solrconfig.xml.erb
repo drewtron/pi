@@ -5,15 +5,10 @@
   <dataDir><%=ENV['DATA_DIR']%>/people</dataDir>
 
 
-  <jmx />
-
   <updateHandler class="solr.DirectUpdateHandler2">
     <updateLog class="solr.FSUpdateLog">
         <str name="dir">${solr.data.dir:}</str>
     </updateLog>
-    <autoSoftCommit>
-       <maxTime>1000</maxTime>
-   </autoSoftCommit>
   </updateHandler>
 
   <query>
@@ -148,25 +143,6 @@
     <int name="minQueryLength">2</int>
   </lst>
 </searchComponent>
-
-<!-- Update handlers needed to initiate manual document uploads used by the NRT index -->
-  <requestHandler name="/update/json"
-    class="solr.JsonUpdateRequestHandler"
-    startup="lazy" />
-
-  <requestHandler name="/update/extract"
-    startup="lazy"
-    class="solr.extraction.ExtractingRequestHandler" >
-    <lst name="defaults">
-      <str name="fmap.content">text</str>
-      <str name="lowernames">true</str>
-      <str name="uprefix">ignored_</str>
-
-      <str name="captureAttr">true</str>
-      <str name="fmap.a">links</str>
-      <str name="fmap.div">ignored_</str>
-    </lst>
-  </requestHandler>
 
   <requestHandler name="/admin/"
     class="solr.admin.AdminHandlers" />
