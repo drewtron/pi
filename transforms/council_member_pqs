@@ -4,7 +4,7 @@
 function closeperson() {
   //closing out the last record
   if (NR > 1) {
-    print "]}},";
+    print "}}},";
     print "{ upsert: true }";
     print ");\n";
     print "//BATCH";
@@ -20,8 +20,8 @@ person != $1 {
   person=$1;
   print "db.people.update("
   printf "{ hashkey: 'person-%s'},\n", $1;
-  print "{ $set: {profileQuestions: [";
-  first=true;
+  print "{ $set: {profileQuestions: {";
+  first="true";
 }
 
 {
@@ -31,7 +31,7 @@ person != $1 {
   } else {
     printf ",";
   }
-  printf "{ QuestionText: '%s', ResponseDate: '%s', ResponseText: '%s'},\n", $2, $3, $4, $5
+  printf "'%s':{ QuestionText: '%s', ResponseDate: '%s', ResponseText: '%s'},\n", $2, $3, $4, $5
 }
 
 END {
