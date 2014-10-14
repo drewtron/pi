@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <dataConfig>
-  <dataSource type="JdbcDataSource" driver="com.microsoft.sqlserver.jdbc.SQLServerDriver" url="jdbc:sqlserver://<%=ENV['GLGLIVE']%>:1433;databaseName=GLGLIVE" user="<%=ENV['GLGLIVE_USER']%>" password="<%=ENV['GLGLIVE_PWD']%>"/>
+        <dataSource type="JdbcDataSource" driver="com.microsoft.sqlserver.jdbc.SQLServerDriver" url="jdbc:sqlserver://westsqlreplica.glgint.com:1433;databaseName=GLGLIVE" user="glgroup_live" password="7rukufen"/>
   <document name="ProfileQuestion">
     <entity name="ProfileQuestion"
             query="
@@ -15,7 +15,25 @@ FROM GLGLIVE.dbo.QUESTION Q
 JOIN GLGLIVE.dbo.QUESTION_RESPONSE QR
   ON Q.QUESTION_ID = QR.QUESTION_ID
 WHERE QR.RESPONSE_VALUE = 'Yes'
-AND COMMENT != ' ';
+AND COMMENT != ' '
+
+UNION ALL
+
+SELECT CM.PERSON_ID
+        ,KP.COUNCIL_USER_KNOWLEDGE_PROFILE_ID as QUESTION_ID
+        ,COALESCE(PQ.QUESTION_TEXT, ' ') AS QUESTION_TEXT
+        ,KP.CREATE_DATE as RESPONSE_DATE
+        ,COALESCE(KP.COMMENT,' ') AS COMMENT
+FROM GLGLIVE.dbo.COUNCIL_USER_KNOWLEDGE_PROFILE KP
+JOIN GLGLIVE.dbo.COUNCIL_MEMBER CM
+  ON KP.COUNCIL_USER_ID = CM.COUNCIL_MEMBER_ID
+LEFT JOIN GLGLIVE.dbo.PROFILE_QUESTION PQ
+  ON  PQ.PROFILE_QUESTION_ID = KP.SOURCE_ID
+  AND KP.KNOWLEDGE_PROFILE_SOURCE_TYPE_ID = 13773
+WHERE KP.ACTIVE_IND = 1
+AND KP.VALUE_TEXT = 'Yes'
+AND CM.ACTIVE_IND = 1
+AND COMMENT &lt;&gt; ' '
 
             ">
       <field name="questionid" column="QUESTION_ID" />
