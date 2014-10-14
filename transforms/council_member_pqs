@@ -21,16 +21,10 @@ person != $1 {
   print "db.people.update("
   printf "{ hashkey: 'person-%s'},\n", $1;
   print "{ $set: {profileQuestions: {";
-  first="true";
 }
 
 {
   escape();
-  if (first) {
-    first=false;
-  } else {
-    printf ",";
-  }
   printf "'%s':{ QuestionText: '%s', ResponseDate: '%s', ResponseText: '%s'},\n", $2, $3, $4, $5
 }
 
