@@ -42,7 +42,7 @@ Template for schema.xml. Two areas are filled in:
     <field name="tags" type="facet" multiValued="true"  indexed="true" stored="true"/>
     <field name="numProjectsPaid" type="int" indexed="true" stored="true" required="false"/>
     <field name="numGivenToClient" type="int" indexed="true" stored="true" required="false"/>
-    <field name="projectHistory" type="text" indexed="true" stored="true" multiValued="true" required="false"/>
+    <field name="projectHistory" type="text" indexed="true" stored="true" required="false"/>
     <field name="profileQuestions" type="text" indexed="true" stored="false" required="false"/>
     <field name="practicearea" type="string" indexed="true" stored="true" required="false"/>
 
