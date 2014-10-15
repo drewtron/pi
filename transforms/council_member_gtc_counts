@@ -20,12 +20,12 @@ person != $1 {
   person=$1;
   print "db.people.update("
   printf "{ hashkey: 'person-%s'},\n", $1;
-  print "{ $set: {projectHistory: {";
+  print "{ $set: {gtcHistory: {";
 }
 
 {
   escape();
-  printf "'%s': {title: '%s', description: '%s'},\n", $2, $3, $4
+  printf "'%s': {lastName: '%s', firstName: '%s', count: %s },\n", $2, $3, $4, $5
 }
 
 END {
