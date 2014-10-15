@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <dataConfig>
-        <dataSource type="JdbcDataSource" driver="com.microsoft.sqlserver.jdbc.SQLServerDriver" url="jdbc:sqlserver://westsqlreplica.glgint.com:1433;databaseName=GLGLIVE" user="glgroup_live" password="7rukufen"/>
+        <dataSource type="JdbcDataSource" driver="com.microsoft.sqlserver.jdbc.SQLServerDriver" url="jdbc:sqlserver://<%=ENV['GLGLIVE']%>:1433;databaseName=GLGLIVE" user="<%=ENV['GLGLIVE_USER']%>" password="<%=ENV['GLGLIVE_PWD']%>"/>
   <document name="ProfileQuestion">
     <entity name="ProfileQuestion"
             query="
