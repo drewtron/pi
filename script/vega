@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #query vega with these environment variables
-GLGLIVE="${GLGLIVE:-westsqlreplica.glgint.net}"
+GLGLIVE="${GLGLIVE:-sqlreplica.glgresearch.com}"
 GLGLIVE_USER="${GLGLIVE_USER:-glgroup_live}"
 GLGLIVE_PWD="${GLGLIVE_PWD:-7rukufen}"
 
