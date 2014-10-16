@@ -11,21 +11,25 @@ Template for schema.xml. Two areas are filled in:
 
   <fields>
 
-    <field name="consultationparticipantid" type="int" indexed="true" stored="true" required="true"/>
-    <field name="consultationid" type="int" indexed="true" stored="true" required="true"/>
-    <field name="councilmemberid" type="int" indexed="true" stored="true" required="true"/>
+    <field name="consultationParticipantId" type="int" indexed="true" stored="true" required="true"/>
+    <field name="consultationid" type="string" indexed="true" stored="true" required="true"/>
+    <field name="councilmemberid" type="int" indexed="false" stored="true" required="true"/>
     <field name="title" type="text" indexed="true" stored="true" required="false"/>
     <field name="description" type="text" indexed="true" stored="true" required="false"/>
-    <field name="giveToClientDate" type="date" indexed="true" stored="true" required="false"/>
-    <field name="personid" type="int" indexed="true" stored="true" required="false"/>
+    <field name="giveToClientDate" type="date" indexed="false" stored="true" required="false"/>
+    <field name="personId" type="int" indexed="true" stored="true" required="false"/>
     <field name="name" type="string" indexed="false" stored="true" required="true"/>
+    <field name="consultationCreatedDate" type="date" indexed="false" stored="true" required="false"/>
+    <field name="duration" type="string" indexed="false" stored="true" required="false"/>
+    <field name="status" type="string" indexed="false" stored="true" required="false"/>
+    <field name="statusDate" type="date" indexed="false" stored="true" required="false"/>
 
   </fields>
 
   <!-- Field to use to determine and enforce document uniqueness.
      Unless this field is marked with required="false", it will be a required field
   -->
-  <uniqueKey>consultationparticipantid</uniqueKey>
+  <uniqueKey>consultationParticipantId</uniqueKey>
 
   <!-- field for the QueryParser to use when an explicit fieldname is absent -->
   <defaultSearchField>description</defaultSearchField>

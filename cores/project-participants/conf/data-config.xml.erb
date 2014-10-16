@@ -16,26 +16,35 @@ SELECT
   c.CONSULTATION_ID,
   c.TITLE,
   CONSULTATION_DESCRIPTION_TEXT,
-  GIVE_TO_CLIENT_DATE
+  GIVE_TO_CLIENT_DATE,
+  cp.LAST_UPDATE_DATE,
+  S.MEETING_PARTICIPANT_STATUS,
+  c.CREATED_DATE,
+  cp.DURATION
 FROM
   GLGLIVE.consult.CONSULTATION c
   INNER JOIN GLGLIVE.consult.CONSULTATION_PARTICIPANT cp on c.CONSULTATION_ID = cp.CONSULTATION_ID
   INNER JOIN GLGLIVE.dbo.PERSON p on p.PERSON_ID = cp.PERSON_ID
   INNER JOIN GLGLIVE.dbo.COUNCIL_MEMBER cm on cp.PERSON_ID = cm.PERSON_ID
+  INNER JOIN GLGLIVE.dbo.MEETING_PARTICIPANT_STATUS S on S.MEETING_PARTICIPANT_STATUS_ID = cp.CONSULTATION_PARTICIPANT_STATUS_ID
 WHERE
   c.ACTIVE_IND = 1
   AND cp.ACTIVE_IND = 1
   AND GIVE_TO_CLIENT_DATE IS NOT NULL
 
               ">
-      <field name="personid" column="PERSON_ID" />
-      <field name="councilmemberid" column="COUNCIL_MEMBER_ID" />
-      <field name="name" column="NAME" />
-      <field name="consultationparticipantid" column="CONSULTATION_PARTICIPANT_ID" />
-      <field name="consultationid" column="CONSULTATION_ID" />
-      <field name="title" column="TITLE" />
-      <field name="description" column="CONSULTATION_DESCRIPTION_TEXT" />
-      <field name="giveToClientDate" column="GIVE_TO_CLIENT_DATE" />
+    <field name="personid" column="PERSON_ID" />
+    <field name="councilmemberid" column="COUNCIL_MEMBER_ID" />
+    <field name="name" column="NAME" />
+    <field name="consultationParticipantId" column="CONSULTATION_PARTICIPANT_ID" />
+    <field name="consultationid" column="CONSULTATION_ID" />
+    <field name="title" column="TITLE" />
+    <field name="description" column="CONSULTATION_DESCRIPTION_TEXT" />
+    <field name="giveToClientDate" column="GIVE_TO_CLIENT_DATE" />
+    <field name="status" column="MEETING_PARTICIPANT_STATUS" />
+    <field name="statusDate" column="LAST_UPDATE_DATE" />
+    <field name="consultationCreatedDate" column="CREATED_DATE" />
+    <field name="duration" column="DURATION" />
     </entity>
   </document>
 </dataConfig>
