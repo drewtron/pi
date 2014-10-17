@@ -15,7 +15,8 @@ SELECT
   c.CREATED_DATE,
   s.MEETING_STATUS,
   CLIENT.CLIENT_NAME,
-  P.FIRST_NAME + ' ' + P.LAST_NAME as CONTACT_NAME
+  P.FIRST_NAME + ' ' + P.LAST_NAME as CONTACT_NAME,
+  RM.FIRST_NAME + ' ' + RM.LAST_NAME as PRIMARY_RM
 
 FROM GLGLIVE.consult.CONSULTATION c
 JOIN GLGLIVE.dbo.MEETING_STATUS s on c.CONSULTATION_OVERALL_STATUS_ID = s.MEETING_STATUS_ID
@@ -28,6 +29,7 @@ JOIN	GLGLIVE.dbo.CONTACT
 JOIN	GLGLIVE.dbo.CLIENT
 			ON		CONTACT.CLIENT_ID = CLIENT.CLIENT_ID
 JOIN GLGLIVE.dbo.PERSON P ON P.PERSON_ID = CONTACT.PERSON_ID
+JOIN GLGLIVE.dbo.PERSON RM on RM.PERSON_ID = c.PRIMARY_RM_PERSON_ID
 WHERE c.ACTIVE_IND = 1
 			  ">
       <field name="consultationid" column="CONSULTATION_ID" />
@@ -37,6 +39,7 @@ WHERE c.ACTIVE_IND = 1
       <field name="status" column="MEETING_STATUS" />
       <field name="clientName" column="CLIENT_NAME" />
       <field name="contactName" column="CONTACT_NAME" />
+      <field name="primaryRmName" column="PRIMARY_RM" />
     </entity>
   </document>
 </dataConfig>

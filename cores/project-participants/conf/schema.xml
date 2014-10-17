@@ -17,7 +17,7 @@ Template for schema.xml. Two areas are filled in:
     <field name="title" type="text" indexed="true" stored="true" required="false"/>
     <field name="description" type="text" indexed="true" stored="true" required="false"/>
     <field name="giveToClientDate" type="date" indexed="false" stored="true" required="false"/>
-    <field name="personId" type="int" indexed="true" stored="true" required="false"/>
+    <field name="personid" type="int" indexed="true" stored="true" required="false"/>
     <field name="name" type="string" indexed="false" stored="true" required="true"/>
     <field name="consultationCreatedDate" type="date" indexed="false" stored="true" required="false"/>
     <field name="duration" type="string" indexed="false" stored="true" required="false"/>
