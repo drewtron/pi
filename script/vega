@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
-#query vega with these environment variables
-GLGLIVE="${GLGLIVE:-glgdb150.glgresearch.com}"
-GLGLIVE_USER="${GLGLIVE_USER:-GLGR_reader}"
-GLGLIVE_PWD="${GLGLIVE_PWD:-G1Gr!@#reader}"
-
 #and run the first parameter as the query
 QUERY="${1}"
 
