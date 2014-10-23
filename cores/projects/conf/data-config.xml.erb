@@ -14,8 +14,6 @@ SELECT
   CONSULTATION_DESCRIPTION_TEXT,
   c.CREATED_DATE,
   s.MEETING_STATUS,
-  CLIENT.CLIENT_NAME,
-  P.FIRST_NAME + ' ' + P.LAST_NAME as CONTACT_NAME,
   RM.FIRST_NAME + ' ' + RM.LAST_NAME as PRIMARY_RM
 
 FROM GLGLIVE.consult.CONSULTATION c
@@ -37,8 +35,6 @@ WHERE c.ACTIVE_IND = 1
       <field name="description" column="CONSULTATION_DESCRIPTION_TEXT"  />
       <field name="createDate" column="CREATED_DATE" />
       <field name="status" column="MEETING_STATUS" />
-      <field name="clientName" column="CLIENT_NAME" />
-      <field name="contactName" column="CONTACT_NAME" />
       <field name="primaryRmName" column="PRIMARY_RM" />
     </entity>
   </document>

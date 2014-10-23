@@ -16,8 +16,6 @@ Template for schema.xml. Two areas are filled in:
     <field name="description" type="text" indexed="true" stored="true" required="false"/>
     <field name="createDate" type="date" indexed="true" stored="true" required="false"/>
     <field name="status" type="string" indexed="false" stored="true" required="false"/>
-    <field name="clientName" type="string" indexed="false" stored="true" required="false"/>
-    <field name="contactName" type="string" indexed="false" stored="true" required="false"/>
     <field name="primaryRmName" type="string" indexed="false" stored="true" required="false"/>
   </fields>
 
