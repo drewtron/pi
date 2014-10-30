@@ -80,6 +80,9 @@
         title^2
         description^2
       </str>
+      <str name="fl">
+        consultationid createDate title description
+      </str>
       <str name="q.alt">*:*</str>
       <str name="wt">json</str>
 

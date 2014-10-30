@@ -45,6 +45,7 @@ Template for schema.xml. Two areas are filled in:
     <field name="gtcHistory" type="text" indexed="false" stored="true" required="false"/>
     <field name="profileQuestions" type="text" indexed="true" stored="false" required="false"/>
     <field name="practicearea" type="string" indexed="true" stored="true" required="false"/>
+    <field name="recentContact" type="bool" indexed="true" stored="true" required="false"/>
 
 
     <dynamicField name="*_Long_Values"  type="tlong" multiValued="true"  indexed="true" stored="false"/>
