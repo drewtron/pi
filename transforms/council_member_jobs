@@ -7,9 +7,18 @@ NR%100==0 {
   print "//BATCH";
 }
 
+#changing people?
+$1 != person_id {
+  print "db.people.update("
+  printf "{ hashkey: 'person-%s'}, ", $1
+  printf "{$set: {jobs: {}, taxonomySector_AllCurrent_Facet: [], taxonomyJobFunction_AllCurrent_Facet: [], taxonomySector_AllFormer_Facet: [], taxonomyJobFunction_AllFormer_Facet: [], company_0_6_Former_Bucket: [], company_6_1_Former_Bucket: [], company_1_2_Former_Bucket: [], company_2_4_Former_Bucket: [], company_4_Former_Bucket: []  } },\n"
+  printf "{upsert: true }\n"
+  print ");"
+}
 
 #all jobs
 {
+  person_id = $1
   escape();
   startDate = employmentDate($6, $7)
   endDate = employmentDate($8, $9)
@@ -64,7 +73,7 @@ $10 == "0" {
 
   print "db.people.update("
   printf "{ hashkey: 'person-%s'}, ", $1
-  printf "{ $addToSet: {company_AllFormer_Bucket: '%s'} },\n", $3
+  printf "{ $push: {company_AllFormer_Bucket: '%s'} },\n", $3
   printf "{ upsert: true }\n"
   print ");\n"
 }
@@ -72,7 +81,7 @@ $10 == "0" {
 $13 > 0 && $13 < 180 {
   print "db.people.update("
   printf "{ hashkey: 'person-%s'}, ", $1
-  printf "{ $addToSet: {company_0_6_Former_Bucket: '%s'} },\n", $3
+  printf "{ $push: {company_0_6_Former_Bucket: '%s'} },\n", $3
   printf "{ upsert: true }\n"
   print ");\n"
 }
@@ -80,7 +89,7 @@ $13 > 0 && $13 < 180 {
 $13 >= 180 && $13 < 365 {
   print "db.people.update("
   printf "{ hashkey: 'person-%s'}, ", $1
-  printf "{ $addToSet: {company_6_1_Former_Bucket: '%s'} },\n", $3
+  printf "{ $push: {company_6_1_Former_Bucket: '%s'} },\n", $3
   printf "{ upsert: true }\n"
   print ");\n"
 }
@@ -88,7 +97,7 @@ $13 >= 180 && $13 < 365 {
 $13 >= 365 && $13 < (365*2) {
   print "db.people.update("
   printf "{ hashkey: 'person-%s'}, ", $1
-  printf "{ $addToSet: {company_1_2_Former_Bucket: '%s'} },\n", $3
+  printf "{ $push: {company_1_2_Former_Bucket: '%s'} },\n", $3
   printf "{ upsert: true }\n"
   print ");\n"
 }
@@ -96,16 +105,15 @@ $13 >= 365 && $13 < (365*2) {
 $13 >= (365*2) && $13 < (365*4) {
   print "db.people.update("
   printf "{ hashkey: 'person-%s'}, ", $1
-  printf "{ $addToSet: {company_2_4_Former_Bucket: '%s'} },\n", $3
+  printf "{ $push: {company_2_4_Former_Bucket: '%s'} },\n", $3
   printf "{ upsert: true }\n"
   print ");\n"
 }
 
 $13 >= (365*4) {
-  print $13, 365*4
   print "db.people.update("
   printf "{ hashkey: 'person-%s'}, ", $1
-  printf "{ $addToSet: {company_4_Former_Bucket: '%s'} },\n", $3
+  printf "{ $push: {company_4_Former_Bucket: '%s'} },\n", $3
   printf "{ upsert: true }\n"
   print ");\n"
 }
