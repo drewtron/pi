@@ -9,11 +9,6 @@ NR%100==0 {
 
 {
   escape();
-  #fresh and clean, in specific to flush out the job time facets which
-  #are long term stateful
-  print "db.people.remove("
-  printf "{ hashkey: 'person-%s'}", $1
-  print ");\n"
 
   print "db.people.update("
   printf "{ hashkey: 'person-%s'}, ", $1
