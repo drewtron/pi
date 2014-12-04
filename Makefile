@@ -54,6 +54,9 @@ council_member_practice_areas:
 council_member_logins:
 	./script/vega ./queries/$@.sql | gawk -f ./transforms/$@ | ./script/mongo
 
+council_member_terms:
+	./script/vega ./queries/$@.sql | gawk -f ./transforms/$@ | ./script/mongo
+
 people:
 	./script/vega ./queries/$@.sql | gawk -f ./transforms/$@ | ./script/mongo
 
