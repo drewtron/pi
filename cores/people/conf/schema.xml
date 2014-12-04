@@ -35,6 +35,7 @@ Template for schema.xml. Two areas are filled in:
     <field name="expertWitnessRate" type="int" indexed="true" stored="true" required="false"/>
     <field name="isMemberPrograms" type="bool" indexed="true" stored="true" required="false"/>
     <field name="isFirstAccess" type="bool" indexed="true" stored="true" required="false"/>
+    <field name="isTermsCurrent" type="bool" indexed="true" stored="true" required="false"/>
     <field name="isKeyExecutive" type="bool" indexed="true" stored="true" required="false"/>
     <field name="recruitedBy" type="int" indexed="true" stored="true" required="false"/>
     <field name="jobs" type="text" indexed="true" stored="true" required="false" multiValued="false" />
