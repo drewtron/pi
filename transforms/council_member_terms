@@ -12,7 +12,7 @@ NR%100==0 {
   escape();
   print "db.people.update("
   printf "{ hashkey: 'person-%s'}, ", $1
-  printf "{ $set: {isTermsCurrent: %i} },\n", $2,
+  printf "{ $set: {isTermsCurrent: %i} },\n", $2
   printf "{ upsert: true }\n"
   print "\n);\n"
 }
