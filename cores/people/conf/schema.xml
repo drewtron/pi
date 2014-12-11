@@ -70,6 +70,7 @@ Template for schema.xml. Two areas are filled in:
     <field name="projectHistory" type="text" multiValued="true" indexed="true" stored="false" required="false"/>
     <field name="flags" type="string" indexed="false" stored="true" required="false" multiValued="false" />
     <field name="tagsAll" type="facet" multiValued="true"  indexed="true" stored="true"/>
+    <field name="projectHistoryTags" type="facet" multiValued="true"  indexed="true" stored="true"/>
     <field name="specialties" type="facet" multiValued="true"  indexed="true" stored="true"/>
     <field name="languages" type="string" multiValued="true"  indexed="true" stored="true"/>
     <field name="paidToInvitedRatio" type="float" indexed="true" stored="true"/>
