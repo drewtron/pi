@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dataConfig>
+  <dataSource type="JdbcDataSource" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://<%=ENV['DATABASE_GLGLIVE_SERVER']%>/<%= ENV['DATABASE_GLGLIVE_DATABASE']%>" user="<%=ENV['DATABASE_GLGLIVE_USER']%>" password="<%=ENV['DATABASE_GLGLIVE_PASSWORD']%>"/>
+  <document name="ConsultingProject">
+
+    <entity name="ConsultingProject" query="
+      SELECT
+        p.*,
+        COALESCE(pcar.COUNCIL_APPLICANT_ID,cm.COUNCIL_MEMBER_ID) as PARTY_ID
+      FROM PROJECT p
+      LEFT JOIN PROJECT_COUNCIL_APPLICANT_RELATION pcar on pcar.PROJECT_ID = p.PROJECT_ID
+      LEFT JOIN PROJECT_PERSON_RELATION ppr on ppr.PROJECT_ID = p.PROJECT_ID
+      LEFT JOIN COUNCIL_MEMBER_ID cm on cm.PERSON_ID = ppr.PERSON_ID
+    ">
+
+      <field name="id" column="PROJECT_ID" />
+      <field name="partyId" column="PARTY_ID" />
+      <field name="projectId" column="PROJECT_ID" />
+      <field name="description" column="DESCRIPTION" />
+      <field name="startDate" column="START_DATE" />
+
+      <entity name="projectTags" query="SELECT * FROM tag.PROJECT WHERE PROJECT_ID = ${ConsultingProject.PROJECT_ID}">
+        <field name="tag" column="NAME" />
+      </entity>
+
+    </entity>
+  </document>
+</dataConfig>
