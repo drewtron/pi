@@ -15,10 +15,10 @@ Template for schema.xml. Two areas are filled in:
     <field name="projectId" type="string" indexed="true" stored="true" required="true"/>
     <field name="description" type="text" indexed="true" stored="true" required="true"/>
     <field name="startDate" type="date" indexed="true" stored="true" required="false"/>
-    <field name="tag" type="string" indexed="true" stored="true" required="false" />
+    <field name="tag" type="string" indexed="true" stored="true" required="false" multiValued="true"/>
 
     <!--fields for exact match -->
-    <field name="tag_text_no_stemming" type="text_no_stemming" indexed="true" stored="true" required="false"/>
+    <field name="tag_text_no_stemming" type="text_no_stemming" indexed="true" stored="true" required="false" multiValued="true"/>
   </fields>
 
   <copyField source="tag" dest="tag_text_no_stemming"/>
