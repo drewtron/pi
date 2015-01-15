@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dataConfig>
+  <dataSource type="JdbcDataSource" driver="com.microsoft.sqlserver.jdbc.SQLServerDriver" url="jdbc:sqlserver://<%=ENV['DATABASE_GLGLIVE_SERVER']%>:<%= ENV['DATABASE_GLGLIVE_PORT']%>" user="<%=ENV['DATABASE_GLGLIVE_USER']%>" password="<%=ENV['DATABASE_GLGLIVE_PASSWORD']%>"/>
+  <document name="ConsultingProject">
+
+    <entity name="ConsultingProject" query="
+      SELECT
+        p.PROJECT_ID,
+        p.DESCRIPTION,
+        p.START_DATE,
+        COALESCE(pcar.COUNCIL_APPLICANT_ID,cm.COUNCIL_MEMBER_ID) as PARTY_ID
+      FROM GLGLIVE.dbo.PROJECT p
+      LEFT JOIN GLGLIVE.dbo.PROJECT_COUNCIL_APPLICANT_RELATION pcar on pcar.PROJECT_ID = p.PROJECT_ID
+      LEFT JOIN GLGLIVE.dbo.PROJECT_PERSON_RELATION ppr on ppr.PROJECT_ID = p.PROJECT_ID
+      LEFT JOIN GLGLIVE.dbo.COUNCIL_MEMBER cm on cm.PERSON_ID = ppr.PERSON_ID
+    ">
+
+      <field name="id" column="PROJECT_ID" />
+      <field name="partyId" column="PARTY_ID" />
+      <field name="projectId" column="PROJECT_ID" />
+      <field name="description" column="DESCRIPTION" />
+      <field name="startDate" column="START_DATE" />
+
+      <entity name="projectTags" query="SELECT * FROM GLGLIVE.tag.PROJECT WHERE PROJECT_ID = ${ConsultingProject.PROJECT_ID}">
+        <field name="tag" column="NAME" />
+      </entity>
+
+    </entity>
+  </document>
+</dataConfig>
