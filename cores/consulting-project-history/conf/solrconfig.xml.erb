@@ -2,7 +2,7 @@
 <config>
   <abortOnConfigurationError>${solr.abortOnConfigurationError:true}</abortOnConfigurationError>
   <luceneMatchVersion>LUCENE_40</luceneMatchVersion>
-  <dataDir><%=ENV['DATA_DIR']%>/questions</dataDir>
+  <dataDir><%=ENV['DATA_DIR']%>/consulting-project-history</dataDir>
 
   <jmx />
 
@@ -66,22 +66,18 @@
       <str name="rows">5</str>
       <str name="mm">0</str>
       <str name="uf">*</str>
-            <str name="qf">questionText responseText subjectTaxonomyPath sectorTaxonomyPath</str>
+      <str name="qf">description tag</str>
       <str name="pf">
-        questionText^2
-        responseText^2
+        description^2
       </str>
       <str name="pf2">
-        questionText^2
-        responseText^2
+        description^2
       </str>
       <str name="pf3">
-        questionText^3
-        responseText^3
+        description^3
       </str>
       <str name="fl">
-        id questionId partyId responseDate
-        questionText responseText subjectTaxonomyPath sectorTaxonomyPath
+        id description tag projectId partyId
       </str>
       <str name="q.alt">*:*</str>
       <str name="wt">json</str>
@@ -410,7 +406,7 @@
   <requestHandler name="/replication" class="solr.ReplicationHandler" >
     <% if ENV['REPLICA_OF'] %>
       <lst name="slave">
-        <str name="masterUrl"><%=ENV['REPLICA_OF']%>/solr/questions/replication</str>
+        <str name="masterUrl"><%=ENV['REPLICA_OF']%>/solr/consulting-project-history/replication</str>
         <!--Interval in which the slave should poll master .Format is HH:mm:ss -->
         <str name="pollInterval">00:02:04</str>
         <% if ENV['REPLICA_UID'] %>
