@@ -2,7 +2,7 @@
 <config>
   <abortOnConfigurationError>${solr.abortOnConfigurationError:true}</abortOnConfigurationError>
   <luceneMatchVersion>LUCENE_40</luceneMatchVersion>
-  <dataDir><%=ENV['DATA_DIR']%>/questions</dataDir>
+  <dataDir><%=ENV['DATA_DIR']%>/consulting-project-history</dataDir>
 
   <jmx />
 
@@ -410,7 +410,7 @@
   <requestHandler name="/replication" class="solr.ReplicationHandler" >
     <% if ENV['REPLICA_OF'] %>
       <lst name="slave">
-        <str name="masterUrl"><%=ENV['REPLICA_OF']%>/solr/questions/replication</str>
+        <str name="masterUrl"><%=ENV['REPLICA_OF']%>/solr/consulting-project-history/replication</str>
         <!--Interval in which the slave should poll master .Format is HH:mm:ss -->
         <str name="pollInterval">00:02:04</str>
         <% if ENV['REPLICA_UID'] %>
