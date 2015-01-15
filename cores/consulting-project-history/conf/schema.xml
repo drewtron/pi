@@ -11,27 +11,17 @@ Template for schema.xml. Two areas are filled in:
   <fields>
 
     <field name="id" type="string" indexed="true" stored="true" required="true"/>
-    <field name="projectId" type="string" indexed="true" stored="true" required="true"/>
     <field name="partyId" type="string" indexed="true" stored="true" required="true"/>
-    <field name="startDate" type="date" indexed="true" stored="true" required="true"/>
-
-    <field name="questionText" type="text" indexed="true" stored="true" required="false"/>
-    <field name="responseText" type="text" indexed="true" stored="true" required="false" />
-    <field name="subjectTaxonomyPath" type="text"  indexed="true" stored="true" required="false" />
-    <field name="sectorTaxonomyPath" type="text"  indexed="true" stored="true" required="false" />
+    <field name="projectId" type="string" indexed="true" stored="true" required="true"/>
+    <field name="description" type="text_field" indexed="true" stored="true" required="true"/>
+    <field name="startDate" type="date" indexed="true" stored="true" required="false"/>
+    <field name="tag" type="string" indexed="true" stored="true" required="false" />
 
     <!--fields for exact match -->
-    <field name="questionText_text_no_stemming" type="text_no_stemming" indexed="true" stored="true" required="false"/>
-    <field name="responseText_text_no_stemming" type="text_no_stemming" indexed="true" stored="true" required="false" />
-    <field name="subjectTaxonomyPath_text_no_stemming" type="text_no_stemming"  indexed="true" stored="true" required="false" />
-    <field name="sectorTaxonomyPath_text_no_stemming" type="text_no_stemming"  indexed="true" stored="true" required="false" />
-
+    <field name="tag_text_no_stemming" type="text_no_stemming" indexed="true" stored="true" required="false"/>
   </fields>
 
-  <copyField source="questionText" dest="questionText_text_no_stemming"/>
-  <copyField source="responseText" dest="responseText_text_no_stemming"/>
-  <copyField source="subjectTaxonomyPath" dest="subjectTaxonomyPath_text_no_stemming"/>
-  <copyField source="sectorTaxonomyPath" dest="sectorTaxonomyPath_text_no_stemming"/>
+  <copyField source="tag" dest="tag_text_no_stemming"/>
 
   <!-- Field to use to determine and enforce document uniqueness.
      Unless this field is marked with required="false", it will be a required field
@@ -39,7 +29,7 @@ Template for schema.xml. Two areas are filled in:
   <uniqueKey>id</uniqueKey>
 
   <!-- field for the QueryParser to use when an explicit fieldname is absent -->
-  <defaultSearchField>responseText</defaultSearchField>
+  <defaultSearchField>description</defaultSearchField>
 
 
   <!-- attribute "name" is the name of this schema and is only used for display purposes.

@@ -5,7 +5,9 @@
 
     <entity name="ConsultingProject" query="
       SELECT
-        p.*,
+        p.PROJECT_ID,
+        p.DESCRIPTION,
+        p.START_DATE,
         COALESCE(pcar.COUNCIL_APPLICANT_ID,cm.COUNCIL_MEMBER_ID) as PARTY_ID
       FROM GLGLIVE.dbo.PROJECT p
       LEFT JOIN GLGLIVE.dbo.PROJECT_COUNCIL_APPLICANT_RELATION pcar on pcar.PROJECT_ID = p.PROJECT_ID
