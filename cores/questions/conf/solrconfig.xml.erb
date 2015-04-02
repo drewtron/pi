@@ -232,12 +232,6 @@
     </lst>
   </searchComponent>
 
-  <requestHandler name="/dataimport" class="org.apache.solr.handler.dataimport.DataImportHandler">
-    <lst name="defaults">
-      <str name="config">data-config.xml</str>
-    </lst>
-  </requestHandler>
-
   <requestHandler name="/clustering"
     startup="lazy"
     enable="${solr.clustering.enabled:false}"
