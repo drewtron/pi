@@ -101,8 +101,6 @@ Template for schema.xml. Two areas are filled in:
   -->
   <uniqueKey>id</uniqueKey>
 
-  <!-- field for the QueryParser to use when an explicit fieldname is absent -->
-  <defaultSearchField>biography</defaultSearchField>
 
   <types>
     <fieldType name="string" class="solr.StrField" sortMissingLast="true" omitNorms="true"/>
