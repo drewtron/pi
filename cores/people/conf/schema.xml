@@ -63,7 +63,7 @@ Template for schema.xml. Two areas are filled in:
     <field name="email" type="email" indexed="true" stored="true" required="false"/>
     <field name="secondaryEmail" type="email" indexed="true" stored="true" required="false"/>
     <field name="recruitedBy" type="int" indexed="true" stored="true" required="false"/>
-    <field name="profileQuestions" type="text" multiValued="true" indexed="true" stored="false" required="false"/>
+    <field name="profileQuestions" type="text" indexed="true" stored="false" required="false"/>
     <field name="consultingProjectHistory" type="text" multiValued="true" indexed="true" stored="false" required="false"/>
     <field name="daysInNetwork" type="int" indexed="true" stored="true" required="false"/>
     <field name="daysSincePaid" type="int" indexed="true" stored="true" required="false"/>
@@ -91,9 +91,11 @@ Template for schema.xml. Two areas are filled in:
     <dynamicField name="*_Facet"  type="facet" multiValued="true"  indexed="true" stored="true"/>
 
     <field name="namegrams" type="ngram_text" indexed="true" stored="false" multiValued="true"/>
-    <field name="tags" type="text" indexed="true" stored="false" multiValued="true"/>
     <copyField source="name" dest="namegrams"/>
+    <field name="tags" type="text" indexed="true" stored="false" multiValued="true"/>
     <copyField source="tagsAll" dest="tags"/>
+    <field name="allthethings" type="text" indexed="true" stored="false" multiValued="true"/>
+    <copyField source="*" dest="allthethings"/>
   </fields>
 
   <!-- Field to use to determine and enforce document uniqueness.
@@ -102,7 +104,7 @@ Template for schema.xml. Two areas are filled in:
   <uniqueKey>id</uniqueKey>
 
   <!-- field for the QueryParser to use when an explicit fieldname is absent -->
-  <defaultSearchField>biography</defaultSearchField>
+  <defaultSearchField>allthethings</defaultSearchField>
 
   <types>
     <fieldType name="string" class="solr.StrField" sortMissingLast="true" omitNorms="true"/>
