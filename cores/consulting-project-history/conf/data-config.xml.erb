@@ -4,6 +4,7 @@
   <document name="ConsultingProject">
 
     <entity name="ConsultingProject" query="
+    set transaction isolation level read uncommitted;
       SELECT
         p.PROJECT_ID,
         p.DESCRIPTION,

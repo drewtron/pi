@@ -4,6 +4,7 @@
   <document name="ProfileQuestion">
 
     <entity name="ProfileQuestion" query="
+    set transaction isolation level read uncommitted;
     SELECT
       QUESTION_RESPONSE_ID as id
       ,CM.COUNCIL_MEMBER_ID as CouncilMemberId
