@@ -11,27 +11,19 @@ Template for schema.xml. Two areas are filled in:
   <fields>
 
     <field name="id" type="string" indexed="true" stored="true" required="true"/>
-    <field name="questionId" type="string" indexed="true" stored="true" required="false"/>
-    <field name="partyId" type="string" indexed="true" stored="true" required="true"/>
-    <field name="type" type="string" indexed="true" stored="true" required="false"/>
+    <field name="CouncilMemberId" type="string" indexed="true" stored="true" required="true"/>
     <field name="responseDate" type="date" indexed="true" stored="true" required="false"/>
     <field name="questionText" type="text" indexed="true" stored="true" required="false"/>
     <field name="responseText" type="text" indexed="true" stored="true" required="false" />
-    <field name="subjectTaxonomyPath" type="text"  indexed="true" stored="true" required="false" />
-    <field name="sectorTaxonomyPath" type="text"  indexed="true" stored="true" required="false" />
 
     <!--fields for exact match -->
     <field name="questionText_text_no_stemming" type="text_no_stemming" indexed="true" stored="true" required="false"/>
     <field name="responseText_text_no_stemming" type="text_no_stemming" indexed="true" stored="true" required="false" />
-    <field name="subjectTaxonomyPath_text_no_stemming" type="text_no_stemming"  indexed="true" stored="true" required="false" />
-    <field name="sectorTaxonomyPath_text_no_stemming" type="text_no_stemming"  indexed="true" stored="true" required="false" />
 
   </fields>
 
   <copyField source="questionText" dest="questionText_text_no_stemming"/>
   <copyField source="responseText" dest="responseText_text_no_stemming"/>
-  <copyField source="subjectTaxonomyPath" dest="subjectTaxonomyPath_text_no_stemming"/>
-  <copyField source="sectorTaxonomyPath" dest="sectorTaxonomyPath_text_no_stemming"/>
 
   <!-- Field to use to determine and enforce document uniqueness.
      Unless this field is marked with required="false", it will be a required field

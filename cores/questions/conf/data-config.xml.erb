@@ -1,32 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <dataConfig>
-  <dataSource type="JdbcDataSource" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://<%=ENV['DW_HOST']%>/ark" user="<%=ENV['DW_UID']%>" password="<%=ENV['DW_PWD']%>"/>
+  <dataSource type="JdbcDataSource" driver="com.microsoft.sqlserver.jdbc.SQLServerDriver" url="jdbc:sqlserver://<%=ENV['DATABASE_GLGLIVE_SERVER']%>:<%= ENV['DATABASE_GLGLIVE_PORT']%>" user="<%=ENV['DATABASE_GLGLIVE_USER']%>" password="<%=ENV['DATABASE_GLGLIVE_PASSWORD']%>"/>
   <document name="ProfileQuestion">
-    <entity name="ProfileQuestion"
-            query="
-              SELECT
-                @rownum:=@rownum+1 as 'id',
-                questionId,
-                partyId,
-                type,
-                questionText,
-                subjectTaxonomyPath,
-                sectorTaxonomyPath,
-                responseText,
-                responseDate
-              from profilequestionresponse
-              JOIN (SELECT @rownum:=0) r
-              where Response = 'Yes'
-              and IsActive = 1">
-      <field name="id" column="id" />
-      <field name="QuestionId" column="QuestionId" />
-      <field name="PartyId" column="PartyId" />
-      <field name="type" column="type" />
-      <field name="questionText" column="questionText" />
-      <field name="subjectTaxonomyPath" column="subjectTaxonomyPath" />
-      <field name="sectorTaxonomyPath" column="sectorTaxonomyPath" />
-      <field name="responseText" column="responseText" />
-      <field name="responseDate" column="responseDate" />
+
+    <entity name="ProfileQuestion" query="
+    SELECT
+      QUESTION_RESPONSE_ID as id
+      ,CM.COUNCIL_MEMBER_ID as CouncilMemberId
+      ,COALESCE(Q.QUESTION_TEXT, ' ') AS questionText
+      ,QR.RESPONSE_DATE AS responseDate
+      ,COALESCE(QR.COMMENT,' ') AS responseText
+    FROM GLGLIVE.dbo.QUESTION Q
+      INNER JOIN GLGLIVE.dbo.QUESTION_RESPONSE QR ON Q.QUESTION_ID = QR.QUESTION_ID
+      INNER JOIN GLGLIVE.dbo.COUNCIL_MEMBER CM ON CM.PERSON_ID = QR.RESPONDENT_ID
+    WHERE
+      QR.RESPONSE_VALUE = 'Yes'
+      AND QR.RESPONSE_DATE > DATEADD(YEAR, -5, GETDATE())
+    ">
+
+    <field name="id" column="id" />
+    <field name="CouncilMemberId" column="CouncilMemberId" />
+    <field name="questionText" column="questionText" />
+    <field name="responseText" column="responseText" />
+    <field name="responseDate" column="responseDate" />
 
     </entity>
   </document>
