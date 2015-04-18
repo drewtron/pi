@@ -13,15 +13,11 @@ Template for schema.xml. Two areas are filled in:
 
     <field name="id" type="string" indexed="true" stored="true" required="true"/>
     <field name="consultationId" type="string" indexed="true" stored="true" required="true"/>
-    <field name="partyIds" type="text" indexed="true" stored="true" required="true"/>
+    <field name="councilmemberids" type="text" indexed="true" stored="true" required="true"/>
     <field name="title" type="text" indexed="true" stored="true" required="false"/>
     <field name="description" type="text" indexed="true" stored="true" required="false"/>
-    <field name="productId" type="string" indexed="true" stored="true" required="true"/>
     <field name="practiceArea" type="string" indexed="true" stored="true" required="false"/>
     <field name="createDate" type="date" indexed="true" stored="true" required="false"/>
-    <field name="status" type="string" indexed="false" stored="true" required="false"/>
-    <field name="clientName" type="string" indexed="false" stored="true" required="false"/>
-    <field name="clientType" type="string" indexed="false" stored="true" required="false"/>
   </fields>
 
   <!-- Field to use to determine and enforce document uniqueness.
