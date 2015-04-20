@@ -52,6 +52,7 @@ Template for schema.xml. Two areas are filled in:
     <field name="lastSignedTermsAndConditions" type="int" indexed="true" stored="true" required="false"/>
     <field name="termsConditionsExpiration" type="date" indexed="true" stored="true" required="false"/>
     <field name="biography" type="text" indexed="true" omitNorms="true" stored="true" required="false" />
+    <field name="localizedBio" type="ngram_text" indexed="true" omitNorms="true" stored="true" required="false" />
     <field name="practicearea" type="string" indexed="true" stored="true" required="false"/>
     <field name="zoneregion" type="string" indexed="true" stored="true" required="false"/>
     <field name="boardMembership" type="text" indexed="true" stored="true" required="false" multiValued="false" />
@@ -75,7 +76,6 @@ Template for schema.xml. Two areas are filled in:
     <field name="projectHistoryTags" type="facet" multiValued="true"  indexed="true" stored="true"/>
     <field name="specialties" type="facet" multiValued="true"  indexed="true" stored="true"/>
     <field name="languages" type="string" multiValued="true"  indexed="true" stored="true"/>
-    <field name="paidToInvitedRatio" type="float" indexed="true" stored="true"/>
 
     <field name="jobs" type="text" indexed="false" stored="true" required="false" multiValued="false" />
     <field name="jobsCompanyNames" type="text" indexed="true" stored="true" required="false" multiValued="true"/>
