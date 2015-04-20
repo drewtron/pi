@@ -6,6 +6,5 @@
     <core instanceDir="cores/questions" name="questions"/>
     <core instanceDir="cores/consulting-project-history" name="consulting-project-history"/>
     <core instanceDir="cores/projects" name="projects"/>
-    <core instanceDir="cores/project-participants" name="project-participants"/>
   </cores>
 </solr>
