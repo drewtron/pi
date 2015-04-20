@@ -5,15 +5,37 @@
 
     <entity name="ProfileQuestion" query="
     set transaction isolation level read uncommitted;
+    WITH TAXONOMY AS (
+      select Q.QUESTION_ID
+              ,REPLACE(REPLACE(STUFF( (SELECT '||' + STREL.SUBJECT_TAXONOMY_ELEMENT_PATH_NAME AS [text()]
+                              FROM GLGLIVE.dbo.QUESTION_SUBJECT_TAXONOMY_RELATIONSHIP_RELATION QSTRR
+                                  JOIN    GLGLIVE.dbo.SUBJECT_TAXONOMY_RELATIONSHIP STREL
+                                    ON      QSTRR.SUBJECT_TAXONOMY_RELATIONSHIP_ID = STREL.SUBJECT_TAXONOMY_RELATIONSHIP_ID
+                              WHERE   QSTRR.QUESTION_ID = Q.QUESTION_ID
+                              FOR XML PATH('')), 1,2,''),'&lt;','<'),'&gt;','>') AS TAXONOMY_PATH
+             ,REPLACE(REPLACE(STUFF( (SELECT '||' + S.FULL_PATH AS [text()]
+                              FROM GLGLIVE.dbo.QUESTION_SUBJECT_TAXONOMY_RELATIONSHIP_RELATION QSTRR
+                                  JOIN    GLGLIVE.taxonomy.SECTOR_MAPPING STREL
+                                    ON      QSTRR.SUBJECT_TAXONOMY_RELATIONSHIP_ID = STREL.SUBJECT_TAXONOMY_RELATIONSHIP_ID
+                                  JOIN    GLGLIVE.taxonomy.SECTOR S
+                                    ON        STREL.SECTOR_TAXONOMY_ID = S.ID
+                                              WHERE   QSTRR.QUESTION_ID = Q.QUESTION_ID
+                              FOR XML PATH('')), 1,2,''),'&lt;','<'),'&gt;','>') AS SECTOR_TAXONOMY_PATH
+
+      from GLGLIVE.dbo.QUESTION Q
+    )
     SELECT
       QUESTION_RESPONSE_ID as id
       ,CM.COUNCIL_MEMBER_ID as CouncilMemberId
       ,COALESCE(Q.QUESTION_TEXT, ' ') AS questionText
       ,QR.RESPONSE_DATE AS responseDate
       ,COALESCE(QR.COMMENT,' ') AS responseText
+      ,TAXONOMY_PATH AS subjectTaxonomyPath
+      ,SECTOR_TAXONOMY_PATH AS sectorTaxonomyPath
     FROM GLGLIVE.dbo.QUESTION Q
       INNER JOIN GLGLIVE.dbo.QUESTION_RESPONSE QR ON Q.QUESTION_ID = QR.QUESTION_ID
       INNER JOIN GLGLIVE.dbo.COUNCIL_MEMBER CM ON CM.PERSON_ID = QR.RESPONDENT_ID
+      LEFT JOIN TAXONOMY T ON Q.QUESTION_ID = T.QUESTION_ID
     WHERE
       QR.RESPONSE_VALUE = 'Yes'
       AND QR.RESPONSE_DATE > DATEADD(YEAR, -5, GETDATE())
