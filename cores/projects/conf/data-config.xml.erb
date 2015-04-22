@@ -12,7 +12,7 @@
               ,c.CREATED_DATE as CreateDate
               ,COUNCIL_NAME AS PracticeArea
               ,stuff(
-               (select ',' + CAST(cm.COUNCIL_MEMBER_ID as varchar(10)) from GLGLIVE.consult.CONSULTATION_PARTICIPANT cp INNER JOIN GLGLIVE.dbo.COUNCIL_MEMBER cm on cm.PERSON_ID = cp.PERSON_ID where c.CONSULTATION_ID = cp.CONSULTATION_ID and cp.ACTIVE_IND = 1 AND GIVE_TO_CLIENT_DATE IS NOT NULL for xml path('')),1,1,'')
+               (select ',' + CAST(cm.COUNCIL_MEMBER_ID as varchar(10)) from GLGLIVE.consult.CONSULTATION_PARTICIPANT cp INNER JOIN GLGLIVE.dbo.COUNCIL_MEMBER cm on cm.PERSON_ID = cp.PERSON_ID where c.CONSULTATION_ID = cp.CONSULTATION_ID and cp.ACTIVE_IND = 1 for xml path('')),1,1,'')
               as CouncilMemberIds
             FROM
               GLGLIVE.consult.CONSULTATION c
