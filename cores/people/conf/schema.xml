@@ -57,6 +57,7 @@ Template for schema.xml. Two areas are filled in:
     <field name="zoneregion" type="string" indexed="true" stored="true" required="false"/>
     <field name="boardMembership" type="text" indexed="true" stored="true" required="false" multiValued="false" />
     <field name="hourlyRate" type="int" indexed="true" stored="true" required="false"/>
+    <field name="parRate" type="int" indexed="false" stored="true" required="false"/>
     <field name="dailyRate" type="int" indexed="true" stored="true" required="false"/>
     <field name="avgRate" type="int" indexed="true" stored="true" required="false"/>
     <field name="expertWitnessHourly" type="int" indexed="true" stored="true" required="false"/>
