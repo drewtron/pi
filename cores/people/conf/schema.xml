@@ -201,11 +201,11 @@ Template for schema.xml. Two areas are filled in:
 
     <fieldType name="ngram_text" class="solr.TextField">
       <analyzer type="index">
-        <tokenizer class="solr.NGramTokenizerFactory" minGramSize="1" maxGramSize="10"/>
+        <tokenizer class="solr.NGramTokenizerFactory" minGramSize="1" maxGramSize="8"/>
         <filter class="solr.LowerCaseFilterFactory"/>
       </analyzer>
       <analyzer type="query">
-        <tokenizer class="solr.NGramTokenizerFactory" minGramSize="1" maxGramSize="10"/>
+        <tokenizer class="solr.NGramTokenizerFactory" minGramSize="1" maxGramSize="8"/>
         <filter class="solr.LowerCaseFilterFactory"/>
       </analyzer>
     </fieldType>
