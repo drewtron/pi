@@ -96,8 +96,6 @@ Template for schema.xml. Two areas are filled in:
     <copyField source="name" dest="namegrams"/>
     <field name="tags" type="text" indexed="true" stored="false" multiValued="true"/>
     <copyField source="tagsAll" dest="tags"/>
-    <field name="allthethings" type="text" indexed="true" stored="false" multiValued="true"/>
-    <copyField source="*" dest="allthethings"/>
     <field name="allthengrams" type="ngram_text" indexed="true" stored="false" multiValued="true"/>
     <copyField source="*" dest="allthengrams"/>
   </fields>
@@ -202,11 +200,11 @@ Template for schema.xml. Two areas are filled in:
 
     <fieldType name="ngram_text" class="solr.TextField">
       <analyzer type="index">
-        <tokenizer class="solr.NGramTokenizerFactory" minGramSize="1" maxGramSize="8"/>
+        <tokenizer class="solr.NGramTokenizerFactory" minGramSize="2" maxGramSize="6"/>
         <filter class="solr.LowerCaseFilterFactory"/>
       </analyzer>
       <analyzer type="query">
-        <tokenizer class="solr.NGramTokenizerFactory" minGramSize="1" maxGramSize="8"/>
+        <tokenizer class="solr.NGramTokenizerFactory" minGramSize="2" maxGramSize="6"/>
         <filter class="solr.LowerCaseFilterFactory"/>
       </analyzer>
     </fieldType>
