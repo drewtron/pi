@@ -14,10 +14,14 @@ Template for schema.xml. Two areas are filled in:
     <field name="id" type="string" indexed="true" stored="true" required="true"/>
     <field name="consultationId" type="string" indexed="true" stored="true" required="true"/>
     <field name="councilmemberids" type="text" indexed="true" stored="true" required="true"/>
-    <field name="title" type="text" indexed="true" stored="true" required="false"/>
-    <field name="description" type="text" indexed="true" stored="true" required="false"/>
+    <field name="title" type="ngram_text" indexed="true" stored="true" required="false"/>
+    <field name="alternatetitle" type="ngram_text" indexed="true" stored="true" required="false"/>
+    <field name="description" type="ngram_text" indexed="true" stored="true" required="false"/>
+    <field name="alternatedescription" type="ngram_text" indexed="true" stored="true" required="false"/>
     <field name="practiceArea" type="string" indexed="true" stored="true" required="false"/>
     <field name="createDate" type="date" indexed="true" stored="true" required="false"/>
+    <field name="allthengrams" type="ngram_text" indexed="true" stored="false" multiValued="true"/>
+    <copyField source="*" dest="allthengrams"/>
   </fields>
 
   <!-- Field to use to determine and enforce document uniqueness.
@@ -26,7 +30,7 @@ Template for schema.xml. Two areas are filled in:
   <uniqueKey>id</uniqueKey>
 
   <!-- field for the QueryParser to use when an explicit fieldname is absent -->
-  <defaultSearchField>description</defaultSearchField>
+  <defaultSearchField>allthengrams</defaultSearchField>
 
   <!-- attribute "name" is the name of this schema and is only used for display purposes.
        Applications should change this to reflect the nature of the search collection.
@@ -239,31 +243,15 @@ Template for schema.xml. Two areas are filled in:
 
     <fieldType name="text_field" class="solr.TextField"></fieldType>
 
-    <fieldType name="edge_ngram_text" class="solr.TextField" positionIncrementGap="100">
+    <fieldType name="ngram_text" class="solr.TextField">
       <analyzer type="index">
-        <tokenizer class="solr.KeywordTokenizerFactory"/>
+        <tokenizer class="solr.NGramTokenizerFactory" minGramSize="2" maxGramSize="6"/>
         <filter class="solr.LowerCaseFilterFactory"/>
-        <filter class="solr.EdgeNGramFilterFactory" minGramSize="1" maxGramSize="30"/>
       </analyzer>
       <analyzer type="query">
-        <tokenizer class="solr.KeywordTokenizerFactory"/>
+        <tokenizer class="solr.NGramTokenizerFactory" minGramSize="2" maxGramSize="6"/>
         <filter class="solr.LowerCaseFilterFactory"/>
       </analyzer>
-    </fieldType>
-
-    <fieldType name="text_shingle" class="solr.TextField" positionIncrementGap="100">
-      <analyzer type="index">
-        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
-        <filter class="solr.LowerCaseFilterFactory"/>
-        <filter class="solr.ShingleFilterFactory" maxShingleSize="5" minShingleSize="2" outputUnigrams="false"/>
-      </analyzer>
-
-      <analyzer type="query">
-        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
-        <filter class="solr.LowerCaseFilterFactory"/>
-        <filter class="solr.ShingleFilterFactory" maxShingleSize="5" minShingleSize="2" outputUnigrams="false"/>
-      </analyzer>
-
     </fieldType>
 
   </types>

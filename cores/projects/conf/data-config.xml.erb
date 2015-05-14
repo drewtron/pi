@@ -8,11 +8,13 @@
             SELECT
               c.CONSULTATION_ID as ConsultationId
               ,c.TITLE as Title
+              ,c.TITLE_ALTERNATIVE_LANGUAGE as AlternateTitle
               ,CONSULTATION_DESCRIPTION_TEXT as Description
+              ,CONSULTATION_DESCRIPTION_TEXT_ALTERNATIVE_LANGUAGE as AlternateDescription
               ,c.CREATED_DATE as CreateDate
               ,COUNCIL_NAME AS PracticeArea
-              ,stuff(
-               (select ',' + CAST(cm.COUNCIL_MEMBER_ID as varchar(10)) from GLGLIVE.consult.CONSULTATION_PARTICIPANT cp INNER JOIN GLGLIVE.dbo.COUNCIL_MEMBER cm on cm.PERSON_ID = cp.PERSON_ID where c.CONSULTATION_ID = cp.CONSULTATION_ID and cp.ACTIVE_IND = 1 for xml path('')),1,1,'')
+              ,COALESCE(stuff(
+               (select ',' + CAST(cm.COUNCIL_MEMBER_ID as varchar(10)) from GLGLIVE.consult.CONSULTATION_PARTICIPANT cp INNER JOIN GLGLIVE.dbo.COUNCIL_MEMBER cm on cm.PERSON_ID = cp.PERSON_ID where c.CONSULTATION_ID = cp.CONSULTATION_ID and cp.ACTIVE_IND = 1 for xml path('')),1,1,''), '')
               as CouncilMemberIds
             FROM
               GLGLIVE.consult.CONSULTATION c
@@ -24,7 +26,9 @@
       <field name="id" column="ConsultationId" />
       <field name="councilmemberids" column="CouncilMemberIds" />
       <field name="title" column="Title" />
-      <field name="description" column="Description"  />
+      <field name="alternatetitle" column="AlternateTitle" />
+      <field name="description" column="Description" />
+      <field name="alternatedescription" column="AlternateDescription" />
       <field name="consultationId" column="ConsultationId" />
       <field name="practiceArea" column="PracticeArea" />
       <field name="createDate" column="CreateDate" />
