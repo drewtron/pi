@@ -57,53 +57,12 @@
 <requestHandler name="/select"
   class="solr.SearchHandler">
   <lst name="defaults">
-    <!--
-      http://wiki.apache.org/solr/ExtendedDisMax
-      -->
-      <str name="wt">json</str>
-      <str name="mm">100%</str>
-      <str name="defType">edismax</str>
-      <str name="q.op">AND</str>
-
-      <str name="qf">allthengrams</str>
-      <str name="pf">
-        title^4
-        description^2
-      </str>
-      <str name="fl">
-        id consultationId councilmemberids title description practiceArea createDate
-      </str>
-      <str name="q.alt">*:*</str>
-    </lst>
-  </requestHandler>
-
-  <requestHandler name="/update/extract"
-    startup="lazy"
-    class="solr.extraction.ExtractingRequestHandler" >
-    <lst name="defaults">
-      <str name="fmap.content">text</str>
-      <str name="lowernames">true</str>
-      <str name="uprefix">ignored_</str>
-
-      <str name="captureAttr">true</str>
-      <str name="fmap.a">links</str>
-      <str name="fmap.div">ignored_</str>
-    </lst>
-  </requestHandler>
-
-<!-- ************************************************************************** -->
-
-  <requestHandler name="/mlt" class="solr.MoreLikeThisHandler"></requestHandler>
-
-  <requestHandler name="search"
-    class="solr.SearchHandler"
-    default="true">
-    <lst name="defaults">
-      <str name="fl">*,score</str>
-      <str name="echoParams">explicit</str>
-      <int name="rows">20</int>
-    </lst>
-  </requestHandler>
+    <str name="wt">json</str>
+    <str name="mm">100%</str>
+    <str name="defType">edismax</str>
+    <str name="q.op">AND</str>
+  </lst>
+</requestHandler>
 
 
   <requestHandler name="/update"
@@ -174,14 +133,6 @@
   </requestHandler>
 
   <queryResponseWriter name="json" class="solr.JSONResponseWriter">
-  </queryResponseWriter>
-
-  <!-- XSLT response writer transforms the XML output by any xslt file found
-       in Solr's conf/xslt directory.  Changes to xslt files are checked for
-       every xsltCacheLifetimeSeconds.
-    -->
-  <queryResponseWriter name="xslt" class="solr.XSLTResponseWriter">
-    <int name="xsltCacheLifetimeSeconds">5</int>
   </queryResponseWriter>
 
   <admin>
