@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <dataConfig>
-  <dataSource type="JdbcDataSource" driver="com.microsoft.sqlserver.jdbc.SQLServerDriver" url="jdbc:sqlserver://<%=ENV['DATABASE_GLGLIVE_SERVER']%>:<%= ENV['DATABASE_GLGLIVE_PORT']%>" user="<%=ENV['DATABASE_GLGLIVE_USER']%>" password="<%=ENV['DATABASE_GLGLIVE_PASSWORD']%>" readOnly="true"/>
+  <dataSource type="JdbcDataSource" driver="com.microsoft.sqlserver.jdbc.SQLServerDriver" url="jdbc:sqlserver://<%=ENV['DATABASE_GLGLIVE_SERVER']%>:<%= ENV['DATABASE_GLGLIVE_PORT']%>" user="<%=ENV['DATABASE_GLGLIVE_USER']%>" password="<%=ENV['DATABASE_GLGLIVE_PASSWORD']%>"/>
   <document name="Projects">
     <entity name="Projects"
             query="
