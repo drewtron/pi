@@ -22,6 +22,12 @@
               INNER JOIN GLGLIVE.dbo.COUNCIL co ON mr.COUNCIL_ID = co.COUNCIL_ID
             WHERE
               c.ACTIVE_IND = 1
+              AND
+              (
+                '${dataimporter.request.clean}' != 'false'
+                OR
+                c.CONSULTATION_ID IN (SELECT CONSULTATION_ID FROM GLGLIVE.consult.CONSULTATION_PARTICIPANT WHERE CREATE_DATE > '${dataimporter.last_index_time}')
+              )
 			  ">
       <field name="id" column="ConsultationId" />
       <field name="councilmemberids" column="CouncilMemberIds" />

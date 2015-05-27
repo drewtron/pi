@@ -38,6 +38,12 @@
       LEFT JOIN TAXONOMY T ON Q.QUESTION_ID = T.QUESTION_ID
     WHERE
       QR.RESPONSE_VALUE = 'Yes'
+      AND
+      (
+        '${dataimporter.request.clean}' != 'false'
+        OR
+        QR.RESPONSE_DATE > '${dataimporter.last_index_time}'
+      )
     ">
 
     <field name="id" column="id" />
