@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <dataConfig>
+  <propertyWriter type="SimplePropertiesWriter" dateFormat="yyyy-MM-dd HH:mm:ss" directory="<%=ENV['DATA_DIR']%>/test-projects"/>
   <dataSource type="JdbcDataSource" driver="com.microsoft.sqlserver.jdbc.SQLServerDriver" url="jdbc:sqlserver://<%=ENV['DATABASE_GLGLIVE_SERVER']%>:<%= ENV['DATABASE_GLGLIVE_PORT']%>" user="<%=ENV['DATABASE_GLGLIVE_USER']%>" password="<%=ENV['DATABASE_GLGLIVE_PASSWORD']%>" readOnly="true"/>
   <document name="Projects">
     <entity name="Projects"
@@ -25,8 +26,9 @@
               AND
               (
                 '${dataimporter.request.clean}' != 'false'
-                OR
-                c.CONSULTATION_ID IN (SELECT CONSULTATION_ID FROM GLGLIVE.consult.CONSULTATION_PARTICIPANT WHERE CREATE_DATE > '${dataimporter.last_index_time}')
+                OR '${dataimporter.last_index_time}' like '%1969'
+                OR '${dataimporter.last_index_time}' like '%1970'
+                OR c.CONSULTATION_ID IN (SELECT CONSULTATION_ID FROM GLGLIVE.consult.CONSULTATION_PARTICIPANT WHERE CREATE_DATE > CONVERT(datetime, '${dataimporter.last_index_time}'))
               )
 			  ">
       <field name="id" column="ConsultationId" />

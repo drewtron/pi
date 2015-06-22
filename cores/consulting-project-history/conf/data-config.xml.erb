@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <dataConfig>
+  <propertyWriter type="SimplePropertiesWriter" dateFormat="yyyy-MM-dd HH:mm:ss" directory="<%=ENV['DATA_DIR']%>/consulting-project-history"/>
   <dataSource type="JdbcDataSource" driver="com.microsoft.sqlserver.jdbc.SQLServerDriver" url="jdbc:sqlserver://<%=ENV['DATABASE_GLGLIVE_SERVER']%>:<%= ENV['DATABASE_GLGLIVE_PORT']%>" user="<%=ENV['DATABASE_GLGLIVE_USER']%>" password="<%=ENV['DATABASE_GLGLIVE_PASSWORD']%>" readOnly="true"/>
   <document name="ConsultingProject">
 
