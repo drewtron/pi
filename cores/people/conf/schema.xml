@@ -45,6 +45,8 @@ Template for schema.xml. Two areas are filled in:
     <field name="isEducator" type="bool" indexed="true" stored="true" required="false"/>
     <field name="isHighValue" type="bool" indexed="true" stored="true" required="false"/>
     <field name="isGlgExclusive" type="bool" indexed="true" stored="true" required="false"/>
+    <field name="isClientExclusive" type="bool" indexed="true" stored="true" required="false"/>
+    <field name="exclusiveClientId" type="int" indexed="true" stored="true" required="false"/>
     <field name="isLearning" type="bool" indexed="true" stored="true" required="false"/>
     <field name="isBoardMember" type="bool" indexed="true" stored="true" required="false"/>
     <field name="consultationFeedback" type="string" indexed="true" stored="true" required="false"/>
