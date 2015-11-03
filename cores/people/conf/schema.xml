@@ -64,7 +64,7 @@ Template for schema.xml. Two areas are filled in:
     <field name="dailyRate" type="int" indexed="true" stored="true" required="false"/>
     <field name="avgRate" type="int" indexed="true" stored="true" required="false"/>
     <field name="expertWitnessHourly" type="int" indexed="true" stored="true" required="false"/>
-    <field name="phone" type="ngram_text" indexed="true" stored="true" required="false"/>
+    <field name="phone" type="ngram_number" indexed="true" stored="true" required="false"/>
     <field name="email" type="email" indexed="true" stored="true" required="false"/>
     <field name="secondaryEmail" type="email" indexed="true" stored="true" required="false"/>
     <field name="recruitedBy" type="int" indexed="true" stored="true" required="false"/>
@@ -186,6 +186,16 @@ Template for schema.xml. Two areas are filled in:
         <filter class="solr.LowerCaseFilterFactory"/>
       </analyzer>
     </fieldType>
+
+    <fieldType name="ngram_number" class="solr.TextField">
+      <analyzer>
+        <tokenizer class="solr.NGramTokenizerFactory" minGramSize="2" maxGramSize="6"/>
+        <filter class="solr.PatternReplaceFilterFactory"
+                pattern="([^0-9])" replacement="" replace="all"
+                />
+      </analyzer>
+    </fieldType>
+
   </types>
 
   <!-- SolrQueryParser configuration: defaultOperator="AND|OR" -->
