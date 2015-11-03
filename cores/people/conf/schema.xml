@@ -64,7 +64,7 @@ Template for schema.xml. Two areas are filled in:
     <field name="dailyRate" type="int" indexed="true" stored="true" required="false"/>
     <field name="avgRate" type="int" indexed="true" stored="true" required="false"/>
     <field name="expertWitnessHourly" type="int" indexed="true" stored="true" required="false"/>
-    <field name="phone" type="text_phone" indexed="true" stored="true" required="false"/>
+    <field name="phone" type="ngram_number" indexed="true" stored="true" required="false"/>
     <field name="email" type="email" indexed="true" stored="true" required="false"/>
     <field name="secondaryEmail" type="email" indexed="true" stored="true" required="false"/>
     <field name="recruitedBy" type="int" indexed="true" stored="true" required="false"/>
@@ -176,28 +176,14 @@ Template for schema.xml. Two areas are filled in:
       </analyzer>
     </fieldType>
 
-    <fieldType name="text_phone" class="solr.TextField" positionIncrementGap="100">
+    <fieldType name="ngram_number" class="solr.TextField">
       <analyzer type="index">
-        <tokenizer class="solr.KeywordTokenizerFactory"/>
-        <filter class="solr.LowerCaseFilterFactory"/>
-        <filter class="solr.WordDelimiterFilterFactory"
-                generateWordParts="0"
-                generateNumberParts="1"
-                catenateWords="0"
-                catenateNumbers="1"
-                catenateAll="1" />
-        <filter class="solr.SynonymFilterFactory" synonyms="phone-synonyms.txt" ignoreCase="true" expand="true"/>
+        <tokenizer class="solr.NGramTokenizerFactory" minGramSize="2" maxGramSize="6"/>
+        <filter class="solr.PatternReplaceFilterFactory" pattern="([^0-9])" replacement="" replace="all" />
       </analyzer>
       <analyzer type="query">
-        <tokenizer class="solr.KeywordTokenizerFactory"/>
-        <filter class="solr.LowerCaseFilterFactory"/>
-        <filter class="solr.WordDelimiterFilterFactory"
-                generateWordParts="0"
-                generateNumberParts="0"
-                catenateWords="0"
-                catenateNumbers="1"
-                catenateAll="1" />
-        <filter class="solr.SynonymFilterFactory" synonyms="phone-synonyms.txt" ignoreCase="true" expand="true"/>
+        <tokenizer class="solr.NGramTokenizerFactory" minGramSize="2" maxGramSize="6"/>
+        <filter class="solr.PatternReplaceFilterFactory" pattern="([^0-9])" replacement="" replace="all" />
       </analyzer>
     </fieldType>
 
