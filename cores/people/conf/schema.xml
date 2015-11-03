@@ -188,11 +188,13 @@ Template for schema.xml. Two areas are filled in:
     </fieldType>
 
     <fieldType name="ngram_number" class="solr.TextField">
-      <analyzer>
+      <analyzer type="index">
         <tokenizer class="solr.NGramTokenizerFactory" minGramSize="2" maxGramSize="6"/>
-        <filter class="solr.PatternReplaceFilterFactory"
-                pattern="([^0-9])" replacement="" replace="all"
-                />
+        <filter class="solr.PatternReplaceFilterFactory" pattern="([^0-9])" replacement="" replace="all" />
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.NGramTokenizerFactory" minGramSize="2" maxGramSize="6"/>
+        <filter class="solr.PatternReplaceFilterFactory" pattern="([^0-9])" replacement="" replace="all" />
       </analyzer>
     </fieldType>
 
