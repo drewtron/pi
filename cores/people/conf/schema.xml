@@ -101,6 +101,8 @@ Template for schema.xml. Two areas are filled in:
     <copyField source="tagsAll" dest="tags"/>
     <field name="allthengrams" type="ngram_text" indexed="true" stored="false" multiValued="true"/>
     <copyField source="*" dest="allthengrams"/>
+    <field name="jobngrams" type="ngram_text" indexed="true" stored="false" multiValued="true"/>
+    <copyField source="job*" dest="jobngrams"/>
   </fields>
 
   <!-- Field to use to determine and enforce document uniqueness.
