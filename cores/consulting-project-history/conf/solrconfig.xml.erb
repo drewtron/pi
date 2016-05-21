@@ -4,6 +4,11 @@
   <luceneMatchVersion>LUCENE_40</luceneMatchVersion>
   <dataDir><%=ENV['DATA_DIR']%>/consulting-project-history</dataDir>
 
+  <indexConfig>
+    <!-- indexes are for users to search first and foremost, and since we have multiple
+         cores all doing this we're gonna constrain it -->
+    <maxIndexingThreads>1</maxIndexingThreads>
+  </indexConfig>
   <jmx />
 
   <updateHandler class="solr.DirectUpdateHandler2">
