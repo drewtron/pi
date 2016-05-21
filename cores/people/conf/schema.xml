@@ -69,6 +69,7 @@ Template for schema.xml. Two areas are filled in:
     <field name="secondaryEmail" type="email" indexed="true" stored="true" required="false"/>
     <field name="recruitedBy" type="int" indexed="true" stored="true" required="false"/>
     <field name="profileQuestions" type="text" indexed="true" stored="false" required="false"/>
+    <field name="zyncdQuestions" type="text" indexed="true" stored="true" required="false" multiValued="true"/>/>
     <field name="consultingProjectHistory" type="text" multiValued="true" indexed="true" stored="false" required="false"/>
     <field name="daysInNetwork" type="int" indexed="true" stored="true" required="false"/>
     <field name="daysSincePaid" type="int" indexed="true" stored="true" required="false"/>
@@ -77,6 +78,7 @@ Template for schema.xml. Two areas are filled in:
     <field name="projectHistory" type="text" multiValued="true" indexed="true" stored="false" required="false"/>
     <field name="flags" type="string" indexed="false" stored="true" required="false" multiValued="false" />
     <field name="tagsAll" type="facet" multiValued="true"  indexed="true" stored="true"/>
+    <field name="zyncdTags" type="facet" indexed="true" stored="true" required="false" multiValued="true"/>
     <field name="projectHistoryTags" type="facet" multiValued="true"  indexed="true" stored="true"/>
     <field name="specialties" type="facet" multiValued="true"  indexed="true" stored="true"/>
     <field name="languages" type="string" multiValued="true"  indexed="true" stored="true"/>
