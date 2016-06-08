@@ -76,6 +76,7 @@ Template for schema.xml. Two areas are filled in:
     <field name="numGivenToClient" type="int" indexed="true" stored="true" required="false"/>
     <field name="numProjectsPaid" type="int" indexed="true" stored="true" required="false"/>
     <field name="projectHistory" type="text" multiValued="true" indexed="true" stored="false" required="false"/>
+    <field name="productTypeCategories" type="text" multiValued="true" indexed="true" stored="false" required="false"/>
     <field name="flags" type="string" indexed="false" stored="true" required="false" multiValued="false" />
     <field name="tagsAll" type="facet" multiValued="true"  indexed="true" stored="true"/>
     <field name="zyncdTags" type="facet" indexed="true" stored="true" required="false" multiValued="true"/>
