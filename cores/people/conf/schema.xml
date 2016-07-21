@@ -49,6 +49,7 @@ Template for schema.xml. Two areas are filled in:
     <field name="isClientExclusive" type="bool" indexed="true" stored="true" required="false"/>
     <field name="exclusiveClientId" type="int" indexed="true" stored="true" required="false"/>
     <field name="isLearning" type="bool" indexed="true" stored="true" required="false"/>
+    <field name="isMPEligible" type="bool" indexed="true" stored="true" required="false"/>
     <field name="isBoardMember" type="bool" indexed="true" stored="true" required="false"/>
     <field name="consultationFeedback" type="string" indexed="true" stored="true" required="false"/>
     <field name="isTermsConditionsCurrent" type="bool" indexed="true" stored="true" required="false"/>
