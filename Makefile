@@ -4,4 +4,4 @@ localrun: localbuildpack
 	~/pi/start_solr
 
 localbuildpack:
-	HOME=~/pi DATA_DIR=~/pi/data ~/git/wballard/solr_jetty_java_buildpack/bin/compile .
+	HOME=~/pi DATA_DIR=~/pi/data ../solr_jetty_java_buildpack/bin/compile .
