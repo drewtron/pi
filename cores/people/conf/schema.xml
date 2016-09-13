@@ -109,10 +109,10 @@ Template for schema.xml. Two areas are filled in:
     <field name="jobngrams" type="ngram_text" indexed="true" stored="false" multiValued="true"/>
     <copyField source="job*" dest="jobngrams"/>
 
-    <field name="isLobbyist" type="bool" indexed="true" stored="true" required="false"/>
-    <field name="isPublicOfficial" type="bool" indexed="true" stored="true" required="false"/>
-    <field name="bioScreenPass" type="bool" indexed="true" stored="true" required="false"/>
-    <field name="bioScreenComment" type="text" indexed="true" stored="true" required="false" />
+    <field name="isLobbyist" type="bool" indexed="false" stored="true" required="false"/>
+    <field name="isPublicOfficial" type="bool" indexed="false" stored="true" required="false"/>
+    <field name="bioScreenPass" type="bool" indexed="false" stored="true" required="false"/>
+    <field name="bioScreenComment" type="text" indexed="false" stored="true" required="false" />
 
   </fields>
 
