@@ -108,6 +108,12 @@ Template for schema.xml. Two areas are filled in:
     <copyField source="*" dest="allthengrams"/>
     <field name="jobngrams" type="ngram_text" indexed="true" stored="false" multiValued="true"/>
     <copyField source="job*" dest="jobngrams"/>
+
+    <field name="isLobbyist" type="bool" indexed="true" stored="true" required="false"/>
+    <field name="isPublicOfficial" type="bool" indexed="true" stored="true" required="false"/>
+    <field name="bioScreenPass" type="bool" indexed="true" stored="true" required="false"/>
+    <field name="bioScreenComment" type="text" indexed="true" stored="true" required="false" />
+
   </fields>
 
   <!-- Field to use to determine and enforce document uniqueness.
